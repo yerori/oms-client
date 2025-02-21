@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="접속로그조회" directory="/SMT/" screenid="SmtSet1080" last_update_date="2023-06-14 16:19:57" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnOuCodeSet,fnLogCodeSet,fnDsSearchSet,screen_on_submitcomplete,btnCommonSearch_on_mouseup,btnCommonClose_on_mouseup,screen_on_messagebox,fnEmpNoClosePopCallback,fldDateS_on_change,fldDateE_on_change,screen_on_size"/>
+		<xlinkdataset id="dsLogList" desc="사용자로그정보" columns="USER_ID::::;INS_DATE::::;USER_IP_ADDR::::;LOG_NOTE::::;LOG_OBJ_ID::::;LOGIN_NO::::;USER_NAME::::;EMP_NO::::;OU_NAME::::;MENU_NAME::::"/>
+		<xlinkdataset id="dsLogKCd" desc="로그종류정" columns="LOG_CODE::::;LOG_NAME::::"/>
+		<xlinkdataset id="dsOuCode" desc="법인코드정보" columns="OU_CODE::::;OU_NAME::::"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;SDATE::::;EDATE::::;LOGIN_NO::::;LOG_CODE::::;MENU_NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_LOG_CODE" url="" comment="로그코드정보">
+		</xlinktranmap>
+		<xlinktranmap id="TR_OU_CODE" url="" comment="법인정보 가져오기.">
+		</xlinktranmap>
+		<xlinktranmap id="TR_LOG_INFO" url="" comment="로그정보">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,482,483,484,453,474,455,433"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="0" order_info="35,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" anchor="2" x="1088" y="5" right="280" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="1207" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1345" y="5" right="23" bottom="5" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<text control_id="135" meta_id="LABEL02582" autosize="0" x="289" y="52" right="1081" bottom="686" width="70" height="20" text="접속기간" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="676" width="1411" width_percent="98" width_unit="1" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="452" meta_id="LABEL02583" autosize="0" x="621" y="52" right="729" bottom="686" width="90" height="20" text="유저아이디" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="453" name="edtLoginNo" in_index="3" autosize="0" x="716" y="52" right="584" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:LOGIN_NO"/>
+		<text control_id="454" meta_id="LABEL00116" autosize="0" x="1188" y="52" right="202" bottom="686" width="50" height="20" text="메뉴명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="455" name="edtMenuName" in_index="5" autosize="0" x="1244" y="52" right="56" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:MENU_NAME" make_case="1" imemode="0"/>
+		<caption control_id="479" x="467" y="52" right="965" bottom="686" width="8" height="20" text="~" font="맑은 고딕,9,0,0,0,0" transparent="1" mousehover_font="맑은 고딕,9,0,0,0,0" flowline_arr=""/>
+		<text control_id="480" meta_id="LABEL00135" autosize="0" x="886" y="52" right="474" bottom="686" width="80" height="20" text="로그구분" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="474" name="cboLogKcd" in_index="4" autosize="0" x="972" y="52" right="328" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsLogKCd:LOG_CODE:LOG_NAME:" link_data="dsSearch:LOG_CODE" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<text control_id="481" meta_id="LABEL01898" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="482" name="cboOuCode" in_index="0" autosize="0" x="102" y="52" right="1198" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOuCode:OU_CODE:OU_NAME:" link_data="dsSearch:OU_CODE" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<datepicker control_id="483" name="fldDateS" in_index="1" autosize="0" x="364" y="52" right="977" bottom="686" width="99" height="20" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSearch:SDATE" delimiter_char="-" showtodaybar="1" calendar_type="1" on_change="eventfunc:fldDateS_on_change(objInst, event_type)"/>
+		<datepicker control_id="484" name="fldDateE" in_index="2" autosize="0" x="480" y="52" right="861" bottom="686" width="99" height="20" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSearch:EDATE" delimiter_char="-" showtodaybar="1" calendar_type="1" on_change="eventfunc:fldDateE_on_change(objInst, event_type)"/>
+		<text control_id="49" meta_id="LABEL02584" autosize="0" x="24" y="95" right="1216" bottom="647" width="200" height="16" text="로그정보" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="68" autosize="0" x="10" y="95" right="1414" bottom="647" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<grid style="HS_GRID_BASIC_01" control_id="433" name="grdUserInfo" in_index="6" x="9" y="120" right="20" bottom="18" width="1411" width_percent="98" height="620" resize_dir="3" header_vertcount="0" cell_height="22" hoverrow_forecolor="00222222" selectcell_forecolor="00FFFBF7" link_data="dsLogList" samplerows="25" version="1.2" on_itemselchange="eventfunc:grdUserInfo_on_itemselchange(objInst, nPrevSelectRow, nPrevSelectColumn, nCurSelectRow, nCurSelectColumn)">
+			<column>
+				<header meta_id="LABEL02585" title="접속일시"/>
+				<data name="INS_DATE" width="160" backcolor="00FFFBF7" text_horzalign="1" make_case="1" link_data="dsLogList:INS_DATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01947" title="법인"/>
+				<data name="OU_NAME" width="120" backcolor="00FFFBF7" data_type="2" link_data="dsLogList:OU_NAME" picklist_selstyle="2" picklist_viewstyle="2" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00092" title="아이디"/>
+				<data style="HS_GRID_DATA_02" name="LOGIN_NO" width="60" text_horzalign="0" link_data="dsLogList:LOGIN_NO" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00091" title="사용자명"/>
+				<data name="USER_NAME" backcolor="00FFFBF7" imemode="1" data_type="2" link_data="dsLogList:USER_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01530" title="사원번호"/>
+				<data name="EMP_NO" backcolor="00FFFBF7" link_data="dsLogList:EMP_NO" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00158" title="접속IP"/>
+				<data name="USER_IP_ADDR" width="110" backcolor="00FFFBF7" link_data="dsLogList:USER_IP_ADDR" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00116" title="메뉴명"/>
+				<data name="MENU_NAME" width="120" backcolor="00FFFBF7" link_data="dsLogList:MENU_NAME" calendar_image="/ico_carlenda_grid.gif" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02538" title="페이지명"/>
+				<data name="LOG_OBJ_ID" width="90" backcolor="00FFFBF7" link_data="dsLogList:LOG_OBJ_ID" calendar_image="/ico_carlenda_grid.gif" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01772" title="비고"/>
+				<data name="LOG_NOTE" width="568" backcolor="00FFFBF7" link_data="dsLogList:LOG_NOTE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="USER_ID"/>
+				<data name="USER_ID" width="0" hidden="1" link_data="dsLogList:USER_ID" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+	</map>
+</map_list>

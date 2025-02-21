@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]부서선택" directory="/FRAME/" screenid="popupDept" last_update_date="2024-10-04 16:57:20" width="820" width_type="0" height="410" height_type="0" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" funclist="screen_on_load,fn_init,screen_on_submitcomplete,tr_select_code_ou,tr_select_code_site,btnSearch_on_mouseup,btnApply_on_mouseup,screen_on_destroy,btnClose_on_mouseup,grdList_on_itemdblclick,fnEnter,ReturnClosePopup,grdMaster_on_itemdblclick,es_DEPT_NAME_on_keydown,es_DEPT_CODE_on_keydown"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;DEPT_CODE::::;DEPT_NAME::::;SITE_CODE::::;MODE::::"/>
+		<xlinkdataset id="dsMaster" desc="공통코드조회" columns="OU_CODE:&quot;법인코드&quot;:::;DEPT_CODE:&quot;부서코드&quot;:::;DEPT_NAME:&quot;부서명&quot;:::;SITE_CODE:&quot;사업장코드&quot;:::;SITE_NAME:&quot;사업장명&quot;:::;DEPT_TYPE:&quot;부서유형&quot;:::;DEPT_ST_DATE:&quot;시작일&quot;:::;DEPT_ED_DATE:&quot;종료일&quot;:::"/>
+		<xlinkdataset id="dsCode_OU" desc="법인코드" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsCode_SITE" desc="사업장코드" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsCode_SITE_A" desc="사업장코드(전체포함)" columns="CODE::::;NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SELECT_MASTER" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SELECT_CODE_OU" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SELECT_CODE_SITE" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="1" order_info="2001,2008,2007,453,525,35,36,51"/>
+		<text control_id="32" name="stSystemMenuTitle" meta_id="LABEL02137" autosize="0" x="31" y="7" right="589" bottom="385" width="200" height="18" text="부서정보조회" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="794" bottom="386" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnSearch" meta_id="LABEL00008" x="584" y="6" right="166" bottom="379" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnSearch_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnApply" meta_id="LABEL00295" x="662" y="6" right="88" bottom="379" width="70" height="25" text="적용" version="1.1" on_mouseup="eventfunc:btnApply_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="51" name="btnClose" meta_id="LABEL00012" x="740" y="6" right="10" bottom="379" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+		<roundrect control_id="134" name="rudSearch" x="12" y="38" right="8" bottom="314" width="800" height="58" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="135" autosize="0" x="30" y="56" right="738" bottom="334" width="52" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<text control_id="452" autosize="0" x="402" y="54" right="360" bottom="336" width="58" height="20" text="부서명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="453" name="es_DEPT_CODE" in_index="4" autosize="0" x="682" y="54" right="38" bottom="336" width="100" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:DEPT_CODE" max_length="50" on_keydown="eventfunc:es_DEPT_CODE_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="467" autosize="0" x="612" y="54" right="142" bottom="336" width="66" height="20" text="부서코드" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<text control_id="469" autosize="0" x="252" y="56" right="528" bottom="334" width="40" height="20" text="사업장" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<image control_id="68" autosize="0" x="10" y="102" right="805" bottom="292" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="49" meta_id="LABEL00090" autosize="0" x="22" y="102" right="712" bottom="292" width="86" height="16" text="목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<combobox control_id="2001" name="es_OU_CODE" in_index="1" autosize="0" x="86" y="56" right="604" bottom="334" width="130" height="20" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" picklist_linkdata="dsCode_OU:CODE:NAME:" link_data="dsSearch:OU_CODE" enable="0" max_length="100" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<hangul_field control_id="2007" name="es_DEPT_NAME" in_index="3" autosize="0" x="464" y="54" right="216" bottom="336" width="140" height="20" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsSearch:DEPT_NAME" max_length="100" on_keydown="eventfunc:es_DEPT_NAME_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<combobox control_id="2008" name="es_SITE_CODE" in_index="2" autosize="0" x="296" y="56" right="424" bottom="334" width="100" height="20" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" picklist_linkdata="dsCode_SITE_A:CODE:NAME:" link_data="dsSearch:SITE_CODE" max_length="100" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<treegrid control_id="525" name="grdMaster" in_index="10" x="10" y="121" right="10" bottom="14" width="800" height="275" height_percent="70" font="맑은 고딕,9,0,0,0,0" header_backcolor="00FCEAD3" back_color="00FFFBF7" header_font="맑은 고딕,9,1,0,0,0" header_vertcount="0" header_height="28" cell_height="22" cell_dividerowcount="-1" cell_dividecolor_use="0" cell_linecolor="00FEDECC" cell_linecolor_horz="00FEDECC" cell_linecolor_vert="00FEDECC" cellinner_linecolor_horz="00FEDECC" border_color="00FFC4A3" selectrow_backcolor="00ECFFFD" selectcell_style="0" tree_linkdata="dsMaster:LEVEL:LEVEL::DEPT_NAME" samplerows="25" version="1.1" on_itemdblclick="eventfunc:grdMaster_on_itemdblclick(objInst, nDblClickRow, nDblClickColumn, bBtnClick)">
+			<column>
+				<header title="부서명"/>
+				<data width="162" backcolor="00FFFBF7" link_data="dsMaster:DEPT_NAME"/>
+			</column>
+			<column>
+				<header title="코드"/>
+				<data width="88" backcolor="00FFFBF7" text_horzalign="1" link_data="dsMaster:DEPT_CODE"/>
+			</column>
+			<column>
+				<header title="조직유형"/>
+				<data width="131" backcolor="00FFFBF7" link_data="dsMaster:DEPT_TYPE"/>
+			</column>
+			<column>
+				<header title="사업장"/>
+				<data width="131" backcolor="00FFFBF7" link_data="dsMaster:SITE_NAME"/>
+			</column>
+			<column>
+				<header title="시작일"/>
+				<data width="137" backcolor="00FFFBF7" text_horzalign="1" link_data="dsMaster:DEPT_ST_DATE"/>
+			</column>
+			<column>
+				<header title="종료일"/>
+				<data width="132" backcolor="00FFFBF7" text_horzalign="1" link_data="dsMaster:DEPT_ED_DATE"/>
+			</column>
+			<headermegeinfo info=""/>
+		</treegrid>
+	</map>
+</map_list>

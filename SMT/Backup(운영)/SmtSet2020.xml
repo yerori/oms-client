@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="메일발송 목록" directory="/SMT/" screenid="SmtSet2020" last_update_date="2024-10-21 12:18:08" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,fnDsSet,fnSetInitControl,fnDetailData,fnGetDetailComboData,screen_on_submitcomplete,btnCommonSearch_on_mouseup,screen_on_messagebox,screen_on_size,grdMaster_on_itemdblclick,btnCommonClose_on_mouseup,comOu_on_itemchange,fnSearch,btnCommonSave_on_mouseup,fnValidForm,fnSaveData,fnDeleteData,btnAddRow_on_click,getRef2FromRef1,grdMailDetailList_on_columnclick,fnPopupClosePopCallback,grdMailList_on_itemselchange,btnDetailAddRow_on_click,grdMailDetailList_on_itemselchange,setValuesByRecipient,getRefMainCd,setEmptyByRecipientCode,grdMailDetailList_on_itemvaluechanged,canDeleteRow,btnDetailDeleteRow_on_click,grdMailDetailList_on_focusout"/>
+		<xlinkdataset id="dsList" desc="메일 발송 목록" columns="OU_CODE:&quot;법인 코드&quot;:::;MAIL_CODE:&quot;메일 발송 코드&quot;:::;MAIL_TITLE:&quot;발송 메일 제목&quot;:::;USE_FLAG_YN:&quot;사용 유무&quot;:::;REMARK:&quot;비고&quot;:::"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE:&quot;법인 코드&quot;:::"/>
+		<xlinkdataset id="dsDetailList" desc="상세 목록" columns="OU_CODE:&quot;법인 코드&quot;:::;MAIL_CODE:&quot;메일 코드&quot;:::;RECIPIENT_CODE:&quot;수신대상 코드&quot;:::;REF_1_CODE:&quot;참조1 코드&quot;:::;REF_2_CODE:&quot;참조2 코드&quot;:::;REF_2_NAME:&quot;참조2 설명&quot;:::;START_DATE:&quot;시작일&quot;:::;END_DATE:&quot;종료일&quot;:::;REMARK:&quot;비고&quot;:::"/>
+		<xlinkdataset id="dsRecipient" desc="수신대상 정보" columns="CODE::::;NAME::::;REF_MAIN_CD::::"/>
+		<xlinkdataset id="dsRef_1" desc="참조1 정보" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsOU" desc="법인 LIST" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsDetailSearch" desc="상세조회" columns="OU_CODE::::;MAIL_CODE::::"/>
+		<xlinktranmap id="TRANSACITON_REF_1" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_DETAIL_INFO" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_ALL" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TRANSACTION_RECIPIENT" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_DELETE" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,474,558,0,572,573,569"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="1" order_info="35,36,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="1198" y="6" right="170" bottom="4" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="30" y="7" right="1208" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1348" y="6" right="20" bottom="4" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" meta_id="LABEL00011" anchor="2" x="1273" y="6" right="95" bottom="4" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="676" width="1411" width_percent="98" width_unit="1" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="49" meta_id="LABEL02478" autosize="0" x="24" y="95" right="1216" bottom="647" width="200" height="16" text="메일 발송 목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="68" autosize="0" x="10" y="95" right="1425" bottom="647" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="551" meta_id="LABEL01898" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="474" name="comOu" in_index="0" autosize="0" x="102" y="52" right="1178" bottom="686" width="160" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOU:CODE:NAME:" link_data="dsSearch:OU_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_itemchange="eventfunc:comOu_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="558" name="btnAddRow" meta_id="LABEL00541" anchor="2" x="1348" y="90" right="22" bottom="645" width="70" height="23" text="행추가" version="1.1" on_click="eventfunc:btnAddRow_on_click(objInst)"/>
+		<grid style="HS_GRID_BASIC_01" control_id="0" name="grdMailList" in_index="20" x="9" y="120" right="20" bottom="434" width="1411" width_percent="98" height="204" resize_dir="1" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" multi_checkrow="1" checkrowwithselect="1" link_data="dsList" samplerows="4" autocolumnwidth="2" version="1.2" on_itemselchange="eventfunc:grdMailList_on_itemselchange(objInst, nPrevSelectRow, nPrevSelectColumn, nCurSelectRow, nCurSelectColumn)">
+			<column>
+				<header title="*메일 코드"/>
+				<data name="MAIL_CODE" backcolor="00FFFBF7" make_case="1" link_data="dsList:MAIL_CODE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="*메일 제목"/>
+				<data name="MAIL_TITLE" width="200" editable="1" imemode="1" data_type="2" link_data="dsList:MAIL_TITLE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="사용 여부"/>
+				<data name="USE_FLAG_YN" text_horzalign="1" editable="1" input_type="1" default_value="True" link_data="dsList:USE_FLAG_YN" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01772" title="비고"/>
+				<data name="REMARK" width="180" editable="1" imemode="1" data_type="2" link_data="dsList:REMARK" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<text control_id="568" meta_id="LABEL02648" autosize="0" x="24" y="406" right="1216" bottom="336" width="200" height="16" text="메일 발송 상세 내역" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="569" name="grdMailDetailList" in_index="21" x="9" y="430" right="20" bottom="4" width="1411" width_percent="98" height="324" resize_dir="3" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" checkrowwithselect="1" link_data="dsDetailList" samplerows="4" autocolumnwidth="2" version="1.2" on_itemselchange="eventfunc:grdMailDetailList_on_itemselchange(objInst, nPrevSelectRow, nPrevSelectColumn, nCurSelectRow, nCurSelectColumn)" on_itemvaluechanged="eventfunc:grdMailDetailList_on_itemvaluechanged(objInst, nRow, nColumn, strPrevItemText, strItemText)" on_focusout="eventfunc:grdMailDetailList_on_focusout(objInst)">
+			<column>
+				<header title="*수신대상"/>
+				<data style="HS_GRID_DATA_BC_01" name="RECIPIENT_CODE" width="120" imemode="1" data_type="2" input_type="2" auto_skip="0" link_data="dsDetailList:RECIPIENT_CODE" picklist_linkdata="dsRecipient:CODE:NAME:REF_MAIN_CD" combobox_autocodevalid="0" picklist_hiddenitem="1" picklist_selstyle="2" picklist_viewstyle="2" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02496" title="참조1"/>
+				<data name="REF_1_CODE" width="120" custom_item_class="background-color:rgb(29, 62, 120)" data_type="2" input_type="2" auto_skip="0" link_data="dsDetailList:REF_1_CODE" picklist_linkdata="dsRef_1:CODE:NAME:" picklist_selstyle="2" picklist_viewstyle="2" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="참조2 코드"/>
+				<data style="HS_GRID_DATA_01" name="REF_2_CODE" width="150" data_type="2" link_data="dsDetailList:REF_2_CODE" combobox_editable="0" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="참조2 코드"/>
+				<data style="HS_GRID_DATA_02" name="REF_2_POPUP" width="20" image="/ico_search_1.gif" image_horzalign="1" resizable="0" bargauge_transparent="0" on_columnclick="eventfunc:grdMailDetailList_on_columnclick(objInst, nColumn, bBtnClick, nImgIndex, strImgUrl)"/>
+			</column>
+			<column>
+				<header title="참조2 이름"/>
+				<data style="HS_GRID_DATA_01" name="REF_2_NAME" width="200" data_type="2" link_data="dsDetailList:REF_2_NAME" combobox_editable="0" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="*시작일"/>
+				<data style="HS_GRID_DATA_01" name="START_DATE" width="100" backcolor="00FFFBF7" input_type="3" pattern="YYYY-MM-DD" link_data="dsDetailList:START_DATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="종료일"/>
+				<data style="HS_GRID_DATA_01" name="END_DATE" width="100" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsDetailList:END_DATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01772" title="비고"/>
+				<data name="REMARK" width="180" editable="1" imemode="1" data_type="2" link_data="dsDetailList:REMARK" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info="0,2,0,3:"/>
+		</grid>
+		<image control_id="567" autosize="0" x="9" y="406" right="1426" bottom="336" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="572" name="btnDetailAddRow" meta_id="LABEL00541" anchor="2" x="1275" y="400" right="95" bottom="335" width="70" height="23" text="행추가" version="1.1" on_click="eventfunc:btnDetailAddRow_on_click(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="573" name="btnDetailDeleteRow" meta_id="LABEL00542" anchor="2" x="1350" y="400" right="20" bottom="335" width="70" height="23" text="행삭제" enable="0" version="1.1" on_click="eventfunc:btnDetailDeleteRow_on_click(objInst)"/>
+	</map>
+</map_list>

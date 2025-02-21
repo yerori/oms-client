@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="공통코드관리" directory="/SMT/" screenid="SmtSet1020" last_update_date="2023-06-14 14:12:24" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,screen_on_submitcomplete,fnCoLangKind,fnGrpCodeData,fnItemCodeData,fnGrpLangData,fnItemLangData,fnSaveData,btnCommonSearch_on_mouseup,btnCommonSave_on_mouseup,btnGrpAddRow_on_mouseup,btnGrpDelRow_on_mouseup,grdGrpInfo_on_itemselchange,btnCodeAddRow_on_mouseup,btnCodeDelRow_on_mouseup,btnGrpLngAddRow_on_mouseup,btnGrpLangDelRow_on_mouseup,btnItemLangAddRow_on_mouseup,btnItemLangDelRow_on_mouseup,grdCodeInfo_on_itemselchange,screen_on_messagebox,btnGrpCodePop_on_click,btnGrpNamePop_on_click,btnItemCodePop_on_click,btnItemNamePop_on_click,fnGrpItemCodeClosePopCallback,screen_on_size,edtGrpCode_on_keydown,edtGrpName_on_keydown,edtItemCode_on_keydown,edtItemName_on_keydown,btnCommonClose_on_mouseup"/>
+		<xlinkdataset id="dsItemCode" desc="공통코드세부정보" columns="GRP_CODE::::;ITEM_CODE::::;ITEM_NAME::::;ACTIVE_FLAG::::;ARR_NO::::;REF_MAIN_CD::::;REF_1::::;REF_2::::;REF_3::::;REF_4::::;REF_5::::;ITEM_DESC::::"/>
+		<xlinkdataset id="dsGrpCode" desc="공통코드그룹정보" columns="GRP_CODE::::;GRP_NAME::::;PARENT_GRP_CODE::::"/>
+		<xlinkdataset id="dsGrpLangInfo" desc="그룹코드다국어조회" columns="OBJ_CD::::;OBJ_SCN_CD::::;LANG_SCN_CD::::;LANG_DISPLAY::::;SUB_OBJ_CD::::"/>
+		<xlinkdataset id="dsItemLangInfo" desc="세부코드다국어조회" columns="OBJ_CD::::;OBJ_SCN_CD::::;LANG_SCN_CD::::;LANG_DISPLAY::::;SUB_OBJ_CD::::"/>
+		<xlinkdataset id="dsCommLangKind" desc="다국어종류" columns="LANG_CODE::::;LANG_DISPLAY::::"/>
+		<xlinkdataset id="dsSeachGroupCode" desc="그룹코드조회기준" columns="GRP_CODE::::"/>
+		<xlinkdataset id="dsSeachItemCode" desc="세부코드조회기준" columns="GRP_CODE::::;ITEM_CODE::::"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="GRP_CODE::::;GRP_NAME::::;ITEM_CODE::::;ITEM_NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_GRP_CODE_INFO" url="" comment="공통코드 그룹코드 데이터 가져오기.">
+		</xlinktranmap>
+		<xlinktranmap id="TR_ITEM_CODE_INFO" url="" comment="공통코드 세부코드 데이터 가져오기.">
+		</xlinktranmap>
+		<xlinktranmap id="TR_CO_LANG_KIND" url="" comment="다국어(언어) 종류 가져오기.">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_COM_CO" url="" comment="코드 저장처리(추가, 수정, 삭제)">
+		</xlinktranmap>
+		<xlinktranmap id="TR_CODE_EXIST" url="" comment="코드존재여부 체크">
+		</xlinktranmap>
+		<xlinktranmap id="TR_GRP_LANG_INFO" url="" comment="공통코드 그룹코드 다국어 데이터 가져오기.">
+		</xlinktranmap>
+		<xlinktranmap id="TR_ITEM_LANG_INFO" url="" comment="공통코드 세부코드 다국어 데이터 가져오기.">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,466,453,455,458,463,464,124,37,433,465,468,469,470,471,462,0"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="0" order_info="35,36,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="1088" y="5" right="280" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" meta_id="LABEL00011" anchor="2" x="1204" y="5" right="164" bottom="5" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="1207" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1345" y="5" right="23" bottom="5" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<text control_id="135" meta_id="LABEL02439" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="주코드" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="676" width="1411" width_percent="98" width_unit="1" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="452" meta_id="LABEL02440" autosize="0" x="368" y="52" right="992" bottom="686" width="80" height="20" text="주코드명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="453" name="edtGrpName" in_index="1" autosize="0" x="452" y="52" right="848" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:GRP_NAME" on_keydown="eventfunc:edtGrpName_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<image control_id="410" name="btnGrpNamePop" autosize="0" x="591" y="52" right="830" bottom="686" width="19" height="20" transparent="0" border="0" padding="0,0,0,0" image="/ico_search.gif" image_width="19" image_height="20" mouse_cursor="11" on_click="eventfunc:btnGrpNamePop_on_click(objInst)"/>
+		<text control_id="454" meta_id="LABEL02441" autosize="0" x="717" y="52" right="643" bottom="686" width="80" height="20" text="세부코드" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="455" name="edtItemCode" in_index="2" autosize="0" x="802" y="52" right="498" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:ITEM_CODE" make_case="1" imemode="0" on_keydown="eventfunc:edtItemCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<image control_id="456" name="btnItemCodePop" autosize="0" x="941" y="52" right="480" bottom="686" width="19" height="20" transparent="0" border="0" padding="0,0,0,0" image="/ico_search.gif" image_width="19" image_height="20" mouse_cursor="11" on_click="eventfunc:btnItemCodePop_on_click(objInst)"/>
+		<text control_id="457" meta_id="LABEL02442" autosize="0" x="1067" y="52" right="293" bottom="686" width="80" height="20" text="세부코드명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="458" name="edtItemName" in_index="3" autosize="0" x="1152" y="52" right="148" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:ITEM_NAME" on_keydown="eventfunc:edtItemName_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<image control_id="459" name="btnItemNamePop" autosize="0" x="1291" y="52" right="130" bottom="686" width="19" height="20" transparent="0" border="0" padding="0,0,0,0" image="/ico_search.gif" image_width="19" image_height="20" mouse_cursor="11" on_click="eventfunc:btnItemNamePop_on_click(objInst)"/>
+		<hangul_field control_id="466" name="edtGrpCode" in_index="0" autosize="0" x="102" y="52" right="1198" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:GRP_CODE" make_case="1" imemode="0" on_keydown="eventfunc:edtGrpCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<image control_id="467" name="btnGrpCodePop" autosize="0" x="241" y="52" right="1180" bottom="686" width="19" height="20" transparent="0" border="0" padding="0,0,0,0" image="/ico_search.gif" image_width="19" image_height="20" mouse_cursor="11" on_click="eventfunc:btnGrpCodePop_on_click(objInst)"/>
+		<grid style="HS_GRID_BASIC_01" control_id="465" name="grdCodeInfo" in_index="6" x="398" y="120" right="20" bottom="194" width="1022" width_percent="97" height="444" resize_dir="1" header_vertcount="0" cell_height="22" hoverrow_forecolor="00222222" link_data="dsItemCode" samplerows="25" version="1.2" on_itemselchange="eventfunc:grdCodeInfo_on_itemselchange(objInst, nPrevSelectRow, nPrevSelectColumn, nCurSelectRow, nCurSelectColumn)">
+			<column>
+				<header meta_id="LABEL02494" title="*세부코드"/>
+				<data style="HS_GRID_DATA_02" name="ITEM_CODE" width="60" link_data="dsItemCode:ITEM_CODE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02495" title="*세부코드명"/>
+				<data style="HS_GRID_DATA_01" name="ITEM_NAME" width="200" text_horzalign="0" editable="1" imemode="1" data_type="2" link_data="dsItemCode:ITEM_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02423" title="*사용&#x0D;&#x0A;여부"/>
+				<data style="HS_GRID_DATA_01" name="ACTIVE_FLAG" width="40" editable="1" input_type="2" link_data="dsItemCode:ACTIVE_FLAG" combobox_data="del=&apos;:&apos; pos=&apos;0&apos; style=&apos;1&apos; content=&apos;Y:Y&#x0D;&#x0A;N:N&apos;" picklist_viewstyle="0" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00144" title="순서"/>
+				<data style="HS_GRID_DATA_01" name="ARR_NO" width="40" editable="1" link_data="dsItemCode:ARR_NO" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02493" title="참조코드"/>
+				<data style="HS_GRID_DATA_01" name="REF_MAIN_CD" editable="1" link_data="dsItemCode:REF_MAIN_CD" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02496" title="참조1"/>
+				<data style="HS_GRID_DATA_01" name="REF_1" width="100" editable="1" imemode="1" data_type="2" link_data="dsItemCode:REF_1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02497" title="참조2"/>
+				<data style="HS_GRID_DATA_01" name="REF_2" width="100" editable="1" imemode="1" data_type="2" link_data="dsItemCode:REF_2" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02498" title="참조3"/>
+				<data style="HS_GRID_DATA_01" name="REF_3" width="100" editable="1" imemode="1" data_type="2" link_data="dsItemCode:REF_3" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02499" title="참조4"/>
+				<data style="HS_GRID_DATA_01" name="REF_4" width="100" editable="1" imemode="1" data_type="2" link_data="dsItemCode:REF_4" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02500" title="참조5"/>
+				<data style="HS_GRID_DATA_01" name="REF_5" width="100" editable="1" imemode="1" data_type="2" link_data="dsItemCode:REF_5" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01772" title="비고"/>
+				<data style="HS_GRID_DATA_01" name="ITEM_DESC" width="200" text_horzalign="0" editable="1" imemode="1" data_type="2" link_data="dsItemCode:ITEM_DESC" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="GRP_CODE"/>
+				<data style="HS_GRID_DATA_01" name="GRP_CODE" width="0" text_horzalign="0" link_data="dsItemCode:GRP_CODE" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<grid style="HS_GRID_BASIC_01" control_id="433" name="grdGrpInfo" in_index="4" x="9" y="120" right="1053" bottom="194" width="378" height="444" header_vertcount="0" cell_height="22" hoverrow_forecolor="00222222" selectcell_forecolor="00FFFBF7" link_data="dsGrpCode" samplerows="25" version="1.2" on_itemselchange="eventfunc:grdGrpInfo_on_itemselchange(objInst, nPrevSelectRow, nPrevSelectColumn, nCurSelectRow, nCurSelectColumn)">
+			<column>
+				<header meta_id="LABEL02491" title="*주코드"/>
+				<data style="HS_GRID_DATA_02" name="GRP_CODE" max_length="10" link_data="dsGrpCode:GRP_CODE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02492" title="*주코드명"/>
+				<data style="HS_GRID_DATA_01" name="GRP_NAME" width="200" text_horzalign="0" editable="1" imemode="1" data_type="2" max_length="50" link_data="dsGrpCode:GRP_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02493" title="참조코드"/>
+				<data style="HS_GRID_DATA_01" name="PARENT_GRP_CODE" text_horzalign="0" editable="1" max_length="10" link_data="dsGrpCode:PARENT_GRP_CODE" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="124" name="btnCodeAddRow" meta_id="LABEL00541" anchor="2" x="1271" y="90" right="99" bottom="643" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnCodeAddRow_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="37" name="btnCodeDelRow" meta_id="LABEL00542" anchor="2" x="1345" y="90" right="25" bottom="643" width="70" height="25" text="행삭제" version="1.1" on_mouseup="eventfunc:btnCodeDelRow_on_mouseup(objInst)"/>
+		<text control_id="434" meta_id="LABEL00133" autosize="0" x="412" y="95" right="828" bottom="647" width="200" height="16" text="상세정보" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="435" autosize="0" x="398" y="95" right="1037" bottom="647" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="464" name="btnGrpDelRow" meta_id="LABEL00542" x="316" y="90" right="1054" bottom="643" width="70" height="25" text="행삭제" version="1.1" on_mouseup="eventfunc:btnGrpDelRow_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="463" name="btnGrpAddRow" meta_id="LABEL00541" x="242" y="90" right="1128" bottom="643" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnGrpAddRow_on_mouseup(objInst)"/>
+		<text control_id="49" meta_id="LABEL02443" autosize="0" x="24" y="95" right="1216" bottom="647" width="200" height="16" text="코드목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="468" name="btnGrpLngAddRow" meta_id="LABEL00541" x="242" y="570" right="1128" bottom="163" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnGrpLngAddRow_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="469" name="btnGrpLangDelRow" meta_id="LABEL00542" x="316" y="570" right="1054" bottom="163" width="70" height="25" text="행삭제" version="1.1" on_mouseup="eventfunc:btnGrpLangDelRow_on_mouseup(objInst)"/>
+		<image control_id="460" autosize="0" x="398" y="576" right="1037" bottom="166" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="461" meta_id="LABEL00137" autosize="0" x="24" y="576" right="1216" bottom="166" width="200" height="16" text="다국어" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="450" autosize="0" x="10" y="576" right="1425" bottom="166" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="451" meta_id="LABEL00137" autosize="0" x="412" y="576" right="828" bottom="166" width="200" height="16" text="다국어" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="470" name="btnItemLangAddRow" meta_id="LABEL00541" x="826" y="570" right="544" bottom="163" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnItemLangAddRow_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="471" name="btnItemLangDelRow" meta_id="LABEL00542" x="901" y="570" right="469" bottom="163" width="70" height="25" text="행삭제" version="1.1" on_mouseup="eventfunc:btnItemLangDelRow_on_mouseup(objInst)"/>
+		<grid style="HS_GRID_BASIC_01" control_id="462" name="grdLangInfo" in_index="5" x="9" y="600" right="1053" bottom="10" width="378" height="148" resize_dir="2" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" link_data="dsGrpLangInfo" samplerows="4" version="1.2">
+			<column>
+				<header meta_id="LABEL00155" title="언어"/>
+				<data name="LANG_SCN_CD" text_horzalign="1" editable="1" input_type="2" link_data="dsGrpLangInfo:LANG_SCN_CD" picklist_linkdata="dsCommLangKind:LANG_CODE:LANG_DISPLAY:" picklist_selstyle="2" picklist_viewstyle="2" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00143" title="표시명칭"/>
+				<data name="LANG_DISPLAY" width="296" editable="1" imemode="1" data_type="2" link_data="dsGrpLangInfo:LANG_DISPLAY" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="OBJ_CD"/>
+				<data name="OBJ_CD" width="0" text_horzalign="1" link_data="dsGrpLangInfo:OBJ_CD" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="OBJ_SCN_CD"/>
+				<data name="OBJ_SCN_CD" width="0" text_horzalign="1" link_data="dsGrpLangInfo:OBJ_SCN_CD" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<grid style="HS_GRID_BASIC_01" control_id="0" name="grdLangCodeInfo" in_index="7" x="398" y="600" right="468" bottom="10" width="574" height="148" resize_dir="2" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" link_data="dsItemLangInfo" samplerows="4" version="1.2" on_itemeditcomplete="eventfunc:grdLangInfo_on_itemeditcomplete(objInst, nRow, nColumn, strPrevItemText)">
+			<column>
+				<header meta_id="LABEL00155" title="언어"/>
+				<data name="LANG_SCN_CD" width="120" text_horzalign="1" editable="1" input_type="2" link_data="dsItemLangInfo:LANG_SCN_CD" picklist_linkdata="dsCommLangKind:LANG_CODE:LANG_DISPLAY:" picklist_selstyle="2" picklist_viewstyle="2" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00143" title="표시명칭"/>
+				<data name="LANG_DISPLAY" width="452" editable="1" imemode="1" data_type="2" link_data="dsItemLangInfo:LANG_DISPLAY" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="OBJ_CD"/>
+				<data name="OBJ_CD" width="0" text_horzalign="1" link_data="dsItemLangInfo:OBJ_CD" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="OBJ_SCN_CD"/>
+				<data name="OBJ_SCN_CD" width="0" text_horzalign="1" link_data="dsItemLangInfo:OBJ_SCN_CD" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<image control_id="472" autosize="0" x="10" y="95" right="1425" bottom="647" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+	</map>
+</map_list>

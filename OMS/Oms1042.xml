@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]사업계획단가 복사" directory="/OMS/" screenid="Oms1042" last_update_date="2023-07-19 16:02:12" width="430" width_type="0" height="175" height_type="0" canvas_height="900" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,fnPageSet,btnApply_on_mouseup,screen_on_destroy,btnClose_on_mouseup,screen_on_submitcomplete,ReturnClosePopup,screen_on_messagebox"/>
+		<xlinkdataset id="dsProject" desc="Project정보" columns="OU_CODE::::;PROJECT_CODE::::;PROJECT_PRODUCT_ID::::;BASE_YEAR::::;BIZ_YEAR::::"/>
+		<xlinkdataset id="dsCarPlatfrom" desc="차종" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsProcResult" desc="" columns="RETCODE::::;RETMESG::::"/>
+		<xlinkdataset id="dsCustomerArea" desc="고객지역 코드(O006)" columns="CODE::::;NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_COM_CO" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_COPY" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="1" order_info="483,36,51"/>
+		<text control_id="32" name="stSystemMenuTitle" meta_id="LABEL02677" autosize="0" x="31" y="7" right="199" bottom="150" width="200" height="18" text="사업계획 단가 복사" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="404" bottom="151" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnApply" meta_id="LABEL00637" x="276" y="6" right="84" bottom="144" width="70" height="25" text="복사" version="1.1" on_mouseup="eventfunc:btnApply_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="51" name="btnClose" meta_id="LABEL00012" x="353" y="6" right="7" bottom="144" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+		<roundrect control_id="134" name="rudSearch" x="6" y="38" right="8" bottom="13" width="416" height="124" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="537" meta_id="LABEL02681" autosize="0" x="24" y="80" right="316" bottom="75" width="90" height="20" text="*사업계획년도" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<datepicker control_id="483" name="fldYear" in_index="4" autosize="0" x="119" y="78" right="212" bottom="77" width="99" height="20" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsProject:BIZ_YEAR" max_length="4" delimiter_char="-" date_type="2" showtodaybar="1"/>
+	</map>
+</map_list>

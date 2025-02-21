@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="메세지관리" directory="/SMT/" screenid="SmtSet1010" last_update_date="2024-08-09 09:39:46" width="1400" width_type="2" height="750" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fn_init,screen_on_submitcomplete,tr_select_code,tr_select_master,tr_save,btnCommonSearch_on_mouseup,btnCommonSave_on_mouseup,btnUpload_on_mouseup,btnAddRow_on_mouseup,btnDelRow_on_mouseup,edt_MSG_CODE_on_keydown,edt_MSG_NAME_on_keydown,screen_on_size,btnCommonClose_on_mouseup"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="LANG_CODE:&quot;사용언어(국가코드)&quot;:::;LANG_NAME:&quot;사용언어(국가명)&quot;:::;MSG_CODE:&quot;코드&quot;:::;MSG_NAME:&quot;메세지명&quot;:::"/>
+		<xlinkdataset id="dsMaster" desc="마스터" columns="LANG_CODE:&quot;사용언어(국가코드)&quot;:::;MSG_CODE:&quot;코드&quot;:::;MSG_NAME:&quot;메세지명&quot;:::"/>
+		<xlinkdataset id="dsCode_F030" desc="다국어종류" columns="ITEM_CODE::::;ITEM_NAME::::"/>
+		<xlinkdataset id="dsCode_F030_A" desc="다국어종류(전체추가)" columns="ITEM_CODE::::;ITEM_NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SELECT_MASTER" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SELECT_CODE_F030" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,16,471,472,481,479,468,469,462"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="0" bottom="711" width="1400" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="0" order_info="35,36,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="1102" y="5" right="228" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objinst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" meta_id="LABEL00011" anchor="2" x="1192" y="5" right="138" bottom="5" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objinst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1374" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="30" y="7" right="1170" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1307" y="5" right="23" bottom="5" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<text control_id="135" autosize="0" x="18" y="52" right="1302" bottom="678" width="80" height="20" text="Lang Code" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="19" bottom="668" width="1372" width_percent="98" width_unit="1" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<combobox control_id="16" name="cbo_LANG_CODE" in_index="1" autosize="0" x="102" y="52" right="1158" bottom="678" width="140" height="20" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" picklist_linkdata="dsCode_F030_A:ITEM_CODE:ITEM_NAME:" link_data="dsSearch:LANG_CODE" max_length="30" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_itemchange="eventfunc:cbo_LANG_CODE_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<hangul_field control_id="472" name="edt_MSG_NAME" autosize="0" x="902" y="52" right="338" bottom="678" width="160" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:MSG_NAME" max_length="100" on_keydown="eventfunc:edt_MSG_NAME_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="476" autosize="0" x="417" y="52" right="903" bottom="678" width="80" height="20" text="Msg Code" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<text control_id="477" autosize="0" x="819" y="52" right="501" bottom="678" width="80" height="20" text="Msg Name" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<normal_field control_id="471" name="edt_MSG_CODE" autosize="0" x="502" y="52" right="798" bottom="678" width="100" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:MSG_CODE" max_length="30" on_keydown="eventfunc:edt_MSG_CODE_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<checkbox control_id="481" name="chkAutoSeq" meta_id="LABEL02490" x="1224" y="52" right="66" bottom="678" width="110" height="20" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" text="시퀀스 자동증가" true_value="Y" false_value="N" default_check="1"/>
+		<image control_id="460" autosize="0" x="10" y="95" right="1385" bottom="639" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="461" meta_id="LABEL00090" autosize="0" x="24" y="95" right="1176" bottom="639" width="200" height="16" text="목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="468" name="btnAddRow" meta_id="LABEL00541" anchor="2" x="1227" y="90" right="103" bottom="635" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnAddRow_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="469" name="btnDelRow" meta_id="LABEL00542" anchor="2" x="1307" y="90" right="23" bottom="635" width="70" height="25" text="행삭제" version="1.1" on_mouseup="eventfunc:btnDelRow_on_mouseup(objInst)"/>
+		<grid style="HS_GRID_BASIC_01" control_id="462" name="grdMaster" in_index="5" x="12" y="124" right="16" bottom="14" width="1372" width_percent="98" width_unit="1" height="612" resize_dir="2" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" link_data="dsMaster" samplerows="50" autocolumnwidth="2" version="1.2">
+			<column>
+				<header title="*Lang"/>
+				<data style="HS_GRID_DATA_01" name="LANG_CODE" width="150" editable="1" input_type="2" max_length="10" show_tooltip="1" link_data="dsMaster:LANG_CODE" picklist_linkdata="dsCode_F030:ITEM_CODE:ITEM_NAME:" combobox_defaultvalue_type="1" combobox_showbutton="0" combobox_buttonsize="0" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="*Msg Code"/>
+				<data name="MSG_CODE" width="150" text_horzalign="1" editable="1" max_length="10" show_tooltip="1" link_data="dsMaster:MSG_CODE" combobox_showbutton="0" combobox_buttonsize="0" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="*Msg Description"/>
+				<data name="MSG_NAME" width="1100" editable="1" data_type="2" max_length="200" show_tooltip="1" link_data="dsMaster:MSG_NAME" combobox_showbutton="0" combobox_buttonsize="0" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="479" name="btnUplaod" meta_id="LABEL02120" anchor="2" x="1147" y="90" right="183" bottom="635" width="70" height="25" text="Uplaod" version="1.1" on_mouseup="eventfunc:btnUpload_on_mouseup(objInst)"/>
+	</map>
+</map_list>

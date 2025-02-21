@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]공통코드조회" directory="/SMT/" screenid="SmtSet1021" last_update_date="2023-06-14 14:15:07" width="820" width_type="0" height="410" height_type="0" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" funclist="screen_on_load,fnDsSearchSet,fnPageSet,btnSearch_on_mouseup,btnApply_on_mouseup,screen_on_destroy,btnClose_on_mouseup,screen_on_submitcomplete,grdList_on_itemdblclick,fnEnter,ReturnClosePopup"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="GRP_CODE::::;GRP_NAME::::;ITEM_CODE::::;ITEM_NAME::::"/>
+		<xlinkdataset id="dsList" desc="공통코드조회" columns="GRP_CODE::::;GRP_NAME::::;ITEM_CODE::::;ITEM_NAME::::;ACTIVE_FLAG::::;ITEM_DESC::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="35,36,51,466,453,468,470,433"/>
+		<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="589" bottom="385" width="200" height="18" text="공통코드 정보" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="794" bottom="386" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnSearch" meta_id="LABEL00008" x="584" y="6" right="166" bottom="379" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnSearch_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnApply" meta_id="LABEL00295" x="662" y="6" right="88" bottom="379" width="70" height="25" text="적용" version="1.1" on_mouseup="eventfunc:btnApply_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="51" name="btnClose" meta_id="LABEL00012" x="740" y="6" right="10" bottom="379" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+		<roundrect control_id="134" name="rudSearch" x="10" y="38" right="10" bottom="332" width="800" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="135" meta_id="LABEL02439" autosize="0" x="13" y="49" right="757" bottom="341" width="50" height="20" text="주코드" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<hangul_field control_id="466" name="edtGrpCode" in_index="0" autosize="0" x="65" y="48" right="655" bottom="342" width="100" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:GRP_CODE" make_case="1" imemode="0"/>
+		<text control_id="452" meta_id="LABEL02440" autosize="0" x="166" y="49" right="594" bottom="341" width="60" height="20" text="주코드명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="453" name="edtGrpName" in_index="1" autosize="0" x="227" y="48" right="433" bottom="342" width="160" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:GRP_NAME" max_length="50"/>
+		<text control_id="467" meta_id="LABEL02441" autosize="0" x="402" y="49" right="368" bottom="341" width="50" height="20" text="세부코드" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<hangul_field control_id="468" name="edtItemCode" in_index="2" autosize="0" x="454" y="48" right="266" bottom="342" width="100" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:ITEM_CODE" make_case="1" imemode="0"/>
+		<text control_id="469" meta_id="LABEL02442" autosize="0" x="570" y="49" right="190" bottom="341" width="60" height="20" text="세부코드명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="470" name="edtItemName" in_index="3" autosize="0" x="631" y="48" right="29" bottom="342" width="160" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:ITEM_NAME" max_length="200"/>
+		<image control_id="68" autosize="0" x="10" y="96" right="805" bottom="298" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="49" meta_id="LABEL00090" autosize="0" x="22" y="96" right="712" bottom="298" width="86" height="16" text="목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="433" name="grdList" in_index="4" x="10" y="120" right="10" bottom="14" width="800" height="276" header_vertcount="0" header_height="28" cell_height="22" hoverrow_forecolor="00222222" link_data="dsList" samplerows="25" version="1.2" on_itemdblclick="eventfunc:grdList_on_itemdblclick(objInst, nDblClickRow, nDblClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header meta_id="LABEL02439" title="주코드"/>
+				<data style="HS_GRID_DATA_01" name="GRP_CODE" link_data="dsList:GRP_CODE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02440" title="주코드명"/>
+				<data style="HS_GRID_DATA_01" name="GRP_NAME" width="200" link_data="dsList:GRP_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02441" title="세부코드"/>
+				<data style="HS_GRID_DATA_01" name="ITEM_CODE" link_data="dsList:ITEM_CODE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02442" title="세부코드명"/>
+				<data style="HS_GRID_DATA_01" name="ITEM_NAME" width="200" link_data="dsList:ITEM_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00131" title="사용&#x0D;&#x0A;여부"/>
+				<data style="HS_GRID_DATA_01" name="ACTIVE_FLAG" width="30" link_data="dsList:ACTIVE_FLAG" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01772" title="비고"/>
+				<data style="HS_GRID_DATA_01" name="ITEM_DESC" width="190" link_data="dsList:ITEM_DESC" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+	</map>
+</map_list>

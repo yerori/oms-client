@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="RFQ 등록(개발교육 강예리)" directory="/OMS/" screenid="Oms9101" last_update_date="2024-09-05 10:33:30" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,fnDsSet,fnSetInitControl,screen_on_messagebox,screen_on_size,btnCommonClose_on_mouseup,btnCommonSearch_on_click,grdList_on_columnclick,fnPopupCustClosePopCallback,fnPopupRFQResponsePopCallback"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;RFQ_CODE::::;CUSTOMER_ID::::;CUSTOMER_NAME::::;PRODUCT_NAME_CODE::::"/>
+		<xlinkdataset id="dsOU" desc="법인 LIST" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsList" desc="" columns="OU_CODE:&quot;법인코드(회사)&quot;:::;RFQ_CODE:&quot;rfq 코드&quot;:::;CHARGE_USER_ID:&quot;담당자 ID&quot;:::;CUSTOMER_ID:&quot;고객 id&quot;:::;RFQ_DATE:&quot;rfq 요청일&quot;:::;CAR_TYPE_CODE:&quot;plateform/car 차종코드( o018) &quot;:::;OEM:&quot;oem&quot;:::;PRODUCT_NAME_CODE:&quot;product (o008)&quot;:::;TARGET_DATE:&quot;target date of quotation submission&quot;:::;REMARK:&quot;비고&quot;:::;INS_DATE:&quot;생성일시&quot;:::;INS_USER_ID:&quot;생성자&quot;:::;UPD_DATE:&quot;최종수정일시&quot;:::;UPD_USER_ID:&quot;최종수정자&quot;:::;CHARGE_USER_NAME:&quot;담당자 이름&quot;:::;CUSTOMER_GROUP::::;CAR_TYPE_NAME::::;PRODUCT_NAME::::;CUSTOMER_NAME:&quot;고객 이름&quot;:::"/>
+		<xlinkdataset id="dsCarType" desc="차종코드" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsProduct" desc="Product" columns="CODE::::;NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+			<xtds id="dsSearch" in_op="" out_op="" info="OU_CODE:1:;RFQ_CODE::;CUSTOMER_ID::;CUSTOMER_NAME::;PRODUCT_NAME_CODE::"/>
+		</xlinktranmap>
+		<xlinktranmap id="TR_SITE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_ALL" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,474,560"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="1" order_info="35,36,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="1204" y="6" right="164" bottom="4" width="70" height="25" text="조회" version="1.1" on_click="eventfunc:btnCommonSearch_on_click(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="30" y="7" right="1208" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1348" y="6" right="20" bottom="4" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" meta_id="LABEL00011" anchor="2" x="1276" y="6" right="92" bottom="4" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="676" width="1411" width_percent="98" width_unit="1" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="49" meta_id="LABEL02478" autosize="0" x="24" y="95" right="1216" bottom="647" width="200" height="16" text="RFQ 목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="68" autosize="0" x="10" y="95" right="1425" bottom="647" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<combobox control_id="474" name="comOu" in_index="0" autosize="0" x="102" y="52" right="1178" bottom="686" width="160" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOU:CODE:NAME:" link_data="dsSearch:OU_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_itemchange="eventfunc:comOu_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<text control_id="592" x="60" y="54" right="1348" bottom="692" width="32" height="12" text="*법인" font="맑은 고딕,10,1,0,0,0" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="560" name="grdList" x="18" y="120" right="18" bottom="56" width="1404" height="582" resize_dir="3" header_vertcount="0" link_data="dsList" version="1.2">
+			<column>
+				<header title="RFQ 코드"/>
+				<data style="HS_GRID_DATA_BC_01" name="RFQ_CODE" description="rfq 코드" width="100" link_data="dsList:RFQ_CODE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="*고객명"/>
+				<data style="HS_GRID_DATA_BC_01" name="CUSTOMER_NAME" description="담당자" width="120" link_data="dsList:CUSTOMER_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="*고객명"/>
+				<data name="CUSTOMER_POPUP" width="20" image="/ico_search_1.gif" image_horzalign="1" bargauge_transparent="0" on_columnclick="eventfunc:grdList_on_columnclick(objInst, nColumn, bBtnClick, nImgIndex, strImgUrl)"/>
+			</column>
+			<column>
+				<header title="*차종"/>
+				<data style="HS_GRID_DATA_BC_01" name="CAR_TYPE_CODE" description="plateform/car 차종코드( o018) " width="150" editable="1" data_type="2" input_type="2" link_data="dsList:CAR_TYPE_CODE" picklist_linkdata="dsCarType:CODE:NAME:" combobox_editable="0" picklist_selstyle="2" picklist_viewstyle="2" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Product Name"/>
+				<data style="HS_GRID_DATA_BC_01" name="CUSTOMER_ID" description="차종" width="150" imemode="1" data_type="2" input_type="2" link_data="dsList:PRODUCT_NAME" picklist_linkdata="dsProduct:CODE:NAME:" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="OEM"/>
+				<data style="HS_GRID_DATA_BC_01" name="OEM" description="oem" width="120" link_data="dsList:OEM" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="RFQ 담당자"/>
+				<data style="HS_GRID_DATA_BC_01" name="CHARGE_USER_NAME" width="100" link_data="dsList:CHARGE_USER_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="RFQ 담당자"/>
+				<data name="RFQ_CHARGE_POPUP" width="20" image="/ico_search_1.gif" image_horzalign="1" bargauge_transparent="0" on_columnclick="eventfunc:grdList_on_columnclick(objInst, nColumn, bBtnClick, nImgIndex, strImgUrl)"/>
+			</column>
+			<column>
+				<header title="RFQ 접수일"/>
+				<data style="HS_GRID_DATA_BC_01" name="RFQ_DATE" description="rfq 접수일" width="120" input_type="3" pattern="YYYY-MM-DD" link_data="dsList:RFQ_DATE" calendar_showbutton="0" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="견적제출일"/>
+				<data width="120" input_type="3" pattern="YYYY-MM-DD" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="첨부"/>
+				<data style="HS_GRID_DATA_BC_01" width="50" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="프로젝트 개수"/>
+				<data style="HS_GRID_DATA_BC_01" width="100" data_type="0" max_length="4" pattern="Z,ZZ9" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="비고"/>
+				<data style="HS_GRID_DATA_BC_01" name="REMARK" width="326" link_data="dsList:REMARK" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info="0,1,0,2:0,6,0,7:"/>
+		</grid>
+	</map>
+</map_list>

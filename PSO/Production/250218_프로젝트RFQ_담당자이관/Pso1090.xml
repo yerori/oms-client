@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="부서별진도현황" directory="/PSO/" screenid="Pso1090" last_update_date="2025-02-06 15:13:03" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" funclist="screen_on_load,fnDsSearchSet,screen_on_submitcomplete,fnDeptCodeLoad,fnSearch,fnEnter,btnCommonSearch_on_mouseup,screen_on_size,btnCommonClose_on_mouseup,cboOuCode_on_keydown,edtProjectCode_on_keydown,edtProjectCode_on_changed,fnProjectCodeClosePopCallback,btnProjectCodePop_on_click,fnProjectCodePopupCall,cboDeptName_on_keydown,cboPsoGrade_on_keydown,dtpMakePDateF_on_keydown,dtpMakePDateF_on_change,dtpMakePDateT_on_keydown,dtpMakePDateT_on_change,cboProGrade_on_keydown,chartRate_on_libload,fnCreateXYChart"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;PROJECT_CODE::::;PSO_DEPT_CODE::::;PSO_DEPT_NAME::::;PSO_GRADE::::;MAKE_PLAN_DATE_F::::;MAKE_PLAN_DATE_T::::;PROGRESS_GRADE::::;PSO_COMPLETE_YN::::"/>
+		<xlinkdataset id="dsPsoDeptList" desc="PSO팀별진행현황" columns="PSO_DEPT_CODE::::;PSO_DEPT_NAME::::;AVG_DELAY_DAY::::;AVG_PRO_RATE::::;AVG_GRADE::::"/>
+		<xlinkdataset id="dsPsoList" desc="PSO프로젝트정보" columns="OU_CODE::::;PSO_DOCU_ID::::;PSO_PROJECT_ID::::;R_BOARD_ID::::;DELAY_DIV::::;DELAY_DIV_NAME::::;PROJECT_CODE::::;CAR_TYPE_CODE::::;CAR_TYPE_NAME::::;CUSTOMER_ID::::;CUSTOMER_NAME::::;GRADE::::;GRADE_NAME::::;ACT_STATUS_CODE::::;ACT_STATUS_NAME::::;DETAIL_STATUS_CODE::::;DETAIL_STATUS_NAME::::;PSO_DOC_STEP::::;DOC_STEP_NAME::::;PSO_DOC_CHASU::::;PSO_DOC_DETAIL_CHASU::::;PSO_CONTENTS::::;PSO_DEPT_CODE::::;PSO_DEPT_NAME::::;CHG_USER_ID::::;CHG_EMP_NO::::;CHG_USER_NAME::::;MAKE_PLAN_DATE::::;MAKE_COMP_DATE::::;DELAY_DAY::::;PROGRESS_RATE::::;PROGRESS_GRADE::::"/>
+		<xlinkdataset id="dsOuCode" desc="법인코드정보" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsPsoDept" desc="담당부서" columns="DEPT_CODE::::;DEPT_NAME::::"/>
+		<xlinkdataset id="dsPsoGrade" desc="PSO개발등급" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsProgGrade" desc="PSO진행등급" columns="CODE::::;NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="조회">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SELECT_DEPT_CODE" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,514,453,548,559,515,517,534,543,554,0"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="0" order_info="35,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="1088" y="5" right="280" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="1207" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1345" y="5" right="23" bottom="5" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<text control_id="135" meta_id="LABEL01898" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="646" width="1411" width_percent="98" width_unit="1" height="70" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="49" meta_id="LABEL02732" autosize="0" x="24" y="488" right="1196" bottom="254" width="220" height="16" text="PSO 프로젝트 목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="472" autosize="0" x="10" y="488" right="1425" bottom="254" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<combobox control_id="514" name="cboOuCode" autosize="0" x="102" y="51" right="1178" bottom="685" width="160" height="22" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOuCode:CODE:NAME:" link_data="dsSearch:OU_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="516" meta_id="LABEL00064" autosize="0" x="368" y="52" right="992" bottom="686" width="80" height="20" text="프로젝트코드" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="0" name="grdList" x="9" y="508" right="20" bottom="10" width="1411" width_percent="98" height="240" resize_dir="3" header_vertcount="0" cell_height="22" selectrow_bordercolor="0080623C" checkrowwithselect="1" link_data="dsPsoList" samplerows="4" fixedcols="2" dynamic_fixedcols="1" autocolumnwidth="2" version="1.2" on_itembtnclick="eventfunc:grdList_on_itembtnclick(objInst, nClickRow, nClickColumn)">
+			<column>
+				<header meta_id="LABEL02734" title="지연구분"/>
+				<data style="HS_GRID_DATA_02" name="DELAY_DIV_NAME" width="70" link_data="dsPsoList:DELAY_DIV_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00064" title="프로젝트코드"/>
+				<data style="HS_GRID_DATA_02" name="PROJECT_CODE" width="140" text_horzalign="0" link_data="dsPsoList:PROJECT_CODE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01587" title="차종"/>
+				<data style="HS_GRID_DATA_02" name="CAR_TYPE_NAME" width="40" link_data="dsPsoList:CAR_TYPE_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00193" title="고객명"/>
+				<data style="HS_GRID_DATA_02" name="CUSTOMER_NAME" width="180" text_horzalign="0" link_data="dsPsoList:CUSTOMER_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02453" title="개발등급"/>
+				<data style="HS_GRID_DATA_02" name="GRADE_NAME" width="70" link_data="dsPsoList:GRADE_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02361" title="활동단계"/>
+				<data style="HS_GRID_DATA_02" name="DOC_STEP_NAME" width="56" link_data="dsPsoList:DOC_STEP_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00387" title="차수"/>
+				<data style="HS_GRID_DATA_02" name="PSO_DOC_CHASU" width="40" link_data="dsPsoList:PSO_DOC_CHASU" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02724" title="세부&#x0D;&#x0A;차수"/>
+				<data style="HS_GRID_DATA_02" name="PRODUCTION_AREA_NAME" width="40" link_data="dsPsoList:PSO_DOC_DETAIL_CHASU" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01092" title="항목"/>
+				<data style="HS_GRID_DATA_02" name="PSO_CONTENTS" width="380" text_horzalign="0" link_data="dsPsoList:PSO_CONTENTS" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02735" title="담당부서"/>
+				<data style="HS_GRID_DATA_02" name="PSO_DEPT_NAME" text_horzalign="0" link_data="dsPsoList:PSO_DEPT_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00209" title="담당자"/>
+				<data style="HS_GRID_DATA_02" name="CHG_USER_NAME" text_horzalign="0" link_data="dsPsoList:CHG_USER_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02726" title="작성계획일"/>
+				<data style="HS_GRID_DATA_02" name="MAKE_PLAN_DATE" width="90" pattern="YYYY-MM-DD" link_data="dsPsoList:MAKE_PLAN_DATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02663" title="작성완료일"/>
+				<data style="HS_GRID_DATA_02" name="MAKE_COMP_DATE" width="90" pattern="YYYY-MM-DD" link_data="dsPsoList:MAKE_COMP_DATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02727" title="지연&#x0D;&#x0A;일수"/>
+				<data style="HS_GRID_DATA_02" name="DELAY_DAY" width="52" text_horzalign="2" data_type="0" max_length="6" pattern="-ZZ,ZZZ" link_data="dsPsoList:DELAY_DAY" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02741" title="진도율(%)"/>
+				<data style="HS_GRID_DATA_02" name="PROGRESS_RATE" width="62" text_horzalign="2" data_type="0" max_length="6" pattern="ZZZ.99" pattern_rear_symbol="%" link_data="dsPsoList:PROGRESS_RATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02740" title="진행등급"/>
+				<data style="HS_GRID_DATA_02" name="PROGRESS_GRADE" width="60" link_data="dsPsoList:PROGRESS_GRADE" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<hangul_field control_id="453" name="edtProjectCode" autosize="0" x="452" y="51" right="848" bottom="685" width="140" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:PROJECT_CODE" max_length="40" on_keydown="eventfunc:edtProjectCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_changed="eventfunc:edtProjectCode_on_changed(objInst, prev_text, curr_text, event_type)"/>
+		<image control_id="410" name="btnProjectCodePop" autosize="0" x="591" y="51" right="829" bottom="685" width="20" height="22" transparent="0" border="0" padding="0,0,0,0" image="/ico_search_22.gif" image_width="20" image_height="22" mouse_cursor="11" on_click="eventfunc:btnProjectCodePop_on_click(objInst)"/>
+		<text control_id="533" meta_id="LABEL02740" autosize="0" x="718" y="82" right="642" bottom="656" width="80" height="20" text="진행등급" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="534" name="cboProGrade" autosize="0" x="802" y="81" right="478" bottom="655" width="160" height="22" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" picklist_linkdata="dsProgGrade:CODE:NAME:" link_data="dsSearch:PROGRESS_GRADE" max_length="1" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboProGrade_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="540" meta_id="LABEL02735" autosize="0" x="718" y="52" right="642" bottom="686" width="80" height="20" text="담당부서" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<checkbox control_id="543" name="chkOngoing" x="1152" y="84" right="275" bottom="656" width="13" height="18" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:PSO_COMPLETE_YN" text="" true_value="N" false_value="Y"/>
+		<text control_id="544" meta_id="LABEL02733" autosize="0" x="1026" y="85" right="294" bottom="653" width="120" height="20" text="현재 진행 프로젝트" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="548" name="cboDeptName" autosize="0" x="802" y="51" right="478" bottom="685" width="160" height="22" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" picklist_linkdata="dsPsoDept:DEPT_CODE:DEPT_NAME:" link_data="dsSearch:PSO_DEPT_CODE" max_length="1" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboDeptName_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<image control_id="552" autosize="0" x="10" y="120" right="1425" bottom="622" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="553" meta_id="LABEL02736" autosize="0" x="24" y="120" right="1196" bottom="622" width="220" height="16" text="부서별 진도 현황" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="554" name="grdDeptList" x="9" y="142" right="1069" bottom="276" width="362" width_percent="98" height="340" header_vertcount="0" cell_height="22" selectrow_bordercolor="0080623C" checkrowwithselect="1" link_data="dsPsoDeptList" samplerows="4" autocolumnwidth="2" version="1.2" on_itembtnclick="eventfunc:grdList_on_itembtnclick(objInst, nClickRow, nClickColumn)">
+			<column>
+				<header meta_id="LABEL02735" title="담당부서"/>
+				<data style="HS_GRID_DATA_02" name="PSO_DEPT_NAME" width="180" text_horzalign="0" link_data="dsPsoDeptList:PSO_DEPT_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02737" title="평균진도율(%)"/>
+				<data style="HS_GRID_DATA_02" name="AVG_PRO_RATE" width="90" text_horzalign="2" data_type="0" max_length="6" pattern="ZZZ.99" pattern_rear_symbol="%" link_data="dsPsoDeptList:AVG_PRO_RATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02738" title="평균진행등급"/>
+				<data style="HS_GRID_DATA_02" name="AVG_GRADE" width="90" font="맑은 고딕,9,1,0,0,0" link_data="dsPsoDeptList:AVG_GRADE" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<amcharts5 control_id="555" name="chartRate" x="378" y="142" right="20" bottom="276" width="1042" height="340" resize_dir="1" chart_type="1" on_libload="eventfunc:chartRate_on_libload(objInst, chart_type)"/>
+		<image control_id="556" autosize="0" x="378" y="120" right="1057" bottom="622" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="557" meta_id="LABEL02739" autosize="0" x="392" y="120" right="828" bottom="622" width="220" height="16" text="팀별 진행율(%)" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<text control_id="558" meta_id="LABEL02453" autosize="0" x="1068" y="52" right="292" bottom="686" width="80" height="20" text="개발등급" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="559" name="cboPsoGrade" autosize="0" x="1152" y="51" right="128" bottom="685" width="160" height="22" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" picklist_linkdata="dsPsoGrade:CODE:NAME:" link_data="dsSearch:PSO_GRADE" max_length="1" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboPsoGrade_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="452" meta_id="LABEL02726" autosize="0" x="18" y="82" right="1342" bottom="656" width="80" height="20" text="작성계획일" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<datepicker control_id="515" name="dtpMakePDateF" autosize="0" x="102" y="81" right="1238" bottom="655" width="100" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSearch:MAKE_PLAN_DATE_F" delimiter_char="-" showtodaybar="1" calendar_type="1" on_keydown="eventfunc:dtpMakePDateF_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_change="eventfunc:dtpMakePDateF_on_change(objInst, event_type)"/>
+		<datepicker control_id="517" name="dtpMakePDateT" autosize="0" x="215" y="81" right="1125" bottom="655" width="100" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSearch:MAKE_PLAN_DATE_T" delimiter_char="-" showtodaybar="1" calendar_type="1" on_keydown="eventfunc:dtpMakePDateT_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_change="eventfunc:dtpMakePDateT_on_change(objInst, event_type)"/>
+	</map>
+</map_list>

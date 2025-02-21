@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="bottom" directory="/MAIN/" screenid="bottomMain" last_update_date="2023-04-25 16:16:51" width="812" width_type="0" height="28" height_type="0" back_color="006A5344" gradient_effect="2" gradient_startcolor="006A5344" gradient_endcolor="00000000" on_load="eventfunc:screen_on_load()" funclist="_getFrameType,screen_on_load,_setStatusMsg,_setSystemId,txSystemIdValue_on_click,btnTabAllClose_on_mouseup,btnTabLeft_on_mouseup,btnTabRight_on_mouseup,btnMyInfo_on_mouseup"/>
+		<tab_order order_option="0" order_info="167,163,164,166"/>
+		<caption style="FRM_TXT_BOTTOM" control_id="146" name="txtStatusMsg" x="102" y="6" right="230" bottom="4" width="480" height="18" text="-xxx" transparent="1" flowline_arr=""/>
+		<pushbutton control_id="163" name="btnTabLeft" anchor="3" x="746" y="4" right="49" bottom="4" width="17" height="20" text="" font="맑은 고딕,9,0,0,0,0" image_normal="/btn_tabLeft_nor.gif" image_focus="/btn_tabLeft_ho.gif" image_disable="/btn_tabLeft_dis.gif" image_down="/btn_tabLeft_dis.gif" image_hover="/btn_tabLeft_ho.gif" hover_font="맑은 고딕,9,0,0,0,0" version="1.1" on_mouseup="eventfunc:btnTabLeft_on_mouseup(objInst)"/>
+		<pushbutton control_id="164" name="btnTabRight" anchor="3" x="764" y="4" right="31" bottom="4" width="17" height="20" text="" font="맑은 고딕,9,0,0,0,0" image_normal="/btn_tabRight_nor.gif" image_focus="/btn_tabRight_ho.gif" image_disable="/btn_tabRight_dis.gif" image_down="/btn_tabRight_do.gif" image_hover="/btn_tabRight_ho.gif" hover_font="맑은 고딕,9,0,0,0,0" version="1.1" on_mouseup="eventfunc:btnTabRight_on_mouseup(objInst)"/>
+		<pushbutton control_id="166" name="btnTabAllClose" anchor="3" x="782" y="4" right="13" bottom="4" width="17" height="20" text="" font="맑은 고딕,9,0,0,0,0" image_normal="/btn_tabClose_nor.gif" image_focus="/btn_tabClose_ho.gif" image_disable="/btn_tabClose_dis.gif" image_down="/btn_tabClose_do.gif" image_hover="/btn_tabClose_ho.gif" image_fillstyle="3" hover_font="맑은 고딕,9,0,0,0,0" version="1.1" on_mouseup="eventfunc:btnTabAllClose_on_mouseup(objInst)"/>
+		<pushbutton control_id="167" name="btnMyInfo" anchor="3" x="728" y="4" right="67" bottom="4" width="17" height="20" text="" font="맑은 고딕,9,0,0,0,0" image_normal="/btn_myinfo_nor.gif" image_focus="/btn_myinfo_ho.gif" image_disable="/btn_myinfo_dis.gif" image_down="/btn_myinfo_do.gif" image_hover="/btn_myinfo_ho.gif" hover_font="맑은 고딕,9,0,0,0,0" version="1.1" on_mouseup="eventfunc:btnMyInfo_on_mouseup(objInst)"/>
+	</map>
+</map_list>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]사원정보조회_사용자" directory="/FRAME/" screenid="popupEmpUser" last_update_date="2024-09-13 15:20:33" width="686" width_type="0" height="410" height_type="0" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" funclist="screen_on_load,fnDsSearchSet,fnPageSet,btnSearch_on_mouseup,btnApply_on_mouseup,screen_on_destroy,btnClose_on_mouseup,screen_on_submitcomplete,grdList_on_itemdblclick,fnEnter,ReturnClosePopup,btnClean_on_mouseup,edtEmpName_on_keydown,edtEmpNo_on_keydown"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;DEPT_CODE::::;DEPT_NAME::::;EMP_NO::::;EMP_NAME::::;EMPLOYMENT_FLAG::::"/>
+		<xlinkdataset id="dsList" desc="사원정보조회" columns="OU_CODE::::;OU_NAME::::;EMP_NO::::;EMP_NAME::::;DEPT_CODE::::;DEPT_NAME::::;JIKWI_CODE::::;JIKWI_NAME::::;USER_ID::::;EMAIL_ADDR::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="1" order_info="472,466,453,468,470,433,471,35,36,51"/>
+		<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="455" bottom="385" width="200" height="18" text="사원 정보" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="660" bottom="386" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnSearch" meta_id="LABEL00008" x="447" y="6" right="169" bottom="379" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnSearch_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnApply" meta_id="LABEL00295" x="525" y="6" right="91" bottom="379" width="70" height="25" text="적용" version="1.1" on_mouseup="eventfunc:btnApply_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="51" name="btnClose" meta_id="LABEL00012" x="603" y="6" right="13" bottom="379" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+		<roundrect control_id="134" name="rudSearch" x="11" y="38" right="13" bottom="324" width="662" height="48" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<hangul_field control_id="466" name="edtDeptCode" in_index="0" autosize="0" x="203" y="26" right="404" bottom="364" width="79" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:DEPT_CODE" enable="0" hidden="1" make_case="1" imemode="0"/>
+		<text control_id="452" autosize="0" x="160" y="56" right="486" bottom="342" width="40" height="12" text="부서명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="453" name="edtDeptName" in_index="1" autosize="0" x="203" y="52" right="344" bottom="338" width="139" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:DEPT_NAME" max_length="50"/>
+		<text control_id="467" autosize="0" x="357" y="56" right="279" bottom="342" width="50" height="12" text="사원번호" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<hangul_field control_id="468" name="edtEmpNo" in_index="2" autosize="0" x="409" y="52" right="196" bottom="338" width="81" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:EMP_NO" make_case="1" imemode="0" on_keydown="eventfunc:edtEmpNo_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="469" autosize="0" x="508" y="56" right="136" bottom="342" width="42" height="12" text="사원명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="470" name="edtEmpName" in_index="3" autosize="0" x="555" y="52" right="26" bottom="338" width="105" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:EMP_NAME" max_length="200" on_keydown="eventfunc:edtEmpName_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<image control_id="68" autosize="0" x="10" y="96" right="671" bottom="298" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="49" meta_id="LABEL00090" autosize="0" x="22" y="96" right="578" bottom="298" width="86" height="16" text="목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="433" name="grdList" in_index="4" x="12" y="120" right="14" bottom="14" width="660" height="276" header_vertcount="0" header_height="28" cell_height="22" hoverrow_forecolor="00222222" link_data="dsList" samplerows="25" version="1.2" on_itemdblclick="eventfunc:grdList_on_itemdblclick(objInst, nDblClickRow, nDblClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header title="법인"/>
+				<data style="HS_GRID_DATA_02" name="OU_NAME" width="160" link_data="dsList:OU_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="사원번호"/>
+				<data style="HS_GRID_DATA_02" name="EMP_NO" width="90" link_data="dsList:EMP_NO" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="사원명"/>
+				<data style="HS_GRID_DATA_02" name="EMP_NAME" width="90" link_data="dsList:EMP_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="부서코드"/>
+				<data style="HS_GRID_DATA_02" name="DEPT_CODE" width="100" link_data="dsList:DEPT_CODE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="부서명"/>
+				<data style="HS_GRID_DATA_02" name="DEPT_NAME" width="200" link_data="dsList:DEPT_NAME" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="471" name="btnClean" meta_id="LABEL02157" x="368" y="6" right="248" bottom="379" width="70" height="25" text="초기화" version="1.1" on_mouseup="eventfunc:btnClean_on_mouseup(objInst)"/>
+		<checkbox control_id="472" name="fldEmploymentFlag" x="42" y="54" right="560" bottom="338" width="84" height="18" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" left_text="1" link_data="dsSearch:EMPLOYMENT_FLAG" text="퇴직자 제외" true_value="Y" false_value="N" default_check="1"/>
+	</map>
+</map_list>

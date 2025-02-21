@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]기준코드조회" directory="/FRAME/" screenid="popupCommGrpCode" last_update_date="2024-10-10 11:05:39" width="590" width_type="0" height="330" height_type="0" on_load="eventfunc:screen_on_load()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" funclist="screen_on_load,fnGrpCodeData,btnApply_on_mouseup,btnClose_on_mouseup,fnEnter,ReturnClosePopup,grdGrpInfos_on_itemdblclick"/>
+		<xlinkdataset id="dsGrpCode" desc="공통코드그룹정보" columns="GRP_CODE::::;GRP_NAME::::;PARENT_GRP_CODE::::"/>
+		<xlinktranmap id="TR_GRP_CODE_INFO" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="1" order_info="433,36,51"/>
+		<text control_id="32" name="rolePopupTitle" autosize="0" x="33" y="7" right="357" bottom="305" width="200" height="18" text="기준코드 정보" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<image control_id="50" autosize="0" x="12" y="7" right="562" bottom="307" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnApply" meta_id="LABEL00295" x="426" y="7" right="94" bottom="298" width="70" height="25" text="적용" version="1.1" on_mouseup="eventfunc:btnApply_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="51" name="btnClose" meta_id="LABEL00012" x="506" y="7" right="14" bottom="298" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+		<text control_id="434" meta_id="LABEL02443" autosize="0" anchor="2" x="24" y="43" right="506" bottom="271" width="60" height="16" text="코드목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="433" name="grdGrpInfo" in_index="4" x="12" y="67" right="14" bottom="13" width="564" height="250" resize_dir="3" header_vertcount="0" cell_height="22" hoverrow_forecolor="00222222" selectcell_forecolor="00FFFBF7" link_data="dsGrpCode" samplerows="25" version="1.2" on_itemdblclick="eventfunc:grdGrpInfos_on_itemdblclick(objInst, nDblClickRow, nDblClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header meta_id="LABEL02491" title="주코드"/>
+				<data style="HS_GRID_DATA_02" name="GRP_CODE" width="120" max_length="10" link_data="dsGrpCode:GRP_CODE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02492" title="주코드명"/>
+				<data style="HS_GRID_DATA_01" name="GRP_NAME" width="300" imemode="1" data_type="2" max_length="50" link_data="dsGrpCode:GRP_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02493" title="참조코드"/>
+				<data style="HS_GRID_DATA_01" name="PARENT_GRP_CODE" width="120" max_length="10" link_data="dsGrpCode:PARENT_GRP_CODE" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<image control_id="68" autosize="0" x="12" y="43" right="573" bottom="271" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+	</map>
+</map_list>

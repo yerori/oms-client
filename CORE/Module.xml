@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="공통모듈" directory="/CORE/" screenid="Module" last_update_date="2022-03-24 13:38:04" width="812" width_type="0" height="500" height_type="0" on_load="eventfunc:screen_on_load()" funclist="_getFrameType,screen_on_load,isObjCtrl,isObjCtrlEx,isObjShape,isScriptMethod,isScrObject,isPortletObject,isScrEventHandler,isCtrlEventHandler,clearPanel,clearAllTabObjectData,clearTabObjectData,clearObjectData,enableAll,disableAll,getallcomponent,setEnable,setVisibleCtrls,setReposition,loadScreen,loadPopup,loadPopupByMenuId,loadPortletPopupByMenuId,loadScreenByPath,loadScreenByPathMenuId,loadScreenByMenuId,loadPortletByPath,loadPortletByMenuId,unloadScreen,unloadScreenAll,setScreenLock,getFrameMembers,setBizTabMenuOperation,unloadPopup,loadMessageBox,loadMessageBoxEx,loadMessageBoxTran"/>
+		<tab control_id="0" name="tabLib" x="0" y="0" right="512" bottom="300" width="300" height="200" font="맑은 고딕,9,0,0,0,0" tabitem_font="맑은 고딕,9,0,0,0,0" tabitem_selfont="맑은 고딕,9,0,0,0,0" titlebar_font="맑은 고딕,9,1,0,0,0" on_itemcreate="eventfunc:tabLib_on_itemcreate(objInst, itemindex)">
+		</tab>
+	</map>
+</map_list>

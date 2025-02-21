@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="고객정보관리" directory="/SMT/" screenid="SmtSet2010" last_update_date="2024-03-12 08:33:14" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,screen_on_submitcomplete,fnSearch,fnValidForm,fnSaveData,btnCommonSearch_on_mouseup,btnCommonSave_on_mouseup,screen_on_messagebox,screen_on_size,btnCommonClose_on_mouseup,cboOuCode_on_keydown,edtCustName_on_keydown,edtCustName_on_changed,fnCustClosePopCallback,btnCustNamePop_on_click,fnCustPopupCall,btnAddRow_on_mouseup,grdList_on_columnmouseout,grdList_on_columnclick"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;CUSTOMER_ID::::;CUSTOMER_NAME::::;DIV_IN_OUT::::"/>
+		<xlinkdataset id="dsCustList" desc="고객관리정보" columns="OU_CODE::::;CUSTOMER_ID::::;CUSTOMER_NAME::::;CUSTOMER_GROUP::::;CUSTOMER_GROUP_NAME::::;DIV_IN_OUT::::;DIV_IN_OUT_NAME::::;ERP_CUSTOMER_ID::::;ERP_CUSTOMER_NAME::::;TAX_REG_NUMBER::::;NATION_CODE::::;NATION_CODE_NAME::::;USABLE_YN::::;REMARK::::"/>
+		<xlinkdataset id="dsCustID" desc="고객관리ID" columns="SEQ::::"/>
+		<xlinkdataset id="dsOuCode" desc="법인코드정보" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsCustGroup" desc="고객그룹" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsDivInOut" desc="국내해외구분" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsNationCode" desc="국가코드" columns="CODE::::;NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="조회">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_ALL" url="" comment="저장">
+		</xlinktranmap>
+		<xlinktranmap id="TR_CUSTOMER_ID" url="" comment="고객관리ID 가져오기">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,514,453,520,519,462"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="0" order_info="35,36,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="1088" y="5" right="280" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" meta_id="LABEL00011" anchor="2" x="1204" y="5" right="164" bottom="5" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="1207" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1345" y="5" right="23" bottom="5" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<text control_id="135" meta_id="LABEL01898" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="676" width="1411" width_percent="98" width_unit="1" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="452" meta_id="LABEL02416" autosize="0" x="717" y="52" right="643" bottom="686" width="80" height="20" text="해외/국내" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="453" name="edtCustName" autosize="0" x="452" y="51" right="848" bottom="685" width="140" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:CUSTOMER_NAME" max_length="100" on_keydown="eventfunc:edtCustName_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_changed="eventfunc:edtCustName_on_changed(objInst, prev_text, curr_text, event_type)"/>
+		<image control_id="410" name="btnCustNamePop" autosize="0" x="591" y="51" right="829" bottom="685" width="20" height="22" transparent="0" border="0" padding="0,0,0,0" image="/ico_search_22.gif" image_width="20" image_height="22" mouse_cursor="11" on_click="eventfunc:btnCustNamePop_on_click(objInst)"/>
+		<text control_id="49" meta_id="LABEL02417" autosize="0" x="24" y="95" right="1316" bottom="647" width="100" height="16" text="고객목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="472" autosize="0" x="10" y="95" right="1425" bottom="647" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<grid style="HS_GRID_BASIC_01" control_id="462" name="grdList" x="9" y="116" right="20" bottom="14" width="1411" width_percent="98" height="628" resize_dir="3" header_vertcount="0" cell_height="22" selectrow_bordercolor="0080623C" multi_checkrow="1" checkrow_hd_backcolor="00FCEAD3" checkrow_backcolor="00FFFBF7" checkrowwithselect="1" checkrow_width="20" link_data="dsCustList" samplerows="7" autocolumnwidth="2" version="1.2">
+			<column>
+				<header meta_id="LABEL02419" title="*해외/국내"/>
+				<data style="HS_GRID_DATA_01" name="DIV_IN_OUT" text_horzalign="0" editable="1" input_type="2" link_data="dsCustList:DIV_IN_OUT" picklist_linkdata="dsDivInOut:CODE:NAME:" bargauge_transparent="0" on_columnmouseout="eventfunc:grdList_on_columnmouseout(objInst, nColumn, bHeader)"/>
+			</column>
+			<column>
+				<header title="고개ID"/>
+				<data style="HS_GRID_DATA_02" hidden="1" data_type="0" link_data="dsCustList:CUSTOMER_ID" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02399" title="*고객명"/>
+				<data style="HS_GRID_DATA_01" name="CUSTOMER_NAME" width="300" text_horzalign="0" editable="1" data_type="2" make_case="1" link_data="dsCustList:CUSTOMER_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02418" title="*고객그룹"/>
+				<data style="HS_GRID_DATA_01" name="CUSTOMER_GROUP" width="140" text_horzalign="0" editable="1" input_type="2" link_data="dsCustList:CUSTOMER_GROUP" picklist_linkdata="dsCustGroup:CODE:NAME:" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02420" title="ERP 고객코드"/>
+				<data style="HS_GRID_DATA_02" name="ERP_CUSTOMER_ID" data_type="2" link_data="dsCustList:ERP_CUSTOMER_ID" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02406" title="ERP 고객명"/>
+				<data style="HS_GRID_DATA_02" name="ERP_CUSTOMER_NAME" width="300" text_horzalign="0" data_type="2" link_data="dsCustList:ERP_CUSTOMER_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02421" title="*사업자등록번호"/>
+				<data style="HS_GRID_DATA_01" name="TAX_REG_NUMBER" width="110" editable="1" link_data="dsCustList:TAX_REG_NUMBER" bargauge_transparent="0" on_columnclick="eventfunc:grdList_on_columnclick(objInst, nColumn, bBtnClick, nImgIndex, strImgUrl)"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02422" title="*국가"/>
+				<data style="HS_GRID_DATA_01" name="NATION_CODE" width="100" text_horzalign="0" editable="1" input_type="2" link_data="dsCustList:NATION_CODE" picklist_linkdata="dsNationCode:CODE:NAME:" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02423" title="*사용여부"/>
+				<data style="HS_GRID_DATA_01" name="USABLE_YN" width="65" editable="1" input_type="1" link_data="dsCustList:USABLE_YN" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00060" title="비고"/>
+				<data style="HS_GRID_DATA_01" name="REMARK" width="234" text_horzalign="0" editable="1" data_type="2" link_data="dsCustList:REMARK" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<combobox control_id="514" name="cboOuCode" autosize="0" x="102" y="51" right="1178" bottom="685" width="160" height="22" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOuCode:CODE:NAME:" link_data="dsSearch:OU_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="516" meta_id="LABEL00193" autosize="0" x="368" y="52" right="992" bottom="686" width="80" height="20" text="고객명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<text control_id="467" name="txtCustomerId" autosize="0" x="615" y="52" right="745" bottom="686" width="80" height="20" text="80009" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" link_data="dsSearch:CUSTOMER_ID" hidden="1" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="519" name="btnAddRow" meta_id="LABEL00541" anchor="2" x="1345" y="86" right="25" bottom="647" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnAddRow_on_mouseup(objInst)"/>
+		<combobox control_id="520" name="cboInOut" autosize="0" x="802" y="51" right="478" bottom="685" width="160" height="22" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsDivInOut:CODE:NAME:" link_data="dsSearch:DIV_IN_OUT" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+	</map>
+</map_list>

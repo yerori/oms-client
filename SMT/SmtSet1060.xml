@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="그룹별 권한등록" directory="/SMT/" screenid="SmtSet1060" click_setfocus="1" last_update_date="2024-10-07 15:16:37" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnSetInitControl,fnDsSearchSet,fnGetDsOU,fnGetDsAuthLevel1,fnGetDsAuthLevel2,fnGetDsTask,treeGrd_on_itemclick,btnCommonSave_on_mouseup,btnCommonSearch_on_mouseup,btnCommonClose_on_mouseup,fnSaveData,fnSearch,screen_on_submitcomplete,screen_on_messagebox,screen_on_size,comOu_on_itemchange,comAuthLvl1_on_itemchange"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;AUTH_CODE::::;MENU_ID::::;MENU_NAME::::;AUTH_CODE_LEVEL1::::"/>
+		<xlinkdataset id="dsOU" desc="법인 LIST" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsAuthLevel1" desc="Role 그룹대" columns="AUTH_CODE::::;AUTH_NAME::::"/>
+		<xlinkdataset id="dsAuthLevel2" desc="Role 그룹소" columns="AUTH_CODE::::;AUTH_NAME::::"/>
+		<xlinkdataset id="dsTask" desc="업무구분_조회" columns="MENU_ID::::;MENU_NAME::::;ESH_GBN::::"/>
+		<xlinkdataset id="dsAuthMenu" desc="그룹별 권한" columns="OU_CODE::::;MENU_ID::::;MENU_TYPE::::;MENU_TYPE_NAME::::;MENU_NAME::::;AUTH_CODE::::;AT_C::::;AT_R::::;AT_U::::;AT_D::::;AT_E::::;AT_P::::;AT_DEPT::::;AT_EMP::::;AT_PINFO::::;AT_USER1::::;AT_USER2::::;AT_USER3::::;AT_USER4::::;AT_USER5::::;INSERT_FLAG::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_COM_CO" url="" comment="코드 저장처리(추가, 수정, 삭제)">
+		</xlinktranmap>
+		<xlinktranmap id="TR_OU" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_AUTH_LEVEL1" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_AUTH_LEVEL2" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="조회">
+		</xlinktranmap>
+		<xlinktranmap id="TR_TASK" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,494,529,530,533,535,0"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="0" order_info="35,36,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="678" y="5" right="690" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" meta_id="LABEL00011" anchor="2" x="768" y="5" right="600" bottom="5" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="1207" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1345" y="5" right="23" bottom="5" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<text control_id="135" meta_id="LABEL01898" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="676" width="1411" width_percent="98" width_unit="1" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<combobox control_id="494" name="comOu" in_index="1" autosize="0" x="102" y="52" right="1198" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOU:CODE:NAME:" link_data="dsSearch:OU_CODE" default_value_type="1" default_value_usage="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_itemchange="eventfunc:comOu_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<text control_id="528" meta_id="LABEL02547" autosize="0" x="292" y="52" right="1040" bottom="686" width="108" height="20" text="*그룹명대/그룹명소" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="529" name="comAuthLvl1" in_index="2" autosize="0" x="406" y="52" right="894" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsAuthLevel1:AUTH_CODE:AUTH_NAME:" link_data="dsSearch:AUTH_CODE_LEVEL1" default_value="0" default_value_type="1" default_value_usage="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_itemchange="eventfunc:comAuthLvl1_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<combobox control_id="530" name="comAuthLvl2" in_index="3" autosize="0" x="566" y="52" right="734" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsAuthLevel2:AUTH_CODE:AUTH_NAME:" link_data="dsSearch:AUTH_CODE" default_value="0" default_value_type="1" default_value_usage="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_itemchange="eventfunc:task_sch_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<text control_id="531" autosize="0" x="551" y="52" right="879" bottom="686" width="10" height="20" text="/" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="1" version="1.1"/>
+		<text control_id="532" meta_id="LABEL02548" autosize="0" x="764" y="52" right="616" bottom="686" width="60" height="20" text="*업무구분" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="533" name="comTask" in_index="4" autosize="0" x="829" y="52" right="470" bottom="686" width="141" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsTask:MENU_ID:MENU_NAME:" link_data="dsSearch:MENU_ID" default_value="0" default_value_type="1" default_value_usage="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_itemchange="eventfunc:task_sch_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<text control_id="534" meta_id="LABEL00116" autosize="0" x="1032" y="52" right="348" bottom="686" width="60" height="20" text="메뉴명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<hangul_field control_id="535" in_index="5" x="1096" y="52" right="160" bottom="686" width="184" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:MENU_NAME"/>
+		<grid style="HS_GRID_BASIC_01" control_id="0" name="grdRoleGroup" in_index="7" x="9" y="120" right="20" bottom="18" width="1411" width_percent="98" height="620" height_percent="93" resize_dir="3" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" link_data="dsAuthMenu" samplerows="4" autocolumnwidth="2" version="1.2" on_itemeditcomplete="eventfunc:grdLangInfo_on_itemeditcomplete(objInst, nRow, nColumn, strPrevItemText)">
+			<column>
+				<header meta_id="LABEL02540" title="메뉴 ID"/>
+				<data style="HS_GRID_DATA_01" name="MENU_ID" data_inputtype="1" link_data="dsAuthMenu:MENU_ID" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00116" title="메뉴명"/>
+				<data style="HS_GRID_DATA_01" name="MENU_NAME" width="264" text_horzalign="0" imemode="1" data_inputtype="1" data_type="2" link_data="dsAuthMenu:MENU_NAME" combobox_style="1" combobox_excelstyle="2" picklist_selstyle="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01238" title="유형"/>
+				<data style="HS_GRID_DATA_01" name="MENU_TYPE_NAME" width="76" text_horzalign="0" imemode="1" data_type="2" link_data="dsAuthMenu:MENU_TYPE_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02550" title="메뉴표시"/>
+				<data style="HS_GRID_DATA_01" width="56" editable="1" data_type="0" input_type="1" default_value="0" link_data="dsAuthMenu:AT_R" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02551" title="INSERT"/>
+				<data style="HS_GRID_DATA_01" width="56" editable="1" data_type="0" input_type="1" default_value="0" link_data="dsAuthMenu:AT_C" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02552" title="UPDATE"/>
+				<data style="HS_GRID_DATA_01" width="56" editable="1" data_type="0" input_type="1" default_value="0" link_data="dsAuthMenu:AT_U" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02553" title="DELETE"/>
+				<data style="HS_GRID_DATA_01" width="56" editable="1" data_type="0" input_type="1" default_value="0" link_data="dsAuthMenu:AT_D" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02554" title="EXCEL"/>
+				<data style="HS_GRID_DATA_01" width="56" editable="1" data_type="0" input_type="1" default_value="0" link_data="dsAuthMenu:AT_E" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02555" title="PRINT"/>
+				<data style="HS_GRID_DATA_01" width="56" editable="1" data_type="0" input_type="1" default_value="0" link_data="dsAuthMenu:AT_P" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02556" title="부서변경"/>
+				<data style="HS_GRID_DATA_01" width="56" editable="1" data_type="0" input_type="1" default_value="0" link_data="dsAuthMenu:AT_DEPT" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02557" title="팀원변경"/>
+				<data style="HS_GRID_DATA_01" width="56" editable="1" data_type="0" input_type="1" default_value="0" link_data="dsAuthMenu:AT_EMP" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02558" title="개인정보"/>
+				<data style="HS_GRID_DATA_01" width="56" editable="1" data_type="0" input_type="1" default_value="0" link_data="dsAuthMenu:AT_PINFO" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02559" title="권한1"/>
+				<data style="HS_GRID_DATA_01" width="56" editable="1" data_type="0" input_type="1" default_value="0" link_data="dsAuthMenu:AT_USER1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02560" title="권한2"/>
+				<data style="HS_GRID_DATA_01" width="56" editable="1" data_type="0" input_type="1" default_value="0" link_data="dsAuthMenu:AT_USER2" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02561" title="권한3"/>
+				<data style="HS_GRID_DATA_01" width="56" editable="1" data_type="0" input_type="1" default_value="0" link_data="dsAuthMenu:AT_USER3" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02562" title="권한4"/>
+				<data style="HS_GRID_DATA_01" width="56" editable="1" data_type="0" input_type="1" default_value="0" link_data="dsAuthMenu:AT_USER4" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02563" title="권한5"/>
+				<data style="HS_GRID_DATA_01" width="56" editable="1" data_type="0" input_type="1" default_value="0" link_data="dsAuthMenu:AT_USER5" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<text control_id="518" meta_id="LABEL02549" autosize="0" x="24" y="95" right="1216" bottom="647" width="200" height="16" text="그룹별 권한" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="519" autosize="0" x="10" y="95" right="1425" bottom="647" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+	</map>
+</map_list>

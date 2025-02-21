@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="연구소 업무코드 구성 관리" directory="/RND/" screenid="Rnd1050" click_setfocus="1" last_update_date="2024-06-03 16:15:00" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_size,screen_on_load,fnDsSearchSet,btnCommonSearch_on_mouseup,fnSearch,screen_on_submitcomplete,btnAddRow_on_mouseup,btnDelRow_on_mouseup,screen_on_messagebox,btnCommonSave_on_mouseup,fnSaveData,grdList_on_columnclick,btnPopup_on_click,fnClosePopCallback,getSortNo"/>
+		<xlinkdataset id="dsOU" desc="법인 LIST" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsSearch" desc="상세조회조건" columns="OU_CODE::::"/>
+		<xlinkdataset id="dsValidation" desc="중복체크" columns="O_CNT::::;O_ERROR_MSG::::"/>
+		<xlinkdataset id="dsSortNo" desc="정렬번호" columns="O_SORT_NO::::;O_ERROR_MSG::::"/>
+		<xlinkdataset id="dsList" desc="시간관리상세 그리드" columns="OU_CODE::::;MAIN_CODE::::;MAIN_SORT_NO::::;MIDDLE_CODE::::;MIDDLE_SORT_NO::::;SMALL_CODE::::;SMALL_SORT_NO::::;MAIN_NAME::::;MIDDLE_NAME::::;SMALL_NAME::::;START_DATE::::;END_DATE::::;USED_YN:&quot;사용 이력&quot;:::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SERACH" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_VALIDATION" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SORT_NO" url="" comment="">
+		</xlinktranmap>
+		<tableview control_id="415" name="tbv" x="0" y="0" right="0" bottom="0" width="1440" height="758" height_unit="1" height_type="0" resize_dir="1" cell_line_vertstyle="0" cell_line_horzstyle="0" row_count="2" column_count="2" row_height="110:px,646:px" column_width="300:px,1138:px" autoresize_row="1" pixelwidth_resize="0" design_fixmode="0" mergeinfo="0,0,0,1:1,0,1,1" version="2.0">
+			<tab_order order_option="0" order_info="26,494,558,560,0"/>
+			<tr>
+				<td colspan="2" rect="0,0,300,110">
+					<text control_id="135" autosize="0" x="32" y="63" right="1346" bottom="35" width="60" height="12" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+					<roundrect control_id="134" name="rudSearch" x="9" y="40" right="20" bottom="10" width="1409" width_percent="98" height="60" resize_dir="1" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+					<combobox control_id="494" name="comOu" in_index="1" autosize="0" x="102" y="60" right="1195" bottom="30" width="141" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOU:CODE:NAME:" link_data="dsSearch:OU_CODE" default_value_type="1" default_value_usage="1" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_itemchange="eventfunc:comOu_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+					<tab control_id="26" name="tabTopCommon" x="0" y="3" right="0" bottom="72" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+						<tab_item panel_color="00FFFFFF">
+							<tab_order order_option="0" order_info="54,561,35"/>
+							<tab control_id="54" name="tabEndPoint" anchor="2" x="1358" y="3" right="0" bottom="2" width="80" height="30" border="0" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+								<tab_item link_screen="/FRAME/PageTopEndT" panel_color="00EBEBEB">
+								</tab_item>
+							</tab>
+							<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="678" y="6" right="690" bottom="4" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objinst)"/>
+							<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+							<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="1207" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+							<pushbutton style="HS_BTN_CLOSE_01" control_id="561" name="btnCommonSave" meta_id="LABEL00011" anchor="2" x="882" y="5" right="486" bottom="5" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+						</tab_item>
+					</tab>
+				</td>
+				<td hidden="1" rect="300,0,1438,110">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" rect="0,110,300,756">
+					<grid style="HS_GRID_BASIC_01" control_id="0" name="grdList" in_index="6" x="9" y="33" right="20" bottom="13" width="1409" width_percent="98" height="600" height_percent="93" height_unit="1" resize_dir="1" header_vertcount="0" cell_height="22" selectrow_bordercolor="0080623C" link_data="dsList" samplerows="20" statistics_column_show="0" autocolumnwidth="2" version="1.2">
+						<column>
+							<header title="법인코드"/>
+							<data name="OU_CODE" width="70" hidden="1" link_data="dsList:OU_CODE" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="대분류코드"/>
+							<data style="HS_GRID_DATA_02" name="MAIN_CODE" width="57" hidden="1" link_data="dsList:MAIN_CODE" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="중분류코드"/>
+							<data style="HS_GRID_DATA_02" name="MIDDLE_CODE" width="58" hidden="1" link_data="dsList:MIDDLE_CODE" combobox_editable="0" combobox_defaultvalue_type="2" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="소분류코드"/>
+							<data style="HS_GRID_DATA_02" name="SMALL_CODE" width="53" hidden="1" imemode="1" data_type="2" link_data="dsList:SMALL_CODE" combobox_style="1" combobox_excelstyle="2" picklist_selstyle="1" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="*업무성격"/>
+							<data style="HS_GRID_DATA_02" name="MAIN_NAME" width="165" imemode="1" data_type="2" link_data="dsList:MAIN_NAME" combobox_editable="0" combobox_defaultvalue_type="2" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="*업무성격"/>
+							<data style="HS_GRID_DATA_02" name="MAIN_POPUP" width="20" image="/ico_search_1.gif" image_horzalign="1" resizable="0" excel_rw="0" calendar_image="" bargauge_transparent="0" on_columnclick="eventfunc:grdList_on_columnclick(objInst, nColumn, bBtnClick, nImgIndex, strImgUrl)"/>
+						</column>
+						<column>
+							<header title="*업무성격 정렬"/>
+							<data style="HS_GRID_DATA_02" name="MAIN_SORT_NO" width="51" data_type="0" max_length="2" link_data="dsList:MAIN_SORT_NO" combobox_editable="0" combobox_defaultvalue_type="2" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="*업무단계"/>
+							<data style="HS_GRID_DATA_02" name="MIDDLE_NAME" width="223" imemode="1" data_type="2" link_data="dsList:MIDDLE_NAME" combobox_style="1" combobox_excelstyle="2" picklist_selstyle="1" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="*업무단계"/>
+							<data style="HS_GRID_DATA_02" name="MIDDLE_POPUP" width="20" image="/ico_search_1.gif" image_horzalign="1" resizable="0" excel_rw="0" bargauge_transparent="0" on_columnclick="eventfunc:grdList_on_columnclick(objInst, nColumn, bBtnClick, nImgIndex, strImgUrl)"/>
+						</column>
+						<column>
+							<header title="*업무단계 정렬"/>
+							<data style="HS_GRID_DATA_02" name="MIDDLE_SORT_NO" width="50" data_type="0" max_length="2" link_data="dsList:MIDDLE_SORT_NO" combobox_editable="0" combobox_defaultvalue_type="2" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="*업무명"/>
+							<data style="HS_GRID_DATA_02" name="SMALL_NAME" width="221" imemode="1" data_type="2" link_data="dsList:SMALL_NAME" combobox_style="1" combobox_excelstyle="2" picklist_selstyle="1" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="*업무명"/>
+							<data style="HS_GRID_DATA_02" name="SMALL_POPUP" width="20" image="/ico_search_1.gif" image_horzalign="1" resizable="0" excel_rw="0" bargauge_transparent="0" on_columnclick="eventfunc:grdList_on_columnclick(objInst, nColumn, bBtnClick, nImgIndex, strImgUrl)"/>
+						</column>
+						<column>
+							<header title="*업무명 정렬"/>
+							<data style="HS_GRID_DATA_02" name="SMALL_SORT_NO" width="49" data_type="0" max_length="2" link_data="dsList:SMALL_SORT_NO" combobox_editable="0" combobox_defaultvalue_type="2" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="사용이력"/>
+							<data style="HS_GRID_DATA_02" name="USED_YN" link_data="dsList:USED_YN" calendar_editable="0" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="*사용시작일자"/>
+							<data style="HS_GRID_DATA_02" name="START_DATE" width="172" pattern="YYYY-MM-DD" link_data="dsList:START_DATE" calendar_editable="0" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="사용종료일자"/>
+							<data style="HS_GRID_DATA_02" name="END_DATE" width="172" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsList:END_DATE" calendar_editable="0" bargauge_transparent="0"/>
+						</column>
+						<headermegeinfo info="0,4,0,5:0,7,0,8:0,10,0,11:"/>
+					</grid>
+					<text control_id="518" autosize="0" x="28" y="10" right="1210" bottom="620" width="200" height="16" text="업무 코드 구성" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+					<image control_id="519" autosize="0" x="10" y="10" right="1423" bottom="620" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+					<pushbutton style="HS_BTN_CLOSE_01" control_id="558" name="btnAddRow" meta_id="LABEL00541" anchor="2" x="1272" y="2" right="96" bottom="619" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnAddRow_on_mouseup(objInst)"/>
+					<pushbutton style="HS_BTN_CLOSE_01" control_id="560" name="btnDelRow" meta_id="LABEL00542" anchor="2" x="1345" y="2" right="23" bottom="619" width="70" height="25" text="행삭제" version="1.1" on_mouseup="eventfunc:btnDelRow_on_mouseup(objInst)"/>
+				</td>
+				<td hidden="1" rect="300,110,1438,756">
+				</td>
+			</tr>
+		</tableview>
+	</map>
+</map_list>

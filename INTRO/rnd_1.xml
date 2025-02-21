@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="연구원 업무시간 관리 요약" directory="/INTRO/" screenid="rnd_1" click_setfocus="1" last_update_date="2024-05-30 10:15:07" width="1440" width_type="2" height="500" height_type="2" canvas_width="1450" canvas_height="510" vertscrollbar_style="0" horzscrollbar_style="0" on_load="eventfunc:screen_on_load()" funclist="screen_on_load,fnRndSummary"/>
+		<xlinkdataset id="dsRndSummary" desc="연구원 업무시간관리 요약" columns="DEPT_CODE::::;DEPT_NAME::::;EMP_NO::::;EMP_NAME::::;JIKWI_CODE::::;JIKWI_NAME::::;WORK_DAYS::::;REGULAR_WORK_TIMES::::;INPUT_WORK_TIMES::::;NOT_INPUT_WORK_TIMES::::;EXCESS_INPUT_WORK_TIMES::::;SHORTAGE_WORK_DAYS::::;SHORTAGE_WORK_TIME::::;HOLIDAY_WORK_DAYS::::;HOLIDAY_WORK_TIME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_RND_SUMMARY" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="462"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="1414" bottom="476" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<text control_id="32" name="stSystemMenuTitle" autosize="0" x="36" y="7" right="1218" bottom="475" width="186" height="18" text="연구원 업무시간 관리 요약" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<grid style="HS_SINGLEVIEW_GRID_01" control_id="462" name="grdList" x="10" y="32" right="19" bottom="43" width="1411" height="425" header_font="맑은 고딕,9,0,0,0,0" header_vertcount="0" selectrow_bordercolor="0080623C" link_data="dsRndSummary" statistics_row="0,00000000,00E9FEFF,00000000,00D2D2D2,00000001,00000001,&quot;합 계&quot;,5,:" version="1.2">
+			<column>
+				<header title="부서코드"/>
+				<data style="HS_GRID_DATA_02" name="DEPT_CODE" width="16" hidden="1" data_type="2" show_tooltip="1" link_data="dsRndSummary:DEPT_CODE" combobox_defaultvalue_type="1" combobox_showbutton="0" combobox_buttonsize="0" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="사번"/>
+				<data style="HS_GRID_DATA_02" name="EMP_NO" width="13" hidden="1" data_type="2" show_tooltip="1" link_data="dsRndSummary:EMP_NO" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="직위코드"/>
+				<data style="HS_GRID_DATA_02" name="JIKWI_CODE" width="14" hidden="1" data_type="2" show_tooltip="1" link_data="dsRndSummary:JIKWI_CODE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="부서"/>
+				<data style="HS_GRID_DATA_02" name="DEPT_NAME" width="148" data_type="2" show_tooltip="1" link_data="dsRndSummary:DEPT_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="성명"/>
+				<data style="HS_GRID_DATA_02" name="PRODUCT_NAME" width="124" data_type="2" link_data="dsRndSummary:EMP_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="직위"/>
+				<data style="HS_GRID_DATA_02" name="JIKWI_NAME" width="58" data_type="2" link_data="dsRndSummary:JIKWI_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="근무일수"/>
+				<data style="HS_GRID_DATA_02" name="WORK_DAYS" width="110" data_type="0" max_length="7" pattern="Z,ZZ9.99" link_data="dsRndSummary:WORK_DAYS" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="규정&#x0D;&#x0A;업무시간"/>
+				<data style="HS_GRID_DATA_02" name="REGULAR_WORK_TIMES" width="110" data_type="0" max_length="7" pattern="Z,ZZ9.99" link_data="dsRndSummary:REGULAR_WORK_TIMES" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="등록&#x0D;&#x0A;업무시간"/>
+				<data style="HS_GRID_DATA_02" name="INPUT_WORK_TIMES" width="110" data_type="0" max_length="7" pattern="Z,ZZ9.99" link_data="dsRndSummary:INPUT_WORK_TIMES" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="미등록&#x0D;&#x0A;업무시간"/>
+				<data style="HS_GRID_DATA_02" name="NOT_INPUT_WORK_TIMES" width="110" data_type="0" max_length="7" pattern="Z,ZZ9.99" link_data="dsRndSummary:NOT_INPUT_WORK_TIMES" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="초과&#x0D;&#x0A;업무시간"/>
+				<data style="HS_GRID_DATA_02" name="EXCESS_INPUT_WORK_TIMES" width="110" data_type="0" max_length="7" pattern="Z,ZZ9.99" link_data="dsRndSummary:EXCESS_INPUT_WORK_TIMES" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="등록&#x0D;&#x0A;부족일수"/>
+				<data style="HS_GRID_DATA_02" name="SHORTAGE_WORK_DAYS" width="110" data_type="0" max_length="7" pattern="Z,ZZ9.99" link_data="dsRndSummary:SHORTAGE_WORK_DAYS" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="부족&#x0D;&#x0A;업무시간"/>
+				<data style="HS_GRID_DATA_02" name="SHORTAGE_WORK_TIME" width="110" data_type="0" max_length="7" pattern="Z,ZZ9.99" link_data="dsRndSummary:SHORTAGE_WORK_TIME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="휴일&#x0D;&#x0A;근무일수"/>
+				<data style="HS_GRID_DATA_02" name="HOLY_WORK_DAYS" width="110" data_type="0" max_length="7" pattern="Z,ZZ9.99" link_data="dsRndSummary:HOLIDAY_WORK_DAYS" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="휴일&#x0D;&#x0A;근무시간"/>
+				<data style="HS_GRID_DATA_02" name="HOLY_WORK_TIME" width="110" data_type="0" max_length="7" pattern="Z,ZZ9.99" link_data="dsRndSummary:HOLIDAY_WORK_TIME" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<text control_id="465" name="txtYyyyMm" autosize="0" x="228" y="6" right="1098" bottom="474" width="114" height="20" text="(20XX년00월)" font="맑은 고딕,11,1,0,0,0" fore_color="00FF460E" version="1.1"/>
+	</map>
+</map_list>

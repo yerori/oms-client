@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업] Report" directory="/OMS/" screenid="Oms0010" last_update_date="2024-12-12 09:42:20" width="1600" width_type="0" height="900" height_type="0" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" funclist="screen_on_load,fnPageSet,btnClose_on_mouseup,screen_on_destroy"/>
+		<webbrowser control_id="51" name="openUrl" x="10" y="6" right="8" bottom="12" width="1582" height="882" border="1"/>
+	</map>
+</map_list>

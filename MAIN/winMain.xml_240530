@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="main(Ⅲ)" directory="/MAIN/" screenid="winMain" last_update_date="2023-07-28 13:38:15" width="1024" width_type="0" height="650" height_type="0" canvas_width="2048" canvas_height="1300" on_load="eventfunc:screen_on_load()" on_keydown="eventfunc:screen_on_keydown(keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" funclist="_getFrameType,screen_on_load,setUseBizSplit,onClickMiddleTab,tabMiddle_on_itemcreate,tabTop_on_itemcreate,addScreenTab,txLoginComplete,setWideScreen,bizTab_on_itemdestroy,bizTab_on_itemchange,_setLockScreen,showHome,toggleHome,_hasLoadedBizScreen,loadHomeScreen,tabHome_on_itemcreate,tabHome_on_itemchange,getHomeScreenInst,screen_on_keydown,ufnLogInsertProcessor,ufnMainGetSequence,ufnUserAuth,ufnLangLoad,ufnMsgLangLoad,ufnComboLoad,ufnCommCodeLoad,ufnOuCodeLoad,ufnSiteCodeLoad,ufnSiteUserCodeLoad,ufnAuthMenuLoad,ufnMyMenuLoad,ufnTopMenuSet,showECommerce,showPersonalInfo,showInfoSecurit,showPwdChange"/>
+		<xlinkdataset id="dsMainSystemLog" desc="" columns="LOG_K_CD::::;USER_IP_ADDR::::;LOG_NOTE::::;LOG_OBJ_ID::::"/>
+		<xlinkdataset id="dsMainSequence" desc="" columns="SEQ_SCN_CD::::;CRTN_VAL::::;CRTN_SEQ_VAL::::;PRJ_ID::::;SEQ_LENGTH::::"/>
+		<xlinkdataset id="dsUserAuth" desc="" columns="AUTH_YN::::"/>
+		<xlinkdataset id="dsMyMenu" desc="" columns="MENU_ID::::;OU_CODE::::;UP_MENU_ID::::;MENU_PATH::::;ORDER_NO::::;MENU_NM::::;MENU_NAVIGATOR::::;AT_C::::;AT_R::::;AT_U::::;AT_D::::;AT_E::::;AT_P::::;AT_DEPT::::;AT_EMP::::;AT_PINFO::::;AT_USER1::::;AT_USER2::::;AT_USER3::::;AT_USER4::::;AT_USER5::::;MENU_LEVEL::::;MASTER_MENU_ID::::;MENU_ONE_LEVEL_ID::::;LEFT_MENU_IMAGE_LEVEL::::;LEFT_MENU_IMAGE_SELECT::::;SORT_ORDER::::;MASTER_MENU_ORDER::::"/>
+		<xlinkdataset id="dsCommCode" desc="" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsOuCodes" desc="" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsSiteCodes" desc="" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsUserSiteCodes" desc="" columns="CODE::::;NAME::::"/>
+		<xlinktranmap id="TR_LOG" url="" comment="">
+			<xtcds id="gdsAuthMenu" in_op="" out_op="" info="MENU_ID::;OU_CODE::;UP_MENU_ID::;MENU_PATH::;ORDER_NO::;MENU_NM::;MENU_NAVIGATOR::;AT_C::;AT_R::;AT_U::;AT_D::;AT_E::;AT_P::;AT_DEPT::;AT_EMP::;AT_PINFO::;AT_USER1::;AT_USER2::;AT_USER3::;AT_USER4::;AT_USER5::;MENU_LEVEL::;MENU_ONE_LEVEL_ID::;LEFT_MENU_IMAGE_LEVEL::;LEFT_MENU_IMAGE_SELECT::"/>
+			<xtcds id="gdsLabelLang" in_op="" out_op="" info="OBJ_SCN_CD::;LANG_SCN_CD::;OBJ_CD::;SUB_OBJ_CD::;LANG_DISPLAY::"/>
+			<xtcds id="gdsMsgLang" in_op="" out_op="" info="MSG_CODE::;LANG_CODE::;LANG_DISPLAY::"/>
+		</xlinktranmap>
+		<xlinktranmap id="TR_SYSTEM_CODE" url="" comment="">
+			<xtcds id="gdsAuthMenu" in_op="" out_op="" info="MENU_ID::;OU_CODE::;UP_MENU_ID::;MENU_PATH::;ORDER_NO::;MENU_NM::;MENU_NAVIGATOR::;AT_C::;AT_R::;AT_U::;AT_D::;AT_E::;AT_P::;AT_DEPT::;AT_EMP::;AT_PINFO::;AT_USER1::;AT_USER2::;AT_USER3::;AT_USER4::;AT_USER5::;MENU_LEVEL::;MENU_ONE_LEVEL_ID::;LEFT_MENU_IMAGE_LEVEL::;LEFT_MENU_IMAGE_SELECT::"/>
+			<xtcds id="gdsLabelLang" in_op="" out_op="" info="OBJ_SCN_CD::;LANG_SCN_CD::;OBJ_CD::;SUB_OBJ_CD::;LANG_DISPLAY::"/>
+			<xtcds id="gdsMsgLang" in_op="" out_op="" info="MSG_CODE::;LANG_CODE::;LANG_DISPLAY::"/>
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEQUENCE" url="" comment="">
+			<xtds id="dsMainSequence" in_op="ALL" out_op="DELETE" info="SEQ_SCN_CD:1:1;CRTN_VAL:1:1;CRTN_SEQ_VAL:1:1;PRJ_ID::;SEQ_LENGTH::"/>
+			<xtcds id="gdsAuthMenu" in_op="" out_op="" info="MENU_ID::;OU_CODE::;UP_MENU_ID::;MENU_PATH::;ORDER_NO::;MENU_NM::;MENU_NAVIGATOR::;AT_C::;AT_R::;AT_U::;AT_D::;AT_E::;AT_P::;AT_DEPT::;AT_EMP::;AT_PINFO::;AT_USER1::;AT_USER2::;AT_USER3::;AT_USER4::;AT_USER5::;MENU_LEVEL::;MENU_ONE_LEVEL_ID::;LEFT_MENU_IMAGE_LEVEL::;LEFT_MENU_IMAGE_SELECT::"/>
+			<xtcds id="gdsLabelLang" in_op="" out_op="" info="OBJ_SCN_CD::;LANG_SCN_CD::;OBJ_CD::;SUB_OBJ_CD::;LANG_DISPLAY::"/>
+			<xtcds id="gdsMsgLang" in_op="" out_op="" info="MSG_CODE::;LANG_CODE::;LANG_DISPLAY::"/>
+		</xlinktranmap>
+		<xlinktranmap id="TR_USER_AUTH" url="" comment="">
+			<xtcds id="gdsAuthMenu" in_op="" out_op="" info="MENU_ID::;OU_CODE::;UP_MENU_ID::;MENU_PATH::;ORDER_NO::;MENU_NM::;MENU_NAVIGATOR::;AT_C::;AT_R::;AT_U::;AT_D::;AT_E::;AT_P::;AT_DEPT::;AT_EMP::;AT_PINFO::;AT_USER1::;AT_USER2::;AT_USER3::;AT_USER4::;AT_USER5::;MENU_LEVEL::;MENU_ONE_LEVEL_ID::;LEFT_MENU_IMAGE_LEVEL::;LEFT_MENU_IMAGE_SELECT::"/>
+			<xtcds id="gdsLabelLang" in_op="" out_op="" info="OBJ_SCN_CD::;LANG_SCN_CD::;OBJ_CD::;SUB_OBJ_CD::;LANG_DISPLAY::"/>
+			<xtcds id="gdsMsgLang" in_op="" out_op="" info="MSG_CODE::;LANG_CODE::;LANG_DISPLAY::"/>
+		</xlinktranmap>
+		<xlinktranmap id="TR_CONFIG" url="" comment="">
+			<xtcds id="gdsAuthMenu" in_op="" out_op="" info="MENU_ID::;OU_CODE::;UP_MENU_ID::;MENU_PATH::;ORDER_NO::;MENU_NM::;MENU_NAVIGATOR::;AT_C::;AT_R::;AT_U::;AT_D::;AT_E::;AT_P::;AT_DEPT::;AT_EMP::;AT_PINFO::;AT_USER1::;AT_USER2::;AT_USER3::;AT_USER4::;AT_USER5::;MENU_LEVEL::;MENU_ONE_LEVEL_ID::;LEFT_MENU_IMAGE_LEVEL::;LEFT_MENU_IMAGE_SELECT::"/>
+			<xtcds id="gdsLabelLang" in_op="" out_op="" info="OBJ_SCN_CD::;LANG_SCN_CD::;OBJ_CD::;SUB_OBJ_CD::;LANG_DISPLAY::"/>
+			<xtcds id="gdsMsgLang" in_op="" out_op="" info="MSG_CODE::;LANG_CODE::;LANG_DISPLAY::"/>
+		</xlinktranmap>
+		<xlinktranmap id="TR_LANG" url="" comment="">
+			<xtcds id="gdsAuthMenu" in_op="" out_op="" info="MENU_ID::;OU_CODE::;UP_MENU_ID::;MENU_PATH::;ORDER_NO::;MENU_NM::;MENU_NAVIGATOR::;AT_C::;AT_R::;AT_U::;AT_D::;AT_E::;AT_P::;AT_DEPT::;AT_EMP::;AT_PINFO::;AT_USER1::;AT_USER2::;AT_USER3::;AT_USER4::;AT_USER5::;MENU_LEVEL::;MENU_ONE_LEVEL_ID::;LEFT_MENU_IMAGE_LEVEL::;LEFT_MENU_IMAGE_SELECT::"/>
+			<xtcds id="gdsLabelLang" in_op="" out_op="" info="OBJ_SCN_CD::;LANG_SCN_CD::;OBJ_CD::;SUB_OBJ_CD::;LANG_DISPLAY::"/>
+			<xtcds id="gdsMsgLang" in_op="" out_op="" info="MSG_CODE::;LANG_CODE::;LANG_DISPLAY::"/>
+		</xlinktranmap>
+		<xlinktranmap id="TR_AUTH_MENU" url="" comment="">
+			<xtcds id="gdsAuthMenu" in_op="" out_op="" info="MENU_ID::;OU_CODE::;UP_MENU_ID::;MENU_PATH::;ORDER_NO::;MENU_NM::;MENU_NAVIGATOR::;AT_C::;AT_R::;AT_U::;AT_D::;AT_E::;AT_P::;AT_DEPT::;AT_EMP::;AT_PINFO::;AT_USER1::;AT_USER2::;AT_USER3::;AT_USER4::;AT_USER5::;MENU_LEVEL::;MENU_ONE_LEVEL_ID::;LEFT_MENU_IMAGE_LEVEL::;LEFT_MENU_IMAGE_SELECT::"/>
+			<xtcds id="gdsLabelLang" in_op="" out_op="" info="OBJ_SCN_CD::;LANG_SCN_CD::;OBJ_CD::;SUB_OBJ_CD::;LANG_DISPLAY::"/>
+			<xtcds id="gdsMsgLang" in_op="" out_op="" info="MSG_CODE::;LANG_CODE::;LANG_DISPLAY::"/>
+		</xlinktranmap>
+		<xlinktranmap id="TR_MY_MENU" url="" comment="">
+			<xtcds id="gdsAuthMenu" in_op="" out_op="" info="MENU_ID::;OU_CODE::;UP_MENU_ID::;MENU_PATH::;ORDER_NO::;MENU_NM::;MENU_NAVIGATOR::;AT_C::;AT_R::;AT_U::;AT_D::;AT_E::;AT_P::;AT_DEPT::;AT_EMP::;AT_PINFO::;AT_USER1::;AT_USER2::;AT_USER3::;AT_USER4::;AT_USER5::;MENU_LEVEL::;MENU_ONE_LEVEL_ID::;LEFT_MENU_IMAGE_LEVEL::;LEFT_MENU_IMAGE_SELECT::"/>
+			<xtcds id="gdsLabelLang" in_op="" out_op="" info="OBJ_SCN_CD::;LANG_SCN_CD::;OBJ_CD::;SUB_OBJ_CD::;LANG_DISPLAY::"/>
+			<xtcds id="gdsMsgLang" in_op="" out_op="" info="MSG_CODE::;LANG_CODE::;LANG_DISPLAY::"/>
+		</xlinktranmap>
+		<xlinktranmap id="TR_OU_CODE" url="" comment="">
+			<xtcds id="gdsAuthMenu" in_op="" out_op="" info="MENU_ID::;OU_CODE::;UP_MENU_ID::;MENU_PATH::;ORDER_NO::;MENU_NM::;MENU_NAVIGATOR::;AT_C::;AT_R::;AT_U::;AT_D::;AT_E::;AT_P::;AT_DEPT::;AT_EMP::;AT_PINFO::;AT_USER1::;AT_USER2::;AT_USER3::;AT_USER4::;AT_USER5::;MENU_LEVEL::;MENU_ONE_LEVEL_ID::;LEFT_MENU_IMAGE_LEVEL::;LEFT_MENU_IMAGE_SELECT::"/>
+			<xtcds id="gdsLabelLang" in_op="" out_op="" info="OBJ_SCN_CD::;LANG_SCN_CD::;OBJ_CD::;SUB_OBJ_CD::;LANG_DISPLAY::"/>
+			<xtcds id="gdsMsgLang" in_op="" out_op="" info="MSG_CODE::;LANG_CODE::;LANG_DISPLAY::"/>
+		</xlinktranmap>
+		<xlinktranmap id="TR_SITE_CODE" url="" comment="">
+			<xtcds id="gdsAuthMenu" in_op="" out_op="" info="MENU_ID::;OU_CODE::;UP_MENU_ID::;MENU_PATH::;ORDER_NO::;MENU_NM::;MENU_NAVIGATOR::;AT_C::;AT_R::;AT_U::;AT_D::;AT_E::;AT_P::;AT_DEPT::;AT_EMP::;AT_PINFO::;AT_USER1::;AT_USER2::;AT_USER3::;AT_USER4::;AT_USER5::;MENU_LEVEL::;MENU_ONE_LEVEL_ID::;LEFT_MENU_IMAGE_LEVEL::;LEFT_MENU_IMAGE_SELECT::"/>
+			<xtcds id="gdsLabelLang" in_op="" out_op="" info="OBJ_SCN_CD::;LANG_SCN_CD::;OBJ_CD::;SUB_OBJ_CD::;LANG_DISPLAY::"/>
+			<xtcds id="gdsMsgLang" in_op="" out_op="" info="MSG_CODE::;LANG_CODE::;LANG_DISPLAY::"/>
+		</xlinktranmap>
+		<xlinktranmap id="TR_MSG_LANG" url="" comment="">
+			<xtcds id="gdsAuthMenu" in_op="" out_op="" info="MENU_ID::;OU_CODE::;UP_MENU_ID::;MENU_PATH::;ORDER_NO::;MENU_NM::;MENU_NAVIGATOR::;AT_C::;AT_R::;AT_U::;AT_D::;AT_E::;AT_P::;AT_DEPT::;AT_EMP::;AT_PINFO::;AT_USER1::;AT_USER2::;AT_USER3::;AT_USER4::;AT_USER5::;MENU_LEVEL::;MENU_ONE_LEVEL_ID::;LEFT_MENU_IMAGE_LEVEL::;LEFT_MENU_IMAGE_SELECT::"/>
+			<xtcds id="gdsLabelLang" in_op="" out_op="" info="OBJ_SCN_CD::;LANG_SCN_CD::;OBJ_CD::;SUB_OBJ_CD::;LANG_DISPLAY::"/>
+			<xtcds id="gdsMsgLang" in_op="" out_op="" info="MSG_CODE::;LANG_CODE::;LANG_DISPLAY::"/>
+		</xlinktranmap>
+		<xlinktranmap id="TR_USER_SITE_CODE" url="" comment="">
+			<xtcds id="gdsAuthMenu" in_op="" out_op="" info="MENU_ID::;OU_CODE::;UP_MENU_ID::;MENU_PATH::;ORDER_NO::;MENU_NM::;MENU_NAVIGATOR::;AT_C::;AT_R::;AT_U::;AT_D::;AT_E::;AT_P::;AT_DEPT::;AT_EMP::;AT_PINFO::;AT_USER1::;AT_USER2::;AT_USER3::;AT_USER4::;AT_USER5::;MENU_LEVEL::;MENU_ONE_LEVEL_ID::;LEFT_MENU_IMAGE_LEVEL::;LEFT_MENU_IMAGE_SELECT::"/>
+			<xtcds id="gdsLabelLang" in_op="" out_op="" info="OBJ_SCN_CD::;LANG_SCN_CD::;OBJ_CD::;SUB_OBJ_CD::;LANG_DISPLAY::"/>
+			<xtcds id="gdsMsgLang" in_op="" out_op="" info="MSG_CODE::;LANG_CODE::;LANG_DISPLAY::"/>
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="0,1,20"/>
+		<tableview control_id="0" name="tv1" x="0" y="0" right="0" bottom="0" width="1024" width_unit="1" height="650" height_unit="1" height_type="0" border="0" cell_line_vertstyle="0" cell_line_horzstyle="0" row_count="3" column_count="2" row_height="80:px,542:px,28:px" column_width="240:px,784:px" autoresize_column="1" autoresize_row="1" inithidden_row_fitsize="0" design_fixmode="0" mergeinfo="0,0,0,1:2,0,2,1" version="2.0">
+			<tab_order order_option="0" order_info="8,24,14,5"/>
+			<tr>
+				<td colspan="2" rect="0,0,240,80">
+					<text control_id="2" x="12" y="6" right="990" bottom="62" width="22" height="12" designtime_only="1" text="TOP" font="맑은 고딕,9,0,0,0,0" mousehover_font="맑은 고딕,9,0,0,0,0" version="1.1"/>
+				</td>
+				<td hidden="1" rect="240,0,1024,80">
+				</td>
+			</tr>
+			<tr>
+				<td rect="0,80,240,622">
+					<tab control_id="8" name="tabLeft" x="0" y="0" right="0" bottom="0" width="240" width_unit="1" height="542" height_unit="1" font="맑은 고딕,9,0,0,0,0" border="0" tab_color="00CEA0FF" tab_transparent="1" tabitem_hidden="1" tabitem_font="맑은 고딕,9,0,0,0,0" tabitem_selfont="맑은 고딕,9,0,0,0,0" titlebar_font="맑은 고딕,9,1,0,0,0" tabstop="0">
+					</tab>
+				</td>
+				<td rect="240,80,1024,622">
+					<tab control_id="14" name="tabMiddle" x="0" y="3" right="0" bottom="3" width="784" width_unit="1" height="536" height_percent="99" height_unit="1" margin="0,0,3,0" fore_color="00666666" border_ex="0,1,00B4B4B4,,0,,0,0,1,0,00FFFFFF,00E1E1E1^1,1,009E4B00,1^1,0,00B4B4B4,1^1,0,00B4B4B4,1^1,0,00B4B4B4,1" flex="1" tab_color="00FF860E" tabitem_height="30" tabitem_width="100" tabitem_radius="6" tabitem_font="맑은 고딕,10,0,0,0,0" tabitem_selfont="맑은 고딕,10,1,0,0,0" tabitem_color="00FFFFFF" tabitem_selcolor="00FFFFFF" tabitem_forecolor="00666666" tabitem_backcolor="00FFFFFF" tabitem_bordercolor="00D2C5BA" tabitem_selforecolor="00BA5F2F" tabitem_selbackcolor="00FFFFFF" tabitem_selbordercolor="00BA7330" tabitem_disforecolor="00666666" tabitem_disbackcolor="00FFFFFF" tabitem_disbordercolor="00ABACAA" tabitem_hoverbackcolor="00FFFFFF" tabitem_xbutton="1" titlebar_font="맑은 고딕,9,1,0,0,0" preload_item="1" on_itemcreate="eventfunc:tabMiddle_on_itemcreate(objInst, itemindex)" on_itemdestroy="eventfunc:bizTab_on_itemdestroy(objInst, itemindex)">
+					</tab>
+					<tab control_id="24" name="tabHome" x="0" y="0" right="0" bottom="0" width="784" width_unit="1" height="542" height_unit="1" margin="0,0,3,0" border="0" tabitem_hidden="1" tabitem_font="맑은 고딕,9,0,0,0,0" tabitem_selfont="맑은 고딕,9,0,0,0,0" titlebar_font="맑은 고딕,9,1,0,0,0" preload_item="1" on_itemcreate="eventfunc:tabHome_on_itemcreate(objInst, itemindex)" on_itemchange="eventfunc:tabHome_on_itemchange(objInst, itemindex)">
+					</tab>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" rect="0,622,240,650">
+					<tab control_id="5" name="tabBottom" anchor="1" x="0" y="0" right="0" bottom="0" width="1024" width_unit="1" height="28" border="0" tab_color="00FFCFA0" tab_transparent="1" tabitem_hidden="1" tabitem_font="맑은 고딕,9,0,0,0,0" tabitem_selfont="맑은 고딕,9,0,0,0,0" tabitem_color="00A0FDFF" tabitem_backcolor="00A0FDFF" titlebar_font="맑은 고딕,9,1,0,0,0">
+					</tab>
+				</td>
+				<td hidden="1" rect="240,622,1024,650">
+				</td>
+			</tr>
+		</tableview>
+		<tab control_id="1" name="tabTop" position="1" x="0" y="0" right="0" bottom="567" width="1024" width_unit="1" height="83" font="맑은 고딕,9,0,0,0,0" border="0" tab_color="00A0FDFF" tab_transparent="1" tabitem_hidden="1" tabitem_font="맑은 고딕,9,0,0,0,0" tabitem_selfont="맑은 고딕,9,0,0,0,0" tabitem_color="00A0FDFF" tabitem_backcolor="00A0FDFF" titlebar_font="맑은 고딕,9,1,0,0,0" on_itemcreate="eventfunc:tabTop_on_itemcreate(objInst, itemindex)">
+			<tab_item link_screen="/MAIN/topMain" link_type="1" panel_color="00A0FDFF" vertscrollbar_style="0" horzscrollbar_style="0">
+			</tab_item>
+		</tab>
+		<panel control_id="20" name="pnlMainLock" semantic_tag="0" x="450" y="318" right="298" bottom="188" width="276" height="144" back_color="00E1E1E1" border="0" hidden="1" title_font="맑은 고딕,9,0,0,0,0">
+			<panel control_id="23" semantic_tag="0" anchor="6" x="8" y="-16" right="8" bottom="0" width="260" height="160" border="0" back_color_opacity="0" title_font="맑은 고딕,9,0,0,0,0">
+				<text control_id="21" autosize="0" anchor="5" x="10" y="6" right="10" bottom="64" width="240" height="90" text="Thema Loading..." font="맑은 고딕,18,1,0,0,0" back_color_opacity="0" horz_align="1" version="1.1"/>
+				<imagebox control_id="22" anchor="6" x="35" y="25" right="35" bottom="25" width="190" height="110" transparent="1" border="0" padding="0,0,0,0" image="/loading.gif" imagesize="3" image_width="42" image_height="42" hidden="1"/>
+			</panel>
+		</panel>
+		<hidden_screen>
+			<caption control_id="15" autosize="0" x="1320" y="366" right="454" bottom="748" width="274" height="186" designtime_only="1" text="테이블뷰&#x0D;&#x0A;-리사이즈 관련 속성 처리&#x0D;&#x0A;  width_unit  : 1 percent&#x0D;&#x0A;  height_unit : 1percent&#x0D;&#x0A;  autoresize_column : 1&#x0D;&#x0A;  autoresize_row : 1&#x0D;&#x0A;&#x0D;&#x0A;row height 45, 827, 28&#x0D;&#x0A;column width 240, 720, 240&#x0D;&#x0A;0row, 2row 병합&#x0D;&#x0A;" font="맑은 고딕,9,0,0,0,0" transparent="1" border="1" border_ex="0,2,00B4B4B4,,0,,0,0,1,0,00FFFFFF,00E1E1E1^0,0,00000000,1^1,0,00B4B4B4,1^0,0,00000000,1^1,0,00B4B4B4,1" mousehover_font="맑은 고딕,9,0,0,0,0" flowline_arr=""/>
+			<caption control_id="16" autosize="0" x="1320" y="6" right="454" bottom="1114" width="274" height="180" designtime_only="1" text="화면 속성&#x0D;&#x0A;width : 1200, width_type : 2자동,&#x0D;&#x0A;height : 900, &#x0D;&#x0A;&#x0D;&#x0A; ※ 화면 사이즈는 디자인된 &#x0D;&#x0A;   단말 UI 표준에 맞게 재조정이 필요함&#x0D;&#x0A;" font="맑은 고딕,9,0,0,0,0" transparent="1" border="1" border_ex="0,2,00B4B4B4,,0,,0,0,1,0,00FFFFFF,00E1E1E1^0,0,00B4B4B4,1^1,0,00B4B4B4,1^0,0,00B4B4B4,1^1,0,00B4B4B4,1" mousehover_font="맑은 고딕,9,0,0,0,0" flowline_arr=""/>
+		</hidden_screen>
+	</map>
+</map_list>

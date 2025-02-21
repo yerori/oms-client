@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]협력업체평가계획등록" directory="/SMT/" screenid="SmtSet1151" last_update_date="2023-03-28 14:18:17" width="352" width_type="0" height="526" height_type="0" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" funclist="screen_on_load,fnDsSearchSet,fnPageSet,btnApply_on_mouseup,screen_on_destroy,btnClose_on_mouseup,screen_on_submitcomplete,grdList_on_itemdblclick,fnEnter,ReturnClosePopup,fldVendorName_on_changed,btnVendorNamePop_on_click,fnVendorPopupCall,fnVendorClosePopCallback"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;EVAL_YEAR::::;VENDOR_CODE::::;VENDOR_NAME::::"/>
+		<xlinkdataset id="dsList" desc="월별 평가계획일" columns="OU_CODE::::;VENDOR_CODE::::;VENDOR_NAME::::;BIZ_TYPE::::;BIZ_TYPE_NAME::::;EVAL_YEAR::::;PLAN_DATE_01::::;PLAN_DATE_02::::;PLAN_DATE_03::::;PLAN_DATE_04::::;PLAN_DATE_05::::;PLAN_DATE_06::::;PLAN_DATE_07::::;PLAN_DATE_08::::;PLAN_DATE_09::::;PLAN_DATE_10::::;PLAN_DATE_11::::;PLAN_DATE_12::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="36,51,471,453,494,495,496,497,498,499,500,501,502,503,504,505"/>
+		<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="220" bottom="501" width="101" height="18" text="정기검사 계획" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="326" bottom="502" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnApply" meta_id="LABEL00295" x="192" y="6" right="90" bottom="495" width="70" height="25" text="적용" version="1.1" on_mouseup="eventfunc:btnApply_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="51" name="btnClose" meta_id="LABEL00012" x="269" y="6" right="13" bottom="495" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+		<roundrect control_id="134" name="rudSearch" x="10" y="38" right="12" bottom="418" width="330" height="70" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="135" autosize="0" x="13" y="48" right="269" bottom="458" width="70" height="20" text="*평가년도" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<text control_id="452" autosize="0" x="13" y="77" right="269" bottom="429" width="70" height="20" text="*업체명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="453" name="fldVendorName" in_index="1" autosize="0" x="88" y="77" right="124" bottom="427" width="140" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:VENDOR_NAME" max_length="100" on_changed="eventfunc:fldVendorName_on_changed(objInst, prev_text, curr_text, event_type)"/>
+		<text control_id="467" name="txtVendorCode" autosize="0" x="254" y="78" right="18" bottom="428" width="80" height="20" text="80009" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" link_data="dsSearch:VENDOR_CODE" version="1.1"/>
+		<image control_id="68" autosize="0" x="10" y="116" right="337" bottom="394" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="49" meta_id="LABEL00090" autosize="0" x="22" y="116" right="244" bottom="394" width="86" height="16" text="검사일자" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<datepicker control_id="471" name="dtpEvalYear" in_index="0" autosize="0" x="88" y="47" right="104" bottom="457" width="160" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSearch:EVAL_YEAR" max_length="4" date_type="2" calendar_type="3"/>
+		<image control_id="410" name="btnVendorNamePop" autosize="0" x="227" y="77" right="105" bottom="427" width="20" height="22" transparent="0" border="0" padding="0,0,0,0" image="/ico_search_22.gif" image_width="20" image_height="22" mouse_cursor="11" on_click="eventfunc:btnVendorNamePop_on_click(objInst)"/>
+		<table style="tbl_normal" control_id="472" name="tblEvalPlan" x="10" y="139" right="13" bottom="9" width="329" height="378">
+			<cell style="HS_table_cell_01" rect="0,0,128,30" font="맑은 고딕,9,1,0,0,0" horz_align="1" text="검사월"/>
+			<cell rect="127,0,329,30" font="맑은 고딕,9,1,0,0,0" fore_color="00333333" back_color="00FFFBF7" text="검사일자"/>
+			<cell rect="0,29,128,59" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" text="1월"/>
+			<cell rect="127,29,329,59" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+			<cell rect="0,58,128,88" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" text="2월"/>
+			<cell rect="127,58,329,88" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+			<cell rect="0,87,128,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" text="3월"/>
+			<cell rect="127,87,329,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+			<cell rect="0,116,128,146" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" text="4월"/>
+			<cell rect="127,116,329,146" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+			<cell rect="0,145,128,175" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" text="5월"/>
+			<cell rect="127,145,329,175" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+			<cell rect="0,174,128,204" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" text="6월"/>
+			<cell rect="127,174,329,204" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+			<cell rect="0,203,128,233" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" text="7월"/>
+			<cell rect="127,203,329,233" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+			<cell rect="0,232,128,262" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" text="8월"/>
+			<cell rect="127,232,329,262" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+			<cell rect="0,261,128,291" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" text="9월"/>
+			<cell rect="127,261,329,291" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+			<cell rect="0,290,128,320" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" text="10월"/>
+			<cell rect="127,290,329,320" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+			<cell rect="0,319,128,349" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" text="11월"/>
+			<cell rect="127,319,329,349" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+			<cell rect="0,348,128,378" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" text="12월"/>
+			<cell rect="127,348,329,378" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+		</table>
+		<datepicker control_id="494" name="dtpPlanDate01" autosize="0" x="147" y="172" right="21" bottom="332" width="184" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsList:PLAN_DATE_01" delimiter_char="-" showtodaybar="1" calendar_type="1"/>
+		<datepicker control_id="495" name="dtpPlanDate02" autosize="0" x="147" y="201" right="21" bottom="303" width="184" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsList:PLAN_DATE_02" delimiter_char="-" showtodaybar="1" calendar_type="1"/>
+		<datepicker control_id="496" name="dtpPlanDate03" autosize="0" x="147" y="230" right="21" bottom="274" width="184" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsList:PLAN_DATE_03" delimiter_char="-" showtodaybar="1" calendar_type="1"/>
+		<datepicker control_id="497" name="dtpPlanDate04" autosize="0" x="147" y="259" right="21" bottom="245" width="184" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsList:PLAN_DATE_04" delimiter_char="-" showtodaybar="1" calendar_type="1"/>
+		<datepicker control_id="498" name="dtpPlanDate05" autosize="0" x="147" y="288" right="21" bottom="216" width="184" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsList:PLAN_DATE_05" delimiter_char="-" showtodaybar="1" calendar_type="1"/>
+		<datepicker control_id="499" name="dtpPlanDate06" autosize="0" x="147" y="317" right="21" bottom="187" width="184" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsList:PLAN_DATE_06" delimiter_char="-" showtodaybar="1" calendar_type="1"/>
+		<datepicker control_id="500" name="dtpPlanDate07" autosize="0" x="147" y="346" right="21" bottom="158" width="184" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsList:PLAN_DATE_07" delimiter_char="-" showtodaybar="1" calendar_type="1"/>
+		<datepicker control_id="501" name="dtpPlanDate08" autosize="0" x="147" y="375" right="21" bottom="129" width="184" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsList:PLAN_DATE_08" delimiter_char="-" showtodaybar="1" calendar_type="1"/>
+		<datepicker control_id="502" name="dtpPlanDate09" autosize="0" x="147" y="404" right="21" bottom="100" width="184" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsList:PLAN_DATE_09" delimiter_char="-" showtodaybar="1" calendar_type="1"/>
+		<datepicker control_id="503" name="dtpPlanDate10" autosize="0" x="147" y="433" right="21" bottom="71" width="184" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsList:PLAN_DATE_10" delimiter_char="-" showtodaybar="1" calendar_type="1"/>
+		<datepicker control_id="504" name="dtpPlanDate11" autosize="0" x="147" y="462" right="21" bottom="42" width="184" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsList:PLAN_DATE_11" delimiter_char="-" showtodaybar="1" calendar_type="1"/>
+		<datepicker control_id="505" name="dtpPlanDate12" autosize="0" x="147" y="491" right="21" bottom="13" width="184" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsList:PLAN_DATE_12" delimiter_char="-" showtodaybar="1" calendar_type="1"/>
+	</map>
+</map_list>

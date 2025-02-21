@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[Tab]공통 페이지 상단 끝" directory="/FRAME/" screenid="PageTopEndT" last_update_date="2022-04-12 14:19:31" width="80" width_type="0" height="30" height_type="0" on_load="eventfunc:screen_on_load()" funclist="btnCommonClose_on_mouseup,screen_on_load"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" x="1" y="2" right="9" bottom="3" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objinst)"/>
+	</map>
+</map_list>

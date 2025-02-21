@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]시간관리상세" directory="/RND/" screenid="Rnd1011" click_setfocus="1" last_update_date="2024-05-29 14:04:01" width="1120" width_type="2" height="350" height_type="1" canvas_width="1126" canvas_height="351" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnSetInitControl,setWorkTypeCombo,setDevPhaseCombo,setWorkNameCombo,fnComboSet,fnSearch,screen_on_submitcomplete,screen_on_size,screen_on_messagebox,btnCommonDelete_on_mouseup,btnCommonSave_on_mouseup,fnSaveData,getWorkDateInfo,btnClose_on_mouseup,ReturnClosePopup,screen_on_destroy,fldWorkDate_on_changed,fnValidForm,fldDevPhase_on_itemchange,btnCommonCopy_on_mouseup,fnCopyTrx,fnCopyComboActive,fnGetComboActive,btnCommonCreate_on_mouseup,btnPjtPopup_on_click,fnPjtClosePopCallback,fnTaskClosePopCallback,fldWorkType_on_itemchange,fnChangePjtText,fldWorkType_on_focusin,fldDevPhase_on_focusin,fldWorkName_on_focusin,fnGetEmpInfo,fnCheckDeptEmpEnable"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="WORK_ID::::;OU_CODE::::"/>
+		<xlinkdataset id="dsWork" desc="시간관리상세내역" columns="WORK_ID::::;OU_CODE::::;EMP_NO::::;WORK_DATE::::;DEPT_CODE::::;JIKJONG_CODE::::;JIKWI_CODE::::;WORK_TYPE::::;PJT_CODE::::;PJT_NAME::::;DEV_PHASE::::;WORK_NAME::::;WORK_TEXT::::;WORK_TIME::::;USER_ID::::"/>
+		<xlinkdataset id="dsWorkIdSeq" desc="Work Id Sequence" columns="SEQ_ID::::"/>
+		<xlinkdataset id="dsReturn" desc="Package 호출 결과값" columns="O_DATE_INFO::::;O_ERROR_MSG::::"/>
+		<xlinkdataset id="dsWorkType" desc="업무성격 콤보박스" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsDevPhase" desc="개발단계 콤보박스" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsWorkName" desc="업무명 콤보박스" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsComboReturn" desc="" columns="O_WORKTYPE_FLAG::::;O_DEVPHASE_FLAG::::;O_WORKNAME_FLAG::::;O_ERROR_MSG::::"/>
+		<xlinkdataset id="dsDeptEmpReturn" desc="Package 호출 결과값" columns="O_DEPT_FLAG::::;O_EMP_FLAG::::;O_ERROR_MSG::::"/>
+		<xlinkdataset id="dsEmpInfo" desc="Package 호출 결과값" columns="O_DEPT_CODE::::;O_DEPT_NAME::::;O_JIKJONG_CODE::::;O_JIKWI_CODE::::;O_JIKWI_NAME::::;O_ERROR_MSG::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_COM_CO" url="" comment="코드 저장처리(추가, 수정, 삭제)">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="조회">
+		</xlinktranmap>
+		<xlinktranmap id="TR_GET_INFO" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_WORK_ID" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_WORK_TYPE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_DEV_PHASE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_WORK_NAME" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_WORK_NAME_ACTIVE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_GET_COPY_COMBO_INFO" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_CHECK_DEPT_EMP_ENABLE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_GET_EMP_INFO" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_GET_COMBO_INFO" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="415"/>
+		<tableview control_id="415" name="tbv" position="1" x="0" y="0" right="0" bottom="10" width="1120" width_unit="1" height="340" height_percent="99" height_type="0" cell_line_vertstyle="0" cell_line_horzstyle="0" row_count="1" column_count="2" row_height="338:px" column_width="300:px,818:px" pixelwidth_resize="0" design_fixmode="0" mergeinfo="0,0,0,1" version="2.0">
+			<tab_order order_option="0" order_info="662,676,663,664,665,680,681,682,542,483,686,495,687,685,683,684,650,644"/>
+			<tr>
+				<td colspan="2" rect="0,0,300,338">
+					<table control_id="641" name="TAB_HOUR" x="17" y="65" right="21" bottom="8" width="1080" height="265" font="맑은 고딕,9,0,0,0,0">
+						<cell rect="0,0,132,34" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="부서"/>
+						<cell rect="131,0,270,34" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+						<cell rect="269,0,401,34" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="성명"/>
+						<cell rect="400,0,539,34" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+						<cell rect="538,0,670,34" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="사번"/>
+						<cell rect="669,0,808,34" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+						<cell rect="807,0,939,34" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="직위"/>
+						<cell rect="938,0,1080,34" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+						<cell rect="0,33,132,67" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="*근무일자"/>
+						<cell rect="131,33,270,67" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+						<cell rect="0,66,132,98" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="*업무성격"/>
+						<cell cell_id="PJT_TEXT" rect="0,97,132,133" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="*프로젝트"/>
+						<cell rect="0,132,132,166" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="*업무단계"/>
+						<cell rect="131,132,1080,166" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7"/>
+						<cell rect="0,165,132,199" font="맑은 고딕,9,0,0,0,0" back_color="00FFFBF7" horz_align="2" text="*업무명"/>
+						<cell rect="131,165,1080,199" font="맑은 고딕,9,0,0,0,0" back_color="00FFFBF7"/>
+						<cell rect="0,198,132,232" font="맑은 고딕,9,0,0,0,0" back_color="00FFFBF7" horz_align="2" text="*설명"/>
+						<cell rect="131,198,1080,232" font="맑은 고딕,9,0,0,0,0" back_color="00FFFBF7"/>
+						<cell rect="0,231,132,265" font="맑은 고딕,9,0,0,0,0" back_color="00FFFBF7" horz_align="2" text="*시간"/>
+						<cell rect="131,231,1080,265" font="맑은 고딕,9,0,0,0,0" back_color="00FFFBF7"/>
+						<cell rect="131,66,1080,98" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7"/>
+						<cell rect="131,97,1080,133" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7"/>
+						<cell rect="269,33,1080,67" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7"/>
+					</table>
+					<text control_id="638" autosize="0" x="30" y="40" right="888" bottom="282" width="200" height="16" text="시간관리 등록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+					<image control_id="639" autosize="0" x="18" y="40" right="1095" bottom="282" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+					<hangul_field control_id="542" name="fldDeptName" in_index="0" autosize="0" x="154" y="71" right="837" bottom="245" width="127" height="22" font="맑은 고딕,9,0,0,0,0" enable="0" input_type="2" editable="0" max_length="23" tabstop="0"/>
+					<numericex_field control_id="644" name="fldWorkTime" in_index="12" autosize="0" x="154" y="301" right="906" bottom="13" width="58" height="24" font="맑은 고딕,9,0,0,0,0" link_data="dsWork:WORK_TIME" max_length="5" max_value="20" min_value="0" pattern="Z9.99"/>
+					<hangul_field control_id="650" name="fldWorkText" in_index="11" autosize="0" x="154" y="268" right="33" bottom="46" width="931" height="24" font="맑은 고딕,9,0,0,0,0" link_data="dsWork:WORK_TEXT" max_length="200"/>
+					<image control_id="660" autosize="0" x="9" y="7" right="1093" bottom="315" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+					<text control_id="661" name="stSystemMenuTitle" autosize="0" x="30" y="6" right="888" bottom="314" width="200" height="18" text="연구원 시간 관리 상세" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+					<pushbutton style="HS_BTN_CLOSE_01" control_id="662" name="btnCommonCreate" meta_id="LABEL01958" x="738" y="7" right="310" bottom="306" width="70" height="25" text="신규" version="1.1" on_mouseup="eventfunc:btnCommonCreate_on_mouseup(objInst)"/>
+					<pushbutton style="HS_BTN_CLOSE_01" control_id="663" name="btnCommonDelete" meta_id="LABEL00010" x="882" y="7" right="166" bottom="306" width="70" height="25" text="삭제" version="1.1" on_mouseup="eventfunc:btnCommonDelete_on_mouseup(objInst)"/>
+					<pushbutton style="HS_BTN_CLOSE_01" control_id="664" name="btnCommonSave" meta_id="LABEL00011" x="954" y="7" right="94" bottom="306" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+					<pushbutton style="HS_BTN_CLOSE_01" control_id="665" name="btnClose" x="1027" y="7" right="21" bottom="306" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+					<datepicker control_id="483" name="fldWorkDate" in_index="4" autosize="0" x="154" y="104" right="837" bottom="210" width="127" height="24" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsWork:WORK_DATE" delimiter_char="-" showtodaybar="1" calendar_type="1" auto_skip="0" on_changed="eventfunc:fldWorkDate_on_changed(objInst, prev_text, curr_text, event_type)"/>
+					<combobox control_id="495" name="fldWorkType" in_index="6" autosize="0" x="154" y="135" right="704" bottom="179" width="260" height="24" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsWorkType:CODE:NAME:" link_data="dsWork:WORK_TYPE" default_value="Y" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_itemchange="eventfunc:fldWorkType_on_itemchange(objInst, nprev_item, ncur_item, event_type)" on_focusin="eventfunc:fldWorkType_on_focusin(objInst)"/>
+					<pushbutton style="HS_BTN_CLOSE_01" control_id="676" name="btnCommonCopy" x="810" y="7" right="238" bottom="306" width="70" height="25" text="복사" version="1.1" on_mouseup="eventfunc:btnCommonCopy_on_mouseup(objInst)"/>
+					<hangul_field control_id="680" name="fldEmpName" in_index="1" autosize="0" x="423" y="70" right="568" bottom="244" width="127" height="24" font="맑은 고딕,9,0,0,0,0" enable="0" input_type="2" editable="0" max_length="23" tabstop="0"/>
+					<hangul_field control_id="681" name="fldEmpNo" in_index="2" autosize="0" x="692" y="70" right="299" bottom="244" width="127" height="24" font="맑은 고딕,9,0,0,0,0" enable="0" input_type="2" editable="0" max_length="23" tabstop="0"/>
+					<hangul_field control_id="682" name="fldJikwiName" in_index="3" autosize="0" x="962" y="70" right="29" bottom="244" width="127" height="24" font="맑은 고딕,9,0,0,0,0" enable="0" input_type="2" editable="0" max_length="23" tabstop="0"/>
+					<combobox control_id="683" name="fldDevPhase" in_index="9" autosize="0" x="154" y="202" right="34" bottom="112" width="930" height="24" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsDevPhase:CODE:NAME:" link_data="dsWork:DEV_PHASE" default_value="Y" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_itemchange="eventfunc:fldDevPhase_on_itemchange(objInst, nprev_item, ncur_item, event_type)" on_focusin="eventfunc:fldDevPhase_on_focusin(objInst)"/>
+					<combobox control_id="684" name="fldWorkName" in_index="10" autosize="0" x="154" y="235" right="34" bottom="79" width="930" height="24" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsWorkName:CODE:NAME:" link_data="dsWork:WORK_NAME" default_value="Y" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_focusin="eventfunc:fldWorkName_on_focusin(objInst)"/>
+					<hangul_field control_id="685" name="fldPjtCode" in_index="8" autosize="0" x="694" y="168" right="34" bottom="146" width="390" height="24" font="맑은 고딕,9,0,0,0,0" link_data="dsWork:PJT_CODE" enable="0" editable="0" max_length="100" tabstop="0"/>
+					<hangul_field control_id="686" name="fldWorkDateRemark" in_index="5" autosize="0" x="292" y="104" right="705" bottom="210" width="121" height="24" font="맑은 고딕,9,0,0,0,0" link_data="dsReturn:O_DATE_INFO" enable="0" max_length="23" tabstop="0"/>
+					<hangul_field control_id="687" name="fldPjtName" in_index="7" autosize="0" x="154" y="168" right="450" bottom="146" width="514" height="24" font="맑은 고딕,9,0,0,0,0" link_data="dsWork:PJT_NAME" enable="0" editable="0" max_length="1000" tabstop="0"/>
+					<text control_id="688" x="216" y="307" right="878" bottom="19" width="24" height="12" text="(HR)" font="맑은 고딕,9,0,0,0,0" version="1.1"/>
+				</td>
+				<td hidden="1" rect="300,0,1118,338">
+				</td>
+			</tr>
+		</tableview>
+		<image control_id="410" name="btnPjtPopup" autosize="0" x="671" y="169" right="425" bottom="157" width="24" height="24" transparent="0" border="0" padding="0,0,0,0" image="/ico_search_24.gif" image_width="22" image_height="24" mouse_cursor="11" on_click="eventfunc:btnPjtPopup_on_click(objInst)"/>
+	</map>
+</map_list>

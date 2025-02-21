@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="empInfo_Summary" directory="/FRAME/" screenid="EmpSummaryInfo" last_update_date="2021-12-22 16:26:44" width="500" width_type="0" height="300" height_type="0"/>
+		<panel control_id="2" semantic_tag="0" x="6" y="6" right="8" bottom="6" width="486" height="288" title_font="맑은 고딕,9,0,0,0,0">
+			<image control_id="3" name="img" autosize="0" x="14" y="14" right="272" bottom="14" width="198" height="258" transparent="0" padding="0,0,0,0" link_data="G_EMP_INFO:IMAGE_URL" image="/hs_logo.gif" imagesize="3" image_width="120" image_height="36" default_image_usage="1" alt="no image"/>
+			<text control_id="4" x="240" y="12" right="193" bottom="256" width="51" height="18" text="직원번호:" font="맑은 고딕,9,0,0,0,0" version="1.1"/>
+			<text control_id="5" x="264" y="39" right="193" bottom="229" width="27" height="18" text="성명:" font="맑은 고딕,9,0,0,0,0" version="1.1"/>
+			<text control_id="6" x="252" y="66" right="193" bottom="202" width="39" height="18" text="연락처:" font="맑은 고딕,9,0,0,0,0" version="1.1"/>
+			<text control_id="7" x="254" y="93" right="193" bottom="175" width="37" height="18" text="E-Mail:" font="맑은 고딕,9,0,0,0,0" version="1.1"/>
+			<text control_id="8" x="264" y="120" right="193" bottom="148" width="27" height="18" text="직급:" font="맑은 고딕,9,0,0,0,0" version="1.1"/>
+			<text control_id="9" x="264" y="147" right="193" bottom="121" width="27" height="18" text="직책:" font="맑은 고딕,9,0,0,0,0" version="1.1"/>
+			<text control_id="10" name="txtEmpNo" autosize="0" x="300" y="12" right="16" bottom="256" width="168" height="18" text="-" font="맑은 고딕,9,0,0,0,0" link_data="G_EMP_INFO:EMP_NO" version="1.1"/>
+			<text control_id="11" name="txtName" autosize="0" x="300" y="39" right="16" bottom="229" width="168" height="18" text="-" font="맑은 고딕,9,0,0,0,0" link_data="G_EMP_INFO:EMP_NAME" version="1.1"/>
+			<text control_id="12" name="txtPhoneNumber" autosize="0" x="300" y="66" right="16" bottom="202" width="168" height="18" text="-" font="맑은 고딕,9,0,0,0,0" link_data="G_EMP_INFO:PHONE_NUMBER" version="1.1"/>
+			<text control_id="13" name="txtEmail" autosize="0" x="300" y="93" right="16" bottom="175" width="168" height="18" text="-" font="맑은 고딕,9,0,0,0,0" link_data="G_EMP_INFO:EMAIL" version="1.1"/>
+			<text control_id="14" name="txtGradeNM" autosize="0" x="300" y="120" right="16" bottom="148" width="168" height="18" text="-" font="맑은 고딕,9,0,0,0,0" link_data="G_EMP_INFO:GRADE_NAME" version="1.1"/>
+			<text control_id="15" name="txtPositionNM" autosize="0" x="300" y="147" right="16" bottom="121" width="168" height="18" text="-" font="맑은 고딕,9,0,0,0,0" link_data="G_EMP_INFO:POSITION_NAME" version="1.1"/>
+			<text control_id="16" x="264" y="174" right="193" bottom="94" width="27" height="18" text="소속:" font="맑은 고딕,9,0,0,0,0" version="1.1"/>
+			<text control_id="17" name="txtBranchNM" autosize="0" x="300" y="174" right="16" bottom="94" width="168" height="18" text="-" font="맑은 고딕,9,0,0,0,0" link_data="G_EMP_INFO:BRANCH_NAME" version="1.1"/>
+			<text control_id="18" x="264" y="204" right="193" bottom="64" width="27" height="18" text="부서:" font="맑은 고딕,9,0,0,0,0" version="1.1"/>
+			<text control_id="19" name="txtDeptNM" autosize="0" x="300" y="204" right="16" bottom="64" width="168" height="18" text="-" font="맑은 고딕,9,0,0,0,0" link_data="G_EMP_INFO:DEPT_NAME" version="1.1"/>
+		</panel>
+	</map>
+</map_list>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="팀별PSO진행현황" directory="/INTRO/" screenid="sv_4" click_setfocus="1" last_update_date="2023-08-21 14:48:48" width="710" width_type="2" height="250" height_type="2" canvas_width="1900" canvas_height="600" vertscrollbar_style="0" horzscrollbar_style="0" on_load="eventfunc:screen_on_load()" funclist="screen_on_load,fnPsoDeptStat"/>
+		<xlinkdataset id="dsPsoDeptStat" desc="팀별PSO진행현황" columns="OU_CODE::::;PSO_DEPT_CODE::::;PSO_DEPT_NAME::::;TARGET_CNT::::;D_PLAN_CNT::::;G_PLAN_CNT::::;G_PLAN_RATE::::;D_COMP_CNT::::;G_COMP_CNT::::;G_COMP_RATE::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_PSO_DEPT_STAT" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="462"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="684" bottom="226" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<text control_id="32" name="stSystemMenuTitle" meta_id="LABEL02706" autosize="0" x="30" y="7" right="430" bottom="225" width="250" height="18" text="팀별 PSO 진행 현황 (건)" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<grid style="HS_SINGLEVIEW_GRID_01" control_id="462" name="grdList" x="7" y="32" right="8" bottom="6" width="695" height="212" header_font="맑은 고딕,9,0,0,0,0" header_vertcount="0" selectrow_bordercolor="0080623C" link_data="dsPsoDeptStat" statistics_row="0,00000000,00E9FEFF,00000000,00D2D2D2,00000001,00000001,&quot;합 계&quot;,0,:" version="1.2">
+			<column>
+				<header meta_id="LABEL02707" title="부서(팀)"/>
+				<data style="HS_GRID_DATA_02" name="PSO_DEPT_NAME" width="100" data_type="2" show_tooltip="1" link_data="dsPsoDeptStat:PSO_DEPT_NAME" combobox_defaultvalue_type="1" combobox_showbutton="0" combobox_buttonsize="0" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02708" title="전체합산&#x0D;&#x0A;(A+B+C+D)"/>
+				<data style="HS_GRID_DATA_02" name="TARGET_CNT" width="100" data_type="0" max_length="10" pattern="-ZZZ,ZZZ,ZZZ" show_tooltip="1" link_data="dsPsoDeptStat:TARGET_CNT" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02713" title="진행/지연&#x0D;&#x0A;(A)"/>
+				<data style="HS_GRID_DATA_02" name="D_PLAN_CNT" width="100" data_type="0" max_length="10" pattern="-ZZZ,ZZZ,ZZZ" show_tooltip="1" link_data="dsPsoDeptStat:D_PLAN_CNT" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02712" title="진행/정상&#x0D;&#x0A;(B)"/>
+				<data style="HS_GRID_DATA_02" name="G_PLAN_CNT" width="100" data_type="0" max_length="10" pattern="-ZZZ,ZZZ,ZZZ" show_tooltip="1" link_data="dsPsoDeptStat:G_PLAN_CNT" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02714" title="정상진행율(%)&#x0D;&#x0A;(B/(A+B))*100"/>
+				<data style="HS_GRID_DATA_02" name="G_PLAN_RATE" width="100" data_type="0" max_length="7" pattern="-ZZZ.ZZ" pattern_rear_symbol="%" show_tooltip="1" statistics_show="0" link_data="dsPsoDeptStat:G_PLAN_RATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02710" title="완료/지연&#x0D;&#x0A;(C)"/>
+				<data style="HS_GRID_DATA_02" name="D_COMP_CNT" width="100" data_type="0" max_length="10" pattern="-ZZZ,ZZZ,ZZZ" show_tooltip="1" link_data="dsPsoDeptStat:D_COMP_CNT" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02709" title="완료/정상&#x0D;&#x0A;(D)"/>
+				<data style="HS_GRID_DATA_02" name="G_COMP_CNT" width="100" data_type="0" max_length="10" pattern="-ZZZ,ZZZ,ZZZ" show_tooltip="1" link_data="dsPsoDeptStat:G_COMP_CNT" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02711" title="정상완료율(%)&#x0D;&#x0A;(D/(C+D))*100"/>
+				<data style="HS_GRID_DATA_02" name="G_COMP_RATE" width="100" data_type="0" max_length="7" pattern="-ZZZ.ZZ" pattern_rear_symbol="%" show_tooltip="1" statistics_show="0" link_data="dsPsoDeptStat:G_COMP_RATE" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+	</map>
+</map_list>

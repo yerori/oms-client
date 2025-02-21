@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]공지사항" directory="/FRAME/" screenid="popupNotice" click_setfocus="1" last_update_date="2023-06-15 10:15:42" width="838" width_type="2" height="750" height_type="2" canvas_width="1126" canvas_height="752" on_load="eventfunc:screen_on_load()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_popupdestroy="eventfunc:screen_on_popupdestroy(popup_screen, popup_name, result)" funclist="screen_on_load,fnPageSet,fnSearch,screen_on_submitcomplete,btnClose_on_mouseup,grdAttach_on_itemdblclick,screen_on_popupdestroy,chkTodayClose_on_click"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="BOARD_NO::::;TITLE::::"/>
+		<xlinkdataset id="dsPopup" desc="팝업공지사항" columns="BOARD_NO::::;TITLE::::;CONTENT::::;ATTATCH_ID::::;ATTCH_FLAG::::;CATEGORY::::;ITEM_TYPE::::;EFFECTIVE_START_DATE::::;EFFECTIVE_END_DATE::::"/>
+		<xlinkdataset id="dsAttachList" desc="첨부파일" columns="ATTFILE_NM::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_COM_CO" url="" comment="코드 저장처리(추가, 수정, 삭제)">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="조회">
+		</xlinktranmap>
+		<xlinktranmap id="TR_DELETE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_BOARD_NO" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="0,51,129"/>
+		<image control_id="660" autosize="0" x="9" y="7" right="813" bottom="727" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<text control_id="638" name="txtTitle" meta_id="LABEL02593" autosize="0" x="30" y="5" right="24" bottom="729" width="784" height="16" text="글 등록" font="맑은 고딕,12,1,0,0,0" link_data="dsSearch:TITLE" version="1.1"/>
+		<htmleditor control_id="691" name="hEditContent" x="18" y="32" right="20" bottom="123" width="800" height="595" font="맑은 고딕,9,0,0,0,0" padding="10"/>
+		<grid style="HS_GRID_BASIC_01" control_id="0" name="grdAttach" x="18" y="637" right="20" bottom="37" width="800" height="76" header_backcolor="00FFFBF7" header_vertcount="0" header_height="30" cell_height="22" selectrow_bordercolor="0080623C" link_data="dsAttachList" samplerows="2" autocolumnwidth="1" version="1.2" on_itemdblclick="eventfunc:grdAttach_on_itemdblclick(objInst, nDblClickRow, nDblClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header meta_id="LABEL02598" title="첨부 파일명"/>
+				<data style="HS_GRID_DATA_02" width="1078" text_horzalign="0" link_data="dsAttachList:ATTFILE_NM" combobox_editable="0" combobox_defaultvalue_type="2" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<checkbox control_id="129" name="chkTodayClose" meta_id="LABEL02608" x="18" y="722" right="580" bottom="10" width="240" height="18" font="맑은 고딕,12,0,0,0,0" fore_color="00A17441" back_color_opacity="0" drawfocusrect="0" text=" 오늘 하루 이 창을 열지 않음" true_value="Y" false_value="N" on_click="eventfunc:chkTodayClose_on_click(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="51" name="btnClose" meta_id="LABEL00012" x="747" y="719" right="21" bottom="6" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+	</map>
+</map_list>

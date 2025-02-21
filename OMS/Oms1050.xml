@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="견적원가관리" directory="/OMS/" screenid="Oms1050" last_update_date="2024-05-30 09:38:28" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,fnDsSet,fnSetInitControl,screen_on_submitcomplete,btnCommonSearch_on_mouseup,screen_on_messagebox,screen_on_size,grdMaster_on_itemdblclick,btnCommonClose_on_mouseup,comOu_on_itemchange,grdList_on_itemclick,btnAddRow_on_mouseup,btnDelRow_on_mouseup,btnCommonSave_on_mouseup,fnValidForm,fnSearch,fnSaveData,ComProductName_on_prekeydown,btnProjectPop_on_click,fnPopupProjectPopCallback,grdList_on_columnclick,fnAttFilePopCallback,grdList_on_itemvaluechanged"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;PROJECT_CODE::::;CUSTOMER_NAME::::;CAR_TYPE_NAME::::;DETAIL_STATUS_CODE::::;ACT_STATUS_CODE::::;ACT_STATUS_CODE_SORT::::;ITEM_NAME::::;ERP_ITEM_NO::::;PROJECT_PRODUCT_ID::::;AUTH::::"/>
+		<xlinkdataset id="dsOU" desc="법인 LIST" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsList" desc="목록" columns="ESTIMATE_COST_ID:&quot;ID&quot;:::;OU_CODE:&quot;법인코드(회사)&quot;:::;PROJECT_CODE:&quot;프로젝트 코드&quot;:::;PROJECT_PRODUCT_ID:&quot;프로젝 제품 ID&quot;:::;ESTIMATE_DATE:&quot;일자&quot;:::;SALES_PRICE:&quot;판가&quot;:::;TOTAL_COST:&quot;총원가&quot;:::;REVENUE_COST:&quot;이윤&quot;:::;MATERIAL_COST:&quot;재료비&quot;:::;PROCESS_COST:&quot;가공비&quot;:::;LABOR_COST:&quot;노무비&quot;:::;MANUFACTUR_COST:&quot;제조경비&quot;:::;EXPENSE_COST:&quot;직접경비&quot;:::;EQUIPMENT_DEPR_COST:&quot;설비 감가비&quot;:::;MOLD_DEPR_COST:&quot;금형 감가비&quot;:::;REPAIR_COST:&quot;수선비&quot;:::;ELECTRICITY_COST:&quot;전력비&quot;:::;OVERHEAD_COST:&quot;간접경비&quot;:::;VARIABLE_OVH_COST:&quot;간접비(변동)&quot;:::;FIXED_OVH_COST:&quot;간접비(고정)&quot;:::;SGNA_COST:&quot;판관비&quot;:::;MAINTENANCE_COST:&quot;일반관리비&quot;:::;TEST_COST:&quot;시험비용&quot;:::;TRANSPORTATION_COST:&quot;운반비&quot;:::;PACKAGING_COST:&quot;포장비&quot;:::;COMMISSION_COST:&quot;판매수수료&quot;:::;OTHER_COST:&quot;기타비용&quot;:::;QUALITY_COST:&quot;품질비용&quot;:::;INSPECTION_COST:&quot;성능검사비&quot;:::;INTEREST_COST:&quot;이자비용&quot;:::;CONFIRM:&quot;확정&quot;:::;TARGET_COST_YN:&quot;목표원가&quot;:::;REMARK:&quot;비고&quot;:::;OLD_ESTIMATE_COST_ID:&quot;ID&quot;:::;INS_DATE:&quot;생성일시&quot;:::;INS_USER_ID:&quot;생성자&quot;:::;UPD_DATE:&quot;최종수정일시&quot;:::;UPD_USER_ID:&quot;최종수정자&quot;:::;UPD_USER_NAME:&quot;최종수정자명&quot;:::;REG_SEQ:&quot;등록순번&quot;:::"/>
+		<xlinkdataset id="dsCurrency" desc="통화코드 (F018)" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsProcResult" desc="" columns="RETCODE::::;RETMESG::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SITE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_ALL" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_ACT_CODE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_COPY" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,474,453,552,567,585,558,557,0"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="1" order_info="35,36,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="1204" y="6" right="164" bottom="4" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="30" y="7" right="1208" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1348" y="6" right="20" bottom="4" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" meta_id="LABEL00011" anchor="2" x="1274" y="6" right="94" bottom="4" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="676" width="1411" width_percent="98" width_unit="1" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="49" meta_id="LABEL00090" autosize="0" x="24" y="90" right="1216" bottom="652" width="200" height="16" text="목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="68" autosize="0" x="10" y="90" right="1425" bottom="652" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="551" meta_id="LABEL01898" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="474" name="comOu" in_index="0" autosize="0" x="102" y="52" right="1178" bottom="686" width="160" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOU:CODE:NAME:" link_data="dsSearch:OU_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_itemchange="eventfunc:comOu_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<text control_id="532" meta_id="LABEL02379" autosize="0" x="930" y="52" right="438" bottom="686" width="72" height="20" text="품명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="0" name="grdList" in_index="20" x="9" y="114" right="20" bottom="20" width="1411" width_percent="98" height="624" resize_dir="3" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" checkrowwithselect="1" link_data="dsList" samplerows="4" autocolumnwidth="2" version="1.2" on_itemselchange="eventfunc:grdList_on_itemselchange(objInst, nPrevSelectRow, nPrevSelectColumn, nCurSelectRow, nCurSelectColumn)" on_itemclick="eventfunc:grdList_on_itemclick(objInst, nClickRow, nClickColumn, bBtnClick, nImgIndex, strImgUrl)" on_itemvaluechanged="eventfunc:grdList_on_itemvaluechanged(objInst, nRow, nColumn, strPrevItemText, strItemText)">
+			<column>
+				<header title="No."/>
+				<data style="HS_GRID_DATA_02" width="40" text_horzalign="2" data_type="0" max_length="5" pattern="ZZZZZ" link_data="dsList:REG_SEQ" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02636" title="*견적일자"/>
+				<data style="HS_GRID_DATA_01" name="ESTIMATE_DATE" width="106" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsList:ESTIMATE_DATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02637" title="*판가"/>
+				<data style="HS_GRID_DATA_02" name="SALES_PRICE" width="103" text_horzalign="2" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:SALES_PRICE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="총원가"/>
+				<data style="HS_GRID_DATA_02" name="TOTAL_COST" width="103" text_horzalign="2" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:TOTAL_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="HS이윤"/>
+				<data name="REVENUE_COST" width="102" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:REVENUE_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="총재료비"/>
+				<data name="MATERIAL_COST" width="102" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:MATERIAL_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="가공비합계"/>
+				<data style="HS_GRID_DATA_02" name="PROCESS_COST" width="103" text_horzalign="2" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:PROCESS_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="노무비"/>
+				<data name="LABOR_COST" width="98" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:LABOR_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="제조경비"/>
+				<data style="HS_GRID_DATA_02" name="MANUFACTUR_COST" width="103" text_horzalign="2" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:MANUFACTUR_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="직접경비"/>
+				<data style="HS_GRID_DATA_02" name="EXPENSE_COST" width="103" text_horzalign="2" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:EXPENSE_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="설비감가비"/>
+				<data name="EQUIPMENT_DEPR_COST" width="101" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:EQUIPMENT_DEPR_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="금형감가비"/>
+				<data name="MOLD_DEPR_COST" width="101" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:MOLD_DEPR_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="수선비"/>
+				<data name="REPAIR_COST" width="101" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:REPAIR_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="전력비"/>
+				<data name="ELECTRICITY_COST" width="101" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:ELECTRICITY_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="간접경비"/>
+				<data style="HS_GRID_DATA_02" name="OVERHEAD_COST" width="103" text_horzalign="2" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:OVERHEAD_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="간접비(변동)"/>
+				<data name="VARIABLE_OVH_COST" width="101" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:VARIABLE_OVH_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="간접비(고정)"/>
+				<data name="FIXED_OVH_COST" width="101" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:FIXED_OVH_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="판관비합계"/>
+				<data style="HS_GRID_DATA_02" name="SGNA_COST" width="103" text_horzalign="2" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:SGNA_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="일반관리비"/>
+				<data name="MAINTENANCE_COST" width="101" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:MAINTENANCE_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="시험비용"/>
+				<data name="TEST_COST" width="101" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:TEST_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="운반비"/>
+				<data name="TRANSPORTATION_COST" width="101" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:TRANSPORTATION_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="포장비"/>
+				<data name="PACKAGING_COST" width="101" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:PACKAGING_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="판매수수료"/>
+				<data name="COMMISSION_COST" width="101" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:COMMISSION_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="기타비용"/>
+				<data style="HS_GRID_DATA_02" name="OTHER_COST" width="103" text_horzalign="2" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:OTHER_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="품질비용"/>
+				<data name="QUALITY_COST" width="101" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:QUALITY_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="성능검사비"/>
+				<data name="INSPECTION_COST" width="101" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:INSPECTION_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="이자비용"/>
+				<data name="INTEREST_COST" width="101" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:INTEREST_COST" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00212" title="첨부파일"/>
+				<data style="HS_GRID_DATA_02" name="ATT_YN" width="34" link_data="dsList:ATT_YN" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="첨부파일"/>
+				<data style="HS_GRID_DATA_02" name="ATT_YN_POPUP" width="20" image="/ico_search_1.gif" image_horzalign="1" resizable="0" link_data="dsList:UPDATE_USER_NAME" bargauge_transparent="0" on_columnclick="eventfunc:grdList_on_columnclick(objInst, nColumn, bBtnClick, nImgIndex, strImgUrl)"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02642" title="목표원가"/>
+				<data style="HS_GRID_DATA_01" name="TARGET_COST_YN" editable="1" data_type="2" input_type="1" link_data="dsList:TARGET_COST_YN" picklist_linkdata="dsAction:CODE:NAME:" combobox_editable="0" checkbox_truevalue="Y" checkbox_falsevalue="N" radio_items="&quot;&quot;,&quot;Y&quot;" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00060" title="비고"/>
+				<data name="REMARK" width="322" editable="1" data_type="2" link_data="dsList:REMARK" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="최종수정자"/>
+				<data style="HS_GRID_DATA_BC_01" width="88" data_type="2" max_length="15" excel_rw="0" link_data="dsList:UPD_USER_NAME" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="최종저장시각"/>
+				<data style="HS_GRID_DATA_BC_01" width="111" text_horzalign="1" data_type="0" max_length="15" pattern="9999-99-99 99:99" excel_rw="0" link_data="dsList:UPD_DATE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00908" title="확정"/>
+				<data style="HS_GRID_DATA_01" name="CONFIRM" width="51" editable="1" input_type="1" link_data="dsList:CONFIRM" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info="0,27,0,28:"/>
+		</grid>
+		<hangul_field control_id="552" name="edtCustomerName" in_index="2" autosize="0" x="755" y="52" right="545" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:CUSTOMER_NAME" editable="0" max_length="100" make_case="1" imemode="0" on_prekeydown="eventfunc:edtCustomerName_on_prekeydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="553" meta_id="LABEL00193" autosize="0" x="672" y="52" right="688" bottom="686" width="80" height="20" text="고객명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="558" name="btnAddRow" meta_id="LABEL00541" anchor="2" x="1277" y="88" right="93" bottom="647" width="70" height="23" text="행추가" version="1.1" on_mouseup="eventfunc:btnAddRow_on_mouseup(objInst)"/>
+		<text control_id="452" meta_id="LABEL02407" autosize="0" x="336" y="52" right="1024" bottom="686" width="80" height="20" text="*프로젝트코드" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="453" name="edtProjectCode" in_index="1" autosize="0" x="420" y="52" right="848" bottom="686" width="172" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:PROJECT_CODE" editable="0" max_length="100" on_keydown="eventfunc:edtVendorName_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_changed="eventfunc:edtProjectCode_on_changed(objInst, prev_text, curr_text, event_type)"/>
+		<image control_id="559" name="btnProjectPop" autosize="0" x="592" y="52" right="829" bottom="686" width="19" height="20" transparent="0" border="0" padding="0,0,0,0" image="/ico_search.gif" image_width="19" image_height="20" mouse_cursor="11" on_click="eventfunc:btnProjectPop_on_click(objInst)"/>
+		<hangul_field control_id="567" name="edtItem" in_index="3" autosize="0" x="1008" y="52" right="318" bottom="686" width="114" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:ITEM_NAME" editable="0" max_length="100"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="557" name="btnDelRow" meta_id="LABEL00542" anchor="2" x="1350" y="88" right="20" bottom="647" width="70" height="23" text="행삭제" version="1.1" on_mouseup="eventfunc:btnDelRow_on_mouseup(objInst)"/>
+		<hangul_field control_id="585" name="edtErpItem" autosize="0" x="1260" y="52" right="41" bottom="686" width="139" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:ERP_ITEM_NO" editable="0" max_length="100" on_keydown="eventfunc:edtCarType_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="586" meta_id="LABEL02622" autosize="0" x="1194" y="52" right="192" bottom="686" width="54" height="20" text="품번(ERP)" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+	</map>
+</map_list>

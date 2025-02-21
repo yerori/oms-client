@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]처리중" directory="/FRAME/" screenid="processing" last_update_date="2023-01-05 11:30:40" width="419" width_type="0" height="230" height_type="0" funclist="timerAutoMaxClose_on_time"/>
+		<image control_id="1" autosize="0" x="0" y="0" right="0" bottom="0" width="419" height="230" transparent="0" border="0" padding="0,0,0,0" image="/processing_back1.png" image_width="419" image_height="230"/>
+		<image control_id="0" autosize="0" x="162" y="64" right="175" bottom="157" width="82" height="9" transparent="0" border="0" padding="0,0,0,0" image="/process.gif" imagesize="1" image_width="182" image_height="20"/>
+		<hidden_screen>
+			<timer control_id="2" name="timerAutoMaxClose" x="391" y="0" width="28" height="28" enable="1" interval="10000" on_time="eventfunc:timerAutoMaxClose_on_time(objInst)"/>
+		</hidden_screen>
+	</map>
+</map_list>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]PSO프로젝트서류목록요약현황" directory="/PSO/" screenid="Pso1052" last_update_date="2023-07-20 11:37:54" width="526" width_type="0" height="326" height_type="0" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" funclist="screen_on_load,fnDsSearchSet,btnSearch_on_mouseup,screen_on_destroy,btnClose_on_mouseup,screen_on_submitcomplete"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;PSO_DOCU_ID::::"/>
+		<xlinkdataset id="dsChgList" desc="프로젝담당자현황" columns="PSO_DOCU_ID::::;PSO_DEPT_CODE::::;PSO_DEPT_NAME::::;CHG_USER_ID::::;CHG_USER_NAME::::"/>
+		<xlinkdataset id="dsPDList" desc="프로젝계획일현황" columns="PSO_DOCU_ID::::;PSO_DOC_STEP::::;DOC_STEP_NAME::::;M_MAKE_PLAN_DATE::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="1" order_info="433,434,51"/>
+		<text control_id="32" name="stSystemMenuTitle" meta_id="LABEL02683" autosize="0" x="31" y="7" right="195" bottom="301" width="300" height="18" text="PSO 프로젝트 서류 목록 요약 현황" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="500" bottom="302" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="51" name="btnClose" meta_id="LABEL00012" x="441" y="6" right="15" bottom="295" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+		<image control_id="68" autosize="0" x="10" y="34" right="511" bottom="276" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="49" meta_id="LABEL02684" autosize="0" x="22" y="34" right="364" bottom="276" width="140" height="16" text="프로젝트 담당자 현황" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="433" name="grdChgList" x="10" y="54" right="256" bottom="12" width="260" height="260" header_vertcount="0" header_height="28" cell_height="22" hoverrow_forecolor="00222222" vertscrollbar_style="2" link_data="dsChgList" samplerows="6" version="1.2" on_itemdblclick="eventfunc:grdList_on_itemdblclick(objInst, nDblClickRow, nDblClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header meta_id="LABEL02217" title="담당자부서"/>
+				<data style="HS_GRID_DATA_02" name="PSO_DEPT_NAME" width="160" text_horzalign="0" link_data="dsChgList:PSO_DEPT_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00209" title="담당자"/>
+				<data style="HS_GRID_DATA_02" name="CHG_USER_NAME" link_data="dsChgList:CHG_USER_NAME" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<grid style="HS_GRID_BASIC_01" control_id="434" name="grdPDList" x="295" y="54" right="11" bottom="12" width="220" height="260" header_vertcount="0" header_height="28" cell_height="22" hoverrow_forecolor="00222222" vertscrollbar_style="2" link_data="dsPDList" samplerows="6" version="1.2" on_itemdblclick="eventfunc:grdList_on_itemdblclick(objInst, nDblClickRow, nDblClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header meta_id="LABEL02361" title="활동단계"/>
+				<data style="HS_GRID_DATA_02" name="DOC_STEP_NAME" width="100" link_data="dsPDList:DOC_STEP_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02686" title="목표일정"/>
+				<data style="HS_GRID_DATA_02" name="M_MAKE_PLAN_DATE" width="100" pattern="YYYY-MM-DD" link_data="dsPDList:M_MAKE_PLAN_DATE" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<text control_id="435" meta_id="LABEL02685" autosize="0" x="309" y="34" right="77" bottom="276" width="140" height="16" text="PSO 목표일정 현황" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="436" autosize="0" x="294" y="34" right="227" bottom="276" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+	</map>
+</map_list>

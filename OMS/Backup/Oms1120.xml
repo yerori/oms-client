@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="중장기계획 Upload(가로)" directory="/OMS/" screenid="Oms1120" last_update_date="2023-08-29 11:46:10" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,fnDsSet,fnSetTitle,fnSetInitControl,screen_on_submitcomplete,btnCommonSearch_on_mouseup,screen_on_messagebox,fnSaveData,screen_on_size,grdMaster_on_itemdblclick,btnCommonClose_on_mouseup,fnVendorClosePopCallback,btnVendorPop_on_click,fnGetDateByDayGap,comOu_on_itemchange,grdList_on_itemclick,btnCustomerPop_on_click,fnPopupCustClosePopCallback,edtCustomerName_on_prekeydown,btnDownLoad_on_mouseup,fldDateS_on_changed,ComCustGroup_on_prekeydown,ComProductGroup_on_prekeydown,ComImportance_on_prekeydown,btnUpload_on_mouseup,grdList_on_fileload,btnCommonSave_on_mouseup,fnValidForm,fnUpload"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;PROJECT_CODE::::;BASE_YEAR::::;ACT_STATUS_CODE::::;DETAIL_STATUS_CODE::::;ROLLING_YN::::;CUSTOMER_ID::::;CUSTOMER_NAME::::;RFQ_CODE::::;PROJECT_LATEST_YN::::"/>
+		<xlinkdataset id="dsOU" desc="법인 LIST" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsActStatus" desc="활동단계 code(O015)" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsList" desc="목록" columns="OU_CODE::::;PROJECT_CODE::::;PROJECT_VERSION::::;CAR_TYPE_CODE::::;CAR_TYPE_NAME::::;REGISTER_YEAR::::;IMPORTANCE_CODE::::;IMPORTANCE_NAME::::;ACT_STATUS_CODE::::;ACT_STATUS_NAME::::;DETAIL_STATUS_CODE::::;DETAIL_STATUS_NAME::::;OU_COUNTRY_CODE::::;OU_COUNTRY_NAME::::;SOP::::;EOP::::;DOMESTIC_EXPORT_CODE::::;DOMESTIC_EXPORT_NAME::::;RFQ_RESPONSE_ID::::;RFQ_RESPONSE_NAME::::;TARGET_YEAR::::;CUSTOMER_ID::::;CUSTOMER_NAME::::;CUSTOMER_GROUP::::;CUSTOMER_GROUP_NAME::::;ERP_CUSTOMER_ID::::;ERP_CUSTOMER_NAME::::;CUSTOMER_NATION_CODE::::;CUSTOMER_NATION_NAME::::;OEM::::;PRODUCT_GROUP_CODE::::;PRODUCT_GROUP_NAME::::;PRODUCT_NAME_CODE::::;PRODUCT_NAME::::;PRODUCT_MODEL_CODE::::;PRODUCT_MODEL_NAME::::;ITEM_NAME::::;ERP_ITEM_NO::::;BUSINESS_GROUP_CODE::::;BUSINESS_GROUP_NAME::::;PRODUCT_PKG_CODE::::;PRODUCT_PKG_NAME::::;REMARK::::;CUSTOMER_AREA::::;SALES_TYPE_CODE::::;SALES_TYPE_NAME::::;PRODUCTION_AREA_CODE::::;PRODUCTION_AREA_NAME::::;CURRENCY_CODE::::;CURRENCY_NAME::::;RFQ_CODE::::;ORG_PROJECT_CODE::::;LATEST_YN::::;PROJECT_PRODUCT_ID::::;INCOTERMS_CODE::::;INCOTERMS_NAME::::;INCOTERMS_DETAIL::::;PLAN_VERSION::::;BASE_YEAR::::;PLAN_LATEST_YN::::;EXCHANGE::::;M1_QTY::::;M2_QTY::::;M3_QTY::::;M4_QTY::::;M5_QTY::::;M6_QTY::::;M7_QTY::::;M8_QTY::::;M9_QTY::::;M10_QTY::::;M11_QTY::::;M12_QTY::::;Y1_QTY::::;Y2_QTY::::;Y3_QTY::::;Y4_QTY::::;Y5_QTY::::;Y6_QTY::::;Y7_QTY::::;Y8_QTY::::;Y9_QTY::::;Y10_QTY::::;Y11_QTY::::;Y12_QTY::::;Y13_QTY::::;Y14_QTY::::;Y15_QTY::::;M1_UNIT_PRICE::::;M2_UNIT_PRICE::::;M3_UNIT_PRICE::::;M4_UNIT_PRICE::::;M5_UNIT_PRICE::::;M6_UNIT_PRICE::::;M7_UNIT_PRICE::::;M8_UNIT_PRICE::::;M9_UNIT_PRICE::::;M10_UNIT_PRICE::::;M11_UNIT_PRICE::::;M12_UNIT_PRICE::::;Y1_UNIT_PRICE::::;Y2_UNIT_PRICE::::;Y3_UNIT_PRICE::::;Y4_UNIT_PRICE::::;Y5_UNIT_PRICE::::;Y6_UNIT_PRICE::::;Y7_UNIT_PRICE::::;Y8_UNIT_PRICE::::;Y9_UNIT_PRICE::::;Y10_UNIT_PRICE::::;Y11_UNIT_PRICE::::;Y12_UNIT_PRICE::::;Y13_UNIT_PRICE::::;Y14_UNIT_PRICE::::;Y15_UNIT_PRICE::::;M1_AMT::::;M2_AMT::::;M3_AMT::::;M4_AMT::::;M5_AMT::::;M6_AMT::::;M7_AMT::::;M8_AMT::::;M9_AMT::::;M10_AMT::::;M11_AMT::::;M12_AMT::::;Y1_AMT::::;Y2_AMT::::;Y3_AMT::::;Y4_AMT::::;Y5_AMT::::;Y6_AMT::::;Y7_AMT::::;Y8_AMT::::;Y9_AMT::::;Y10_AMT::::;Y11_AMT::::;Y12_AMT::::;Y13_AMT::::;Y14_AMT::::;Y15_AMT::::;ROLLING_YN::::;ERROR_MESSAGE::::"/>
+		<xlinkdataset id="dsCustGroup" desc="고객그룹(O014)" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsProGroup" desc="제품군 (O007)" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsExchange" desc="환율버젼" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsImportance" desc="중요도 코드(O017)" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsDetailStatus" desc="Detail Status&#x0A;Code(O016)" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsCustNa" desc="고객국가(O005)" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsMonth" desc="조회 달" columns="M1::::;M2::::;M3::::;M4::::;M5::::;M6::::;M7::::;M8::::;M9::::;M10::::;M11::::;M12::::;Y1::::;Y2::::;Y3::::;Y4::::;Y5::::;Y6::::;Y7::::;Y8::::;Y9::::;Y10::::;Y11::::;Y12::::;Y13::::;Y14::::"/>
+		<xlinkdataset id="dsProcResult" desc="" columns="RETCODE::::;RETMESG::::"/>
+		<xlinkdataset id="dsCurrency" desc="통화코드 (F018)" columns="CODE::::;NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SITE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_EXCHANGE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_MONTH" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_VALIDATE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_UPLOAD" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_ALL" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,566,552,474,455,483,584,578,580,571,586,0"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="1" order_info="35,36,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="1199" y="5" right="169" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="30" y="7" right="1208" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1348" y="5" right="20" bottom="5" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" meta_id="LABEL00011" anchor="2" x="1274" y="5" right="94" bottom="5" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="646" width="1411" width_percent="98" width_unit="1" height="70" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="49" meta_id="LABEL00090" autosize="0" x="24" y="125" right="1216" bottom="617" width="200" height="16" text="목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="68" autosize="0" x="10" y="125" right="1425" bottom="617" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="551" meta_id="LABEL01898" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="474" name="comOu" in_index="0" autosize="0" x="102" y="52" right="1178" bottom="686" width="160" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOU:CODE:NAME:" link_data="dsSearch:OU_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_itemchange="eventfunc:comOu_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<grid style="HS_GRID_BASIC_01" control_id="0" name="grdList" in_index="20" x="9" y="153" right="20" bottom="17" width="1411" width_percent="98" height="588" resize_dir="3" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" checkrowwithselect="1" link_data="dsList" samplerows="4" dynamic_fixedrows="1" dynamic_fixedcols="1" autocolumnwidth="2" version="1.2" on_itemclick="eventfunc:grdList_on_itemclick(objInst, nClickRow, nClickColumn, bBtnClick, nImgIndex, strImgUrl)" on_itemdblclick="eventfunc:grdList_on_itemdblclick(objInst, nDblClickRow, nDblClickColumn, bBtnClick, nImgIndex, strImgUrl)" on_fileload="eventfunc:grdList_on_fileload(objInst, nResult, strCode, strMsg, strFileName, nLoadStartTime, nStartRowIndex, nEndRowIndex)">
+			<column>
+				<header meta_id="LABEL00064" title="프로젝트코드"/>
+				<data style="HS_GRID_DATA_BC_01" name="PROJECT_CODE" width="183" link_data="dsList:PROJECT_CODE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02379" title="품명"/>
+				<data style="HS_GRID_DATA_BC_01" width="112" link_data="dsList:PRODUCT_NAME" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02622" title="품번(ERP)"/>
+				<data style="HS_GRID_DATA_BC_01" width="112" link_data="dsList:ERP_ITEM_NO" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02624" title="*Product ID"/>
+				<data style="HS_GRID_DATA_BC_01" name="PROJECT_PRODUCT_ID" width="78" text_horzalign="1" data_type="2" max_length="15" link_data="dsList:PROJECT_PRODUCT_ID" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01802" title="*기준년도"/>
+				<data style="HS_GRID_DATA_BC_01" name="BASE_YEAR" width="56" text_horzalign="1" link_data="dsList:BASE_YEAR" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02617" title="중장기계획 버전"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="1" link_data="dsList:PLAN_VERSION" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02729" title="Rolling 여부"/>
+				<data style="HS_GRID_DATA_BC_01" width="76" text_horzalign="1" excel_rw="0" link_data="dsList:ROLLING_YN" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02673" title="거래조건"/>
+				<data style="HS_GRID_DATA_BC_01" name="INCOTERMS_CODE" width="84" link_data="dsList:INCOTERMS_CODE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02657" title="거래조건 상세"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" link_data="dsList:INCOTERMS_DETAIL" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M1_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:M1_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M2_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:M2_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M3_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:M3_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M4_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:M4_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M5_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:M5_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M6_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:M6_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M7_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:M7_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M8_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:M8_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M9_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:M9_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M10_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:M10_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M11_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:M11_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M12_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:M12_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y1_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:Y1_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y2_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:Y2_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y3_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:Y3_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y4_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:Y4_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y5_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:Y5_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y6_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:Y6_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y7_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:Y7_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y8_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:Y8_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y9_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:Y9_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y10_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:Y10_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y11_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:Y11_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y12_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:Y12_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y13_QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:Y13_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y14QTY"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:Y14_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M1_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:M1_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M2_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:M2_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M3_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:M3_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M4_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:M4_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M5_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:M5_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M6_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:M6_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M7_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:M7_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M8_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:M8_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M9_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:M9_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M10_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:M10_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M11_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:M11_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M12_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:M12_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y1_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:Y1_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y2_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:Y2_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y3_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:Y3_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y4_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:Y4_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y5_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:Y5_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y6_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:Y6_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y7_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:Y7_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y8_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:Y8_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y9_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:Y9_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y10_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:Y10_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y11_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:Y11_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y12_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:Y12_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y13_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:Y13_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y14_UNIT_PRICE"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZZ,ZZZ,ZZ9.9999" link_data="dsList:Y14_UNIT_PRICE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02429" title="통화"/>
+				<data style="HS_GRID_DATA_BC_01" name="CURRENCY_CODE" width="54" text_horzalign="1" input_type="2" link_data="dsList:CURRENCY_CODE" picklist_linkdata="dsCurrency:CODE:NAME:" combobox_editable="0" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M1_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:M1_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M2_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:M2_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M3_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:M3_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M4_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:M4_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M5_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:M5_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M6_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:M6_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M7_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:M7_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M8_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:M8_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M9_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:M9_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M10_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:M10_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M11_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:M11_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="M12_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:M12_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y1_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:Y1_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y2_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:Y2_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y3_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:Y3_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y4_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:Y4_QTY" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y5_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:Y5_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y6_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:Y6_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y7_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:Y7_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y8_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:Y8_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y9_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:Y9_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y10_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:Y10_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y11_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:Y11_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y12_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:Y12_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y13_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:Y13_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Y14_AMT"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="2" data_type="0" max_length="15" pattern="-ZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:Y14_AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02646" title="오류"/>
+				<data style="HS_GRID_DATA_BC_01" width="184" forecolor="00820EFF" data_type="2" max_length="15" excel_rw="0" link_data="dsList:ERROR_MESSAGE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<datepicker control_id="483" name="fldDateS" in_index="1" autosize="0" x="102" y="82" right="1239" bottom="656" width="99" height="20" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSearch:BASE_YEAR" max_length="4" delimiter_char="-" date_type="2" showtodaybar="1" on_changed="eventfunc:fldDateS_on_changed(objInst, prev_text, curr_text, event_type)"/>
+		<text control_id="135" meta_id="LABEL01802" autosize="0" x="17" y="82" right="1343" bottom="656" width="80" height="20" text="*기준년도" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="578" name="ComActStatus" in_index="6" autosize="0" x="810" y="82" right="470" bottom="656" width="160" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsActStatus:CODE:NAME:" link_data="dsSearch:ACT_STATUS_CODE" default_value_type="1" default_value_usage="1" auto_codevalid="1" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" selecttable_rowdatadelimiter="," maxselectcount="0" value_delimiter="|" display_delimiter="," show_checkbox="1" show_allcheckbox="1" on_itemchange="eventfunc:task_sch_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<text control_id="579" meta_id="LABEL02361" autosize="0" x="744" y="82" right="636" bottom="656" width="60" height="20" text="활동 단계" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="580" name="ComDetail" in_index="7" autosize="0" x="1182" y="82" right="98" bottom="656" width="160" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsDetailStatus:CODE:NAME:" link_data="dsSearch:DETAIL_STATUS_CODE" default_value_type="1" default_value_usage="1" auto_codevalid="1" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" maxselectcount="0" value_delimiter="|" display_delimiter="," show_checkbox="1" show_allcheckbox="1" on_itemchange="eventfunc:task_sch_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<text control_id="581" meta_id="LABEL02382" autosize="0" x="1116" y="82" right="264" bottom="656" width="60" height="20" text="상세상태" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="584" name="ComRolling" in_index="9" autosize="0" x="479" y="82" right="900" bottom="656" width="61" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:ROLLING_YN" default_value_type="1" default_value_usage="1" auto_codevalid="1" editable="0" combobox_data="del=&apos;:&apos; pos=&apos;0&apos; style=&apos;1&apos; content=&apos;:&#x0D;&#x0A;Y:Y&#x0D;&#x0A;N:N&apos;" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" value_delimiter="|" display_delimiter=","/>
+		<text control_id="585" meta_id="LABEL02729" autosize="0" x="390" y="82" right="967" bottom="656" width="83" height="20" text="Rolling 여부" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<hangul_field control_id="455" name="edtProjectCode" in_index="1" autosize="0" x="479" y="52" right="821" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:PROJECT_CODE" max_length="100" make_case="1" imemode="0"/>
+		<text control_id="454" meta_id="LABEL00064" autosize="0" x="396" y="52" right="964" bottom="686" width="80" height="20" text="프로젝트코드" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="571" name="btnDownLoad" meta_id="LABEL02614" anchor="2" x="1278" y="125" right="92" bottom="610" width="70" height="23" text="Download" version="1.1" on_mouseup="eventfunc:btnDownLoad_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="586" name="btnUpload" meta_id="LABEL02120" anchor="2" x="1350" y="125" right="20" bottom="610" width="70" height="23" text="Upload" version="1.1" on_mouseup="eventfunc:btnUpload_on_mouseup(objInst)"/>
+		<text control_id="565" meta_id="LABEL02470" autosize="0" x="726" y="48" right="634" bottom="690" width="80" height="20" text="RFQ Code" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="566" name="edtRfqCode" in_index="2" autosize="0" x="809" y="48" right="491" bottom="690" width="140" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:RFQ_CODE" max_length="100" make_case="1" imemode="0"/>
+		<text control_id="553" meta_id="LABEL00193" autosize="0" x="1098" y="48" right="262" bottom="690" width="80" height="20" text="고객명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="552" name="edtCustomerName" in_index="3" autosize="0" x="1181" y="48" right="119" bottom="690" width="140" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:CUSTOMER_NAME" max_length="100" make_case="1" imemode="0" on_prekeydown="eventfunc:edtCustomerName_on_prekeydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<image control_id="410" name="btnCustomerPop" autosize="0" x="1320" y="48" right="101" bottom="690" width="19" height="20" transparent="0" border="0" padding="0,0,0,0" image="/ico_search.gif" image_width="19" image_height="20" mouse_cursor="11" on_click="eventfunc:btnCustomerPop_on_click(objInst)"/>
+	</map>
+</map_list>

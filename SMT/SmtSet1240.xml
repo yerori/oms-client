@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="수신그룹 관리" directory="/SMT/" screenid="SmtSet1240" last_update_date="2023-03-28 14:20:36" width="1400" width_type="2" height="750" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,fnGetReceiveGroup,fnSetInitControl,cboOuCode_on_itemchange,screen_on_submitcomplete,fnSearch,fnSearch_detail,fnValidForm,fnSaveData,btnCommonSearch_on_mouseup,btnCommonSave_on_mouseup,screen_on_messagebox,cboOuCode_on_keydown,edtLoginNo_on_keydown,edtEmpNo_on_keydown,btnCommonClose_on_mouseup,screen_on_size,btnVendorPop_on_click,fnVendorClosePopCallback,fnVendorPopupCall,edtVendorName_on_changed,btnLine_RIGHT_on_mouseup,btnLine_LEFT_on_mouseup,btnCommonCreate_on_mouseup,fnNewClosePopCallback"/>
+		<xlinkdataset id="dsOuCode" desc="법인코드정보" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;SITE_CODE::::;VENDOR_NAME::::;VENDOR_CODE::::;ISSUE_USER_DEPT::::;ISSUE_USER_DEPT_CODE::::;DOC_NUM::::;START_DATE::::;END_DATE::::;OFFICIAL_TYPE::::;PROGRAM_ID::::;RECEIVE_GROUP::::;RECEIVE_APPLY::::"/>
+		<xlinkdataset id="dsDept" desc="담당자부서" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsReceiveGroup" desc="수신그룹" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsReturn" desc="Package 호출 결과값" columns="X_RETCODE::::;X_RETMESG::::"/>
+		<xlinkdataset id="dsList" desc="수신사정보조회" columns="OU_CODE::::;VENDOR_CODE::::;VENDOR_NAME::::;CHG_NAME::::;CHG_JIKGUB::::;CHG_EMAIL_ADDR::::;CHECK_FLAG::::;RECEVIE_GROUP::::;VENDOR_CHG_INFO_ID::::"/>
+		<xlinkdataset id="dsVendorList" desc="거래처정보조회" columns="OU_CODE::::;VENDOR_CODE::::;VENDOR_NAME::::;CHG_NAME::::;CHG_JIKGUB::::;CHG_EMAIL_ADDR::::;CHECK_FLAG::::;VENDOR_CHG_INFO_ID::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_COM_CO" url="" comment="User 저장처리(추가, 수정, 삭제)">
+		</xlinktranmap>
+		<xlinktranmap id="TR_MASTER_INFO" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_DETAIL_INFO" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_APPROVE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_DOC_ID" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_RECEIVE_GROUP" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,474,2025,455,555,433,691,436,690"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="0" bottom="711" width="1400" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="0" order_info="2023,35,36,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" anchor="2" x="1068" y="5" right="262" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" anchor="2" x="1142" y="5" right="188" bottom="5" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1374" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="1169" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1310" y="5" right="20" bottom="5" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="2023" name="btnCommonCreate" anchor="2" x="940" y="5" right="370" bottom="5" width="90" height="25" text="수신그룹등록" version="1.1" on_mouseup="eventfunc:btnCommonCreate_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<text control_id="135" autosize="0" x="17" y="52" right="1303" bottom="678" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<text control_id="454" autosize="0" x="546" y="52" right="774" bottom="678" width="80" height="20" text="업체명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="455" name="edtVendorName" in_index="3" autosize="0" x="631" y="52" right="609" bottom="678" width="160" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:VENDOR_NAME" max_length="100" make_case="1" imemode="0" on_changed="eventfunc:edtVendorName_on_changed(objInst, prev_text, curr_text, event_type)"/>
+		<text control_id="457" autosize="0" x="288" y="52" right="1032" bottom="678" width="80" height="20" text="*수신그룹" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<combobox control_id="474" name="cboOuCode" in_index="0" autosize="0" x="102" y="52" right="1138" bottom="678" width="160" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOuCode:CODE:NAME:" link_data="dsSearch:OU_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_itemchange="eventfunc:cboOuCode_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="19" bottom="668" width="1372" width_percent="98" width_unit="1" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="49" autosize="0" x="24" y="95" right="1276" bottom="639" width="100" height="16" text="거래처" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="68" autosize="0" x="10" y="95" right="1374" bottom="639" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<image control_id="2009" name="btnVendorPop" autosize="0" x="791" y="52" right="590" bottom="678" width="19" height="20" transparent="0" border="0" padding="0,0,0,0" image="/ico_search.gif" image_width="19" image_height="20" mouse_cursor="11" on_click="eventfunc:btnVendorPop_on_click(objInst)"/>
+		<hangul_field control_id="555" name="edtVendorCode" autosize="0" x="810" y="52" right="548" bottom="678" width="42" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:VENDOR_CODE" hidden="1" max_length="15"/>
+		<combobox control_id="2025" name="comReceiveGroup" in_index="2" autosize="0" x="384" y="52" right="854" bottom="678" width="162" height="20" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" picklist_linkdata="dsReceiveGroup:CODE:NAME:" link_data="dsSearch:RECEIVE_GROUP" max_length="100" auto_codevalid="1" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="433" name="grdVendorList" in_index="6" x="8" y="116" right="788" bottom="10" width="604" height="624" resize_dir="2" header_vertcount="0" header_height="28" cell_height="22" hoverrow_forecolor="00222222" link_data="dsVendorList" samplerows="25" version="1.2">
+			<column>
+				<header title="" checkbox_show="1"/>
+				<data style="HS_GRID_DATA_01" name="CHECK_FLAG" width="38" editable="1" input_type="1" link_data="dsVendorList:CHECK_FLAG" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="업체명"/>
+				<data style="HS_GRID_DATA_01" name="VENDOR_NAME" width="234" text_horzalign="0" link_data="dsVendorList:VENDOR_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="담당자"/>
+				<data style="HS_GRID_DATA_01" name="CHG_NAME" width="101" link_data="dsVendorList:CHG_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="직급"/>
+				<data style="HS_GRID_DATA_01" width="94" link_data="dsVendorList:CHG_JIKGUB" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="업체코드"/>
+				<data style="HS_GRID_DATA_01" name="VENDOR_CODE" width="127" link_data="dsVendorList:VENDOR_CODE" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<grid style="HS_GRID_BASIC_01" control_id="691" name="grdList" in_index="7" x="678" y="116" right="20" bottom="10" width="702" height="624" resize_dir="3" header_vertcount="0" header_height="28" cell_height="22" hoverrow_forecolor="00222222" link_data="dsList" samplerows="25" version="1.2">
+			<column>
+				<header title="" checkbox_show="1"/>
+				<data style="HS_GRID_DATA_01" name="CHECK_FLAG" width="38" editable="1" input_type="1" link_data="dsList:CHECK_FLAG" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="수신그룹"/>
+				<data style="HS_GRID_DATA_02" name="RECEVIE_GROUP" width="166" backcolor="00FFFFFF" input_type="2" link_data="dsList:RECEVIE_GROUP" picklist_linkdata="dsReceiveGroup:CODE:NAME:" combobox_style="1" combobox_editable="0" combobox_defaultvalue_type="2" combobox_autocodevalid="0" calendar_image="" calendar_type="0" calendar_editable="0" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="업체명"/>
+				<data style="HS_GRID_DATA_01" name="VENDOR_NAME" width="206" text_horzalign="0" link_data="dsList:VENDOR_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="담당자"/>
+				<data style="HS_GRID_DATA_01" name="CHG_NAME" width="104" link_data="dsList:CHG_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="직급"/>
+				<data name="CHG_JIKGUB" width="83" link_data="dsList:CHG_JIKGUB" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="업체코드"/>
+				<data style="HS_GRID_DATA_01" name="VENDOR_CODE" width="92" link_data="dsList:VENDOR_CODE" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="436" name="btnLine_RIGHT" x="631" y="324" right="749" bottom="406" width="20" height="20" text="▶" tooltip="한단계위로" version="1.1" on_mouseup="eventfunc:btnLine_RIGHT_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="690" name="btnLine_LEFT" x="631" y="366" right="749" bottom="364" width="20" height="20" text="◀" tooltip="한단계아래로" version="1.1" on_mouseup="eventfunc:btnLine_LEFT_on_mouseup(objInst)"/>
+	</map>
+</map_list>

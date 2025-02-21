@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="나의PSO진행현황" directory="/INTRO/" screenid="sv_6" click_setfocus="1" last_update_date="2023-08-21 15:11:44" width="710" width_type="2" height="250" height_type="2" canvas_width="1900" canvas_height="600" vertscrollbar_style="0" horzscrollbar_style="0" on_load="eventfunc:screen_on_load()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" funclist="screen_on_load,fnPsoMyStat,grdList_on_itemdblclick"/>
+		<xlinkdataset id="dsPsoMyStatSum" desc="나의PSO진행현황(요약)" columns="OU_CODE::::;CHG_USER_ID::::;CHG_USER_NAME::::;TARGET_CNT::::;T_PLAN_CNT::::;D_PLAN_CNT::::;G_PLAN_CNT::::;T_COMP_CNT::::;D_COMP_CNT::::;G_COMP_CNT::::"/>
+		<xlinkdataset id="dsPsoMyStat" desc="나의PSO진행현황" columns="OU_CODE::::;PROJECT_CODE::::;PSO_DOCU_ID::::;PSO_DOC_STEP::::;DOC_STEP_NAME::::;PSO_DOCU_LINE_STAT::::;DOCU_LINE_STAT_NAME::::;CNT::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_PSO_MY_STAT" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="464,462"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="684" bottom="226" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<text control_id="32" name="stSystemMenuTitle" meta_id="LABEL02716" autosize="0" x="30" y="7" right="500" bottom="225" width="180" height="18" text="나의 PSO 진행 현황 (건)" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<grid style="HS_SINGLEVIEW_GRID_01" control_id="462" name="grdList" x="7" y="80" right="8" bottom="8" width="695" height="162" height_percent="65" header_font="맑은 고딕,9,0,0,0,0" header_vertcount="0" selectrow_bordercolor="0080623C" link_data="dsPsoMyStat" statistics_row="0,00000000,00E9FEFF,00000000,00D2D2D2,00000001,00000001,&quot;합 계&quot;,,:" version="1.2" on_itemdblclick="eventfunc:grdList_on_itemdblclick(objInst, nDblClickRow, nDblClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header meta_id="LABEL00064" title="프로젝트코드"/>
+				<data style="HS_GRID_DATA_02" name="PROJECT_CODE" width="180" text_horzalign="0" data_type="2" show_tooltip="1" link_data="dsPsoMyStat:PROJECT_CODE" combobox_defaultvalue_type="1" combobox_showbutton="0" combobox_buttonsize="0" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02361" title="활동단계"/>
+				<data style="HS_GRID_DATA_02" name="DOC_STEP_NAME" width="60" data_type="2" show_tooltip="1" link_data="dsPsoMyStat:DOC_STEP_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00897" title="진행상태"/>
+				<data style="HS_GRID_DATA_02" name="DOCU_LINE_STAT_NAME" width="140" data_type="2" link_data="dsPsoMyStat:DOCU_LINE_STAT_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02730" title="합산"/>
+				<data style="HS_GRID_DATA_02" name="CNT" width="60" data_type="0" max_length="5" pattern="-Z,ZZZ" link_data="dsPsoMyStat:CNT" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<grid style="HS_SINGLEVIEW_GRID_01" control_id="464" name="grdSum" x="7" y="30" right="8" bottom="178" width="695" height="42" height_percent="17" header_font="맑은 고딕,9,0,0,0,0" header_vertcount="0" header_height="22" cell_height="22" cell_linecolor="00EDEAE6" selectrow_style="0" linenumber_hd_forecolor="00FFFFFF" linenumber_hd_backcolor="00CDBF31" linenumber_forecolor="00707070" linenumber_backcolor="00FFFFFF" linenumber_style="1" vertscrollbar_style="0" box_shadow_effect="0" link_data="dsPsoMyStatSum" samplerows="1" version="1.2">
+			<column>
+				<header meta_id="LABEL02717" title="전체합산"/>
+				<data style="HS_GRID_DATA_02" name="TARGET_CNT" width="99" backcolor="00ADCBF8" data_type="0" max_length="9" pattern="ZZZ,ZZZ,ZZZ" link_data="dsPsoMyStatSum:TARGET_CNT" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02723" title="진행합산"/>
+				<data style="HS_GRID_DATA_02" name="T_PLAN_CNT" width="99" backcolor="00D6E4FC" data_type="0" max_length="9" pattern="ZZZ,ZZZ,ZZZ" link_data="dsPsoMyStatSum:T_PLAN_CNT" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02722" title="진행/지연"/>
+				<data style="HS_GRID_DATA_02" name="D_PLAN_CNT" width="99" data_type="0" max_length="9" pattern="ZZZ,ZZZ,ZZZ" link_data="dsPsoMyStatSum:D_PLAN_CNT" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02721" title="진행/정상"/>
+				<data style="HS_GRID_DATA_02" name="G_PLAN_CNT" width="99" data_type="0" max_length="9" pattern="ZZZ,ZZZ,ZZZ" link_data="dsPsoMyStatSum:G_PLAN_CNT" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02720" title="완료합산"/>
+				<data style="HS_GRID_DATA_02" name="T_COMP_CNT" width="99" backcolor="00D6E4FC" data_type="0" max_length="9" pattern="ZZZ,ZZZ,ZZZ" link_data="dsPsoMyStatSum:T_COMP_CNT" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02719" title="완료/지연"/>
+				<data style="HS_GRID_DATA_02" name="D_COMP_CNT" width="99" data_type="0" max_length="9" pattern="ZZZ,ZZZ,ZZZ" link_data="dsPsoMyStatSum:D_COMP_CNT" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02718" title="완료/정상"/>
+				<data style="HS_GRID_DATA_02" name="G_COMP_CNT" width="99" data_type="0" max_length="9" pattern="ZZZ,ZZZ,ZZZ" link_data="dsPsoMyStatSum:G_COMP_CNT" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+	</map>
+</map_list>

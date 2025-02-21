@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]첨부파일" directory="/FRAME/" screenid="AttachFilePop" last_update_date="2023-08-24 17:07:44" width="584" width_type="0" height="256" height_type="0" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" funclist="screen_on_load,fnScreenSet,fnPageSet,fnSearchList,screen_on_submitcomplete,fnDownListSet,fnFilDelete,grdAttachFile_on_dropfiles,btnFileAdd_on_mouseup,fnFileAdd,btnFileDel_on_mouseup,btnFileDown_on_mouseup,fnAttachSize,btnSave_on_mouseup,fnAttachResult,fnTranDelete,fnTran,fnDownResult,btnClose_on_mouseup,btnPreView_on_mouseup,screen_on_destroy,ReturnClosePopup,uploader_basic_on_filecomplete,uploader_basic_on_fileprogress,downloader_basic_on_fileprogress,downloader_basic_on_filecomplete,fileControl_on_selectfiles,uploader_basic_on_uploadcomplete"/>
+		<xlinkdataset id="dsAttachFile" desc="" columns="ATT_FILE_ID::::;ATT_ID::::;ATT_SEQ_NUM::::;ATTFILE_NM::::;SAVEFILE_NM::::;FILE_SIZE::::;FILE_SIZE_KB::::;SUBFOLDER:&quot;db서버경로&quot;:::;SUBFOLDER1:&quot;실제서버경로&quot;:::;FILE_GUBUN::::;REF_NAME::::;REF_ID::::;FILE_PATH::::;OU_CODE::::;ATTACH_RESULT::::;ATTACH_RESULT_MSG::::"/>
+		<xlinkdataset id="dsAttachPath" desc="" columns="CODE::::;REF_1::::"/>
+		<xlinkdataset id="dsDeleteFile" desc="" columns="ATT_ID::::;ATTFILE_NM::::"/>
+		<xlinkdataset id="dsTempAttachFile" desc="" columns="ATT_FILE_ID::::;ATT_ID::::;ATT_SEQ_NUM::::;ATTFILE_NM::::;SAVEFILE_NM::::;FILE_SIZE::::;FILE_SIZE_KB::::;SUBFOLDER:&quot;db서버경로&quot;:::;SUBFOLDER1:&quot;실제서버경로&quot;:::;FILE_GUBUN::::;REF_NAME::::;REF_ID::::;FILE_PATH::::;OU_CODE::::;ATTACH_RESULT::::;ATTACH_RESULT_MSG::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TRANSACITON_DELETE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TRANSACITON_SAVE" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="0,124,37,403,36,408,405,409,120,407"/>
+		<uploader control_id="120" name="uploader_basic" x="504" y="219" width="28" height="28" hidden="1" on_fileprogress="eventfunc:uploader_basic_on_fileprogress(objInst, nFileIndex, strFileName, nPos)" on_filecomplete="eventfunc:uploader_basic_on_filecomplete(objInst, nFileIndex, strFileName)" on_uploadcomplete="eventfunc:uploader_basic_on_uploadcomplete(objInst)"/>
+		<grid style="HS_GRID_BASIC_01" control_id="0" name="grdAttachFile" in_index="0" x="0" y="3" right="86" bottom="3" width="498" height="250" header_vertcount="0" header_height="28" cell_height="22" cell_dividecolor="00F1F1F1" selectrow_bordercolor="0080623C" selectcell_backcolor="00C1B19D" gradient_endcolor="00F0F0F0" linenumber_show="1" linenumber_hd_forecolor="007B0000" linenumber_width="28" vertscrollbar_style="2" link_data="dsAttachFile" column_multisort_disp="1" accept_dropfiles="1" version="1.2" on_dropfiles="eventfunc:grdAttachFile_on_dropfiles(objInst, arrayDropFiles, nDropFileCount)">
+			<column>
+				<header meta_id="LABEL00033" title="파일명"/>
+				<data name="ATTFILE_NM" width="120" link_data="dsAttachFile:ATTFILE_NM" combobox_showbutton="0" combobox_buttonsize="0" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00034" title="Size(KB)"/>
+				<data name="FILE_SIZE_KB" width="64" text_horzalign="2" link_data="dsAttachFile:FILE_SIZE_KB" combobox_showbutton="0" combobox_buttonsize="0" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00662" title="진행"/>
+				<data width="200" text_horzalign="1" data_type="0" input_type="5" max_value="100" min_value="0" bargauge_margin="2,2,2,2" bargauge_backcolor="00F0F0F0" bargauge_transparent="0" bargauge_radius="4" bargauge_bar_backcolor="00FF8C57" bargauge_bar_border="1" bargauge_bar_radius="4"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01046" title="결과"/>
+				<data name="ATTACH_RESULT" width="65" text_horzalign="1" input_type="2" link_data="dsAttachFile:ATTACH_RESULT" combobox_data="del=&apos;:&apos; pos=&apos;0&apos; style=&apos;1&apos; content=&apos;0:오류&#x0D;&#x0A;1:정상&apos;" combobox_showbutton="0" combobox_buttonsize="0" picklist_selstyle="1" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="124" name="btnFileAdd" meta_id="LABEL02612" x="501" y="4" right="3" bottom="227" width="80" height="25" text="파일추가" version="1.1" on_mouseup="eventfunc:btnFileAdd_on_mouseup(objinst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="37" name="btnFileDel" meta_id="LABEL02613" x="501" y="32" right="3" bottom="199" width="80" height="25" text="모든파일삭제" version="1.1" on_mouseup="eventfunc:btnFileDel_on_mouseup(objinst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="403" name="btnFileDown" meta_id="LABEL02614" x="501" y="60" right="3" bottom="171" width="80" height="25" text="다운로드" version="1.1" on_mouseup="eventfunc:btnFileDown_on_mouseup(objinst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnSave" meta_id="LABEL01468" x="501" y="88" right="3" bottom="143" width="80" height="25" text="업로드" version="1.1" on_mouseup="eventfunc:btnSave_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="405" name="btnClose" meta_id="LABEL00012" x="501" y="144" right="3" bottom="87" width="80" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+		<downloader control_id="407" name="downloader_basic" x="540" y="219" width="28" height="28" hidden="1" on_fileprogress="eventfunc:downloader_basic_on_fileprogress(objInst, nFileIndex, strFileName, nPos)" on_filecomplete="eventfunc:downloader_basic_on_filecomplete(objInst, nFileIndex, strFileName)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="408" name="btnPreView" meta_id="LABEL02615" x="501" y="116" right="3" bottom="115" width="80" height="25" text="미리보기" version="1.1" on_mouseup="eventfunc:btnPreView_on_mouseup(objInst)"/>
+		<file control_id="409" name="fileControl" x="505" y="186" width="28" height="28" hidden="1" on_selectfiles="eventfunc:fileControl_on_selectfiles(objInst, arrFiles)"/>
+	</map>
+</map_list>

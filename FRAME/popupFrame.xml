@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="팝업프레임(Portlet)" directory="/FRAME/" screenid="popupFrame" last_update_date="2021-12-23 14:22:01" width="812" width_type="2" height="500" height_type="2" on_load="eventfunc:screen_on_load()" funclist="_getFrameType,_I_GlobalVar,_II_ScreenEvent,screen_on_load,_III_ObjectEvent,tabBizScreen_on_itemcreate,_IV_UserFunction,showLoadingProcess,_btnPopClose_on_mouseup,setTaskMessage"/>
+		<tab_order order_option="0" order_info="6,0,1,49"/>
+		<tab control_id="0" name="tabBizScreen" x="0" y="30" right="8" bottom="0" width="804" height="470" height_percent="91" resize_dir="3" font="맑은 고딕,9,0,0,0,0" border="0" tabitemarea_transparent="1" tab_color="00FF0E0E" tab_transparent="1" tabitem_hidden="1" tabitem_font="맑은 고딕,9,0,0,0,0" tabitem_selfont="맑은 고딕,9,0,0,0,0" titlebar_font="맑은 고딕,9,1,0,0,0" on_itemcreate="eventfunc:tabBizScreen_on_itemcreate(objInst, itemindex)">
+		</tab>
+		<panel control_id="1" name="pnlLoading" semantic_tag="0" anchor="6" x="276" y="170" right="276" bottom="170" width="260" height="160" back_color="00CEA0FF" border="0" hidden="1" title_font="맑은 고딕,9,0,0,0,0">
+			<imagebox control_id="2" anchor="6" x="35" y="25" right="35" bottom="25" width="190" height="110" transparent="1" border="0" padding="0,0,0,0" image="/loading.gif" imagesize="3" image_width="42" image_height="42"/>
+		</panel>
+		<panel control_id="6" semantic_tag="0" x="0" y="0" right="0" bottom="470" width="812" width_unit="1" height="30" back_color="00C28708" border="0" gradient_effect="1" gradient_startcolor="00C28708" gradient_endcolor="00F4AA0A" title_font="맑은 고딕,9,0,0,0,0">
+			<tab_order order_option="0" order_info="5"/>
+			<caption control_id="4" name="capScreenTitle" autosize="0" x="12" y="0" right="68" bottom="0" width="732" height="30" text="" font="맑은 고딕,12,1,0,0,0" transparent="1" mousehover_font="맑은 고딕,9,0,0,0,0"/>
+			<pushbutton control_id="5" name="_btnPopClose" anchor="2" x="774" y="0" right="12" bottom="0" width="26" height="30" style_class="0" text="X" font="맑은 고딕,9,0,0,0,0" back_color="007D8118" back_color_opacity="0" border="4" hover_font="맑은 고딕,9,0,0,0,0" tabstop="0" enterstop="0" click_setfocus="0" version="1.1" on_mouseup="eventfunc:_btnPopClose_on_mouseup(objInst)"/>
+		</panel>
+		<tab control_id="49" name="tabErrorMsg" anchor="1" x="0" y="321" right="1" bottom="0" width="811" height="179" resize_dir="1" border="0" tabitem_height="0" tabitem_hidden="1" tabitem_font="맑은 고딕,9,0,0,0,0" tabitem_selfont="맑은 고딕,9,0,0,0,0" titlebar_font="맑은 고딕,9,1,0,0,0" enterstop="0" tabstop="0" hidden="1" on_itemcreate="eventfunc:tabErrorMsg_on_itemcreate(objInst, itemindex)">
+			<tab_item height="0" link_screen="/UTIL/SysErrorMsg" panel_color="00EBEBEB">
+			</tab_item>
+		</tab>
+	</map>
+</map_list>

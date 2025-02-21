@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]비고입력" directory="/SMT/" screenid="SmtSet1251" last_update_date="2023-01-20 12:59:04" width="500" width_type="0" height="410" height_type="0" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" funclist="screen_on_load,fnDsSearchSet,fnPageSet,btnApply_on_mouseup,screen_on_destroy,btnClose_on_mouseup,screen_on_submitcomplete,grdList_on_itemdblclick,fnEnter,ReturnClosePopup,edtItemName_on_keydown,edtItemCode_on_keydown"/>
+		<xlinkdataset id="dsList" desc="" columns="REMARK::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_BIZ_TYPE" url="" comment="업종코드 가져오기.">
+		</xlinktranmap>
+		<tab_order order_option="1" order_info="472,36,51"/>
+		<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="269" bottom="385" width="200" height="18" text="비고입력" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="474" bottom="386" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnApply" meta_id="LABEL00295" x="346" y="6" right="84" bottom="379" width="70" height="25" text="적용" version="1.1" on_mouseup="eventfunc:btnApply_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="51" name="btnClose" meta_id="LABEL00012" x="420" y="6" right="10" bottom="379" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+		<roundrect control_id="134" name="rudSearch" x="11" y="38" right="8" bottom="8" width="481" height="364" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<multiline control_id="472" name="edtRemark" x="14" y="41" right="11" bottom="12" width="475" height="357" font="맑은 고딕,9,0,0,0,0" line_gap="0" link_data="dsList:REMARK" max_length="4000" meta_maxlength="" escape_newline="0"/>
+	</map>
+</map_list>

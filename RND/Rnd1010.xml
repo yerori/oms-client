@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="연구원 시간 등록" directory="/RND/" screenid="Rnd1010" click_setfocus="1" last_update_date="2024-05-22 15:11:33" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnEmpInfoLoad,fnDsSearchSet,fnDsDetailSearchSet,btnCommonSearch_on_mouseup,fnSearch,fnDetailSearch,screen_on_submitcomplete,screen_on_size,grdCalendar_on_itemclick,grdCalendar_inputhour_forecolor,grdCalendar_highlight_column,btnView_on_mouseup,fnNewClosePopCallback,btnCopy_on_mouseup,btnNew_on_mouseup,btnDeptPop_on_click,fnDeptClosePopCallback,edsDeptName_on_changed,edsWorkYyyyMm_on_changed,btnEmpPop_on_click,fnEmpClosePopCallback"/>
+		<xlinkdataset id="dsOU" desc="법인 LIST" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsEmpInfo" desc="임직원 정보" columns="EMP_NAME::::;DEPT_CODE::::;DEPT_NAME::::;JIKJONG_CODE::::;JIKWI_CODE::::;JIKWI_NAME::::;JIKCHAK_CODE::::"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;WORK_YYYYMM::::;DEPT_CODE::::;DEPT_NAME::::;EMP_NO::::;EMP_NAME::::;DEPT_EMP_NO::::;AUTH_CODE::::"/>
+		<xlinkdataset id="dsWorkCal" desc="연구소 시간관리 달력" columns="GUBUN::::;DD_01::::;DD_02::::;DD_03::::;DD_04::::;DD_05::::;DD_06::::;DD_07::::;DD_08::::;DD_09::::;DD_10::::;DD_11::::;DD_12::::;DD_13::::;DD_14::::;DD_15::::;DD_16::::;DD_17::::;DD_18::::;DD_19::::;DD_20::::;DD_21::::;DD_22::::;DD_23::::;DD_24::::;DD_25::::;DD_26::::;DD_27::::;DD_28::::;DD_29::::;DD_30::::;DD_31::::;ROW_TOTAL::::"/>
+		<xlinkdataset id="dsWcDate" desc="연구소 시간관리 달력 (일자)" columns="DD_01::::;DD_02::::;DD_03::::;DD_04::::;DD_05::::;DD_06::::;DD_07::::;DD_08::::;DD_09::::;DD_10::::;DD_11::::;DD_12::::;DD_13::::;DD_14::::;DD_15::::;DD_16::::;DD_17::::;DD_18::::;DD_19::::;DD_20::::;DD_21::::;DD_22::::;DD_23::::;DD_24::::;DD_25::::;DD_26::::;DD_27::::;DD_28::::;DD_29::::;DD_30::::;DD_31::::"/>
+		<xlinkdataset id="dsWcHoliday" desc="연구소 시간관리 달력 (휴일)" columns="DD_01::::;DD_02::::;DD_03::::;DD_04::::;DD_05::::;DD_06::::;DD_07::::;DD_08::::;DD_09::::;DD_10::::;DD_11::::;DD_12::::;DD_13::::;DD_14::::;DD_15::::;DD_16::::;DD_17::::;DD_18::::;DD_19::::;DD_20::::;DD_21::::;DD_22::::;DD_23::::;DD_24::::;DD_25::::;DD_26::::;DD_27::::;DD_28::::;DD_29::::;DD_30::::;DD_31::::"/>
+		<xlinkdataset id="dsDetailSearch" desc="상세조회조건" columns="OU_CODE::::;WORK_YYYYMMDD::::;DEPT_CODE::::;EMP_NO::::;DEPT_EMP_NO::::;AUTH_CODE::::;WORK_YYYYMM::::"/>
+		<xlinkdataset id="dsList" desc="시간관리상세 그리드" columns="WORK_ID::::;OU_CODE::::;DEPT_CODE::::;DEPT_NAME::::;EMP_NO::::;EMP_NAME::::;WORK_DATE::::;JIKWI_NAME::::;WORK_TYPE::::;PJT_CODE::::;PJT_NAME::::;DEV_PHASE::::;WORK_NAME::::;WORK_TEXT::::;WORK_TIME::::;JIKJONG_CODE::::;JIKWI_CODE::::"/>
+		<xlinkdataset id="dsReturn" desc="Package 호출 결과값" columns="O_WORKTYPE_FLAG::::;O_DEVPHASE_FLAG::::;O_WORKNAME_FLAG::::;O_ERROR_MSG::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="조회">
+		</xlinktranmap>
+		<xlinktranmap id="TR_DETAIL_SERACH" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_GET_COPY_COMBO_INFO" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_CHECK_DEPT_EMP_ENABLE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_EMP_INFO" url="" comment="">
+		</xlinktranmap>
+		<tableview control_id="415" name="tbv" x="0" y="0" right="0" bottom="0" width="1440" height="758" height_unit="1" height_type="0" resize_dir="1" cell_line_vertstyle="0" cell_line_horzstyle="0" row_count="3" column_count="2" row_height="110:px,110:px,536:px" column_width="300:px,1138:px" autoresize_row="2" pixelwidth_resize="0" design_fixmode="0" mergeinfo="0,0,0,1:1,0,1,1:2,0,2,1" version="2.0">
+			<tab_order order_option="0" order_info="26,494,552,553,453,557,556,555,549,548,547,0"/>
+			<tr>
+				<td colspan="2" rect="0,0,300,110">
+					<text control_id="135" autosize="0" x="32" y="63" right="1346" bottom="35" width="60" height="12" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+					<roundrect control_id="134" name="rudSearch" x="9" y="40" right="20" bottom="10" width="1409" width_percent="98" height="60" resize_dir="1" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+					<combobox control_id="494" name="comOu" in_index="1" autosize="0" x="102" y="60" right="1195" bottom="30" width="141" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOU:CODE:NAME:" link_data="dsSearch:OU_CODE" default_value_type="1" default_value_usage="1" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_itemchange="eventfunc:comOu_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+					<tab control_id="26" name="tabTopCommon" x="0" y="3" right="0" bottom="72" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+						<tab_item panel_color="00FFFFFF">
+							<tab_order order_option="0" order_info="54,35"/>
+							<tab control_id="54" name="tabEndPoint" anchor="2" x="1358" y="3" right="0" bottom="2" width="80" height="30" border="0" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+								<tab_item link_screen="/FRAME/PageTopEndT" panel_color="00EBEBEB">
+								</tab_item>
+							</tab>
+							<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" x="678" y="5" right="690" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objinst)"/>
+							<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+							<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="1207" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+						</tab_item>
+					</tab>
+					<text control_id="528" autosize="0" x="728" y="64" right="642" bottom="34" width="68" height="12" text="*연구원" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+					<hangul_field control_id="453" name="fldEmpName" in_index="4" autosize="0" x="802" y="60" right="534" bottom="30" width="102" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:EMP_NAME" enable="0" max_length="15"/>
+					<image control_id="410" name="btnEmpPop" autosize="0" x="904" y="60" right="515" bottom="30" width="19" height="20" transparent="0" border="0" padding="0,0,0,0" image="/ico_search.gif" image_width="19" image_height="20" mouse_cursor="11" on_click="eventfunc:btnEmpPop_on_click(objInst)"/>
+					<text control_id="536" name="fldEmpNo" x="928" y="64" right="441" bottom="34" width="69" height="12" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" link_data="dsSearch:EMP_NO" version="1.1"/>
+					<text control_id="537" autosize="0" x="268" y="64" right="1094" bottom="34" width="76" height="12" text="*근무년월" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+					<datepicker control_id="552" name="edsWorkYyyyMm" in_index="2" autosize="0" x="352" y="60" right="1006" bottom="30" width="80" height="20" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSearch:WORK_YYYYMM" max_length="6" delimiter_char="-" date_type="1" showtodaybar="1" calendar_type="5" on_changed="eventfunc:edsWorkYyyyMm_on_changed(objInst, prev_text, curr_text, event_type)"/>
+					<hangul_field control_id="553" name="edsDeptName" in_index="3" autosize="0" x="510" y="60" right="742" bottom="30" width="186" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:DEPT_NAME" enable="0" on_changed="eventfunc:edsDeptName_on_changed(objInst, prev_text, curr_text, event_type)"/>
+					<text control_id="452" name="titleDeptName" autosize="0" x="440" y="60" right="934" bottom="30" width="64" height="20" text="부서" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+					<image control_id="554" name="btnDeptPop" autosize="0" x="696" y="60" right="723" bottom="30" width="19" height="20" transparent="0" border="0" padding="0,0,0,0" image="/ico_search.gif" image_width="19" image_height="20" mouse_cursor="11" on_click="eventfunc:btnDeptPop_on_click(objInst)"/>
+					<numericex_field control_id="556" name="fldPrevColId" autosize="0" x="1387" y="62" right="41" bottom="32" width="10" width_percent="0" height="16" font="맑은 고딕,9,0,0,0,0" hidden="1" editable="0"/>
+					<normal_field control_id="557" name="fldDeptCode" autosize="0" x="1368" y="60" right="58" bottom="34" width="12" width_percent="0" height="16" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:DEPT_CODE" enable="0" hidden="1"/>
+				</td>
+				<td hidden="1" rect="300,0,1438,110">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" rect="0,110,300,220">
+					<grid style="HS_GRID_BASIC_01" control_id="555" name="grdCalendar" in_index="5" x="9" y="0" right="20" bottom="0" width="1409" width_percent="98" height="110" resize_dir="1" font="맑은 고딕,9,1,0,0,0" header_vertcount="0" header_height="27" cell_height="27" selectrow_style="0" vertscrollbar_style="0" horzscrollbar_style="0" link_data="dsWorkCal" editable="0" autocolumnwidth="2" version="1.2" on_itemclick="eventfunc:grdCalendar_on_itemclick(objInst, nClickRow, nClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+						<column>
+							<header title="년월"/>
+							<data style="HS_GRID_DATA_02" name="GUBUN" width="79" link_data="dsWorkCal:GUBUN" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="01"/>
+							<data style="HS_GRID_DATA_02" name="DD_01" width="41" link_data="dsWorkCal:DD_01" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="02"/>
+							<data style="HS_GRID_DATA_02" name="DD_02" width="41" link_data="dsWorkCal:DD_02" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="03"/>
+							<data style="HS_GRID_DATA_02" name="DD_03" width="41" link_data="dsWorkCal:DD_03" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="04"/>
+							<data style="HS_GRID_DATA_02" name="DD_04" width="41" link_data="dsWorkCal:DD_04" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="05"/>
+							<data style="HS_GRID_DATA_02" name="DD_05" width="41" link_data="dsWorkCal:DD_05" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="06"/>
+							<data style="HS_GRID_DATA_02" name="DD_06" width="41" link_data="dsWorkCal:DD_06" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="07"/>
+							<data style="HS_GRID_DATA_02" name="DD_07" width="41" link_data="dsWorkCal:DD_07" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="08"/>
+							<data style="HS_GRID_DATA_02" name="DD_08" width="41" link_data="dsWorkCal:DD_08" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="09"/>
+							<data style="HS_GRID_DATA_02" name="DD_09" width="41" link_data="dsWorkCal:DD_09" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="10"/>
+							<data style="HS_GRID_DATA_02" name="DD_10" width="41" link_data="dsWorkCal:DD_10" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="11"/>
+							<data style="HS_GRID_DATA_02" name="DD_11" width="41" link_data="dsWorkCal:DD_11" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="12"/>
+							<data style="HS_GRID_DATA_02" name="DD_12" width="41" link_data="dsWorkCal:DD_12" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="13"/>
+							<data style="HS_GRID_DATA_02" name="DD_13" width="41" link_data="dsWorkCal:DD_13" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="14"/>
+							<data style="HS_GRID_DATA_02" name="DD_14" width="41" link_data="dsWorkCal:DD_14" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="15"/>
+							<data style="HS_GRID_DATA_02" name="DD_15" width="41" link_data="dsWorkCal:DD_15" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="16"/>
+							<data style="HS_GRID_DATA_02" name="DD_16" width="41" link_data="dsWorkCal:DD_16" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="17"/>
+							<data style="HS_GRID_DATA_02" name="DD_17" width="41" link_data="dsWorkCal:DD_17" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="18"/>
+							<data style="HS_GRID_DATA_02" name="DD_18" width="41" link_data="dsWorkCal:DD_18" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="19"/>
+							<data style="HS_GRID_DATA_02" name="DD_19" width="41" link_data="dsWorkCal:DD_19" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="20"/>
+							<data style="HS_GRID_DATA_02" name="DD_20" width="41" link_data="dsWorkCal:DD_20" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="21"/>
+							<data style="HS_GRID_DATA_02" name="DD_21" width="41" link_data="dsWorkCal:DD_21" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="22"/>
+							<data style="HS_GRID_DATA_02" name="DD_22" width="41" link_data="dsWorkCal:DD_22" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="23"/>
+							<data style="HS_GRID_DATA_02" name="DD_23" width="41" link_data="dsWorkCal:DD_23" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="24"/>
+							<data style="HS_GRID_DATA_02" name="DD_24" width="41" link_data="dsWorkCal:DD_24" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="25"/>
+							<data style="HS_GRID_DATA_02" name="DD_25" width="41" link_data="dsWorkCal:DD_25" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="26"/>
+							<data style="HS_GRID_DATA_02" name="DD_26" width="41" link_data="dsWorkCal:DD_26" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="27"/>
+							<data style="HS_GRID_DATA_02" name="DD_27" width="41" link_data="dsWorkCal:DD_27" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="28"/>
+							<data style="HS_GRID_DATA_02" name="DD_28" width="41" link_data="dsWorkCal:DD_28" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="29"/>
+							<data style="HS_GRID_DATA_02" name="DD_29" width="41" link_data="dsWorkCal:DD_29" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="30"/>
+							<data style="HS_GRID_DATA_02" name="DD_30" width="41" link_data="dsWorkCal:DD_30" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="31"/>
+							<data style="HS_GRID_DATA_02" name="DD_31" width="41" link_data="dsWorkCal:DD_31" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="합계"/>
+							<data style="HS_GRID_DATA_02" name="ROW_TOTAL" width="59" link_data="dsWorkCal:ROW_TOTAL" bargauge_transparent="0"/>
+						</column>
+						<headermegeinfo info=""/>
+					</grid>
+				</td>
+				<td hidden="1" rect="300,110,1438,220">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" rect="0,220,300,756">
+					<grid style="HS_GRID_BASIC_01" control_id="0" name="grdList" in_index="6" x="9" y="38" right="20" bottom="0" width="1409" width_percent="98" height="498" height_percent="93" height_unit="1" resize_dir="1" header_vertcount="0" cell_height="22" selectrow_bordercolor="0080623C" link_data="dsList" samplerows="4" statistics_row="0,00FF0E0E,00FFFFE9,00000000,00D2D2D2,00000001,00000001,&quot;합계&quot;,,:" autocolumnwidth="2" version="1.2">
+						<column>
+							<header title="Work Id"/>
+							<data name="WORK_ID" hidden="1" link_data="dsList:WORK_ID" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="법인코드"/>
+							<data name="OU_CODE" hidden="1" link_data="dsList:OU_CODE" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="부서코드"/>
+							<data style="HS_GRID_DATA_02" name="DEPT_CODE" hidden="1" link_data="dsList:DEPT_CODE" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="부서"/>
+							<data style="HS_GRID_DATA_02" name="DEPT_NAME" link_data="dsList:DEPT_NAME" combobox_editable="0" combobox_defaultvalue_type="2" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="사번"/>
+							<data style="HS_GRID_DATA_02" name="EMP_NO" width="100" link_data="dsList:EMP_NO" combobox_editable="0" combobox_defaultvalue_type="2" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="성명"/>
+							<data style="HS_GRID_DATA_02" name="EMP_NAME" width="70" imemode="1" data_type="2" link_data="dsList:EMP_NAME" combobox_style="1" combobox_excelstyle="2" picklist_selstyle="1" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="직급"/>
+							<data style="HS_GRID_DATA_02" name="JIKWI_NAME" width="53" imemode="1" data_type="2" link_data="dsList:JIKWI_NAME" combobox_style="1" combobox_excelstyle="2" picklist_selstyle="1" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="근무일자"/>
+							<data style="HS_GRID_DATA_02" name="WORK_DATE" width="85" pattern="YYYY-MM-DD" link_data="dsList:WORK_DATE" combobox_style="1" combobox_excelstyle="2" picklist_selstyle="1" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="업무성격"/>
+							<data style="HS_GRID_DATA_02" name="WORK_TYPE" width="85" link_data="dsList:WORK_TYPE" combobox_style="1" combobox_excelstyle="2" picklist_selstyle="1" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="프로젝트코드"/>
+							<data style="HS_GRID_DATA_02" name="PJT_CODE" width="91" link_data="dsList:PJT_CODE" combobox_style="1" combobox_excelstyle="2" picklist_selstyle="1" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="프로젝트명"/>
+							<data style="HS_GRID_DATA_02" name="PJT_NAME" width="163" link_data="dsList:PJT_NAME" combobox_style="1" combobox_excelstyle="2" picklist_selstyle="1" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="업무단계"/>
+							<data style="HS_GRID_DATA_02" name="DEV_PHASE" width="62" imemode="1" data_type="2" link_data="dsList:DEV_PHASE" combobox_style="1" combobox_excelstyle="2" picklist_selstyle="1" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="업무명"/>
+							<data style="HS_GRID_DATA_02" name="WORK_NAME" width="85" link_data="dsList:WORK_NAME" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="시간(HR)"/>
+							<data style="HS_GRID_DATA_02" name="WORK_TIME" width="62" data_type="0" max_length="5" max_value="24" min_value="0" pattern="99.99" link_data="dsList:WORK_TIME" bargauge_transparent="0"/>
+						</column>
+						<column>
+							<header title="설명"/>
+							<data style="HS_GRID_DATA_02" name="WORK_TEXT" width="474" text_horzalign="0" link_data="dsList:WORK_TEXT" bargauge_transparent="0"/>
+						</column>
+						<headermegeinfo info=""/>
+					</grid>
+					<text control_id="518" autosize="0" x="28" y="20" right="1210" bottom="500" width="200" height="16" text="시간 관리 상세" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+					<image control_id="519" autosize="0" x="10" y="20" right="1423" bottom="500" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+					<pushbutton style="HS_BTN_CLOSE_01" control_id="547" name="btnView" meta_id="LABEL00543" anchor="2" x="1349" y="8" right="22" bottom="503" width="67" height="25" text="상세내역" version="1.1" on_mouseup="eventfunc:btnView_on_mouseup(objInst)"/>
+					<pushbutton style="HS_BTN_CLOSE_01" control_id="548" name="btnCopy" meta_id="LABEL02107" anchor="2" x="1275" y="8" right="96" bottom="503" width="67" height="25" text="복사등록" version="1.1" on_mouseup="eventfunc:btnCopy_on_mouseup(objInst)"/>
+					<pushbutton style="HS_BTN_CLOSE_01" control_id="549" name="btnNew" meta_id="LABEL01684" anchor="2" x="1200" y="8" right="171" bottom="503" width="67" height="25" text="신규등록" version="1.1" on_mouseup="eventfunc:btnNew_on_mouseup(objInst)"/>
+				</td>
+				<td hidden="1" rect="300,220,1438,756">
+				</td>
+			</tr>
+		</tableview>
+	</map>
+</map_list>

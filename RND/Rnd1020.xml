@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="정부과제 관리" directory="/RND/" screenid="Rnd1020" click_setfocus="1" last_update_date="2024-06-07 11:47:56" width="1000" width_type="2" height="750" height_type="2" canvas_width="1650" on_load="eventfunc:screen_on_load()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnSetInitControl,fnDsSearchSet,btnCommonClose_on_mouseup,btnAddRow_on_mouseup,btnDelRow_on_mouseup,btnCommonSave_on_mouseup,btnCommonSearch_on_mouseup,fnSaveData,fnSearch,screen_on_submitcomplete,screen_on_messagebox,comOu_on_itemchange"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;TASK_CODE::::;TASK_NAME::::"/>
+		<xlinkdataset id="dsOU" desc="법인 LIST" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsList" desc="목록" columns="OU_CODE::::;TASK_CODE::::;TASK_NAME::::;USER_ID::::;PREV_TASK_CODE:&quot;수정,삭제시 필요&quot;:::;USED_YN::::"/>
+		<xlinkdataset id="dsValidation" desc="중복체크" columns="O_CNT::::;O_ERROR_MSG::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_COM_CO" url="" comment="코드 저장처리(추가, 수정, 삭제)">
+		</xlinktranmap>
+		<xlinktranmap id="TR_OU" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="조회">
+		</xlinktranmap>
+		<xlinktranmap id="TR_VALIDATION" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="415,0"/>
+		<tableview control_id="415" name="tbv" x="0" y="0" right="0" bottom="604" width="1000" width_unit="1" height="146" height_type="0" border="0" cell_line_vertstyle="0" cell_line_horzstyle="0" row_count="2" column_count="2" row_height="110:px,36:px" column_width="300:px,700:px" pixelwidth_resize="0" design_fixmode="0" mergeinfo="0,0,0,1:1,0,1,1" version="2.0">
+			<tab_order order_option="0" order_info="26,494,521,453,124,37"/>
+			<tr>
+				<td colspan="2" rect="0,0,300,110">
+					<roundrect control_id="134" name="rudSearch" x="4" y="40" right="6" bottom="0" width="990" width_percent="99" width_unit="1" height="70" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+					<text control_id="135" autosize="0" x="308" y="70" right="616" bottom="28" width="76" height="12" text="정부과제코드" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+					<tab control_id="26" name="tabTopCommon" x="0" y="3" right="0" bottom="72" width="1000" width_unit="1" height="35" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+						<tab_item panel_color="00FFFFFF">
+							<tab_order order_option="0" order_info="35,36,42"/>
+							<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="772" y="5" right="158" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objinst)"/>
+							<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" meta_id="LABEL00011" anchor="2" x="848" y="5" right="82" bottom="5" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+							<image control_id="50" autosize="0" x="10" y="8" right="974" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+							<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="769" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+							<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="924" y="5" right="6" bottom="5" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+						</tab_item>
+					</tab>
+					<text control_id="454" autosize="0" x="612" y="70" right="298" bottom="28" width="90" height="12" text="정부과제명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+					<combobox control_id="494" name="comOu" in_index="1" autosize="0" x="124" y="66" right="735" bottom="24" width="141" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOU:CODE:NAME:" link_data="dsSearch:OU_CODE" default_value_type="1" default_value_usage="1" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_itemchange="eventfunc:comOu_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+					<text control_id="520" autosize="0" x="56" y="70" right="884" bottom="28" width="60" height="12" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+					<hangul_field control_id="453" name="edtTaskName" in_index="3" autosize="0" x="707" y="66" right="40" bottom="24" width="253" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:TASK_NAME" max_length="50"/>
+					<hangul_field control_id="521" name="edtTaskCode" in_index="2" autosize="0" x="392" y="66" right="436" bottom="24" width="172" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:TASK_CODE" max_length="50"/>
+				</td>
+				<td hidden="1" rect="300,0,1000,110">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" rect="0,110,300,146">
+					<text control_id="518" autosize="0" x="20" y="14" right="780" bottom="6" width="200" height="16" text="정부과제 목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+					<image control_id="519" autosize="0" x="8" y="14" right="987" bottom="6" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+					<pushbutton style="HS_BTN_CLOSE_01" control_id="37" name="btnDelRow" meta_id="LABEL00542" anchor="2" x="912" y="6" right="18" bottom="5" width="70" height="25" text="행삭제" version="1.1" on_mouseup="eventfunc:btnDelRow_on_mouseup(objInst)"/>
+					<pushbutton style="HS_BTN_CLOSE_01" control_id="124" name="btnAddRow" meta_id="LABEL00541" anchor="2" x="836" y="6" right="94" bottom="5" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnAddRow_on_mouseup(objInst)"/>
+				</td>
+				<td hidden="1" rect="300,110,1000,146">
+				</td>
+			</tr>
+		</tableview>
+		<grid style="HS_GRID_BASIC_01" control_id="0" name="grdList" in_index="7" x="4" y="146" right="6" bottom="4" width="990" width_percent="99" width_unit="1" height="600" height_percent="93" resize_dir="2" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" link_data="dsList" samplerows="4" autocolumnwidth="2" version="1.2">
+			<column>
+				<header title="*과제코드"/>
+				<data name="TASK_CODE" width="227" editable="1" data_type="2" max_length="50" link_data="dsList:TASK_CODE" combobox_editable="0" combobox_defaultvalue_type="2" picklist_selstyle="2" picklist_viewstyle="2" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="*과제명"/>
+				<data name="TASK_NAME" width="634" editable="1" imemode="1" data_type="2" max_length="1000" link_data="dsList:TASK_NAME" combobox_editable="0" combobox_defaultvalue_type="2" picklist_selstyle="2" picklist_viewstyle="2" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="사용이력"/>
+				<data name="USED_YN" width="123" text_horzalign="1" link_data="dsList:USED_YN" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+	</map>
+</map_list>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="메시지박스(Portlet)" directory="/UTIL/" screenid="messageBox" last_update_date="2021-12-23 11:59:08" width="400" width_type="0" height="220" height_type="0" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" funclist="_I_ScreenEvent,screen_on_load,screen_on_keydown,screen_on_destroy,_II_ObjectEvent,btnMsgRet_on_mouseup,_III_UserFunction,makeParamString,parseStringVarWithQuote,SetDisplay,SetImage,SetButton,fitBtnText,setMessage,_btnMessagePopClose_on_mouseup"/>
+		<tab_order order_option="0" order_info="2161,3,63"/>
+		<panel control_id="2161" name="pnlTop" semantic_tag="0" x="0" y="0" right="0" bottom="192" width="400" height="28" resize_dir="1" back_color="0067625F" border="0" gradient_effect="1" gradient_startcolor="00C28708" gradient_endcolor="00F4AA0A" tabstop="0" title_font="맑은 고딕,9,0,0,0,0">
+			<tab_order order_option="0" order_info="5"/>
+			<text control_id="2147" name="txtMsgTitle" autosize="2" x="10" y="6" right="28" bottom="5" width="362" height="17" text="화면 타이틀" font="맑은 고딕,10,1,0,0,0" fore_color="00FFFFFF" back_color="0067625F" back_color_opacity="0" mousehover_font="맑은 고딕,9,0,0,0,0" version="1.1"/>
+			<pushbutton control_id="5" name="_btnMessagePopClose" anchor="2" x="372" y="-2" right="2" bottom="0" width="26" height="30" style_class="0" text="X" font="맑은 고딕,9,0,0,0,0" back_color="007D8118" back_color_opacity="0" border="4" hover_font="맑은 고딕,9,0,0,0,0" tabstop="0" enterstop="0" click_setfocus="0" version="1.1" on_mouseup="eventfunc:_btnMessagePopClose_on_mouseup(objInst)"/>
+		</panel>
+		<panel control_id="63" name="pnlBottom" semantic_tag="0" x="0" y="180" right="0" bottom="0" width="400" height="40" back_color="00EBEBEB" border="0" title_forecolor="00333333" title_font="맑은 고딕,9,0,0,0,0">
+			<tab_order order_option="0" order_info="8,9,10"/>
+			<pushbutton style="btn_util_popup_left" control_id="8" name="btnMsgRet" meta_id="01182" arrayindex="0" x="30" y="6" right="260" bottom="8" width="110" height="26" text="예" font="맑은 고딕,9,0,0,0,0" drawfocusrect="0" hover_font="맑은 고딕,9,0,0,0,0" version="1.1" on_mouseup="eventfunc:btnMsgRet_on_mouseup(objInst, index)"/>
+			<pushbutton style="btn_util_popup_left" control_id="9" name="btnMsgRet" meta_id="13945" arrayindex="1" x="145" y="6" right="145" bottom="8" width="110" height="26" text="아니오" font="맑은 고딕,9,0,0,0,0" drawfocusrect="0" hover_font="맑은 고딕,9,0,0,0,0" version="1.1" on_mouseup="eventfunc:btnMsgRet_on_mouseup(objInst, index)"/>
+			<pushbutton style="btn_util_popup_right" control_id="10" name="btnMsgRet" meta_id="13944" arrayindex="2" x="260" y="6" right="30" bottom="8" width="110" height="26" text="취소" font="맑은 고딕,9,0,0,0,0" text_margin="" drawfocusrect="0" hover_font="맑은 고딕,9,0,0,0,0" version="1.1" on_mouseup="eventfunc:btnMsgRet_on_mouseup(objInst, index)"/>
+		</panel>
+		<multiline control_id="3" name="mtlMsg" x="10" y="71" right="8" bottom="48" width="382" height="101" font="맑은 고딕,9,0,0,0,0" fore_color="00666666" back_color="00FFFAF4" border="0" border_color="00D0D0D0" text_margin="10,10,10,10" line_gap="0" max_length="2000" meta_maxlength="" input_type="2" tabstop="0"/>
+		<text control_id="71" name="txtMsgTypeNm" autosize="0" x="49" y="45" right="13" bottom="163" width="338" height="12" text="Message Section" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color_opacity="0" mousehover_font="맑은 고딕,9,0,0,0,0" version="1.1"/>
+		<image control_id="2162" name="imgType" autosize="0" x="7" y="33" right="359" bottom="153" width="34" height="34" back_color_opacity="0" transparent="0" border="0" padding="0,0,0,0" hidden="1"/>
+		<hidden_screen>
+			<caption control_id="24" name="capTemp1" autosize="0" x="400" y="19" right="1104" bottom="959" width="120" height="22" font="KB금융 본문체 Bold,11,1,0,0,0" transparent="1" mousehover_font="KB금융 본문체 Medium,10,500,0,0,0" hidden="1"/>
+		</hidden_screen>
+	</map>
+</map_list>

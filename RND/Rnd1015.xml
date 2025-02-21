@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]연구원조회" directory="/RND/" screenid="Rnd1015" last_update_date="2024-05-22 16:19:59" width="850" width_type="0" height="600" height_type="0" canvas_width="1800" canvas_height="1500" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" funclist="screen_on_load,fnPageSet,btnSearch_on_mouseup,btnApply_on_mouseup,btnClose_on_mouseup,screen_on_destroy,screen_on_submitcomplete,grdList_on_itemdblclick,ReturnClosePopup,btnClean_on_mouseup"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;WORK_YYYYMM::::;DEPT_CODE::::;DEPT_EMP_NO::::;EMP_NO::::;EMP_NAME::::"/>
+		<xlinkdataset id="dsList" desc="고객정보조회" columns="EMP_NO::::;EMP_NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="1" order_info="453,531,433,471,35,36,51"/>
+		<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="619" bottom="575" width="200" height="18" text="연구원검색" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="824" bottom="576" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnSearch" meta_id="LABEL00008" x="615" y="6" right="165" bottom="569" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnSearch_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnApply" meta_id="LABEL00295" x="693" y="6" right="87" bottom="569" width="70" height="25" text="적용" version="1.1" on_mouseup="eventfunc:btnApply_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="51" name="btnClose" meta_id="LABEL00012" x="771" y="6" right="9" bottom="569" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+		<roundrect control_id="134" name="rudSearch" x="11" y="38" right="9" bottom="514" width="830" height="48" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="452" autosize="0" x="48" y="52" right="720" bottom="528" width="82" height="20" text="연구원 사번" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="453" name="edtEmpNo" in_index="1" autosize="0" x="133" y="52" right="490" bottom="528" width="227" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:EMP_NO" max_length="50"/>
+		<text control_id="467" autosize="0" x="376" y="52" right="394" bottom="528" width="80" height="20" text="연구원 성명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<image control_id="68" autosize="0" x="10" y="96" right="835" bottom="488" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="49" meta_id="LABEL00090" autosize="0" x="22" y="96" right="742" bottom="488" width="86" height="16" text="목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="433" name="grdList" in_index="4" x="10" y="112" right="10" bottom="8" width="830" height="480" header_vertcount="0" header_height="28" cell_height="22" hoverrow_forecolor="00222222" link_data="dsList" samplerows="25" version="1.2" on_itemdblclick="eventfunc:grdList_on_itemdblclick(objInst, nDblClickRow, nDblClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header title="연구원 사번"/>
+				<data style="HS_GRID_DATA_BC_01" name="EMP_NO" width="247" text_horzalign="1" link_data="dsList:EMP_NO" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="연구원 성명"/>
+				<data style="HS_GRID_DATA_02" name="EMP_NAME" width="563" link_data="dsList:EMP_NAME" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<hangul_field control_id="531" name="edtEmpName" in_index="2" autosize="0" x="456" y="52" right="42" bottom="528" width="352" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:EMP_NAME" max_length="1000"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="471" name="btnClean" meta_id="LABEL02157" x="536" y="6" right="244" bottom="569" width="70" height="25" text="초기화" version="1.1"/>
+	</map>
+</map_list>

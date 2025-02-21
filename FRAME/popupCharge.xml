@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]담당자정보조회" directory="/FRAME/" screenid="popupCharge" last_update_date="2025-02-05 11:39:14" width="486" width_type="0" height="410" height_type="0" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" funclist="screen_on_load,fnDsSearchSet,fnPageSet,btnSearch_on_mouseup,fnSetCboOu,btnApply_on_mouseup,screen_on_destroy,btnClose_on_mouseup,screen_on_submitcomplete,validateEmploymentStatus,grdList_on_itemdblclick,fnEnter,ReturnClosePopup,edtVendorName_on_keydown,edtVendorCode_on_keydown"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;USER_NAME::::;BIZ_DIV::::;HAS_NULL_USER:&quot;담당자 없음 조회 유무&quot;:::;MODE:&quot;담당자 조회/지정 구분 (VIEW / EDIT)&quot;:::"/>
+		<xlinkdataset id="dsBizDiv" desc="" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsList" desc="담당자정보조회" columns="USER_ID::::;BIZ_DIV::::;BIZ_DIV_NAME::::;EMP_NO::::;USER_NAME::::;EMAIL_ADDR::::;OU_CODE::::;OU_NAME::::;LOGIN_NO::::;END_DATE::::"/>
+		<xlinkdataset id="dsOU" desc="법인 LIST" columns="CODE::::;NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="1" order_info="433,2001,468,35,36,51"/>
+		<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="255" bottom="385" width="200" height="18" text="담당자 정보" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="460" bottom="386" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnSearch" meta_id="LABEL00008" x="246" y="6" right="170" bottom="379" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnSearch_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnApply" meta_id="LABEL00295" x="324" y="6" right="92" bottom="379" width="70" height="25" text="적용" version="1.1" on_mouseup="eventfunc:btnApply_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="51" name="btnClose" meta_id="LABEL00012" x="402" y="6" right="14" bottom="379" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+		<roundrect control_id="134" name="rudSearch" x="11" y="38" right="13" bottom="324" width="462" height="48" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="452" autosize="0" x="240" y="52" right="186" bottom="338" width="60" height="20" text="담당자성명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<image control_id="68" autosize="0" x="10" y="96" right="471" bottom="298" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="49" meta_id="LABEL00090" autosize="0" x="22" y="96" right="378" bottom="298" width="86" height="16" text="목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="433" name="grdList" x="12" y="120" right="14" bottom="14" width="460" height="276" header_vertcount="0" header_height="28" cell_height="22" hoverrow_forecolor="00222222" link_data="dsList" samplerows="25" version="1.2" on_itemdblclick="eventfunc:grdList_on_itemdblclick(objInst, nDblClickRow, nDblClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header meta_id="LABEL00176" title="사번"/>
+				<data style="HS_GRID_DATA_02" name="EMP_NO" width="110" link_data="dsList:EMP_NO" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="담당자성명"/>
+				<data style="HS_GRID_DATA_02" name="USER_NAME" text_horzalign="0" link_data="dsList:USER_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="이메일"/>
+				<data style="HS_GRID_DATA_02" name="EMAIL_ADDR" width="250" text_horzalign="0" link_data="dsList:EMAIL_ADDR" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02583" title="유저아이디"/>
+				<data name="LOGIN_NO" hidden="1" link_data="dsList:LOGIN_NO" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<text control_id="135" autosize="0" x="16" y="52" right="418" bottom="338" width="52" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="2001" name="cboOuCode" in_index="1" autosize="0" x="72" y="52" right="284" bottom="338" width="130" height="20" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" picklist_linkdata="dsOU:CODE:NAME:" link_data="dsSearch:OU_CODE" enable="0" max_length="100" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<hangul_field control_id="468" name="edtChargeName" in_index="2" autosize="0" x="304" y="52" right="30" bottom="338" width="152" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:USER_NAME" on_keydown="eventfunc:edtVendorCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+	</map>
+</map_list>

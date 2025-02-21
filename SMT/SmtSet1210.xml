@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="금형관리" directory="/SMT/" screenid="SmtSet1210" last_update_date="2023-03-28 14:19:39" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,screen_on_submitcomplete,fnPageSet,fnSearch,fnSearchMoldDocu,fnSearchMoldHist,fnValidForm,fnSaveData,btnCommonSearch_on_mouseup,btnCommonSave_on_mouseup,screen_on_messagebox,screen_on_size,btnCommonClose_on_mouseup,cboOuCode_on_keydown,cboOuCode_on_itemchange,cboSiteCode_on_keydown,edtVendorName_on_changed,btnVendorNamePop_on_click,fnVendorClosePopCallback,fnVendorPopupCall,dtpMkYear_on_keydown,edtMoldName_on_keydown,grdMoldList_on_itemselchange,grdMoldList_on_columnclick,fnVendorCodeClosePopCallback,grdDocuList_on_columnclick,fnAttFilePopCallback,grdHistList_on_columnclick,btnListAddRow_on_mouseup,btnListDelRow_on_mouseup,btnDocuAddRow_on_mouseup,btnDocuDelRow_on_mouseup,btnHistAddRow_on_mouseup,btnHistDelRow_on_mouseup,btnVendorChk_on_mouseup,btnChk_on_mouseup"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;SITE_CODE::::;VENDOR_CODE::::;VENDOR_NAME::::;MOLD_MK_YEAR::::;MOLD_NAME::::"/>
+		<xlinkdataset id="dsMoldList" desc="금형관리정보" columns="OU_CODE::::;SITE_CODE::::;SITE_NAME::::;MOLD_ID::::;VENDOR_CODE::::;VENDOR_NAME::::;BIZ_TYPE::::;BIZ_TYPE_NAME::::;MOLD_NAME::::;MOLD_INTRO::::;MOLD_MK_YEAR::::;MOLD_MK_AMOUNT::::;MOLD_MK_COMPANY::::;GUARANTY_COUNT::::;CAVITY::::;MOLD_MATERIAL::::;MOLD_USE_COUNT::::;LIFESPAN_RATE::::;MOLD_USE_YN::::;REMARK::::;DOCU_CNT::::;HIST_CNT::::"/>
+		<xlinkdataset id="dsMoldDocu" desc="금형관리문서정보" columns="OU_CODE::::;MOLD_ID::::;DOCU_ID::::;DOCU_TYPE::::;DOCU_TYPE_NAME::::;DOCU_VERSION::::;DOCU_EXPLAIN::::;DOCU_ATT_YN::::;VENDOR_CHK_FLAG::::;VENDOR_CHK_DATE::::;VENDOR_CHK_USER_ID::::;VENDOR_CHK_USER_NM::::;CHK_FLAG::::;CHK_DATE::::;CHK_USER_ID::::;CHK_USER_NM::::"/>
+		<xlinkdataset id="dsMoldHist" desc="금형관리이력정보" columns="OU_CODE::::;MOLD_ID::::;HIST_ID::::;HIST_DATE::::;HIST_CONTENTS::::;HIST_ATT_YN::::"/>
+		<xlinkdataset id="dsMoldID" desc="금형관리ID" columns="SEQ::::"/>
+		<xlinkdataset id="dsDocuID" desc="금형관리문서ID" columns="SEQ::::"/>
+		<xlinkdataset id="dsHistID" desc="금형관리이력ID" columns="SEQ::::"/>
+		<xlinkdataset id="dsOuCode" desc="법인코드정보" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsSiteCode" desc="사업장코드정보" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsDocuType" desc="문서종류코드" columns="CODE::::;NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="조회">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_ALL" url="" comment="저장">
+		</xlinktranmap>
+		<xlinktranmap id="TR_VENDOR_CHK" url="" comment="업체확인Update">
+		</xlinktranmap>
+		<xlinktranmap id="TR_CHK" url="" comment="효성확인Update">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH_DOCU" url="" comment="문서첨부조회">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH_HIST" url="" comment="이력정보조회">
+		</xlinktranmap>
+		<xlinktranmap id="TR_MOLD_ID" url="" comment="금형관리ID">
+		</xlinktranmap>
+		<xlinktranmap id="TR_MOLD_DOCU_ID" url="" comment="금형문서관리ID">
+		</xlinktranmap>
+		<xlinktranmap id="TR_MOLD_HIST_ID" url="" comment="금형이력관리ID">
+		</xlinktranmap>
+		<tab_order order_option="2" order_info="26,514,531,453,515,532,519,469,462,521,522,523,524,520,528,529,525"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="0" order_info="35,36,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" anchor="2" x="1088" y="5" right="280" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" anchor="2" x="1204" y="5" right="164" bottom="5" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="1207" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1345" y="5" right="23" bottom="5" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<text control_id="135" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="676" width="1411" width_percent="98" width_unit="1" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="452" autosize="0" x="917" y="52" right="443" bottom="686" width="80" height="20" text="제작년도" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="453" name="edtVendorName" in_index="2" autosize="0" x="660" y="51" right="640" bottom="685" width="140" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:VENDOR_NAME" max_length="100" on_changed="eventfunc:edtVendorName_on_changed(objInst, prev_text, curr_text, event_type)"/>
+		<image control_id="410" name="btnVendorNamePop" autosize="0" x="799" y="51" right="621" bottom="685" width="20" height="22" transparent="0" border="0" padding="0,0,0,0" image="/ico_search_22.gif" image_width="20" image_height="22" mouse_cursor="11" on_click="eventfunc:btnVendorNamePop_on_click(objInst)"/>
+		<text control_id="49" autosize="0" x="24" y="95" right="1316" bottom="647" width="100" height="16" text="금형현황" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="472" autosize="0" x="10" y="95" right="1425" bottom="647" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<grid style="HS_GRID_BASIC_01" control_id="462" name="grdMoldList" x="9" y="116" right="20" bottom="302" width="1411" width_percent="98" height="340" resize_dir="1" header_vertcount="0" cell_height="22" selectrow_bordercolor="0080623C" checkrow_hd_backcolor="00FCEAD3" checkrow_backcolor="00FFFBF7" checkrowwithselect="1" checkrow_width="20" link_data="dsMoldList" samplerows="7" autocolumnwidth="2" version="1.2" on_itemselchange="eventfunc:grdMoldList_on_itemselchange(objInst, nPrevSelectRow, nPrevSelectColumn, nCurSelectRow, nCurSelectColumn)" on_itemclick="eventfunc:grdContList_on_itemclick(objInst, nClickRow, nClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header title="*협력업체명"/>
+				<data style="HS_GRID_DATA_02" name="VENDOR_NAME" width="120" text_horzalign="0" data_type="2" link_data="dsMoldList:VENDOR_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="*협력업체명"/>
+				<data style="HS_GRID_DATA_02" name="VENDOR_CODE_POP" width="20" image="/ico_search_1.gif" image_horzalign="1" bargauge_transparent="0" on_columnclick="eventfunc:grdMoldList_on_columnclick(objInst, nColumn, bBtnClick, nImgIndex, strImgUrl)"/>
+			</column>
+			<column>
+				<header title="업체코드"/>
+				<data style="HS_GRID_DATA_02" name="VENDOR_CODE" width="60" text_horzalign="2" link_data="dsMoldList:VENDOR_CODE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="업종"/>
+				<data style="HS_GRID_DATA_02" name="BIZ_TYPE_NAME" text_horzalign="0" data_type="2" link_data="dsMoldList:BIZ_TYPE_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="*사업장"/>
+				<data style="HS_GRID_DATA_01" name="SITE_CODE" text_horzalign="0" editable="1" input_type="2" link_data="dsMoldList:SITE_CODE" picklist_linkdata="dsSiteCode:CODE:NAME:" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="금형명"/>
+				<data style="HS_GRID_DATA_01" name="MOLD_NAME" width="100" text_horzalign="0" editable="1" imemode="1" data_type="2" link_data="dsMoldList:MOLD_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="금형설명"/>
+				<data style="HS_GRID_DATA_01" name="MOLD_INTRO" width="160" text_horzalign="0" editable="1" imemode="1" data_type="2" link_data="dsMoldList:MOLD_INTRO" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="제작년도"/>
+				<data style="HS_GRID_DATA_01" name="MOLD_MK_YEAR" width="60" editable="1" input_type="3" pattern="YYYY" link_data="dsMoldList:MOLD_MK_YEAR" calendar_datetype="2" calendar_type="3" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="제작비"/>
+				<data style="HS_GRID_DATA_01" name="MOLD_MK_AMOUNT" width="100" text_horzalign="2" editable="1" data_type="0" max_length="12" pattern="ZZZ,ZZZ,ZZZ,ZZZ" link_data="dsMoldList:MOLD_MK_AMOUNT" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="제작사"/>
+				<data style="HS_GRID_DATA_01" name="MOLD_MK_COMPANY" text_horzalign="0" editable="1" imemode="1" data_type="2" link_data="dsMoldList:MOLD_MK_COMPANY" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="금형재질"/>
+				<data style="HS_GRID_DATA_01" name="MOLD_MATERIAL" text_horzalign="0" editable="1" imemode="1" data_type="2" link_data="dsMoldList:MOLD_MATERIAL" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="보증타수"/>
+				<data style="HS_GRID_DATA_01" name="GUARANTY_COUNT" width="75" text_horzalign="2" editable="1" data_type="0" max_length="9" pattern="ZZZ,ZZZ,ZZZ" link_data="dsMoldList:GUARANTY_COUNT" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Cavity"/>
+				<data style="HS_GRID_DATA_01" name="CAVITY" width="75" text_horzalign="2" editable="1" data_type="0" max_length="9" pattern="ZZZ,ZZZ,ZZZ" link_data="dsMoldList:CAVITY" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="사용타수"/>
+				<data style="HS_GRID_DATA_01" name="MOLD_USE_COUNT" width="75" text_horzalign="2" editable="1" data_type="0" max_length="9" pattern="ZZZ,ZZZ,ZZZ" link_data="dsMoldList:MOLD_USE_COUNT" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="수명비율"/>
+				<data style="HS_GRID_DATA_02" name="LIFESPAN_RATE" width="65" text_horzalign="2" data_type="0" max_length="8" pattern="-Z,ZZ9.99" pattern_rear_symbol="%" link_data="dsMoldList:LIFESPAN_RATE" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="사용여부"/>
+				<data style="HS_GRID_DATA_01" name="MOLD_USE_YN" width="60" editable="1" input_type="1" link_data="dsMoldList:MOLD_USE_YN" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="비고"/>
+				<data style="HS_GRID_DATA_01" name="REMARK" width="119" text_horzalign="0" editable="1" data_type="2" link_data="dsMoldList:REMARK" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info="0,0,0,1:"/>
+		</grid>
+		<combobox control_id="514" name="cboOuCode" in_index="0" autosize="0" x="102" y="51" right="1178" bottom="685" width="160" height="22" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOuCode:CODE:NAME:" link_data="dsSearch:OU_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_itemchange="eventfunc:cboOuCode_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<datepicker control_id="515" name="dtpMkYear" in_index="3" autosize="0" x="1002" y="51" right="358" bottom="685" width="80" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSearch:MOLD_MK_YEAR" max_length="4" date_type="2" showtodaybar="1" calendar_type="3" on_keydown="eventfunc:dtpMkYear_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="516" autosize="0" x="576" y="52" right="784" bottom="686" width="80" height="20" text="업체명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<text control_id="467" name="txtVendorCode" autosize="0" x="823" y="52" right="537" bottom="686" width="80" height="20" text="80009" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" link_data="dsSearch:VENDOR_CODE" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="519" name="btnListAddRow" meta_id="LABEL00541" anchor="2" x="1272" y="86" right="98" bottom="647" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnListAddRow_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="469" name="btnListDelRow" meta_id="LABEL00542" anchor="2" x="1347" y="86" right="23" bottom="647" width="70" height="25" text="행삭제" version="1.1" on_mouseup="eventfunc:btnListDelRow_on_mouseup(objInst)"/>
+		<image control_id="475" autosize="0" x="10" y="480" right="1425" bottom="262" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="478" autosize="0" x="24" y="480" right="1316" bottom="262" width="100" height="16" text="문서첨부현황" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="520" name="grdDocuList" x="9" y="504" right="444" bottom="14" width="987" width_percent="98" height="240" resize_dir="2" header_vertcount="0" cell_height="22" selectrow_bordercolor="0080623C" use_checkrow="1" multi_checkrow="1" checkrow_hd_backcolor="00FCEAD3" checkrow_backcolor="00FFFBF7" checkrowwithselect="1" checkrow_width="20" link_data="dsMoldDocu" samplerows="7" autocolumnwidth="2" version="1.2">
+			<column>
+				<header title="문서종류"/>
+				<data style="HS_GRID_DATA_01" name="DOCU_TYPE" width="140" editable="1" input_type="2" link_data="dsMoldDocu:DOCU_TYPE" picklist_linkdata="dsDocuType:CODE:NAME:" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="버젼"/>
+				<data style="HS_GRID_DATA_01" name="DOCU_VERSION" width="100" text_horzalign="0" editable="1" imemode="1" data_type="2" link_data="dsMoldDocu:DOCU_VERSION" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="설명"/>
+				<data style="HS_GRID_DATA_01" name="DOCU_EXPLAIN" width="195" text_horzalign="0" editable="1" imemode="1" data_type="2" link_data="dsMoldDocu:DOCU_EXPLAIN" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="문서첨부"/>
+				<data style="HS_GRID_DATA_02" name="DOCU_ATT_YN" width="50" link_data="dsMoldDocu:DOCU_ATT_YN" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="문서첨부"/>
+				<data style="HS_GRID_DATA_02" name="ATTACH_FILE_POP" width="20" image="/ico_search_1.gif" image_horzalign="1" bargauge_transparent="0" on_columnclick="eventfunc:grdDocuList_on_columnclick(objInst, nColumn, bBtnClick, nImgIndex, strImgUrl)"/>
+			</column>
+			<column>
+				<header title="업체확인"/>
+				<data style="HS_GRID_DATA_02" name="VENDOR_CHK_FLAG" width="60" input_type="1" link_data="dsMoldDocu:VENDOR_CHK_FLAG" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="업체확인일자"/>
+				<data style="HS_GRID_DATA_02" name="VENDOR_CHK_DATE" width="90" pattern="YYYY-MM-DD" link_data="dsMoldDocu:VENDOR_CHK_DATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="효성확인"/>
+				<data style="HS_GRID_DATA_02" name="CHK_FLAG" width="60" input_type="1" link_data="dsMoldDocu:CHK_FLAG" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="효성확인일자"/>
+				<data style="HS_GRID_DATA_02" name="CHK_DATE" width="90" pattern="YYYY-MM-DD" link_data="dsMoldDocu:CHK_DATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="업체확인자"/>
+				<data style="HS_GRID_DATA_02" name="VENDOR_CHK_USER_NM" data_type="2" link_data="dsMoldDocu:VENDOR_CHK_USER_NM" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="효성확인자"/>
+				<data style="HS_GRID_DATA_02" name="CHK_USER_NM" data_type="2" link_data="dsMoldDocu:CHK_USER_NM" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info="0,3,0,4:"/>
+		</grid>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="521" name="btnVendorChk" x="695" y="474" right="675" bottom="259" width="70" height="25" text="업체확인" version="1.1" on_mouseup="eventfunc:btnVendorChk_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="522" name="btnChk" x="771" y="474" right="599" bottom="259" width="70" height="25" text="효성확인" version="1.1" on_mouseup="eventfunc:btnChk_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="523" name="btnDocuAddRow" meta_id="LABEL00541" x="848" y="474" right="522" bottom="259" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnDocuAddRow_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="524" name="btnDocuDelRow" meta_id="LABEL00542" x="923" y="474" right="447" bottom="259" width="70" height="25" text="행삭제" version="1.1" on_mouseup="eventfunc:btnDocuDelRow_on_mouseup(objInst)"/>
+		<grid style="HS_GRID_BASIC_01" control_id="525" name="grdHistList" x="1008" y="504" right="20" bottom="14" width="412" width_percent="98" height="240" resize_dir="3" header_vertcount="0" cell_height="22" selectrow_bordercolor="0080623C" checkrow_hd_backcolor="00FCEAD3" checkrow_backcolor="00FFFBF7" checkrowwithselect="1" checkrow_width="20" link_data="dsMoldHist" samplerows="7" autocolumnwidth="2" version="1.2" on_itemclick="eventfunc:grdContList_on_itemclick(objInst, nClickRow, nClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header title="이력일자"/>
+				<data style="HS_GRID_DATA_01" name="HIST_DATE" width="100" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsMoldHist:HIST_DATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="내용"/>
+				<data style="HS_GRID_DATA_01" name="HIST_CONTENTS" width="240" text_horzalign="0" editable="1" imemode="1" data_type="2" link_data="dsMoldHist:HIST_CONTENTS" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="문서첨부"/>
+				<data style="HS_GRID_DATA_02" name="HIST_ATT_YN" width="50" link_data="dsMoldHist:HIST_ATT_YN" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="문서첨부"/>
+				<data style="HS_GRID_DATA_02" name="ATT_FILE_POP" width="20" image="/ico_search_1.gif" image_horzalign="1" bargauge_transparent="0" on_columnclick="eventfunc:grdHistList_on_columnclick(objInst, nColumn, bBtnClick, nImgIndex, strImgUrl)"/>
+			</column>
+			<headermegeinfo info="0,2,0,3:"/>
+		</grid>
+		<image control_id="526" autosize="0" x="1008" y="480" right="427" bottom="262" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="527" autosize="0" x="1022" y="480" right="318" bottom="262" width="100" height="16" text="금형이력현황" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="528" name="btnHistAddRow" meta_id="LABEL00541" anchor="2" x="1272" y="474" right="98" bottom="259" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnHistAddRow_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="529" name="btnHistDelRow" meta_id="LABEL00542" anchor="2" x="1347" y="474" right="23" bottom="259" width="70" height="25" text="행삭제" version="1.1" on_mouseup="eventfunc:btnHistDelRow_on_mouseup(objInst)"/>
+		<text control_id="530" autosize="0" x="293" y="52" right="1067" bottom="686" width="80" height="20" text="*사업장" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="531" name="cboSiteCode" in_index="1" autosize="0" x="378" y="51" right="902" bottom="685" width="160" height="22" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsSiteCode:CODE:NAME:" link_data="dsSearch:SITE_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboSiteCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<hangul_field control_id="532" name="edtMoldName" in_index="4" autosize="0" x="1238" y="51" right="42" bottom="685" width="160" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:MOLD_NAME" max_length="100" on_keydown="eventfunc:edtMoldName_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="533" autosize="0" x="1153" y="53" right="207" bottom="685" width="80" height="20" text="금형명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+	</map>
+</map_list>

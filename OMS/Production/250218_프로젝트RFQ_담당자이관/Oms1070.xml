@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="프로젝트 권한 관리" directory="/OMS/" screenid="Oms1070" last_update_date="2024-08-09 11:20:26" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,fnDsSet,fnSetInitControl,screen_on_submitcomplete,btnCommonSearch_on_mouseup,screen_on_messagebox,screen_on_size,btnCommonClose_on_mouseup,fnVendorClosePopCallback,btnVendorPop_on_click,fnGetDateByDayGap,comOu_on_itemchange,grdList_on_itemclick,btnCustomerPop_on_click,fnPopupCustClosePopCallback,edtCustomerName_on_prekeydown,btnCommonSave_on_mouseup,fnValidForm,fnSaveData,btnAddRow_on_mouseup,btnDelRow_on_mouseup,grdAuthList_on_columnclick,fnUserPopCallback,ComActStatus_on_prekeydown"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;PROJECT_CODE::::;CUSTOMER_ID::::;CUSTOMER_NAME::::;ACT_STATUS_CODE::::;DETAIL_STATUS_CODE::::;RFQ_CODE::::;AUTH::::"/>
+		<xlinkdataset id="dsOU" desc="법인 LIST" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsActStatus" desc="활동단계" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsList" desc="목록" columns="OU_CODE::::;PROJECT_CODE::::;PROJECT_VERSION::::;CAR_TYPE_CODE::::;CAR_TYPE_NAME::::;REGISTER_YEAR::::;IMPORTANCE_CODE::::;IMPORTANCE_NAME::::;ACT_STATUS_CODE::::;ACT_STATUS_NAME::::;DETAIL_STATUS_CODE::::;DETAIL_STATUS_NAME::::;OU_COUNTRY_CODE::::;OU_COUNTRY_NAME::::;SOP::::;EOP::::;DOMESTIC_EXPORT_CODE::::;DOMESTIC_EXPORT_NAME::::;RFQ_RESPONSE_ID::::;RFQ_RESPONSE_NAME::::;TARGET_YEAR::::;CUSTOMER_ID::::;CUSTOMER_NAME::::;CUSTOMER_GROUP::::;ERP_CUSTOMER_ID::::;ERP_CUSTOMER_NAME::::;CUSTOMER_NATION_NAME::::;OEM::::;INCOTERMS_CODE::::;INCOTERMS_NAME::::;INCOTERMS_DETAIL::::;REMARK::::;CUSTOMER_AREA_CODE::::;CUSTOMER_AREA_NAME::::;PRODUCTION_AREA_CODE::::;PRODUCTION_AREA_NAME::::;CURRENCY_CODE::::;CURRENCY_NAME::::;RFQ_CODE::::;ORG_PROJECT_CODE::::;LATEST_YN::::;AUTH::::"/>
+		<xlinkdataset id="daAuthList" desc="권한목록" columns="OU_CODE::::;PROJECT_CODE::::;USER_ID::::;USER_NAME::::;WRITE_AUTH::::;READ_AUTH::::"/>
+		<xlinkdataset id="dsAuthSearch" desc="공통조회" columns="OU_CODE::::;PROJECT_CODE::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SITE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_AUTH" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_ALL" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,474,455,566,552,533,0,558,557,569"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="1" order_info="35,36,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="1200" y="5" right="168" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="30" y="7" right="1208" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1348" y="5" right="20" bottom="5" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" meta_id="LABEL00011" anchor="2" x="1274" y="5" right="94" bottom="5" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="646" width="1411" width_percent="98" width_unit="1" height="70" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="49" meta_id="LABEL02384" autosize="0" x="24" y="125" right="1104" bottom="617" width="312" height="16" text="프로젝트목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="68" autosize="0" x="10" y="125" right="1425" bottom="617" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="551" meta_id="LABEL01898" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="474" name="comOu" in_index="0" autosize="0" x="102" y="52" right="1178" bottom="686" width="160" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOU:CODE:NAME:" link_data="dsSearch:OU_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_itemchange="eventfunc:comOu_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<text control_id="454" meta_id="LABEL00064" autosize="0" x="408" y="52" right="952" bottom="686" width="80" height="20" text="프로젝트코드" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="455" name="edtProjectCode" in_index="1" autosize="0" x="491" y="52" right="809" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:PROJECT_CODE" max_length="100" imemode="0"/>
+		<image control_id="410" name="btnCustomerPop" autosize="0" x="241" y="82" right="1180" bottom="656" width="19" height="20" transparent="0" border="0" padding="0,0,0,0" image="/ico_search.gif" image_width="19" image_height="20" mouse_cursor="11" on_click="eventfunc:btnCustomerPop_on_click(objInst)"/>
+		<text control_id="532" meta_id="LABEL02361" autosize="0" x="425" y="82" right="955" bottom="656" width="60" height="20" text="활동 단계" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="533" name="ComActStatus" in_index="4" autosize="0" x="491" y="82" right="789" bottom="656" width="160" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsActStatus:CODE:NAME:" link_data="dsSearch:ACT_STATUS_CODE" default_value_type="1" default_value_usage="1" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_prekeydown="eventfunc:ComActStatus_on_prekeydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<grid style="HS_GRID_BASIC_01" control_id="0" name="grdList" in_index="20" x="9" y="144" right="20" bottom="410" width="1411" width_percent="98" height="204" resize_dir="1" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" checkrowwithselect="1" link_data="dsList" samplerows="4" autocolumnwidth="2" version="1.2" on_itemclick="eventfunc:grdList_on_itemclick(objInst, nClickRow, nClickColumn, bBtnClick, nImgIndex, strImgUrl)" on_itemdblclick="eventfunc:grdList_on_itemdblclick(objInst, nDblClickRow, nDblClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header meta_id="LABEL00064" title="프로젝트코드"/>
+				<data style="HS_GRID_DATA_BC_01" width="183" link_data="dsList:PROJECT_CODE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00327" title="버젼"/>
+				<data style="HS_GRID_DATA_BC_01" width="36" text_horzalign="1" link_data="dsList:PROJECT_VERSION" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01587" title="차종"/>
+				<data style="HS_GRID_DATA_BC_01" width="108" link_data="dsList:CAR_TYPE_NAME" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02367" title="등록년도"/>
+				<data style="HS_GRID_DATA_BC_01" width="59" text_horzalign="1" link_data="dsList:REGISTER_YEAR" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02368" title="법인구분"/>
+				<data style="HS_GRID_DATA_BC_01" width="52" link_data="dsList:OU_COUNTRY_NAME" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00193" title="고객명"/>
+				<data style="HS_GRID_DATA_BC_01" width="150" link_data="dsList:CUSTOMER_NAME" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02651" title="고객국가"/>
+				<data style="HS_GRID_DATA_BC_01" width="72" link_data="dsList:CUSTOMER_NATION_NAME" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02370" title="법인생산지"/>
+				<data style="HS_GRID_DATA_BC_01" width="99" link_data="dsList:PRODUCTION_AREA_NAME" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02470" title="RFQ Code"/>
+				<data style="HS_GRID_DATA_BC_01" width="84" text_horzalign="1" link_data="dsList:RFQ_CODE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02377" title="RFQ response"/>
+				<data style="HS_GRID_DATA_BC_01" width="100" text_horzalign="1" link_data="dsList:RFQ_RESPONSE_NAME" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02361" title="활동단계"/>
+				<data style="HS_GRID_DATA_BC_01" width="77" text_horzalign="1" link_data="dsList:ACT_STATUS_NAME" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02382" title="상세상태"/>
+				<data style="HS_GRID_DATA_BC_01" width="85" text_horzalign="1" link_data="dsList:DETAIL_STATUS_NAME" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<hangul_field control_id="552" name="edtCustomerName" in_index="3" autosize="0" x="102" y="82" right="1198" bottom="656" width="140" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:CUSTOMER_NAME" max_length="100" make_case="1" imemode="0" on_prekeydown="eventfunc:edtCustomerName_on_prekeydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="553" meta_id="LABEL00193" autosize="0" x="19" y="82" right="1341" bottom="656" width="80" height="20" text="고객명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<text control_id="565" meta_id="LABEL02470" autosize="0" x="780" y="52" right="580" bottom="686" width="80" height="20" text="RFQ Code" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="566" name="edtRfqCode" in_index="2" autosize="0" x="863" y="52" right="437" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:RFQ_CODE" max_length="100" make_case="1" imemode="0"/>
+		<image control_id="567" autosize="0" x="10" y="396" right="1425" bottom="346" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="568" meta_id="LABEL02648" autosize="0" x="24" y="396" right="1216" bottom="346" width="200" height="16" text="프로젝트 권한" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="569" name="grdAuthList" in_index="21" x="9" y="420" right="20" bottom="14" width="1411" width_percent="98" height="324" resize_dir="3" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" checkrowwithselect="1" link_data="daAuthList" samplerows="4" autocolumnwidth="2" version="1.2">
+			<column>
+				<header meta_id="LABEL00064" title="프로젝트코드"/>
+				<data style="HS_GRID_DATA_BC_01" name="PROJECT_CODE" width="183" link_data="daAuthList:PROJECT_CODE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00101" title="사용자"/>
+				<data style="HS_GRID_DATA_BC_01" name="USER_NAME" link_data="daAuthList:USER_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="사용자"/>
+				<data style="HS_GRID_DATA_02" name="USER_POPUP" width="20" image="/ico_search_1.gif" image_horzalign="1" resizable="0" bargauge_transparent="0" on_columnclick="eventfunc:grdAuthList_on_columnclick(objInst, nColumn, bBtnClick, nImgIndex, strImgUrl)"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02649" title="수정권한"/>
+				<data style="HS_GRID_DATA_01" name="WRITE_AUTH" editable="1" input_type="1" link_data="daAuthList:WRITE_AUTH" combobox_editable="0" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02650" title="조회권한"/>
+				<data style="HS_GRID_DATA_01" name="READ_AUTH" editable="1" input_type="1" link_data="daAuthList:READ_AUTH" combobox_editable="0" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info="0,1,0,2:"/>
+		</grid>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="558" name="btnAddRow" meta_id="LABEL00541" anchor="2" x="1278" y="393" right="92" bottom="342" width="70" height="23" text="행추가" version="1.1" on_mouseup="eventfunc:btnAddRow_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="557" name="btnDelRow" meta_id="LABEL00542" anchor="2" x="1350" y="393" right="20" bottom="342" width="70" height="23" text="행삭제" version="1.1" on_mouseup="eventfunc:btnDelRow_on_mouseup(objInst)"/>
+	</map>
+</map_list>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="RFQ등록현황" directory="/INTRO/" screenid="sv_1" click_setfocus="1" last_update_date="2023-08-21 14:48:34" width="710" width_type="2" height="250" height_type="2" canvas_width="1900" canvas_height="600" vertscrollbar_style="0" horzscrollbar_style="0" on_load="eventfunc:screen_on_load()" funclist="screen_on_load,fnRFQStat"/>
+		<xlinkdataset id="dsRfq" desc="Rfq현황" columns="RFQ_CODE::::;CUSTOMER_NAME::::;CAR_TYPE_CODE::::;CAR_TYPE_NAME::::;PRODUCT_NAME_CODE::::;PRODUCT_NAME::::;RFQ_CHARGE_NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_RFQ_STAT" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="462"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="684" bottom="226" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<text control_id="32" name="stSystemMenuTitle" meta_id="LABEL02699" autosize="0" x="30" y="7" right="430" bottom="225" width="250" height="18" text="RFQ 등록 현황" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<grid style="HS_SINGLEVIEW_GRID_01" control_id="462" name="grdList" x="7" y="32" right="8" bottom="6" width="695" height="212" header_font="맑은 고딕,9,0,0,0,0" header_vertcount="0" selectrow_bordercolor="0080623C" link_data="dsRfq" version="1.2">
+			<column>
+				<header meta_id="LABEL02477" title="RFQ코드"/>
+				<data style="HS_GRID_DATA_02" name="RFQ_CODE" width="100" data_type="2" show_tooltip="1" link_data="dsRfq:RFQ_CODE" combobox_defaultvalue_type="1" combobox_showbutton="0" combobox_buttonsize="0" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00193" title="고객명"/>
+				<data style="HS_GRID_DATA_02" name="CUSTOMER_NAME" width="240" text_horzalign="0" data_type="2" show_tooltip="1" link_data="dsRfq:CUSTOMER_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01587" title="차종"/>
+				<data style="HS_GRID_DATA_02" name="CAR_TYPE_NAME" width="70" text_horzalign="0" data_type="2" show_tooltip="1" link_data="dsRfq:CAR_TYPE_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00765" title="Product Name"/>
+				<data style="HS_GRID_DATA_02" name="PRODUCT_NAME" width="170" data_type="2" link_data="dsRfq:PRODUCT_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02672" title="RFQ 담당자"/>
+				<data style="HS_GRID_DATA_02" name="RFQ_CHARGE_NAME" link_data="dsRfq:RFQ_CHARGE_NAME" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+	</map>
+</map_list>

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="신제품개발서류목록" directory="/PSO/" screenid="Pso1010" last_update_date="2023-07-11 17:04:11" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,screen_on_submitcomplete,fnSearch,fnValidForm,fnSaveData,btnCommonSearch_on_mouseup,btnCommonSave_on_mouseup,screen_on_messagebox,screen_on_size,btnCommonClose_on_mouseup,cboOuCode_on_keydown,cboDocStep_on_keydown,edtMgtDept_on_keydown,dptStdDate_on_keydown,btnAddRow_on_mouseup,grdList_on_columnclick,fnAttFilePopCallback"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;DOC_STEP::::;MANAGER_DEPT::::;STD_DATE::::"/>
+		<xlinkdataset id="dsDocList" desc="서류목록정보" columns="OU_CODE::::;DOC_ID::::;DOC_STEP::::;DOC_CHASU::::;DOC_DETAIL_CHASU::::;CONTENTS::::;MANAGER_DEPT::::;FIRST_GRADE::::;SECOND_GRADE::::;THIRD_GRADE::::;APQP::::;ATTFILE_YN::::;EFFECTIVE_START_DATE::::;EFFECTIVE_END_DATE::::;REMARK::::"/>
+		<xlinkdataset id="dsDocID" desc="서류목록ID" columns="SEQ::::"/>
+		<xlinkdataset id="dsOuCode" desc="법인코드정보" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsDocStep" desc="활동단계" columns="CODE::::;NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="조회">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_ALL" url="" comment="저장">
+		</xlinktranmap>
+		<xlinktranmap id="TR_DOC_ID" url="" comment="서류목록ID 가져오기">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,514,521,523,483,519,462"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="0" order_info="35,36,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="1088" y="5" right="280" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" meta_id="LABEL00011" anchor="2" x="1204" y="5" right="164" bottom="5" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="1207" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1345" y="5" right="23" bottom="5" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<text control_id="135" meta_id="LABEL01898" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="676" width="1411" width_percent="98" width_unit="1" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="452" meta_id="LABEL02444" autosize="0" x="717" y="52" right="643" bottom="686" width="80" height="20" text="주관부서" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<text control_id="49" meta_id="LABEL02445" autosize="0" x="24" y="95" right="1276" bottom="647" width="140" height="16" text="신제품 개발 서류목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="472" autosize="0" x="10" y="95" right="1425" bottom="647" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<grid style="HS_GRID_BASIC_01" control_id="462" name="grdList" x="9" y="116" right="20" bottom="14" width="1411" width_percent="98" height="628" resize_dir="3" header_vertcount="0" header_horzcount="2" header_height="22" cell_height="22" selectrow_bordercolor="0080623C" multi_checkrow="1" checkrow_hd_backcolor="00FCEAD3" checkrow_backcolor="00FFFBF7" checkrowwithselect="1" checkrow_width="20" link_data="dsDocList" samplerows="7" autocolumnwidth="2" version="1.2" mousewheel_activealways="2">
+			<column>
+				<header meta_id="LABEL02446" title="*활동단계"/>
+				<header title="*활동단계"/>
+				<data style="HS_GRID_DATA_01" name="DOC_STEP" text_horzalign="0" editable="1" input_type="2" link_data="dsDocList:DOC_STEP" picklist_linkdata="dsDocStep:CODE:NAME:" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02447" title="*차수"/>
+				<header title="*차수"/>
+				<data style="HS_GRID_DATA_01" name="DOC_CHASU" width="64" editable="1" link_data="dsDocList:DOC_CHASU" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02448" title="*세부차수"/>
+				<header title="*세부차수"/>
+				<data style="HS_GRID_DATA_01" name="DOC_DETAIL_CHASU" width="64" editable="1" link_data="dsDocList:DOC_DETAIL_CHASU" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02450" title="*항목"/>
+				<header title="*항목"/>
+				<data style="HS_GRID_DATA_01" name="CONTENTS" width="484" text_horzalign="0" editable="1" data_type="2" link_data="dsDocList:CONTENTS" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02444" title="주관부서"/>
+				<header title="주관부서"/>
+				<data style="HS_GRID_DATA_01" name="MANAGER_DEPT" editable="1" data_type="2" link_data="dsDocList:MANAGER_DEPT" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02453" title="개발등급"/>
+				<header meta_id="LABEL02454" title="1등급"/>
+				<data style="HS_GRID_DATA_01" name="FIRST_GRADE" width="64" editable="1" input_type="1" default_value="N" link_data="dsDocList:FIRST_GRADE" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02422" title="개발등급"/>
+				<header meta_id="LABEL02455" title="2등급"/>
+				<data style="HS_GRID_DATA_01" name="SECOND_GRADE" width="64" editable="1" input_type="1" default_value="N" link_data="dsDocList:SECOND_GRADE" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02423" title="개발등급"/>
+				<header meta_id="LABEL02456" title="3등급"/>
+				<data style="HS_GRID_DATA_01" name="THIRD_GRADE" width="64" editable="1" input_type="1" default_value="N" link_data="dsDocList:THIRD_GRADE" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02457" title="APQP"/>
+				<header title="APQP"/>
+				<data style="HS_GRID_DATA_01" name="APQP" width="64" editable="1" input_type="1" default_value="N" link_data="dsDocList:APQP" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02458" title="표준양식첨부"/>
+				<header title="표준양식첨부"/>
+				<data style="HS_GRID_DATA_02" name="ATTFILE_YN" width="60" link_data="dsDocList:ATTFILE_YN" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="표준양식첨부"/>
+				<header title="표준양식첨부"/>
+				<data style="HS_GRID_DATA_02" name="ATTFILE_POP" width="20" image="/ico_search_1.gif" image_horzalign="1" bargauge_transparent="0" on_columnclick="eventfunc:grdList_on_columnclick(objInst, nColumn, bBtnClick, nImgIndex, strImgUrl)"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02463" title="*유효시작일"/>
+				<header meta_id="LABEL02463" title="*유효시작일"/>
+				<data style="HS_GRID_DATA_01" name="EFFECTIVE_START_DATE" width="100" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsDocList:EFFECTIVE_START_DATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02462" title="유효종료일"/>
+				<header title="유효종료일"/>
+				<data style="HS_GRID_DATA_01" name="EFFECTIVE_END_DATE" width="100" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsDocList:EFFECTIVE_END_DATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00060" title="비고"/>
+				<header title="비고"/>
+				<data style="HS_GRID_DATA_01" name="REMARK" width="100" text_horzalign="0" editable="1" data_type="2" link_data="dsDocList:REMARK" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info="0,0,1,0:0,1,1,1:0,2,1,2:0,3,1,3:0,4,1,4:0,5,0,7:0,8,1,8:0,9,1,10:0,11,1,11:0,12,1,12:0,13,1,13:"/>
+		</grid>
+		<combobox control_id="514" name="cboOuCode" autosize="0" x="102" y="51" right="1178" bottom="685" width="160" height="22" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOuCode:CODE:NAME:" link_data="dsSearch:OU_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="516" meta_id="LABEL02361" autosize="0" x="368" y="52" right="992" bottom="686" width="80" height="20" text="활동단계" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="519" name="btnAddRow" meta_id="LABEL00541" anchor="2" x="1345" y="86" right="25" bottom="647" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnAddRow_on_mouseup(objInst)"/>
+		<combobox control_id="521" name="cboDocStep" autosize="0" x="452" y="51" right="828" bottom="685" width="160" height="22" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsDocStep:CODE:NAME:" link_data="dsSearch:DOC_STEP" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboDocStep_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<datepicker control_id="483" name="dptStdDate" autosize="0" x="1152" y="51" right="188" bottom="685" width="100" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSearch:STD_DATE" delimiter_char="-" showtodaybar="1" calendar_type="1" on_keydown="eventfunc:dptStdDate_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="522" meta_id="LABEL01350" autosize="0" x="1066" y="52" right="294" bottom="686" width="80" height="20" text="기준일자" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="523" name="edtMgtDept" autosize="0" x="802" y="51" right="478" bottom="685" width="160" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:MANAGER_DEPT" max_length="50" on_keydown="eventfunc:edtMgtDept_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+	</map>
+</map_list>

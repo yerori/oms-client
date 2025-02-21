@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]개인정보관리" directory="/FRAME/" screenid="UserInfoP" last_update_date="2023-06-15 11:50:28" width="624" width_type="0" height="300" height_type="0" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_destroy,btnClose_on_mouseup,screen_on_load,fnPageSet,fnSearch,screen_on_submitcomplete,btnPwdChange_on_mouseup,fnPwdReSet,screen_on_messagebox"/>
+		<xlinkdataset id="dsMyInfo" desc="" columns="USER_ID::::;LGI_ID::::;USER_NAME::::;OU_CODE::::;OU_NAME::::;AT_OU::::;EMP_NO::::;VENDOR_CODE::::;VENDOR_NAME::::;USER_TYPE::::;E_COMMERCE_YN::::;PERSONAL_INFO_YN::::;INFO_SECURIT_YN::::;FIRST_PWD_CHANGE::::;ST_DATE::::;ED_DATE::::;EMAIL_ADDR::::;BIZ_DIV::::;REPORT_WEB_HTML::::;REPORT_MID::::;PW_OLD::::;PW_NEW::::;PW_NEW_CHECK::::"/>
+		<xlinkdataset id="dsPwdResult" desc="" columns="RESULT::::"/>
+		<xlinkdataset id="dsUserLangScnCd" desc="" columns="CD_LEVEL::::;CD_PATH::::;ROOT_COM_CD_ID::::;ROOT_COM_CD_ID_NM::::;CO_ID::::;COM_CD_ID::::;COM_CD_ID_NM::::;SUPI_COM_CD_ID::::;SUPI_COM_CD_ID_NM::::;COM_CD_ORDER::::;USE_YN::::;DEL_YN::::;COM_CD_NOTE::::;RESERVED_1::::;RESERVED_2::::;RESERVED_3::::;RESERVED_4::::;RESERVED_5::::;RESERVED_6::::;RESERVED_7::::;RESERVED_8::::;RESERVED_9::::;RESERVED_10::::;CRE_USER_ID::::;CRE_DTM::::;MDFY_USER_ID::::;MDFY_DTM::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_PWD" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="51,438,561,562,566,564,567,569,35,579,580,581"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="598" bottom="276" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<text control_id="32" name="stSystemMenuTitle" meta_id="LABEL00100" autosize="0" x="31" y="7" right="393" bottom="275" width="200" height="18" text="사용자정보" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnPwdChange" meta_id="LABEL01275" x="524" y="192" right="14" bottom="83" width="86" height="25" text="비밀번호변경" version="1.1" on_mouseup="eventfunc:btnPwdChange_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="51" name="btnClose" meta_id="LABEL00012" x="540" y="6" right="14" bottom="269" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+		<image control_id="68" autosize="0" x="10" y="38" right="609" bottom="246" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="49" meta_id="LABEL00133" autosize="0" x="22" y="38" right="516" bottom="246" width="86" height="16" text="상세정보" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<table style="tbl_normal" control_id="560" name="tblUserInfo" x="10" y="60" right="9" bottom="115" width="605" height="125">
+			<cell style="HS_table_cell_01" cell_id="1" meta_id="LABEL01271" rect="0,0,102,32" font="맑은 고딕,9,0,0,0,0" text_margin="0,6,0,0" text="로그인 ID"/>
+			<cell style="HS_table_cell_01" rect="101,0,303,32" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" cell_id="2" meta_id="LABEL00091" rect="302,0,404,32" font="맑은 고딕,9,0,0,0,0" text_margin="0,6,0,0" text="사용자명 "/>
+			<cell style="HS_table_cell_01" rect="403,0,605,32" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" cell_id="3" meta_id="LABEL02610" rect="0,31,102,63" font="맑은 고딕,9,0,0,0,0" text_margin="0,6,0,0" text="유저 ID"/>
+			<cell style="HS_table_cell_01" rect="101,31,303,63" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" cell_id="4" meta_id="LABEL01530" rect="302,31,404,63" font="맑은 고딕,9,0,0,0,0" text_margin="0,6,0,0" text="사원번호 "/>
+			<cell style="HS_table_cell_01" rect="403,31,605,63" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" cell_id="5" meta_id="LABEL00237" rect="0,62,102,94" font="맑은 고딕,9,0,0,0,0" text_margin="0,6,0,0" text="업체명 "/>
+			<cell style="HS_table_cell_01" rect="101,62,303,94" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" cell_id="6" meta_id="LABEL02611" rect="302,62,404,94" font="맑은 고딕,9,0,0,0,0" text_margin="0,6,0,0" text="법인명 "/>
+			<cell style="HS_table_cell_01" rect="403,62,605,94" font="맑은 고딕,9,0,0,0,0"/>
+			<cell cell_id="7" meta_id="LABEL02581" rect="0,93,102,125" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text_margin="0,6,0,0" text="Email "/>
+			<cell rect="101,93,303,125" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7"/>
+			<cell rect="302,93,605,125" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7"/>
+		</table>
+		<normal_field control_id="438" name="fldLoginID" autosize="0" x="116" y="64" right="316" bottom="212" width="192" height="24" font="맑은 고딕,9,0,0,0,0" link_data="dsMyInfo:LGI_ID" enable="0"/>
+		<hangul_field control_id="561" name="fldUserName" autosize="0" x="418" y="64" right="14" bottom="212" width="192" height="24" font="맑은 고딕,9,0,0,0,0" link_data="dsMyInfo:USER_NAME" enable="0" max_length="50"/>
+		<normal_field control_id="562" name="fldUserID" autosize="0" x="116" y="95" right="316" bottom="181" width="192" height="24" font="맑은 고딕,9,0,0,0,0" link_data="dsMyInfo:USER_ID" enable="0"/>
+		<hangul_field control_id="564" name="fldVendorName" autosize="0" x="116" y="126" right="316" bottom="150" width="192" height="24" font="맑은 고딕,9,0,0,0,0" link_data="dsMyInfo:VENDOR_NAME" enable="0" max_length="50"/>
+		<normal_field control_id="566" name="fldEmpNo" autosize="0" x="419" y="95" right="13" bottom="181" width="192" height="24" font="맑은 고딕,9,0,0,0,0" link_data="dsMyInfo:EMP_NO" enable="0"/>
+		<hangul_field control_id="567" name="fldOuName" autosize="0" x="419" y="126" right="13" bottom="150" width="192" height="24" font="맑은 고딕,9,0,0,0,0" link_data="dsMyInfo:OU_NAME" enable="0" max_length="50"/>
+		<normal_field control_id="569" name="fldEmailAddr" autosize="0" x="116" y="157" right="316" bottom="119" width="192" height="24" font="맑은 고딕,9,0,0,0,0" link_data="dsMyInfo:EMAIL_ADDR" enable="0" max_length="50"/>
+		<table style="tbl_normal" control_id="571" x="10" y="223" right="9" bottom="13" width="605" height="64">
+			<cell style="HS_table_cell_01" cell_id="1" meta_id="LABEL01276" rect="0,0,102,32" font="맑은 고딕,9,0,0,0,0" text_margin="0,6,0,0" text="기존비밀번호 "/>
+			<cell style="HS_table_cell_01" cell_id="2" meta_id="LABEL01277" rect="0,31,102,64" font="맑은 고딕,9,0,0,0,0" text_margin="0,6,0,0" text="신규비밀번호 "/>
+			<cell style="HS_table_cell_01" rect="101,31,303,64" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" cell_id="3" meta_id="LABEL01278" rect="302,31,404,64" font="맑은 고딕,9,0,0,0,0" text="신규비밀번호확인"/>
+			<cell style="HS_table_cell_01" rect="403,31,605,64" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="101,0,605,32" font="맑은 고딕,9,0,0,0,0"/>
+		</table>
+		<image control_id="577" autosize="0" x="10" y="201" right="609" bottom="83" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="578" meta_id="LABEL01275" autosize="0" x="22" y="200" right="516" bottom="84" width="86" height="16" text="비밀번호변경" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<password_field control_id="579" name="fldOldPwd" in_index="1" autosize="0" x="116" y="227" right="316" bottom="49" width="192" height="24" font="맑은 고딕,9,0,0,0,0" link_data="dsMyInfo:PW_OLD" max_length="512"/>
+		<password_field control_id="580" name="fldNewPwd" in_index="2" autosize="0" x="116" y="258" right="316" bottom="18" width="192" height="24" font="맑은 고딕,9,0,0,0,0" link_data="dsMyInfo:PW_NEW" max_length="512"/>
+		<password_field control_id="581" name="fldNewPwdCheck" in_index="3" autosize="0" x="419" y="258" right="13" bottom="18" width="192" height="24" font="맑은 고딕,9,0,0,0,0" link_data="dsMyInfo:PW_NEW_CHECK" max_length="512"/>
+	</map>
+</map_list>

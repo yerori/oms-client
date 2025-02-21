@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="법인등록" directory="/SMT/" screenid="SmtSet1030" last_update_date="2023-06-14 14:48:01" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fn_init,screen_on_submitcomplete,tr_select_code,tr_select_code_ou,tr_select_master,tr_select_detail,tr_save,btnCommonSearch_on_mouseup,btnCommonSave_on_mouseup,btnCommonCreate_on_mouseup,btnCommonDelete_on_mouseup,btnCommonClose_on_mouseup,btnAddRow_on_mouseup,btnDelRow_on_mouseup,btnAttch_on_mouseup,fnAttachFilePopCallback,btnPostCodePop_on_click,fnGetMstrPostCode,edt_OU_ADDR2_on_focusin,grdDetail_on_columnclick,fnGetSitePostCode,edt_SITE_ADDR2_on_focusin,screen_on_size"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE:&quot;법인코드&quot;:::"/>
+		<xlinkdataset id="dsMaster" desc="" columns="OU_CODE:&quot;시스템법인코드&quot;:::;OU_USER_CODE:&quot;사용자법인코드&quot;:::;OU_NAME:&quot;법인명&quot;:::;OU_NAME_EN:&quot;법인명(영)&quot;:::;OU_NAME_ZH:&quot;법인명(중)&quot;:::;OU_KIND_CODE:&quot;법인/개인구분&quot;:::;OU_OWN_NO:&quot;법인등록번호&quot;:::;OU_TEL_NO:&quot;전화번호&quot;:::;OU_FAX_NO:&quot;fax번호&quot;:::;POST_CODE:&quot;우편번호&quot;:::;OU_ADDR1:&quot;주소1&quot;:::;OU_ADDR2:&quot;주소2&quot;:::;OU_ADDR_ENG1:&quot;주소1(영문)&quot;:::;OU_ADDR_ENG2:&quot;주소2(영문)&quot;:::;REPRE_NAME:&quot;대표자명&quot;:::;REPRE_NAME_EN:&quot;대표자영문명&quot;:::;REPRE_NO:&quot;대표자주민번호&quot;:::;OU_AMT:&quot;자본금&quot;:::;OU_TYPE_CODE:&quot;법인구분&quot;:::;CLASS_TYPE_CODE:&quot;법인규모&quot;:::;EMP_CNT:&quot;직원수&quot;:::;LOCATION_TYPE_CODE:&quot;지방소재구분&quot;:::;FOREIGN_YN:&quot;외국인구분&quot;:::;TAX_REPRE_NAME:&quot;주민납세자명&quot;:::;OU_ESTABLISH_DATE:&quot;설립일&quot;:::;OU_OPEN_DATE:&quot;개업일&quot;:::;OU_CLOSE_DATE:&quot;폐업일&quot;:::;PERIOD_MM:&quot;결산월&quot;:::;PERIOD_ST_DATE:&quot;회계기간시작일&quot;:::;PERIOD_ED_DATE:&quot;회계기간종료일&quot;:::;INS_DATE:&quot;생성일시&quot;:::;INS_USER_ID:&quot;생성자&quot;:::;UPD_DATE:&quot;최종수정일시&quot;:::;UPD_USER_ID:&quot;최종수정자&quot;:::;EMP_NO_GUBUN:&quot;사번구분&quot;:::;JIKIN_YN:&quot;직인여부&quot;:::"/>
+		<xlinkdataset id="dsDetail" desc="" columns="OU_CODE:&quot;법인코드&quot;:::;OU_NAME:&quot;법인명&quot;:::;SITE_NAME:&quot;사업장, 또는 근무지역 명&quot;:::;SITE_CODE:&quot;사업장코드&quot;:::;OU_NUM:&quot;사업자번호&quot;:::;OU_BIZ_TYPE:&quot;업종&quot;:::;OU_BIZ_CLASS:&quot;업태&quot;:::;TAX_GOVERN_CODE:&quot;관할세무서&quot;:::;SITE_TEL1:&quot;전화번호&quot;:::;SITE_TEL2:&quot;fax번호&quot;:::;POST_CODE:&quot;우편번호&quot;:::;SITE_ADDR1:&quot;주소1&quot;:::;SITE_ADDR2:&quot;주소2&quot;:::;SITE_ST_DATE:&quot;시작일&quot;:::;SITE_ED_DATE:&quot;종료일&quot;:::;REMARK:&quot;비고&quot;:::;ADV_DEF_TYPE:&quot;선후불구분&quot;:::"/>
+		<xlinkdataset id="dsCode_OU" desc="법인코드" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsCode_F002" desc="법인/개인구분" columns="ITEM_CODE::::;ITEM_NAME::::"/>
+		<xlinkdataset id="dsCode_F003" desc="법인구분" columns="ITEM_CODE::::;ITEM_NAME::::"/>
+		<xlinkdataset id="dsCode_F004" desc="법인규모" columns="ITEM_CODE::::;ITEM_NAME::::"/>
+		<xlinkdataset id="dsCode_F006" desc="소재지구분" columns="ITEM_CODE::::;ITEM_NAME::::"/>
+		<xlinkdataset id="dsCode_F009" desc="외국인여부" columns="ITEM_CODE::::;ITEM_NAME::::"/>
+		<xlinkdataset id="dsCode_H503" desc="선후불구분" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsCode_F021" desc="관할세무소" columns="CODE::::;NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SELECT_MASTER" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SELECT_CODE_OU" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SELECT_DETAIL" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SELECT_CODE_F003" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SELECT_CODE_F004" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SELECT_CODE_F006" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SELECT_CODE_F009" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SELECT_CODE_F002" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_DELETE" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,16,2001,2002,475,2055,2003,2050,2006,2008,2007,2058,2011,2012,2013,2016,2017,2018,2021,2022,2023,483,2027,2028,2052,2032,2053,2037,2041,2042,2046,2047,468,469,462,2060,2061,2063"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="0" order_info="35,507,513,36,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="1014" y="5" right="354" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" meta_id="LABEL00011" anchor="2" x="1260" y="5" right="108" bottom="5" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="30" y="7" right="1208" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="507" name="btnCommonCreate" meta_id="LABEL01958" anchor="2" x="1098" y="5" right="270" bottom="5" width="70" height="25" text="신규" version="1.1" on_mouseup="eventfunc:btnCommonCreate_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="513" name="btnCommonDelete" meta_id="LABEL00010" anchor="2" x="1177" y="5" right="191" bottom="5" width="70" height="25" text="삭제" version="1.1" on_mouseup="eventfunc:btnCommonDelete_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1345" y="5" right="23" bottom="5" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<text control_id="135" meta_id="LABEL01898" autosize="0" x="18" y="52" right="1342" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="676" width="1411" width_percent="98" width_unit="1" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<combobox control_id="16" name="eds_OU_CODE" in_index="1" autosize="0" x="102" y="52" right="1198" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" picklist_linkdata="dsCode_OU:CODE:NAME:" link_data="dsSearch:OU_CODE" max_length="200" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_itemchange="eventfunc:cbo_OU_CODE_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<table style="tbl_normal" control_id="2048" name="tblMenuView" x="10" y="116" right="21" bottom="331" width="1409" height="311">
+			<cell style="HS_table_cell_01" cell_id="1" meta_id="LABEL02501" rect="0,0,152,30" text="*시스템코드/사용자코드"/>
+			<cell style="HS_table_cell_01" cell_id="4" meta_id="LABEL02505" rect="0,29,152,61" text="법인/개인"/>
+			<cell style="HS_table_cell_01" cell_id="7" meta_id="LABEL02368" rect="0,60,152,94" text="법인구분"/>
+			<cell rect="151,0,470,30" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell rect="151,29,470,61" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell rect="151,60,470,94" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell cell_id="2" meta_id="LABEL02503" rect="469,0,619,30" font="맑은 고딕,10,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="*법인명"/>
+			<cell rect="618,0,936,30" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell cell_id="5" meta_id="LABEL02506" rect="469,29,619,61" font="맑은 고딕,10,0,0,0,0" back_color="00FFFBF7" horz_align="2" text="법인영문명"/>
+			<cell rect="618,29,936,61" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell cell_id="8" meta_id="LABEL02508" rect="469,60,619,94" font="맑은 고딕,10,0,0,0,0" back_color="00FFFBF7" horz_align="2" text="대표자주민번호"/>
+			<cell rect="618,60,936,94" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell rect="1086,0,1409,30" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell rect="1086,29,1409,61" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell rect="1086,60,1409,94" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell cell_id="3" meta_id="LABEL02504" rect="935,0,1087,30" font="맑은 고딕,10,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="*사번구분"/>
+			<cell cell_id="6" meta_id="LABEL02507" rect="935,29,1087,61" font="맑은 고딕,10,0,0,0,0" back_color="00FFFBF7" horz_align="2" text="대표자명/영문"/>
+			<cell cell_id="9" meta_id="LABEL00098" rect="935,60,1087,94" font="맑은 고딕,10,0,0,0,0" back_color="00FFFBF7" horz_align="2" text="전화번호"/>
+			<cell cell_id="10" meta_id="LABEL02509" rect="0,93,152,124" font="맑은 고딕,10,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="*법인등록번호"/>
+			<cell rect="151,93,470,124" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell cell_id="11" meta_id="LABEL02510" rect="469,93,619,124" font="맑은 고딕,10,0,0,0,0" back_color="00FFFBF7" horz_align="2" text="내/외국인"/>
+			<cell rect="618,93,936,124" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell rect="1086,93,1409,124" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell cell_id="12" meta_id="LABEL02511" rect="935,93,1087,124" font="맑은 고딕,10,0,0,0,0" back_color="00FFFBF7" horz_align="2" text="FAX번호"/>
+			<cell cell_id="13" meta_id="LABEL02512" rect="0,123,152,156" font="맑은 고딕,10,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="법인규모"/>
+			<cell rect="151,123,470,156" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell cell_id="14" meta_id="LABEL02513" rect="469,123,619,156" font="맑은 고딕,10,0,0,0,0" back_color="00FFFBF7" horz_align="2" text="납세자명"/>
+			<cell rect="618,123,936,156" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell rect="1086,123,1409,156" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell cell_id="15" meta_id="LABEL02514" rect="935,123,1087,156" font="맑은 고딕,10,0,0,0,0" back_color="00FFFBF7" horz_align="2" text="종업원수"/>
+			<cell cell_id="16" meta_id="LABEL02515" rect="0,155,152,187" font="맑은 고딕,10,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="설립일"/>
+			<cell rect="151,155,470,187" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell cell_id="17" meta_id="LABEL01978" rect="469,155,619,187" font="맑은 고딕,10,0,0,0,0" back_color="00FFFBF7" horz_align="2" text="우편번호"/>
+			<cell rect="618,155,936,187" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell rect="1086,155,1409,187" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell cell_id="18" meta_id="LABEL02516" rect="935,155,1087,187" font="맑은 고딕,10,0,0,0,0" back_color="00FFFBF7" horz_align="2" text="자본"/>
+			<cell cell_id="19" meta_id="LABEL02517" rect="0,186,152,218" font="맑은 고딕,10,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="개업일"/>
+			<cell rect="151,186,470,218" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell cell_id="20" meta_id="LABEL01982" rect="469,186,619,218" font="맑은 고딕,10,0,0,0,0" back_color="00FFFBF7" horz_align="2" text="주소1"/>
+			<cell cell_id="21" meta_id="LABEL02518" rect="0,217,152,249" font="맑은 고딕,10,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="폐업일"/>
+			<cell rect="151,217,470,249" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell cell_id="22" meta_id="LABEL01983" rect="469,217,619,249" font="맑은 고딕,10,0,0,0,0" back_color="00FFFBF7" horz_align="2" text="주소2"/>
+			<cell cell_id="23" meta_id="LABEL02519" rect="0,248,152,280" font="맑은 고딕,10,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="소재지구분"/>
+			<cell cell_id="25" meta_id="LABEL02521" rect="0,279,152,311" font="맑은 고딕,10,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="결산월"/>
+			<cell rect="151,248,470,280" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell rect="151,279,470,311" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell cell_id="24" meta_id="LABEL02520" rect="469,248,619,280" font="맑은 고딕,10,0,0,0,0" back_color="00FFFBF7" horz_align="2" text="영문주소1"/>
+			<cell cell_id="26" meta_id="LABEL02522" rect="469,279,619,311" font="맑은 고딕,10,0,0,0,0" back_color="00FFFBF7" horz_align="2" text="영문주소2"/>
+			<cell rect="618,186,1409,218" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell rect="618,217,1409,249" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell rect="618,248,1409,280" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+			<cell rect="618,279,1409,311" font="맑은 고딕,10,0,0,0,0" fore_color="00FFC4A3" back_color="00FFFBF7"/>
+		</table>
+		<text control_id="49" meta_id="LABEL00543" autosize="0" x="24" y="95" right="1216" bottom="647" width="200" height="16" text="상세내역" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<combobox control_id="2006" name="edt_OU_KIND_CODE" in_index="2006" autosize="0" x="170" y="149" right="970" bottom="585" width="300" height="24" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" picklist_linkdata="dsCode_F002:ITEM_CODE:ITEM_NAME:" link_data="dsMaster:OU_KIND_CODE" max_length="200" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<combobox control_id="2011" name="edt_OU_TYPE_CODE" in_index="2011" autosize="0" x="170" y="181" right="970" bottom="553" width="300" height="24" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" picklist_linkdata="dsCode_F003:ITEM_CODE:ITEM_NAME:" link_data="dsMaster:OU_TYPE_CODE" max_length="200" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_itemchange="eventfunc:cbo_OU_CODE_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<hangul_field control_id="2016" name="edt_OU_OWN_NO" in_index="2016" autosize="0" x="170" y="213" right="970" bottom="521" width="300" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:OU_OWN_NO" max_length="14"/>
+		<combobox control_id="2021" name="edt_CLASS_TYPE_CODE" in_index="2021" autosize="0" x="170" y="243" right="970" bottom="491" width="300" height="24" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" picklist_linkdata="dsCode_F004:ITEM_CODE:ITEM_NAME:" link_data="dsMaster:CLASS_TYPE_CODE" max_length="200" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_itemchange="eventfunc:cbo_OU_CODE_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<datepicker control_id="483" name="edt_OU_ESTABLISH_DATE" in_index="2026" autosize="0" x="170" y="275" right="1170" bottom="459" width="100" height="24" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsMaster:OU_ESTABLISH_DATE" delimiter_char="-" showtodaybar="1" on_change="eventfunc:fldDateS_on_change(objInst, event_type)"/>
+		<combobox control_id="2041" name="edt_LOCATION_TYPE_CODE" in_index="2041" autosize="0" x="170" y="368" right="970" bottom="366" width="300" height="24" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" picklist_linkdata="dsCode_F006:ITEM_CODE:ITEM_NAME:" link_data="dsMaster:LOCATION_TYPE_CODE" max_length="200" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_itemchange="eventfunc:cbo_OU_CODE_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<hangul_field control_id="2007" name="edt_REPRE_NAME" in_index="2008" autosize="0" x="1102" y="149" right="188" bottom="585" width="150" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:REPRE_NAME" max_length="50"/>
+		<combobox control_id="2017" name="edt_FOREIGN_YN" in_index="2017" autosize="0" x="637" y="213" right="503" bottom="521" width="300" height="24" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" picklist_linkdata="dsCode_F009:ITEM_CODE:ITEM_NAME:" link_data="dsMaster:FOREIGN_YN" max_length="200" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_itemchange="eventfunc:cbo_OU_CODE_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<hangul_field control_id="2022" name="edt_TAX_REPRE_NAME" in_index="2022" autosize="0" x="637" y="243" right="503" bottom="491" width="300" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:TAX_REPRE_NAME" max_length="50"/>
+		<hangul_field control_id="2032" name="edt_OU_ADDR1" in_index="2032" autosize="0" x="637" y="306" right="28" bottom="428" width="775" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:OU_ADDR1" enable="0" max_length="300"/>
+		<hangul_field control_id="2037" name="edt_OU_ADDR2" in_index="2037" autosize="0" x="637" y="337" right="28" bottom="397" width="775" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:OU_ADDR2" max_length="300" on_focusin="eventfunc:edt_OU_ADDR2_on_focusin(objInst)"/>
+		<hangul_field control_id="2003" name="edt_OU_NAME" in_index="2003" autosize="0" x="637" y="120" right="503" bottom="614" width="300" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:OU_NAME" max_length="50"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="475" name="btnAttch" meta_id="LABEL02121" x="1274" y="119" right="96" bottom="615" width="70" height="24" text="직인첨부" version="1.1" on_mouseup="eventfunc:btnAttch_on_mouseup(objInst)"/>
+		<image control_id="467" name="btnPostCodePop" autosize="0" x="788" y="275" right="630" bottom="459" width="22" height="24" transparent="0" border="0" padding="0,0,0,0" image="/ico_search_24.gif" image_width="22" image_height="24" mouse_cursor="11" on_click="eventfunc:btnPostCodePop_on_click(objInst)"/>
+		<normal_field control_id="2001" name="edt_OU_CODE" in_index="2001" autosize="0" x="170" y="119" right="1120" bottom="615" width="150" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:OU_CODE" max_length="10"/>
+		<normal_field control_id="2002" name="edt_OU_USER_CODE" in_index="2002" autosize="0" x="325" y="119" right="970" bottom="615" width="145" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:OU_USER_CODE" max_length="10"/>
+		<normal_field control_id="2050" name="edt_EMP_NO_GUBUN" in_index="2004" autosize="0" x="1102" y="120" right="188" bottom="614" width="150" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:EMP_NO_GUBUN" max_length="10"/>
+		<normal_field control_id="2008" name="edt_OU_NAME_EN" in_index="2007" autosize="0" x="637" y="149" right="503" bottom="585" width="300" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:OU_NAME_EN" max_length="50"/>
+		<numericex_field control_id="2046" name="edt_PERIOD_MM" in_index="2046" autosize="0" x="170" y="399" right="970" bottom="335" width="300" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:PERIOD_MM" max_length="2"/>
+		<normal_field control_id="2013" name="edt_OU_TEL_NO" in_index="2013" autosize="0" x="1102" y="181" right="28" bottom="553" width="310" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:OU_TEL_NO" max_length="20"/>
+		<normal_field control_id="2018" name="edt_OU_FAX_NO" in_index="2018" autosize="0" x="1102" y="213" right="28" bottom="521" width="310" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:OU_FAX_NO" max_length="20"/>
+		<normal_field control_id="2042" name="edt_OU_ADDR_ENG1" in_index="2042" autosize="0" x="637" y="368" right="28" bottom="366" width="775" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:OU_ADDR_ENG1" max_length="300"/>
+		<normal_field control_id="2047" name="edt_OU_ADDR_ENG2" in_index="2047" autosize="0" x="637" y="399" right="28" bottom="335" width="775" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:OU_ADDR_ENG2" max_length="300"/>
+		<datepicker control_id="2052" name="edt_OU_OPEN_DATE" in_index="2031" autosize="0" x="170" y="306" right="1170" bottom="428" width="100" height="24" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsMaster:OU_OPEN_DATE" delimiter_char="-" showtodaybar="1" on_change="eventfunc:fldDateS_on_change(objInst, event_type)"/>
+		<datepicker control_id="2053" name="edt_OU_CLOSE_DATE" in_index="2036" autosize="0" x="170" y="337" right="1170" bottom="397" width="100" height="24" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsMaster:OU_CLOSE_DATE" delimiter_char="-" showtodaybar="1" on_change="eventfunc:fldDateS_on_change(objInst, event_type)"/>
+		<numericex_field control_id="2028" name="edt_OU_AMT" in_index="2028" autosize="0" x="1102" y="275" right="28" bottom="459" width="310" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:OU_AMT" max_length="12"/>
+		<numericex_field control_id="2023" name="edt_EMP_CNT" in_index="2023" autosize="0" x="1102" y="243" right="28" bottom="491" width="310" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:EMP_CNT" max_length="12"/>
+		<normal_field control_id="2012" name="edt_REPRE_NO" in_index="2012" autosize="0" x="637" y="181" right="503" bottom="553" width="300" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:REPRE_NO" max_length="14" pattern="999999-9999999" pattern_mask="9999999999999"/>
+		<normal_field control_id="2027" name="edt_POST_CODE" in_index="2027" autosize="0" x="637" y="275" right="651" bottom="459" width="152" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:POST_CODE" enable="0" max_length="10"/>
+		<normal_field control_id="2055" name="edt_JIKIN_YN" in_index="2005" autosize="0" x="1352" y="119" right="28" bottom="615" width="60" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00E1E1E1" horz_align="2" border_color_focus="00969696" link_data="dsMaster:JIKIN_YN" enable="0" max_length="10"/>
+		<normal_field control_id="2058" name="edt_REPRE_NAME_EN" in_index="2009" autosize="0" x="1262" y="149" right="28" bottom="585" width="150" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsMaster:REPRE_NAME_EN" max_length="50"/>
+		<image control_id="2056" autosize="0" x="10" y="95" right="1425" bottom="647" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<normal_field control_id="2060" name="edt_SITE_POST_CODE" in_index="3001" autosize="0" x="614" y="572" right="760" bottom="162" width="66" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsDetail:POST_CODE" max_length="10"/>
+		<hangul_field control_id="2061" name="edt_SITE_ADDR1" in_index="3002" autosize="0" x="702" y="572" right="600" bottom="162" width="138" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsDetail:SITE_ADDR1" max_length="300"/>
+		<hangul_field control_id="2063" name="edt_SITE_ADDR2" in_index="3003" autosize="0" x="860" y="572" right="424" bottom="162" width="156" height="24" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsDetail:SITE_ADDR2" max_length="300" on_focusin="eventfunc:edt_SITE_ADDR2_on_focusin(objInst)"/>
+		<image control_id="460" autosize="0" x="10" y="440" right="1425" bottom="302" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="461" meta_id="LABEL02523" autosize="0" x="24" y="440" right="1216" bottom="302" width="200" height="16" text="사업장등록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="468" name="btnAddRow" meta_id="LABEL00541" anchor="2" x="1267" y="436" right="103" bottom="297" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnAddRow_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="469" name="btnDelRow" meta_id="LABEL00542" anchor="2" x="1347" y="436" right="23" bottom="297" width="70" height="25" text="행삭제" version="1.1" on_mouseup="eventfunc:btnDelRow_on_mouseup(objInst)"/>
+		<grid style="HS_GRID_BASIC_01" control_id="462" name="grdDetail" in_index="5" x="10" y="467" right="19" bottom="10" width="1411" width_percent="98" height="281" resize_dir="1" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" link_data="dsDetail" samplerows="25" dynamic_fixedrows="1" fixedcols="3" dynamic_fixedcols="1" autocolumnwidth="2" version="1.2" on_itemclick="eventfunc:grdDetail_on_itemclick(objInst, nClickRow, nClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header meta_id="LABEL01898" title="*법인"/>
+				<data style="HS_GRID_DATA_02" name="OU_NAME" width="100" text_horzalign="0" imemode="1" data_type="2" link_data="dsDetail:OU_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02524" title="*사업(지역)장명"/>
+				<data name="SITE_NAME" width="100" editable="1" imemode="1" data_type="2" max_length="50" link_data="dsDetail:SITE_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02525" title="*사업장코드"/>
+				<data name="SITE_CODE" width="100" text_horzalign="1" editable="1" imemode="1" data_type="2" max_length="10" link_data="dsDetail:SITE_CODE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00210" title="사업자등록번호"/>
+				<data name="OU_NUM" width="100" text_horzalign="1" editable="1" imemode="1" data_type="2" max_length="14" link_data="dsDetail:OU_NUM" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00207" title="업태"/>
+				<data name="OU_BIZ_TYPE" width="100" editable="1" imemode="1" data_type="2" max_length="50" link_data="dsDetail:OU_BIZ_CLASS" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00208" title="업종"/>
+				<data name="OU_BIZ_CLASS" width="100" editable="1" imemode="1" data_type="2" max_length="50" link_data="dsDetail:OU_BIZ_TYPE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02526" title="관할세무서"/>
+				<data style="HS_GRID_DATA_01" name="TAX_GOVERN_CODE" text_horzalign="0" editable="1" input_type="2" link_data="dsDetail:TAX_GOVERN_CODE" picklist_linkdata="dsCode_F021:CODE:NAME:" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02527" title="선후불구분"/>
+				<data style="HS_GRID_DATA_01" editable="1" input_type="2" link_data="dsDetail:ADV_DEF_TYPE" picklist_linkdata="dsCode_H503:CODE:NAME:" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00098" title="전화번호"/>
+				<data name="SITE_TEL1" width="100" editable="1" imemode="1" data_type="2" max_length="20" link_data="dsDetail:SITE_TEL1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00211" title="팩스번호"/>
+				<data name="SITE_TEL2" width="100" editable="1" imemode="1" data_type="2" max_length="20" link_data="dsDetail:SITE_TEL2" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01978" title="우편번호"/>
+				<data style="HS_GRID_DATA_02" name="POST_CODE" text_horzalign="0" image="/ico_search.gif" image_horzalign="2" show_tooltip="1" link_data="dsDetail:POST_CODE" combobox_showbutton="0" combobox_buttonsize="0" bargauge_transparent="0" on_columnclick="eventfunc:grdDetail_on_columnclick(objInst, nColumn, bBtnClick, nImgIndex, strImgUrl)"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01982" title="주소1"/>
+				<data style="HS_GRID_DATA_02" name="SITE_ADDR1" width="150" text_horzalign="0" imemode="1" data_type="2" max_length="300" link_data="dsDetail:SITE_ADDR1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01983" title="주소2"/>
+				<data name="SITE_ADDR2" width="150" editable="1" imemode="1" data_type="2" max_length="300" link_data="dsDetail:SITE_ADDR2" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01903" title="*시작일"/>
+				<data name="SITE_ST_DATE" width="100" text_horzalign="1" image_horzalign="1" editable="1" imemode="1" input_type="3" pattern="YYYY-MM-DD" pattern_mask="YYYYMMDD" link_data="dsDetail:SITE_ST_DATE" calendar_image="/ico_carlenda_grid.gif" calendar_type="1" calendar_editable="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01904" title="*종료일"/>
+				<data name="SITE_ED_DATE" width="131" text_horzalign="1" image_horzalign="1" editable="1" imemode="1" input_type="3" pattern="YYYY-MM-DD" pattern_mask="YYYYMMDD" link_data="dsDetail:SITE_ED_DATE" calendar_image="/ico_carlenda_grid.gif" calendar_type="1" calendar_editable="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01772" title="비고"/>
+				<data name="REMARK" width="257" editable="1" imemode="1" data_type="2" max_length="300" link_data="dsDetail:REMARK" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+	</map>
+</map_list>

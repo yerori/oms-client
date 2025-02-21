@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="예리테스트" directory="/OMS/" screenid="Oms3100" last_update_date="2024-08-27 11:20:28" width="812" width_type="0" height="500" height_type="0" funclist=""/>
+		<text control_id="0" x="186" y="72" right="546" bottom="416" width="80" height="12" custom_class="font-style:bold;" text="안뇽 난 강예리" font="맑은 고딕,9,1,0,0,0" version="1.1"/>
+	</map>
+</map_list>

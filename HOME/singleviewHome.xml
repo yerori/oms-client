@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="싱글뷰 홈" directory="/HOME/" screenid="singleviewHome" click_setfocus="1" last_update_date="2023-07-27 19:00:21" width="1440" width_type="2" height="788" height_type="2" canvas_width="2124" vertscrollbar_style="0" horzscrollbar_style="0" on_load="eventfunc:screen_on_load()" on_popupdestroy="eventfunc:screen_on_popupdestroy(popup_screen, popup_name, result)" funclist="screen_on_load,addScreenTab,deleteScreenTab"/>
+		<tab_order order_option="0" order_info="170,171,172"/>
+		<rowbox control_id="170" position="1" x="0" y="6" right="0" bottom="526" width="1440" width_unit="1" height="256" height_type="1" click_setfocus="1">
+			<rowbox_item colspan="6" xs_colspan="12" sm_colspan="6">
+				<panel control_id="173" semantic_tag="0" position="1" x="0" y="0" right="0" bottom="0" width="720" width_unit="1" height="256" back_color="000E0EFF" border="0" vertscrollbar_style="0" horzscrollbar_style="0" title_font="맑은 고딕,9,0,0,0,0">
+					<tab control_id="184" name="tabS1" x="0" y="0" right="0" bottom="0" width="720" width_unit="1" height="256" height_unit="1" border="0" tabitem_hidden="1" tabitem_font="맑은 고딕,9,0,0,0,0" tabitem_selfont="맑은 고딕,9,0,0,0,0" titlebar_font="맑은 고딕,9,1,0,0,0">
+					</tab>
+				</panel>
+			</rowbox_item>
+			<rowbox_item colspan="6" xs_colspan="12" sm_colspan="6">
+				<panel control_id="179" semantic_tag="0" position="1" x="0" y="0" right="0" bottom="0" width="720" width_unit="1" height="256" back_color="000E0EFF" border="0" vertscrollbar_style="0" horzscrollbar_style="0" title_font="맑은 고딕,9,0,0,0,0">
+					<tab control_id="185" name="tabS2" x="0" y="0" right="0" bottom="0" width="720" width_unit="1" height="256" height_unit="1" border="0" tabitem_hidden="1" tabitem_font="맑은 고딕,9,0,0,0,0" tabitem_selfont="맑은 고딕,9,0,0,0,0" titlebar_font="맑은 고딕,9,1,0,0,0">
+					</tab>
+				</panel>
+			</rowbox_item>
+		</rowbox>
+		<rowbox control_id="171" position="1" x="0" y="268" right="0" bottom="264" width="1440" width_unit="1" height="256" height_type="0">
+			<rowbox_item colspan="6">
+				<panel control_id="180" semantic_tag="0" position="1" x="0" y="0" right="0" bottom="0" width="720" width_unit="1" height="256" back_color="000E0EFF" border="0" vertscrollbar_style="0" horzscrollbar_style="0" title_font="맑은 고딕,9,0,0,0,0">
+					<tab control_id="186" name="tabS3" x="0" y="0" right="0" bottom="0" width="720" width_unit="1" height="256" height_unit="1" border="0" tabitem_hidden="1" tabitem_font="맑은 고딕,9,0,0,0,0" tabitem_selfont="맑은 고딕,9,0,0,0,0" titlebar_font="맑은 고딕,9,1,0,0,0">
+					</tab>
+				</panel>
+			</rowbox_item>
+			<rowbox_item colspan="6">
+				<panel control_id="181" semantic_tag="0" position="1" x="0" y="0" right="0" bottom="0" width="720" width_unit="1" height="256" back_color="000E0EFF" border="0" vertscrollbar_style="0" horzscrollbar_style="0" title_font="맑은 고딕,9,0,0,0,0">
+					<tab control_id="187" name="tabS4" x="0" y="0" right="0" bottom="0" width="720" width_unit="1" height="256" height_unit="1" border="0" tabitem_hidden="1" tabitem_font="맑은 고딕,9,0,0,0,0" tabitem_selfont="맑은 고딕,9,0,0,0,0" titlebar_font="맑은 고딕,9,1,0,0,0">
+					</tab>
+				</panel>
+			</rowbox_item>
+		</rowbox>
+		<rowbox control_id="172" position="1" x="0" y="530" right="0" bottom="2" width="1440" width_unit="1" height="256" height_type="0">
+			<rowbox_item colspan="6">
+				<panel control_id="182" semantic_tag="0" position="1" x="0" y="0" right="0" bottom="0" width="720" width_unit="1" height="256" back_color="000E0EFF" border="0" vertscrollbar_style="0" horzscrollbar_style="0" title_font="맑은 고딕,9,0,0,0,0">
+					<tab control_id="188" name="tabS5" x="0" y="0" right="0" bottom="0" width="720" width_unit="1" height="256" height_unit="1" border="0" tabitem_hidden="1" tabitem_font="맑은 고딕,9,0,0,0,0" tabitem_selfont="맑은 고딕,9,0,0,0,0" titlebar_font="맑은 고딕,9,1,0,0,0">
+					</tab>
+				</panel>
+			</rowbox_item>
+			<rowbox_item colspan="6">
+				<panel control_id="183" semantic_tag="0" position="1" x="0" y="0" right="0" bottom="0" width="720" width_unit="1" height="256" back_color="000E0EFF" border="0" vertscrollbar_style="0" horzscrollbar_style="0" title_font="맑은 고딕,9,0,0,0,0">
+					<tab control_id="189" name="tabS6" x="0" y="0" right="0" bottom="0" width="720" width_unit="1" height="256" height_unit="1" border="0" tabitem_hidden="1" tabitem_font="맑은 고딕,9,0,0,0,0" tabitem_selfont="맑은 고딕,9,0,0,0,0" titlebar_font="맑은 고딕,9,1,0,0,0">
+					</tab>
+				</panel>
+			</rowbox_item>
+		</rowbox>
+	</map>
+</map_list>

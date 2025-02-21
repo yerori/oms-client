@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]프로젝트 전체복사" directory="/OMS/" screenid="Oms1021" last_update_date="2024-07-16 08:29:13" width="430" width_type="0" height="175" height_type="0" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,fnPageSet,btnApply_on_mouseup,screen_on_destroy,btnClose_on_mouseup,screen_on_submitcomplete,ReturnClosePopup,btnCommonSave_on_mouseup,screen_on_messagebox,fnSaveData,btnCustomerPop_on_click,fnPopupCustClosePopCallback,btnRFQPop_on_click,fnPopupRFQPopCallback"/>
+		<xlinkdataset id="dsProject" desc="Project정보" columns="OU_CODE::::;REGISTER_YEAR::::;PROJECT_CODE::::;RFQ_CODE::::;CUSTOMER_ID::::;CUSTOMER_NAME::::;CAR_TYPE_CODE::::;CUSTOMER_AREA_CODE::::"/>
+		<xlinkdataset id="dsCarPlatfrom" desc="차종" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsProcResult" desc="" columns="RETCODE::::;RETMESG::::;NEW_PROJECT_CODE::::;NEW_PROJECT_VERSION::::"/>
+		<xlinkdataset id="dsCustomerArea" desc="고객지역 코드(O006)" columns="CODE::::;NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_COM_CO" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_COPY" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="1" order_info="567,533,543,483,36,51"/>
+		<text control_id="32" name="stSystemMenuTitle" meta_id="LABEL02392" autosize="0" x="31" y="7" right="199" bottom="150" width="200" height="18" text="프로젝트 복사" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="404" bottom="151" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnApply" meta_id="LABEL00637" x="276" y="6" right="84" bottom="144" width="70" height="25" text="복사" version="1.1" on_mouseup="eventfunc:btnApply_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="51" name="btnClose" meta_id="LABEL00012" x="353" y="6" right="7" bottom="144" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+		<roundrect control_id="134" name="rudSearch" x="6" y="38" right="8" bottom="13" width="416" height="124" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="537" meta_id="LABEL02394" autosize="0" x="24" y="56" right="316" bottom="99" width="90" height="20" text="*등록년도" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<text control_id="542" meta_id="LABEL02399" autosize="0" x="36" y="120" right="316" bottom="35" width="78" height="20" text="*고객명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<hangul_field control_id="543" name="fldCustomerName" in_index="3" autosize="0" x="119" y="120" right="151" bottom="35" width="160" height="20" font="맑은 고딕,9,0,0,0,0" back_color="00F0F0F0" link_data="dsProject:CUSTOMER_NAME" editable="0" max_length="20"/>
+		<text control_id="467" meta_id="LABEL02397" autosize="0" x="46" y="86" right="316" bottom="69" width="68" height="20" text="*차종" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<datepicker control_id="483" name="fldYear" in_index="4" autosize="0" x="119" y="52" right="212" bottom="103" width="99" height="20" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsProject:REGISTER_YEAR" max_length="4" delimiter_char="-" date_type="2" showtodaybar="1"/>
+		<combobox control_id="533" name="ComCarPlatform" in_index="2" autosize="0" x="120" y="86" right="150" bottom="69" width="160" height="20" font="맑은 고딕,9,0,0,0,0" back_color="00F0F0F0" picklist_linkdata="dsCarPlatfrom:CODE:NAME:" link_data="dsProject:CAR_TYPE_CODE" input_type="2" default_value_type="1" default_value_usage="1" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_itemchange="eventfunc:task_sch_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<image control_id="410" name="btnCustomerPop" autosize="0" x="282" y="120" right="129" bottom="35" width="19" height="20" transparent="0" border="0" padding="0,0,0,0" image="/ico_search.gif" image_width="19" image_height="20" hidden="1" mouse_cursor="11" on_click="eventfunc:btnCustomerPop_on_click(objInst)"/>
+		<hangul_field control_id="567" name="fldSRFQ" in_index="1" autosize="0" x="276" y="52" right="28" bottom="101" width="126" height="22" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsProject:RFQ_CODE" editable="0" max_length="100"/>
+		<image control_id="568" name="btnRFQPop" autosize="0" x="399" y="52" right="9" bottom="101" width="22" height="22" transparent="0" border="0" padding="0,0,0,0" image="/ico_search_22.gif" image_width="20" image_height="22" mouse_cursor="11" on_click="eventfunc:btnRFQPop_on_click(objInst)"/>
+		<text control_id="569" autosize="0" x="228" y="52" right="162" bottom="103" width="40" height="20" text="*RFQ" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+	</map>
+</map_list>

@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="PSO 서류 담당자 이관" directory="/PSO/" screenid="Pso1110" last_update_date="2025-01-24 10:14:55" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,fnGetDeptCode,fnDsSet,fnSetInitControl,screen_on_submitcomplete,btnCommonSearch_on_mouseup,screen_on_messagebox,screen_on_size,grdMaster_on_itemdblclick,btnCommonClose_on_mouseup,comOu_on_itemchange,fnTransferSearch_on_click,fnProjectCodeClosePopCallback,fnPopupPSOResponsePopCallback,fnPopupUpdLoginNoResponsePopCallback,getAllSearchData,fnSetGridCheck,fnSearch,ComProductName_on_prekeydown,transferSearch_on_keydown,cboCarType_on_prekeydown,fnValidForm,fnTransferData,btnTransfer_on_mouseup,btnReset_on_mouseup,grdList_on_itemselchange"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;PROJECT_CODE::::;PROJECT_VERSION::::;PSO_DOCU_ID::::;PSO_CHARGE_USER_ID::::;PSO_CHARGE_USER_NAME::::;PSO_CHARGE_EMP_NO::::;MAKE_PLAN_START_DATE::::;MAKE_PLAN_END_DATE::::;PSO_DEPT_CODE::::;PSO_DEPT_NAME::::"/>
+		<xlinkdataset id="dsUser" desc="유저 정보" columns="LOGIN_NO:&quot;로그인 아이디&quot;:::;OU_CODE:&quot;법인 코드&quot;:::;OU_NAME:&quot;법인 이름&quot;:::;EMP_NO:&quot;사번&quot;:::;USER_ID:&quot;유저 아이디&quot;:::;USER_NAME:&quot;유저 이름&quot;:::;UPD_LOGIN_NO:&quot;변경 로그인 아이디&quot;:::;UPD_OU_CODE:&quot;변경 법인 코드&quot;:::;UPD_OU_NAME:&quot;변경 법인 이름&quot;:::;UPD_EMP_NO:&quot;변경 사번&quot;:::;UPD_USER_ID:&quot;변경 유저 아이디&quot;:::;UPD_USER_NAME:&quot;변경 유저 이름&quot;:::;UPD_DETAILS:&quot;변경 내용&quot;:::;UPD_TYPE:&quot;변경 유형&quot;:::;TRANSFER_DATE:&quot;이관일&quot;:::;RFQ_CODE:&quot;RFQ코드&quot;:::;RFQ_START_DATE:&quot;RFQ 시작일&quot;:::"/>
+		<xlinkdataset id="dsOU" desc="법인 LIST" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsList" desc="목록" columns="OU_CODE:&quot;법인코드&quot;:::;PROJECT_CODE:&quot;프로젝트코드&quot;:::;PROJECT_VERSION:&quot;프로젝트버전&quot;:::;PM_CHG_USER_NAME:&quot;PM담당자 이름&quot;:::;OU_COUNTRY_NAME:&quot;법인 이름&quot;:::;CAR_TYPE_NAME:&quot;차종&quot;:::;CUSTOMER_NAME:&quot;고객명&quot;:::;PSO_DOC_STEP:&quot;활동단계&quot;:::;PSO_DOCU_ID::::;PSO_DOC_CHASU:&quot;차수&quot;:::;PSO_DOC_DETAIL_CHASU:&quot;세부차수&quot;:::;PSO_CONTENTS:&quot;항목&quot;:::;PSO_DEPT_NAME:&quot;담당부서&quot;:::;PSO_CHARGE_USER_ID:&quot;서류담당자 ID&quot;:::;PSO_CHARGE_USER_NAME:&quot;서류담당자 이름&quot;:::;PSO_CHARGE_EMP_NO:&quot;서류담당자 사번&quot;:::;MAKE_PLAN_DATE:&quot;작성계획일&quot;:::;MAKE_COMP_DATE:&quot;작성완료일&quot;:::;PSO_DOCU_ATT_YN:&quot;첨부&quot;:::;START_DATE:&quot;시작일&quot;:::;END_DATE:&quot;종료일&quot;:::;PSO_DOCU_LINE_ID::::;CHK_FLAG::::;DUPLICATE_FLAG::::"/>
+		<xlinkdataset id="dsUpdType" desc="변경 유형" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsProcResult" desc="프로시져 실행결과" columns="RETCODE::::;RETMESG::::"/>
+		<xlinkdataset id="dsPsoDept" desc="담당부서" columns="DEPT_CODE::::;DEPT_NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_ALL" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_AUTH" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH_USER" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_TRANSFER" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_PROC" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SELECT_DEPT_CODE" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,549,548,547,37,474,575,603,483,559,605,0,586,598,593,588,589,592,594,590,585,596,597"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="30" y="7" right="1208" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+			</tab_item>
+		</tab>
+		<roundrect control_id="134" name="rfqTransferSearch" x="9" y="42" right="20" bottom="646" width="1411" width_percent="98" width_unit="1" height="70" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="551" meta_id="LABEL01898" autosize="0" x="30" y="52" right="1360" bottom="686" width="50" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="474" name="comOu" in_index="0" autosize="0" x="85" y="52" right="1195" bottom="686" width="160" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOU:CODE:NAME:" link_data="dsSearch:OU_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_itemchange="eventfunc:comOu_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<datepicker control_id="483" name="stdFromDate" in_index="13" autosize="0" x="425" y="80" right="915" bottom="656" width="100" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSearch:MAKE_PLAN_START_DATE" delimiter_char="-" showtodaybar="1" on_keydown="eventfunc:rfqTransferSearch_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="522" meta_id="LABEL02726" autosize="0" x="338" y="82" right="1022" bottom="656" width="80" height="20" text="작성계획일" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<datepicker control_id="559" name="stdToDate" autosize="0" x="543" y="80" right="797" bottom="656" width="100" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSearch:MAKE_PLAN_END_DATE" delimiter_char="-" showtodaybar="1" on_keydown="eventfunc:rfqTransferSearch_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="560" autosize="0" x="528" y="80" right="902" bottom="658" width="10" height="20" text="~" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<text control_id="49" autosize="0" x="24" y="156" right="1216" bottom="586" width="200" height="16" text="이관 작업" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="68" autosize="0" x="10" y="156" right="1425" bottom="586" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<table style="tbl_normal" control_id="583" name="tbl_transfer" x="10" y="177" right="960" bottom="364" width="470" height="217" font="맑은 고딕,9,1,0,0,0">
+			<cell rect="0,27,87,56" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7" text="아이디"/>
+			<cell cell_id="LOGIN_NO" rect="86,27,236,56" font="맑은 고딕,10,0,0,0,0" fore_color="00333333" back_color="00FFFBF7"/>
+			<cell rect="235,27,323,56" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7" text="아이디"/>
+			<cell cell_id="UPD_LOGIN_NO" rect="322,27,470,56" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7"/>
+			<cell rect="0,55,87,82" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7" text="법인"/>
+			<cell cell_id="OU_NAME" rect="86,55,236,82" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7"/>
+			<cell rect="235,55,323,82" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7" text="법인"/>
+			<cell rect="322,55,470,82" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7"/>
+			<cell rect="0,81,87,109" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7" text="사원번호"/>
+			<cell cell_id="EMP_NO" rect="86,81,236,109" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7"/>
+			<cell rect="235,81,323,109" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7" text="사원번호"/>
+			<cell rect="322,81,470,109" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7"/>
+			<cell rect="0,108,87,136" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7" text="사용자명"/>
+			<cell cell_id="USER_NAME" rect="86,108,236,136" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7"/>
+			<cell rect="235,108,323,136" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7" text="사용자명"/>
+			<cell rect="322,108,470,136" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7"/>
+			<cell rect="0,135,87,163" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7" text="변경 유형"/>
+			<cell rect="86,135,236,163" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7"/>
+			<cell rect="0,0,236,28" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7" text="현재"/>
+			<cell rect="235,0,470,28" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7" text="변경"/>
+			<cell rect="0,162,87,190" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7" text="내용"/>
+			<cell rect="0,189,87,217" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7" text="이관일"/>
+			<cell cell_id="UPD_DATE" rect="86,189,470,217" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7"/>
+			<cell cell_id="UPD_DETAILS" rect="86,162,470,190" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7"/>
+			<cell rect="235,135,470,163" font="맑은 고딕,9,1,0,0,0" back_color="00FFFBF7"/>
+		</table>
+		<combobox control_id="585" name="ComUpdType_1" description="변경 유형" x="100" y="315" right="1199" bottom="421" width="141" height="22" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsUpdType:CODE:NAME:" link_data="dsUser:UPD_TYPE" default_value_type="1" default_value_usage="1" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<normal_field control_id="586" autosize="0" x="100" y="205" right="1200" bottom="531" width="140" height="22" font="맑은 고딕,9,0,0,0,0" transparent="1" border="0" horz_align="2" link_data="dsUser:LOGIN_NO" enable="0" editable="0"/>
+		<hangul_field control_id="588" autosize="0" x="100" y="235" right="1200" bottom="501" width="140" height="22" font="맑은 고딕,9,0,0,0,0" transparent="1" border="0" horz_align="2" text_wordellipsis="1" link_data="dsUser:OU_NAME" enable="0" editable="0" max_length="40"/>
+		<hangul_field control_id="589" autosize="0" x="100" y="260" right="1200" bottom="476" width="140" height="22" font="맑은 고딕,9,0,0,0,0" transparent="1" border="0" horz_align="2" link_data="dsUser:EMP_NO" enable="0" editable="0" max_length="20"/>
+		<hangul_field control_id="592" autosize="0" x="336" y="261" right="964" bottom="475" width="140" height="22" font="맑은 고딕,9,0,0,0,0" transparent="1" border="0" horz_align="2" text_wordellipsis="1" link_data="dsUser:UPD_EMP_NO" enable="0" editable="0" max_length="40"/>
+		<hangul_field control_id="593" autosize="0" x="336" y="233" right="964" bottom="503" width="140" height="22" font="맑은 고딕,9,0,0,0,0" transparent="1" border="0" horz_align="2" link_data="dsUser:UPD_OU_NAME" enable="0" editable="0" max_length="40"/>
+		<hangul_field control_id="590" autosize="0" x="100" y="290" right="1200" bottom="446" width="140" height="22" font="맑은 고딕,9,0,0,0,0" transparent="1" border="0" horz_align="2" link_data="dsUser:USER_NAME" enable="0" editable="0" max_length="15"/>
+		<hangul_field control_id="594" autosize="0" x="336" y="289" right="964" bottom="447" width="140" height="22" font="맑은 고딕,9,0,0,0,0" transparent="1" border="0" horz_align="2" link_data="dsUser:UPD_USER_NAME" enable="0" editable="0" max_length="15"/>
+		<hangul_field control_id="596" description="변경 내용" autosize="0" x="100" y="342" right="970" bottom="394" width="370" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsUser:UPD_DETAILS" max_length="500"/>
+		<datepicker control_id="597" name="stdTransferDate" description="이관일" autosize="0" x="100" y="369" right="970" bottom="367" width="370" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsUser:TRANSFER_DATE" delimiter_char="-" showtodaybar="1" on_keydown="eventfunc:stdDate_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_changed="eventfunc:stdTransferDate_on_changed(objInst, prev_text, curr_text, event_type)"/>
+		<hangul_field control_id="598" name="edtUpdLoginNo" in_index="10" autosize="0" x="336" y="209" right="981" bottom="529" width="123" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsUser:UPD_LOGIN_NO" editable="0" max_length="100" make_case="1" imemode="0" on_prekeydown="eventfunc:edtCustomerName_on_prekeydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<image control_id="599" name="btnUpdLoginNoPop" autosize="0" x="457" y="209" right="963" bottom="527" width="20" height="22" transparent="0" border="0" padding="0,0,0,0" image="/ico_search.gif" image_width="19" image_height="20" mouse_cursor="11" on_click="eventfunc:fnTransferSearch_on_click(objInst)"/>
+		<image control_id="600" autosize="0" x="516" y="156" right="919" bottom="586" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="601" autosize="0" x="530" y="156" right="710" bottom="586" width="200" height="16" text="대상 서류 목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="0" name="grdList" in_index="20" x="516" y="177" right="24" bottom="181" width="900" height="400" resize_dir="3" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" multi_checkrow="1" checkrowwithselect="1" checkrow_width="50" multi_selectrow="1" link_data="dsList" samplerows="4" autocolumnwidth="2" version="1.2" on_itemselchange="eventfunc:grdList_on_itemselchange(objInst, nPrevSelectRow, nPrevSelectColumn, nCurSelectRow, nCurSelectColumn)">
+			<column>
+				<header title="선택" checkbox_show="1"/>
+				<data style="HS_GRID_DATA_BC_01" name="CHK_FLAG" width="50" text_horzalign="1" editable="1" input_type="1" cellmerge="1,&quot;PROJECT_CODE&quot;" default_value="Y" link_data="dsList:CHK_FLAG" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="선택" checkbox_show="1"/>
+				<data style="HS_GRID_DATA_BC_01" width="50" text_horzalign="1" editable="1" input_type="1" cellmerge="1,&quot;PROJECT_CODE&quot;" default_value="Y" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00064" title="프로젝트 코드"/>
+				<data style="HS_GRID_DATA_BC_01" name="PROJECT_CODE" width="150" cellmerge="1,&quot;PROJECT_CODE&quot;" link_data="dsList:PROJECT_CODE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="PM 담당자"/>
+				<data style="HS_GRID_DATA_BC_01" name="PM_CHG_USER_NAME" width="100" text_horzalign="1" cellmerge="1,&quot;PROJECT_CODE&quot;" link_data="dsList:PM_CHG_USER_NAME" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02368" title="법인구분"/>
+				<data style="HS_GRID_DATA_02" name="OU_COUNTRY_NAME" width="100" image_horzalign="1" resizable="0" cellmerge="1,&quot;PROJECT_CODE&quot;" link_data="dsList:OU_COUNTRY_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01587" title="차종"/>
+				<data style="HS_GRID_DATA_BC_01" name="CAR_TYPE_NAME" width="120" text_horzalign="1" data_type="2" cellmerge="1,&quot;PROJECT_CODE&quot;" link_data="dsList:CAR_TYPE_NAME" picklist_linkdata="dsCarType:CODE:NAME:" picklist_selstyle="2" picklist_viewstyle="2" calendar_image="/ico_carlenda_grid.gif" calendar_type="1" calendar_editable="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00193" title="고객명"/>
+				<data style="HS_GRID_DATA_BC_01" name="CUSTOMER_NAME" width="120" cellmerge="1,&quot;PROJECT_CODE&quot;" link_data="dsList:CUSTOMER_NAME" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DOCU_ID"/>
+				<data name="DOCU_ID" cellmerge="1,&quot;DOCU_ID&quot;" link_data="dsList:PSO_DOCU_ID" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DOCU_LINE_ID"/>
+				<data name="DOCU_LINE_ID" link_data="dsList:PSO_DOCU_LINE_ID" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02361" title="활동단계"/>
+				<data style="HS_GRID_DATA_BC_01" name="PSO_DOC_STEP" text_horzalign="1" data_type="2" cellmerge="1,&quot;DOCU_ID&quot;" link_data="dsList:PSO_DOC_STEP" picklist_selstyle="2" picklist_viewstyle="2" calendar_image="/ico_carlenda_grid.gif" calendar_type="1" calendar_editable="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00387" title="차수"/>
+				<data style="HS_GRID_DATA_BC_01" name="PSO_DOC_CHASU" width="50" text_horzalign="1" link_data="dsList:PSO_DOC_CHASU" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="세부차수"/>
+				<data style="HS_GRID_DATA_BC_01" name="PSO_DOC_DETAIL_CHASU" width="70" text_horzalign="1" link_data="dsList:PSO_DOC_DETAIL_CHASU" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01092" title="항목"/>
+				<data style="HS_GRID_DATA_BC_01" name="PSO_CONTENTS" width="250" text_horzalign="1" data_type="2" cellmerge="1,&quot;DOCU_ID&quot;" link_data="dsList:PSO_CONTENTS" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02735" title="담당부서"/>
+				<data style="HS_GRID_DATA_BC_01" name="PSO_DEPT_NAME" width="100" text_horzalign="1" cellmerge="1,&quot;DOCU_ID&quot;" link_data="dsList:PSO_DEPT_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="서류 담당자"/>
+				<data style="HS_GRID_DATA_BC_01" name="PSO_CHARGE_USER_NAME" text_horzalign="1" cellmerge="1,&quot;DOCU_ID&quot;" link_data="dsList:PSO_CHARGE_USER_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02726" title="작성계획일"/>
+				<data style="HS_GRID_DATA_BC_01" name="MAKE_PLAN_DATE" width="90" text_horzalign="1" pattern="YYYY-MM-DD" cellmerge="1,&quot;DOCU_ID&quot;" link_data="dsList:MAKE_PLAN_DATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02663" title="작성완료일"/>
+				<data style="HS_GRID_DATA_BC_01" name="MAKE_COMP_DATE" width="90" text_horzalign="1" pattern="YYYY-MM-DD" cellmerge="1,&quot;DOCU_ID&quot;" link_data="dsList:MAKE_COMP_DATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02589" title="첨부"/>
+				<data style="HS_GRID_DATA_BC_01" name="PSO_DOCU_ATT_YN" width="60" text_horzalign="1" cellmerge="1,&quot;DOCU_ID&quot;" link_data="dsList:PSO_DOCU_ATT_YN" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="종료일"/>
+				<data name="END_DATE" hidden="1" pattern="YYYY-MM-DD" link_data="dsList:END_DATE" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="549" name="btnReset" meta_id="LABEL02157" anchor="2" x="1129" y="8" right="244" bottom="725" width="67" height="25" text="초기화" version="1.1" on_mouseup="eventfunc:btnReset_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="548" name="btnTransfer" anchor="2" x="1200" y="8" right="173" bottom="725" width="67" height="25" text="이관" version="1.1" on_mouseup="eventfunc:btnTransfer_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="547" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="1273" y="8" right="100" bottom="725" width="67" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="37" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1345" y="8" right="28" bottom="725" width="67" height="25" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+		<text control_id="574" autosize="0" x="339" y="52" right="1021" bottom="686" width="80" height="20" text="프로젝트 코드" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="575" name="edtProjectCode" in_index="12" out_index="-2" autosize="0" x="425" y="52" right="843" bottom="686" width="172" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:PROJECT_CODE" max_length="100" on_keydown="eventfunc:transferSearch_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<image control_id="576" name="btnProjectCodePop" autosize="0" x="594" y="52" right="827" bottom="686" width="19" height="20" transparent="0" border="0" padding="0,0,0,0" image="/ico_search.gif" image_width="19" image_height="20" mouse_cursor="11" on_click="eventfunc:fnTransferSearch_on_click(objInst)"/>
+		<text control_id="602" autosize="0" x="714" y="52" right="626" bottom="686" width="100" height="20" text="*PSO 서류 담당자" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="603" name="edtChargeUserName" in_index="15" out_index="-2" autosize="0" x="820" y="52" right="479" bottom="686" width="141" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:PSO_CHARGE_USER_NAME" editable="0" max_length="100"/>
+		<image control_id="604" name="btnChargeUserPop" autosize="0" x="960" y="52" right="461" bottom="686" width="19" height="20" transparent="0" border="0" padding="0,0,0,0" image="/ico_search.gif" image_width="19" image_height="20" mouse_cursor="11" on_click="eventfunc:fnTransferSearch_on_click(objInst)"/>
+		<text control_id="540" meta_id="LABEL02735" autosize="0" x="734" y="80" right="626" bottom="658" width="80" height="20" text="담당부서" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="605" name="cboDeptName" in_index="16" autosize="0" x="821" y="80" right="459" bottom="656" width="160" height="22" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" picklist_linkdata="dsPsoDept:DEPT_CODE:DEPT_NAME:" link_data="dsSearch:PSO_DEPT_CODE" max_length="1" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboDeptName_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="607" name="omsUserStatus" x="24" y="402" right="1333" bottom="344" width="83" width_type="1" height="12" font="맑은 고딕,10,1,0,0,0" fore_color="00FF0E0E" back_color_opacity="0" hidden="1" version="1.1"/>
+		<text control_id="608" x="622" y="158" right="603" bottom="588" width="215" height="12" text="(미래 이관 목록은 선택할 수 없습니다. )" font="맑은 고딕,9,0,0,0,0" version="1.1"/>
+	</map>
+</map_list>

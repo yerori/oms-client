@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]정보보안서약서" directory="/FRAME/" screenid="popupInfoSecurit" last_update_date="2023-06-15 10:09:32" width="900" width_type="0" height="600" height_type="2" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_destroy,btnClose_on_mouseup,screen_on_load,fnDsUserInfoSet,fnSearch,fnAgreeConfirm,screen_on_submitcomplete,screen_on_messagebox,chkAgree_on_click"/>
+		<xlinkdataset id="dsAgree" desc="" columns="CONTENT::::"/>
+		<xlinkdataset id="dsUserInfo" desc="" columns="USER_ID::::;INFO_SECURIT_YN::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_CONFIRM" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_AGREE" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="585,51,129"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="874" bottom="576" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<text control_id="32" name="stSystemMenuTitle" meta_id="LABEL02604" autosize="0" x="31" y="7" right="589" bottom="575" width="280" height="18" text="정보 보안 서약서" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="51" name="btnClose" meta_id="LABEL00012" x="814" y="568" right="16" bottom="7" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+		<panel control_id="585" semantic_tag="0" x="10" y="32" right="8" bottom="36" width="882" height="532" back_imagefillstyle="2" vertscrollbar_style="0" title_font="맑은 고딕,9,0,0,0,0">
+			<multiline control_id="589" name="txtContent" x="0" y="0" right="0" bottom="0" width="880" height="530" font="맑은 고딕,9,0,0,0,0" apply_inputtypecolor="0" line_gap="0" link_data="dsAgree:CONTENT" max_length="0" meta_maxlength="" enable="0" tooltip="전자상거래 약관" escape_newline="0"/>
+		</panel>
+		<checkbox control_id="129" name="chkAgree" meta_id="LABEL02605" x="10" y="570" right="770" bottom="12" width="120" height="18" font="맑은 고딕,12,0,0,0,0" fore_color="00A17441" back_color_opacity="0" drawfocusrect="0" link_data="dsUserInfo:INFO_SECURIT_YN" text=" 동의함" true_value="Y" false_value="N" on_click="eventfunc:chkAgree_on_click(objInst)"/>
+	</map>
+</map_list>

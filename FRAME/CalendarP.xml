@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]달력" directory="/FRAME/" screenid="CalendarP" last_update_date="2021-12-28 14:15:23" width="200" width_type="0" height="167" height_type="0" funclist="objCalendarCtrl_on_selectdate"/>
+		<calendar control_id="0" name="objCalendarCtrl" x="0" y="0" right="0" bottom="0" width="200" height="167" font="맑은 고딕,9,0,0,0,0" calendar_size="0" on_selectdate="eventfunc:objCalendarCtrl_on_selectdate(objInst, strDate)"/>
+		<hidden_screen>
+			<normal_field control_id="3" name="fldDateFieldName" in_index="0" autosize="0" x="210" y="12" right="1366" bottom="969" width="48" height="19" font="돋움,9,0,0,0,0" fore_color="00555555" border_color="00E3E3E3" border_color_focus="00E3E3E3" hidden="1" max_length="50"/>
+			<normal_field control_id="7" name="fldCallBackFunction" in_index="1" autosize="0" x="264" y="12" right="1348" bottom="969" width="12" height="19" font="돋움,9,0,0,0,0" fore_color="00555555" border_color="00E3E3E3" border_color_focus="00E3E3E3" hidden="1" max_length="50"/>
+			<normal_field control_id="6" name="fldDateGridName" in_index="2" autosize="0" x="282" y="12" right="1294" bottom="969" width="48" height="19" font="돋움,9,0,0,0,0" fore_color="00555555" border_color="00E3E3E3" border_color_focus="00E3E3E3" hidden="1" max_length="50"/>
+			<numericex_field control_id="4" name="fldRow" in_index="3" autosize="0" x="210" y="36" right="1384" bottom="945" width="30" height="19" font="돋움,9,0,0,0,0" fore_color="00555555" border_color="00E3E3E3" horz_align="1" border_color_focus="00E3E3E3" hidden="1" default_value="0"/>
+			<numericex_field control_id="5" name="fldColumn" in_index="4" autosize="0" x="246" y="36" right="1348" bottom="945" width="30" height="19" font="돋움,9,0,0,0,0" fore_color="00555555" border_color="00E3E3E3" horz_align="1" border_color_focus="00E3E3E3" hidden="1" default_value="0"/>
+		</hidden_screen>
+	</map>
+</map_list>

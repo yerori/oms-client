@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="메일 발송 추적" directory="/SMT/" screenid="SmtSet2030" last_update_date="2024-12-04 14:23:42" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,fnDsSet,isOddOrEven,fnGetSearchParam,fnGetFixColumnCount,fnResetGridProp,fnGetTitle,fnGetList,fnSetInitControl,screen_on_submitcomplete,btnCommonSearch_on_mouseup,btnCommonClose_on_mouseup,comOu_on_itemchange,fldDateS_on_changed,edtMailTitle_on_keydown"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;BASE_DATE::::;MAIL_TITLE::::"/>
+		<xlinkdataset id="dsOU" desc="법인 LIST" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsHeader" desc="HRM제외한수신대상컬럼" columns="DS_TYPE:&quot;Double/Single 헤더&quot;:::;TITLE:&quot;제목&quot;:::;COL_IDX:&quot;DS 구별 인덱스&quot;:::"/>
+		<xlinkdataset id="dsList" desc="메일 추적 LIST" columns="IDX::::;MAIL_TITLE::::;COL_S1::::;COL_S2::::;COL_S3::::;COL_S4::::;COL_S5::::;COL_S6::::;COL_S7::::;COL_S8::::;COL_S9::::;COL_S10::::;COL_DA1::::;COL_DB1::::;COL_DA2::::;COL_DB2::::;COL_DA3::::;COL_DB3::::;COL_DA4::::;COL_DB4::::;COL_DA5::::;COL_DB5::::;COL_DA6::::;COL_DB6::::;COL_DA7::::;COL_DB7::::;COL_DA8::::;COL_DB8::::;COL_DA9::::;COL_DB9::::;COL_DA10::::;COL_DB10::::;COL_DA11::::;COL_DB11::::;COL_DA12::::;COL_DB12::::;COL_DA13::::;COL_DB13::::;COL_DA14::::;COL_DB14::::;COL_DA15::::;COL_DB15::::;COL_DA16::::;COL_DB16::::;COL_DA17::::;COL_DB17::::;COL_DA18::::;COL_DB18::::;COL_DA19::::;COL_DB19::::;COL_DA20::::;COL_DB20::::;COL_DA21::::;COL_DB21::::;COL_DA22::::;COL_DB22::::;COL_DA23::::;COL_DB23::::;COL_DA24::::;COL_DB24::::;COL_DA25::::;COL_DB25::::;COL_DA26::::;COL_DB26::::;COL_DA27::::;COL_DB27::::;COL_DA28::::;COL_DB28::::;COL_DA29::::;COL_DB29::::;COL_DA30::::;COL_DB30::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_HEADER" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,474,483,592,0"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="1" order_info="35,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="1274" y="5" right="94" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="30" y="7" right="1208" bottom="10" width="200" height="18" text="메일 발송 추적" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1348" y="5" right="20" bottom="5" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="676" width="1411" width_percent="98" width_unit="1" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="49" meta_id="LABEL00090" autosize="0" x="24" y="114" right="1216" bottom="628" width="200" height="16" text="목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="68" autosize="0" x="10" y="114" right="1425" bottom="628" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="551" meta_id="LABEL01898" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="474" name="comOu" in_index="0" autosize="0" x="102" y="52" right="1178" bottom="686" width="160" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOU:CODE:NAME:" link_data="dsSearch:OU_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_itemchange="eventfunc:comOu_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<grid style="HS_GRID_BASIC_01" control_id="0" name="grdList" in_index="20" x="9" y="142" right="20" bottom="28" width="1411" width_percent="98" height="588" resize_dir="3" header_vertcount="0" header_horzcount="2" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" checkrowwithselect="1" link_data="dsList" samplerows="4" dynamic_fixedrows="1" dynamic_fixedcols="1" autocolumnwidth="2" version="1.2" on_itemclick="eventfunc:grdList_on_itemclick(objInst, nClickRow, nClickColumn, bBtnClick, nImgIndex, strImgUrl)" on_itemdblclick="eventfunc:grdList_on_itemdblclick(objInst, nDblClickRow, nDblClickColumn, bBtnClick, nImgIndex, strImgUrl)" on_fileload="eventfunc:grdList_on_fileload(objInst, nResult, strCode, strMsg, strFileName, nLoadStartTime, nStartRowIndex, nEndRowIndex)">
+			<column>
+				<header title="No."/>
+				<header title="No."/>
+				<data style="HS_GRID_DATA_02" width="60" link_data="dsList:IDX" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="메일 제목"/>
+				<header title="메일 제목"/>
+				<data style="HS_GRID_DATA_02" name="MAIL_TITLE" width="200" text_horzalign="0" link_data="dsList:MAIL_TITLE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00209" title="header1"/>
+				<header meta_id="LABEL00209" title="header1"/>
+				<data style="HS_GRID_DATA_02" width="120" hidden="1" link_data="dsList:COL_S1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00209" title="header2"/>
+				<header meta_id="LABEL00209" title="header2"/>
+				<data style="HS_GRID_DATA_02" width="120" hidden="1" link_data="dsList:COL_S2" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00209" title="header3"/>
+				<header meta_id="LABEL00209" title="header3"/>
+				<data style="HS_GRID_DATA_02" width="120" hidden="1" link_data="dsList:COL_S3" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00209" title="header4"/>
+				<header meta_id="LABEL00209" title="header4"/>
+				<data style="HS_GRID_DATA_02" width="120" hidden="1" link_data="dsList:COL_S4" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00209" title="header5" text_wordbreak="1" text_wordellipsis="0"/>
+				<header meta_id="LABEL00209" title="header5"/>
+				<data style="HS_GRID_DATA_02" width="120" text_wordbreak="1" text_wordellipsis="0" link_data="dsList:COL_S5" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00209" title="header6" text_wordbreak="1" text_wordellipsis="0"/>
+				<header meta_id="LABEL00209" title="header6" text_wordbreak="1" text_wordellipsis="0"/>
+				<data style="HS_GRID_DATA_02" width="120" link_data="dsList:COL_S6" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00209" title="header7" text_wordbreak="1" text_wordellipsis="0"/>
+				<header meta_id="LABEL00209" title="header7"/>
+				<data style="HS_GRID_DATA_02" width="120" link_data="dsList:COL_S7" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00209" title="header8"/>
+				<header meta_id="LABEL00209" title="header8"/>
+				<data style="HS_GRID_DATA_02" width="120" link_data="dsList:COL_S8" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00209" title="header9"/>
+				<header meta_id="LABEL00209" title="header9"/>
+				<data style="HS_GRID_DATA_02" width="120" link_data="dsList:COL_S9" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00209" title="header10"/>
+				<header meta_id="LABEL00209" title="header10"/>
+				<data style="HS_GRID_DATA_02" width="120" link_data="dsList:COL_S10" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00209" title="header11"/>
+				<header meta_id="LABEL00209" title="header11"/>
+				<data style="HS_GRID_DATA_02" width="120" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00209" title="header12"/>
+				<header meta_id="LABEL00209" title="header12"/>
+				<data style="HS_GRID_DATA_02" width="120" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00209" title="header13"/>
+				<header meta_id="LABEL00209" title="header13"/>
+				<data style="HS_GRID_DATA_02" width="120" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00209" title="header14"/>
+				<header meta_id="LABEL00209" title="header14"/>
+				<data style="HS_GRID_DATA_02" width="120" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00209" title="header15"/>
+				<header meta_id="LABEL00209" title="header15"/>
+				<data style="HS_GRID_DATA_02" width="120" hint_text="15" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT1"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT1"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT2"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA2" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT2"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB2" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT3"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA3" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT3"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB3" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT4"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA4" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT4"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB4" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT5"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA5" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT5"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB5" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT6"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA6" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT6"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB6" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT7"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA7" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT7"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB7" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT8"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA8" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT8"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB8" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT9"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA9" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT9"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB9" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT10"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA10" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT10"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB10" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT11"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA11" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT11"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB11" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT12"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA12" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT12"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB12" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT13"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA13" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT13"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB13" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT14"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA14" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT14"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB14" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT15"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA15" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT15"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB15" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT16"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA16" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT16"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB16" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT17"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA17" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT17"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB17" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT18"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA18" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT18"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB18" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT19"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA19" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT19"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB19" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT20"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA20" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT20"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DB20" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT21"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" hidden="1" link_data="dsList:COL_DA21" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT21"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" link_data="dsList:COL_DB21" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT22"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" link_data="dsList:COL_DA22" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT22"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" link_data="dsList:COL_DB22" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT23"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" link_data="dsList:COL_DA23" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT23"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" link_data="dsList:COL_DB23" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT24"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" link_data="dsList:COL_DA24" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT24"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" link_data="dsList:COL_DB24" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT25"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" link_data="dsList:COL_DA25" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT25"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" link_data="dsList:COL_DB25" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT26"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT26"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT27"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT27"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT28"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT28"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT29"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT29"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT30"/>
+				<header title="부서장"/>
+				<data style="HS_GRID_DATA_02" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="DEPT30"/>
+				<header title="부서원"/>
+				<data style="HS_GRID_DATA_02" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info="0,9,1,9:0,8,1,8:0,7,1,7:0,6,1,6:0,5,1,5:0,4,1,4:0,19,0,20:0,21,0,22:0,17,0,18:0,23,0,24:0,25,0,26:0,27,0,28:0,29,0,30:0,31,0,32:0,33,0,34:0,35,0,36:0,37,0,38:0,10,1,10:0,11,1,11:0,39,0,40:0,41,0,42:0,43,0,44:0,45,0,46:0,47,0,48:0,49,0,50:0,51,0,52:0,53,0,54:0,55,0,56:0,2,1,2:0,3,1,3:0,1,1,1:0,0,1,0:0,12,1,12:0,13,1,13:0,14,1,14:0,15,1,15:0,16,1,16:0,57,0,58:0,59,0,60:0,61,0,62:0,63,0,64:0,65,0,66:0,67,0,68:0,69,0,70:0,71,0,72:0,73,0,74:0,75,0,76:"/>
+		</grid>
+		<datepicker control_id="483" name="fldDateS" in_index="1" autosize="0" x="444" y="52" right="896" bottom="686" width="100" height="20" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSearch:BASE_DATE" delimiter_char="-" showtodaybar="1" on_changed="eventfunc:fldDateS_on_changed(objInst, prev_text, curr_text, event_type)"/>
+		<text control_id="135" meta_id="LABEL01350" autosize="0" x="360" y="52" right="1000" bottom="686" width="80" height="20" text="기준일자" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<text control_id="590" autosize="0" x="666" y="52" right="694" bottom="686" width="80" height="20" text="메일 제목" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<hangul_field control_id="592" name="edtMailTitle" in_index="4" autosize="0" x="756" y="52" right="454" bottom="686" width="230" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:MAIL_TITLE" on_keydown="eventfunc:edtMailTitle_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+	</map>
+</map_list>

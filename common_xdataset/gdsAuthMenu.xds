@@ -1,0 +1,4 @@
+﻿#xdataset_comment=""
+
+#xdataset_column
+MENU_ID:""::"":"";OU_CODE:""::"":"";UP_MENU_ID:""::"":"";MENU_PATH:""::"":"";ORDER_NO:""::"":"";MENU_NM:""::"":"";MENU_NAVIGATOR:""::"":"";AT_C:"생성"::"":"";AT_R:"조회"::"":"";AT_U:"수정"::"":"";AT_D:"삭제"::"":"";AT_E:"excel"::"":"";AT_P:"출력"::"":"";AT_DEPT:"부서"::"":"";AT_EMP:"개인"::"":"";AT_PINFO:"개인정보"::"":"";AT_USER1:"사용자1"::"":"";AT_USER2:"사용자2"::"":"";AT_USER3:"사용자3"::"":"";AT_USER4:"사용자4"::"":"";AT_USER5:"사용자5"::"":"";MENU_LEVEL:""::"":"";MENU_ONE_LEVEL_ID:""::"":"";LEFT_MENU_IMAGE_LEVEL:""::"":"";LEFT_MENU_IMAGE_SELECT:""::"":""

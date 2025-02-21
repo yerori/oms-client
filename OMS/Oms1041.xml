@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]중장기계획 리비젼" directory="/OMS/" screenid="Oms1041" last_update_date="2023-08-25 14:01:17" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnPageSet,fnDsSearchSet,fnDsSet,screen_on_submitcomplete,btnCommonSearch_on_mouseup,screen_on_messagebox,grdMaster_on_itemdblclick,btnCommonClose_on_mouseup,comOu_on_itemchange,grdList_on_itemclick,btnAddRow_on_mouseup,btnDelRow_on_mouseup,btnCommonSave_on_mouseup,fnValidForm,fnSearch,fnSaveData,ComProductName_on_prekeydown,fnSearchVersion,grdList_on_itemselchange,btnUpload_on_mouseup,screen_on_destroy,fnApply,ReturnClosePopup,btnDownLoad_on_mouseup"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;PROJECT_CODE::::;PROJECT_VERSION::::;CUSTOMER_NAME::::;ITEM_NAME::::;BASE_YEAR::::;PLAN_VERSION::::;PROJECT_PRODUCT_ID::::;LATEST_YN::::;CURRENCY_CODE::::;ERP_ITEM_NO::::"/>
+		<xlinkdataset id="dsOU" desc="법인 LIST" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsList" desc="목록" columns="OU_CODE::::;PROJECT_CODE::::;PROJECT_PRODUCT_ID::::;PLAN_VERSION::::;BASE_YEAR::::;PLAN_YEAR::::;PLAN_MONTH::::;PLAN_YYYYMM::::;QTY::::;UNIT_PRICE::::;CURRENCY_CODE::::;CURRENCY_NAME::::;AMT::::;AMT_KRW::::;REMARK::::;LATEST_YN::::"/>
+		<xlinkdataset id="dsCurrency" desc="통화코드 (F018)" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsVersion" desc="Plan 버젼" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsPlanHeader" desc="중장기계획 헤더" columns="OU_CODE::::;PROJECT_CODE::::;PROJECT_PRODUCT_ID::::;BASE_YEAR::::;INCOTERMS_CODE::::;INCOTERMS_NAME::::;INCOTERMS_DETAIL::::;REMARK::::;PLAN_VERSION::::;LATEST_YN::::"/>
+		<xlinkdataset id="dsIncoterms" desc="incoterms (O019)" columns="CODE::::;NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SITE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_ALL" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_VERSION" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,474,453,552,567,585,483,565,578,572,558,557,579,582,0"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="1" order_info="36,42"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" meta_id="LABEL02599" autosize="0" x="30" y="7" right="1208" bottom="10" width="200" height="18" text="중장기계획 리비젼" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1348" y="6" right="20" bottom="4" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" meta_id="LABEL00011" anchor="2" x="1276" y="6" right="92" bottom="4" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="646" width="1411" width_percent="98" width_unit="1" height="70" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="49" meta_id="LABEL00090" autosize="0" x="24" y="125" right="1216" bottom="617" width="200" height="16" text="목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="68" autosize="0" x="10" y="125" right="1425" bottom="617" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="551" meta_id="LABEL01898" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="474" name="comOu" in_index="0" autosize="0" x="102" y="52" right="1178" bottom="686" width="160" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOU:CODE:NAME:" link_data="dsSearch:OU_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_itemchange="eventfunc:comOu_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<text control_id="532" meta_id="LABEL02379" autosize="0" x="900" y="52" right="444" bottom="686" width="96" height="20" text="품명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="0" name="grdList" in_index="20" x="9" y="150" right="20" bottom="20" width="1411" width_percent="98" height="588" resize_dir="3" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" use_checkrow="1" checkrowwithselect="1" link_data="dsList" samplerows="4" autocolumnwidth="2" version="1.2" on_itemselchange="eventfunc:grdList_on_itemselchange(objInst, nPrevSelectRow, nPrevSelectColumn, nCurSelectRow, nCurSelectColumn)" on_itemclick="eventfunc:grdList_on_itemclick(objInst, nClickRow, nClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header meta_id="LABEL01511" title="기준년도"/>
+				<data style="HS_GRID_DATA_BC_01" name="BASE_YEAR" width="135" text_horzalign="1" link_data="dsList:BASE_YEAR" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02489" title="*계획년월"/>
+				<data style="HS_GRID_DATA_BC_01" name="PLAN_YYYYMM" width="120" text_horzalign="1" editable="1" input_type="3" pattern="9999-99" link_data="dsList:PLAN_YYYYMM" calendar_image="/ico_carlenda_grid.gif" calendar_datetype="1" calendar_type="2" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02486" title="*수량"/>
+				<data name="QTY" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="Z,ZZZ,ZZZ,ZZ9" link_data="dsList:QTY" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02487" title="*단가"/>
+				<data name="UNIT_PRICE" text_horzalign="2" editable="1" data_type="0" max_length="10" pattern="ZZ,ZZ9.9999" link_data="dsList:UNIT_PRICE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02464" title="*통화"/>
+				<data style="HS_GRID_DATA_01" name="CURRENCY_CODE" width="120" editable="1" data_type="2" input_type="2" link_data="dsList:CURRENCY_CODE" picklist_linkdata="dsCurrency:CODE:NAME:" combobox_editable="0" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01089" title="금액"/>
+				<data style="HS_GRID_DATA_BC_01" name="AMT" width="135" text_horzalign="2" data_type="0" max_length="15" pattern="ZZZ,ZZZ,ZZZ,ZZ9.99" link_data="dsList:AMT" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02488" title="금액(KRW)"/>
+				<data style="HS_GRID_DATA_BC_01" name="AMT_KRW" width="135" text_horzalign="2" hidden="1" data_type="0" max_length="15" pattern="ZZZ,ZZZ,ZZZ,ZZZ,ZZ9" link_data="dsList:AMT_KRW" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<hangul_field control_id="552" name="edtCustomerName" in_index="2" autosize="0" x="749" y="52" right="551" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:CUSTOMER_NAME" editable="0" max_length="100" make_case="1" imemode="0" on_prekeydown="eventfunc:edtCustomerName_on_prekeydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="553" meta_id="LABEL00193" autosize="0" x="666" y="52" right="694" bottom="686" width="80" height="20" text="고객명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="557" name="btnDelRow" meta_id="LABEL00542" anchor="2" x="1350" y="120" right="20" bottom="615" width="70" height="23" text="행삭제" version="1.1" on_mouseup="eventfunc:btnDelRow_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="558" name="btnAddRow" meta_id="LABEL00541" anchor="2" x="1278" y="120" right="92" bottom="615" width="70" height="23" text="행추가" version="1.1" on_mouseup="eventfunc:btnAddRow_on_mouseup(objInst)"/>
+		<text control_id="452" meta_id="LABEL02407" autosize="0" x="368" y="52" right="992" bottom="686" width="80" height="20" text="*프로젝트코드" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="453" name="edtProjectCode" in_index="1" autosize="0" x="452" y="52" right="816" bottom="686" width="172" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:PROJECT_CODE" enable="0" max_length="100" on_keydown="eventfunc:edtVendorName_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_changed="eventfunc:edtProjectCode_on_changed(objInst, prev_text, curr_text, event_type)"/>
+		<combobox control_id="565" name="cboVersion" in_index="6" autosize="0" x="451" y="78" right="829" bottom="660" width="160" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsVersion:CODE:NAME:" link_data="dsSearch:PLAN_VERSION" enable="0" auto_codevalid="1" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<text control_id="566" meta_id="LABEL02617" autosize="0" x="348" y="78" right="994" bottom="660" width="98" height="20" text="중장기계획버전" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<datepicker control_id="483" name="fldDateS" in_index="13" autosize="0" x="103" y="78" right="1238" bottom="660" width="99" height="20" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSearch:BASE_YEAR" enable="0" max_length="4" delimiter_char="-" date_type="2" showtodaybar="1" calendar_type="3"/>
+		<text control_id="135" meta_id="LABEL01802" autosize="0" x="18" y="78" right="1342" bottom="660" width="80" height="20" text="*기준년도" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<hangul_field control_id="567" name="edtItem" in_index="3" autosize="0" x="1008" y="52" right="293" bottom="686" width="139" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:ITEM_NAME" editable="0" max_length="100" on_keydown="eventfunc:edtCarType_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="572" name="btnUpload" meta_id="LABEL02120" anchor="2" x="1206" y="120" right="164" bottom="615" width="70" height="23" text="Upload" version="1.1" on_mouseup="eventfunc:btnUpload_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="578" name="btnDownLoad" meta_id="LABEL02614" anchor="2" x="1134" y="120" right="236" bottom="615" width="70" height="23" text="Download" version="1.1" on_mouseup="eventfunc:btnDownLoad_on_mouseup(objInst)"/>
+		<combobox control_id="579" name="cboIncoterms" autosize="0" anchor="2" x="727" y="122" right="553" bottom="616" width="160" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsIncoterms:CODE:NAME:" link_data="dsPlanHeader:INCOTERMS_CODE" auto_codevalid="1" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<text control_id="580" meta_id="LABEL02655" autosize="0" anchor="2" x="618" y="122" right="718" bottom="616" width="104" height="20" text="*Incoterms" font="맑은 고딕,9,0,0,0,0" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<text control_id="581" meta_id="LABEL02657" autosize="0" anchor="2" x="900" y="122" right="454" bottom="616" width="86" height="20" text="거래조건 상세" font="맑은 고딕,9,0,0,0,0" horz_align="2" version="1.1"/>
+		<hangul_field control_id="582" name="fldIncoDetail" autosize="0" anchor="2" x="989" y="122" right="311" bottom="616" width="140" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsPlanHeader:INCOTERMS_DETAIL" max_length="100" make_case="1" imemode="0"/>
+		<hangul_field control_id="585" name="edtErpItem" autosize="0" x="1272" y="52" right="29" bottom="686" width="139" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:ERP_ITEM_NO" editable="0" max_length="100" on_keydown="eventfunc:edtCarType_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="586" meta_id="LABEL02622" autosize="0" x="1206" y="52" right="180" bottom="686" width="54" height="20" text="품번(ERP)" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+	</map>
+</map_list>

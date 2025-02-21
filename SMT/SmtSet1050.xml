@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="ROLE 그룹등록" directory="/SMT/" screenid="SmtSet1050" click_setfocus="1" last_update_date="2023-06-14 15:50:36" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnSetInitControl,fnDsSearchSet,treeGrd_on_itemclick,btnCommonSave_on_mouseup,btnCommonSearch_on_mouseup,btnCommonClose_on_mouseup,fnSaveData,fnSearch,screen_on_submitcomplete,screen_on_messagebox,screen_on_size,btnDelRow_on_mouseup,btnAddRow_on_mouseup,fldOu_on_itemchange"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::"/>
+		<xlinkdataset id="dsOU" desc="법인 LIST" columns="OU_CODE::::;OU_NAME::::"/>
+		<xlinkdataset id="dsAuthLevel" desc="Role 그룹 Level" columns="OU_CODE::::;AUTH_CODE::::;AUTH_NAME::::;UP_AUTH_CODE::::;AUTH_LEVEL::::;LEVEL::::"/>
+		<xlinkdataset id="dsAuth" desc="Role 그룹" columns="OU_CODE::::;AUTH_CODE::::;AUTH_NAME::::;AUTH_LEVEL::::;UP_AUTH_CODE::::;ORDER_NO::::;ACTIVE_FLAG::::"/>
+		<xlinkdataset id="dsValidation" desc="Validation" columns="CNT::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_COM_CO" url="" comment="코드 저장처리(추가, 수정, 삭제)">
+		</xlinktranmap>
+		<xlinktranmap id="TR_OU" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_AUTH_LEVEL" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_AUTH" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="조회">
+		</xlinktranmap>
+		<xlinktranmap id="TR_VALIDATION" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,494,124,37,525,0"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="3" right="2" bottom="720" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="0" order_info="35,36,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="678" y="5" right="690" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" meta_id="LABEL00011" anchor="2" x="768" y="5" right="600" bottom="5" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="1207" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1345" y="5" right="23" bottom="5" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<text control_id="135" meta_id="LABEL01898" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="676" width="1411" width_percent="98" width_unit="1" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<combobox control_id="494" name="fldOu" in_index="1" autosize="0" x="102" y="52" right="1197" bottom="686" width="141" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOU:OU_CODE:OU_NAME:" link_data="dsSearch:OU_CODE" default_value_type="1" default_value_usage="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_itemchange="eventfunc:fldOu_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<text control_id="451" meta_id="LABEL02542" autosize="0" x="322" y="95" right="918" bottom="647" width="200" height="16" text="ROLE 그룹등록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<treegrid control_id="525" name="treeGrd" in_index="2" x="8" y="120" right="1150" bottom="30" width="282" height="608" resize_dir="2" font="맑은 고딕,9,0,0,0,0" header_backcolor="00FCEAD3" back_color="00FFFBF7" header_font="맑은 고딕,9,1,0,0,0" header_vertcount="0" header_height="28" cell_height="22" cell_dividecolor_use="0" cell_linecolor="00FEDECC" cell_linecolor_horz="00FEDECC" cell_linecolor_vert="00FEDECC" cellinner_linecolor_horz="00FEDECC" border_color="00FFC4A3" selectrow_backcolor="00ECFFFD" selectcell_style="0" tree_linkdata="dsAuthLevel:AUTH_LEVEL:LEVEL::AUTH_NAME" samplerows="4" autocolumnwidth="2" popupmenu_show="0" version="1.1" on_itemclick="eventfunc:treeGrd_on_itemclick(objInst, nClickRow, nClickColumn, bBtnClick)">
+			<column>
+				<header meta_id="LABEL02543" title="그룹코드"/>
+				<data name="AUTH_CODE" width="142" backcolor="00FFFBF7" link_data="dsAuthLevel:AUTH_CODE"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02544" title="그룹명"/>
+				<data name="AUTH_NAME" width="138" backcolor="00FFFBF7" link_data="dsAuthLevel:AUTH_NAME"/>
+			</column>
+			<headermegeinfo info=""/>
+		</treegrid>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="124" name="btnAddRow" meta_id="LABEL00541" anchor="2" x="1270" y="88" right="100" bottom="645" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnAddRow_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="37" name="btnDelRow" meta_id="LABEL00542" anchor="2" x="1345" y="88" right="25" bottom="645" width="70" height="25" text="행삭제" version="1.1" on_mouseup="eventfunc:btnDelRow_on_mouseup(objInst)"/>
+		<grid style="HS_GRID_BASIC_01" control_id="0" name="grdRoleGroup" in_index="7" x="307" y="120" right="20" bottom="30" width="1113" width_percent="97" height="608" resize_dir="3" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" link_data="dsAuth" samplerows="4" autocolumnwidth="2" version="1.2" on_itemeditcomplete="eventfunc:grdLangInfo_on_itemeditcomplete(objInst, nRow, nColumn, strPrevItemText)">
+			<column>
+				<header meta_id="LABEL02543" title="그룹코드"/>
+				<data style="HS_GRID_DATA_01" name="AUTH_CODE" editable="1" data_inputtype="1" link_data="dsAuth:AUTH_CODE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02544" title="그룹명"/>
+				<data style="HS_GRID_DATA_01" name="AUTH_NAME" width="178" editable="1" imemode="1" data_inputtype="1" data_type="2" link_data="dsAuth:AUTH_NAME" combobox_style="1" combobox_excelstyle="2" picklist_selstyle="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02545" title="레벨"/>
+				<data style="HS_GRID_DATA_01" name="AUTH_LEVEL" width="76" imemode="1" data_inputtype="1" data_type="0" link_data="dsAuth:AUTH_LEVEL" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02546" title="상위그룹"/>
+				<data style="HS_GRID_DATA_01" name="UP_AUTH_CODE" width="178" data_inputtype="1" link_data="dsAuth:UP_AUTH_CODE" combobox_style="1" combobox_excelstyle="2" picklist_selstyle="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00144" title="순서"/>
+				<data style="HS_GRID_DATA_01" name="ORDER_NO" editable="1" data_inputtype="1" data_type="0" link_data="dsAuth:ORDER_NO" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00188" title="사용"/>
+				<data style="HS_GRID_DATA_01" name="ACTIVE_FLAG" editable="1" data_inputtype="1" input_type="1" default_value="Y" link_data="dsAuth:ACTIVE_FLAG" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<text control_id="518" meta_id="LABEL02541" autosize="0" x="24" y="95" right="1216" bottom="647" width="200" height="16" text="ROLE 그룹" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="450" autosize="0" x="10" y="95" right="1425" bottom="647" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<image control_id="519" autosize="0" x="308" y="95" right="1127" bottom="647" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+	</map>
+</map_list>

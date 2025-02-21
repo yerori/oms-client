@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="협력업체정보관리" directory="/SMT/" screenid="SmtSet1140" last_update_date="2023-03-28 14:17:52" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,screen_on_submitcomplete,fnSearch,fnSearchFinInfo,fnSearchChgInfo,fnValidForm,fnSaveData,btnCommonSearch_on_mouseup,btnCommonSave_on_mouseup,screen_on_messagebox,screen_on_size,btnCommonClose_on_mouseup,cboOuCode_on_keydown,edtVendorName_on_changed,fnVendorClosePopCallback,btnVendorNamePop_on_click,fnVendorPopupCall,btnPostCodePop_on_click,fnGetMstrPostCode,fldAddr2_on_focusin,btnAddRow_on_mouseup,btnDelRow_on_mouseup,btnChgAddRow_on_mouseup,grdDetail_on_columnclick,fnAttFilePopCallback,btnSQAttPop_on_click,btnIATFAttPop_on_click,fnCertAttFilePopCallback"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;VENDOR_CODE::::;VENDOR_NAME::::"/>
+		<xlinkdataset id="dsSupplier" desc="업체정보" columns="OU_CODE::::;VENDOR_CODE::::;VENDOR_NAME::::;DEAL_YN::::;BIZ_TYPE::::;BIZ_TYPE_NAME::::;VENDOR_TYPE::::;TAX_REG_NUMBER::::;TEL_NO::::;FAX_NO::::;REPRE_NAME::::;POST_CODE::::;ADDR1::::;ADDR2::::;EMAIL_ADDR::::;ISO_9001_YN::::;ISO_9001_END_DATE::::;TS_YN::::;TS_END_DATE::::;SQ_BIZ_TYPE::::;SQ_GRADE::::;SQ_CERT_NUM::::;SQ_CERT_DATE::::;SQ_END_DATE::::;SQ_ATT_YN::::;MQ_YN::::;MSQ_YN::::;ISO_14001_YN::::;IATF_YN::::;IATF16949_CERT_NUM::::;IATF_CERT_NUM::::;IATF_CERT_DATE::::;IATF_END_DATE::::;IATF_ATT_YN::::;CHARGE_NAME::::;CHARGE_PHONE_NO::::;CHARGE_EMAIL_ADDR::::;NATION_CODE::::;ERP_INS_DATE::::;DEAL_END_DATE::::;HOMEPAGE_ADDR::::"/>
+		<xlinkdataset id="dsSupFinInfo" desc="업체년도별재무정보" columns="OU_CODE::::;VENDOR_CODE::::;VENDOR_FIN_INFO_ID::::;SALES_YEAR::::;SALES_GRAVITY::::;SALES_AMOUNT::::;ORDINARY_INCOME::::;DEBT_RATIO::::;QUICK_RATIO::::;PROFIT_RATIO::::;EMP_CNT::::;CAPITAL_AMOUNT::::;ASSET_AMOUNT::::;EQUITY_CAPITAL_RATIO::::;ATTFILE_YN::::;REMARK::::"/>
+		<xlinkdataset id="dsSupChgInfo" desc="업체담당자정보" columns="OU_CODE::::;VENDOR_CODE::::;VENDOR_CHG_INFO_ID::::;CHG_DEPT_CODE::::;CHG_DEPT_NAME::::;CHG_NAME::::;CHG_JIKGUB::::;CHG_EMAIL_ADDR::::;CHG_PHONE_NO::::;CHG_TEL_NO::::;CHG_FAX_NO::::;OFFICIAL_DOCU_YN::::;CHG_USE_YN::::;CHG_USER_ID_YN::::;REMARK::::"/>
+		<xlinkdataset id="dsOuCode" desc="법인코드정보" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsBizType" desc="업종코드" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsVendorType" desc="업체구분" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsSQBizType" desc="SQ업종코드" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsChgDeptCode" desc="업체담당자부서코드" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsFinInfoSEQ" desc="업체재무정보 Line SEQ" columns="SEQ::::"/>
+		<xlinkdataset id="dsChgInfoSEQ" desc="업체담당자정보 Line SEQ" columns="SEQ::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SUPPLIER_INFO" url="" comment="업체정보 데이터 가져오기.">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SUPPLIER_FIN_INFO" url="" comment="업체 재무 정보 데이터 가져오기.">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_ALL" url="" comment="업체정보 저장처리(추가, 수정, 삭제)">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SUPPLIER_FIN_INFO_ID" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_BIZ_TYPE" url="" comment="업종코드 가져오기.">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SUPPLIER_CHG_INFO" url="" comment="업체 담당자 정보 데이터 가져오기.">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SUPPLIER_CHG_INFO_ID" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,514,453,479,480,519,16,520,483,481,482,486,487,488,490,491,484,485,521,522,493,494,497,528,499,500,501,524,502,503,504,505,506,507,508,509,526,510,511,512,468,469,462,518,517"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="0" order_info="35,36,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" anchor="2" x="1088" y="5" right="280" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" anchor="2" x="1204" y="5" right="164" bottom="5" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="1207" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1345" y="5" right="23" bottom="5" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<text control_id="135" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="676" width="1411" width_percent="98" width_unit="1" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="452" autosize="0" x="368" y="52" right="992" bottom="686" width="80" height="20" text="*업체명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="453" name="edtVendorName" in_index="1" autosize="0" x="452" y="52" right="848" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:VENDOR_NAME" max_length="100" on_keydown="eventfunc:edtVendorName_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_changed="eventfunc:edtVendorName_on_changed(objInst, prev_text, curr_text, event_type)"/>
+		<image control_id="410" name="btnVendorNamePop" autosize="0" x="591" y="52" right="830" bottom="686" width="19" height="20" transparent="0" border="0" padding="0,0,0,0" image="/ico_search.gif" image_width="19" image_height="20" mouse_cursor="11" on_click="eventfunc:btnVendorNamePop_on_click(objInst)"/>
+		<text control_id="454" name="txtVendorCode" autosize="0" x="613" y="52" right="747" bottom="686" width="80" height="20" text="" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" link_data="dsSearch:VENDOR_CODE" version="1.1"/>
+		<text control_id="49" autosize="0" x="24" y="95" right="1216" bottom="647" width="200" height="16" text="기준정보" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="472" autosize="0" x="10" y="95" right="1425" bottom="647" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<table style="tbl_normal" control_id="473" name="tblBaseInfo" x="10" y="116" right="19" bottom="525" width="1411" height="117">
+			<cell style="HS_table_cell_01" rect="0,0,132,30" font="맑은 고딕,9,0,0,0,0" text="업체명"/>
+			<cell style="HS_table_cell_01" rect="131,0,283,30" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="282,0,414,30" font="맑은 고딕,9,0,0,0,0" text="공급자코드"/>
+			<cell style="HS_table_cell_01" rect="413,0,565,30" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="564,0,696,30" font="맑은 고딕,9,0,0,0,0" text="국가"/>
+			<cell style="HS_table_cell_01" rect="695,0,847,30" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="846,0,978,30" font="맑은 고딕,9,0,0,0,0" text="거래유무"/>
+			<cell style="HS_table_cell_01" rect="977,0,1129,30" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="1128,0,1260,30" font="맑은 고딕,9,0,0,0,0" text="거래종료일"/>
+			<cell style="HS_table_cell_01" rect="1259,0,1411,30" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="0,29,132,59" font="맑은 고딕,9,0,0,0,0" text="사업자등록번호"/>
+			<cell style="HS_table_cell_01" rect="131,29,283,59" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="282,29,414,59" font="맑은 고딕,9,0,0,0,0" text="업종"/>
+			<cell style="HS_table_cell_01" rect="413,29,565,59" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="564,29,696,59" font="맑은 고딕,9,0,0,0,0" text="업체구분"/>
+			<cell style="HS_table_cell_01" rect="695,29,847,59" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="846,29,978,59" font="맑은 고딕,9,0,0,0,0" text="대표자"/>
+			<cell style="HS_table_cell_01" rect="977,29,1129,59" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="1128,29,1260,59" font="맑은 고딕,9,0,0,0,0" text="대표메일"/>
+			<cell style="HS_table_cell_01" rect="1259,29,1411,59" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="0,58,132,88" font="맑은 고딕,9,0,0,0,0" text="우편번호"/>
+			<cell style="HS_table_cell_01" rect="131,58,283,88" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="282,58,414,88" font="맑은 고딕,9,0,0,0,0" text="주소1"/>
+			<cell style="HS_table_cell_01" rect="846,58,978,88" font="맑은 고딕,9,0,0,0,0" text="주소2"/>
+			<cell rect="413,58,847,88" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7"/>
+			<cell rect="977,58,1411,88" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7"/>
+			<cell rect="0,87,132,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="전화번호"/>
+			<cell rect="131,87,283,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+			<cell rect="282,87,414,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="팩스번호"/>
+			<cell rect="846,87,978,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="홈페이지주소"/>
+			<cell rect="977,87,1411,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+			<cell rect="413,87,565,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+			<cell rect="564,87,696,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="등록일자"/>
+			<cell rect="695,87,847,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+		</table>
+		<text control_id="474" autosize="0" x="24" y="252" right="1316" bottom="490" width="100" height="16" text="품질인증" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="475" autosize="0" x="10" y="252" right="1425" bottom="490" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<table style="tbl_normal" control_id="476" name="tblBaseInfo1" x="10" y="273" right="19" bottom="368" width="1411" height="117">
+			<cell style="HS_table_cell_01" rect="0,0,132,30" font="맑은 고딕,9,0,0,0,0" text="ISO9001 인증유무"/>
+			<cell style="HS_table_cell_01" rect="131,0,283,30" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="282,0,414,30" font="맑은 고딕,9,0,0,0,0" text="ISO9001 유효일자"/>
+			<cell style="HS_table_cell_01" rect="413,0,565,30" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="564,0,696,30" font="맑은 고딕,9,0,0,0,0" text="SQ 업종"/>
+			<cell style="HS_table_cell_01" rect="695,0,847,30" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="846,0,978,30" font="맑은 고딕,9,0,0,0,0" text="SQ 등급"/>
+			<cell style="HS_table_cell_01" rect="977,0,1129,30" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="1128,0,1260,30" font="맑은 고딕,9,0,0,0,0" text="SQ 인증번호"/>
+			<cell style="HS_table_cell_01" rect="1259,0,1411,30" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="0,29,132,59" font="맑은 고딕,9,0,0,0,0" text="SQ 인증일자"/>
+			<cell style="HS_table_cell_01" rect="131,29,283,59" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="282,29,414,59" font="맑은 고딕,9,0,0,0,0" text="SQ 유효일자"/>
+			<cell style="HS_table_cell_01" rect="413,29,565,59" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="564,29,696,59" font="맑은 고딕,9,0,0,0,0" text="SQ 인증서첨부"/>
+			<cell style="HS_table_cell_01" rect="695,29,847,59" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="846,29,978,59" font="맑은 고딕,9,0,0,0,0" text="MQ (만도)"/>
+			<cell style="HS_table_cell_01" rect="977,29,1129,59" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="1128,29,1260,59" font="맑은 고딕,9,0,0,0,0" text="MSQ (모비스)"/>
+			<cell style="HS_table_cell_01" rect="1259,29,1411,59" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="0,58,132,88" font="맑은 고딕,9,0,0,0,0" text="ISO14001 인증유무"/>
+			<cell style="HS_table_cell_01" rect="131,58,283,88" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="282,58,414,88" font="맑은 고딕,9,0,0,0,0" text="IATF16949 인증유무"/>
+			<cell style="HS_table_cell_01" rect="413,58,565,88" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="564,58,696,88" font="맑은 고딕,9,0,0,0,0" text="IATF16949 인증번호"/>
+			<cell style="HS_table_cell_01" rect="695,58,847,88" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="846,58,978,88" font="맑은 고딕,9,0,0,0,0" text="IATF16949 IATF 번호"/>
+			<cell style="HS_table_cell_01" rect="977,58,1129,88" font="맑은 고딕,9,0,0,0,0"/>
+			<cell style="HS_table_cell_01" rect="1128,58,1260,88" font="맑은 고딕,9,0,0,0,0" text="IATF16949 인증일자"/>
+			<cell style="HS_table_cell_01" rect="1259,58,1411,88" font="맑은 고딕,9,0,0,0,0"/>
+			<cell rect="0,87,132,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="IATF16949 유효일자"/>
+			<cell rect="131,87,283,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+			<cell rect="282,87,414,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="IATF 인증서첨부"/>
+			<cell rect="413,87,565,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+			<cell rect="564,87,696,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="담당자"/>
+			<cell rect="695,87,847,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+			<cell rect="846,87,978,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="담당자 HP"/>
+			<cell rect="977,87,1129,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+			<cell rect="1128,87,1260,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="담당자 이메일"/>
+			<cell rect="1259,87,1411,117" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2"/>
+		</table>
+		<image control_id="477" autosize="0" x="10" y="407" right="1425" bottom="335" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="478" autosize="0" x="24" y="407" right="1216" bottom="335" width="200" height="16" text="재무관리" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="462" name="grdDetail" x="10" y="430" right="19" bottom="207" width="1411" width_percent="98" height="121" resize_dir="1" header_vertcount="0" header_height="32" cell_height="22" selectrow_bordercolor="0080623C" link_data="dsSupFinInfo" samplerows="4" autocolumnwidth="2" version="1.2" on_itemclick="eventfunc:grdDetail_on_itemclick(objInst, nClickRow, nClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header title="*매출년도"/>
+				<data style="HS_GRID_DATA_01" name="SALES_YEAR" width="70" editable="1" input_type="3" pattern="YYYY" link_data="dsSupFinInfo:SALES_YEAR" calendar_type="3" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="매출비중(효성)"/>
+				<data style="HS_GRID_DATA_01" name="SALES_GRAVITY" width="90" text_horzalign="2" editable="1" data_type="0" max_length="6" pattern="ZZZ.99" pattern_rear_symbol="%" link_data="dsSupFinInfo:SALES_GRAVITY" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="매출액"/>
+				<data style="HS_GRID_DATA_01" name="SALES_AMOUNT" width="110" text_horzalign="2" editable="1" data_type="0" max_length="12" pattern="ZZZ,ZZZ,ZZZ,ZZZ" link_data="dsSupFinInfo:SALES_AMOUNT" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="경상이익"/>
+				<data style="HS_GRID_DATA_01" name="ORDINARY_INCOME" width="110" text_horzalign="2" editable="1" data_type="0" max_length="12" pattern="ZZZ,ZZZ,ZZZ,ZZZ" link_data="dsSupFinInfo:ORDINARY_INCOME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="부채비율"/>
+				<data style="HS_GRID_DATA_01" name="DEBT_RATIO" text_horzalign="2" editable="1" data_type="0" max_length="8" pattern="ZZ,ZZZ.99" pattern_rear_symbol="%" link_data="dsSupFinInfo:DEBT_RATIO" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="당좌비율"/>
+				<data style="HS_GRID_DATA_01" name="QUICK_RATIO" text_horzalign="2" editable="1" data_type="0" max_length="8" pattern="ZZ,ZZZ.99" pattern_rear_symbol="%" link_data="dsSupFinInfo:QUICK_RATIO" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="영업이익율"/>
+				<data style="HS_GRID_DATA_01" name="PROFIT_RATIO" text_horzalign="2" editable="1" data_type="0" max_length="6" pattern="ZZZ.99" pattern_rear_symbol="%" link_data="dsSupFinInfo:PROFIT_RATIO" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="종업원수"/>
+				<data style="HS_GRID_DATA_01" name="EMP_CNT" text_horzalign="2" editable="1" data_type="0" max_length="6" pattern="ZZZ,ZZZ" pattern_rear_symbol="명" link_data="dsSupFinInfo:EMP_CNT" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="자본금"/>
+				<data style="HS_GRID_DATA_01" name="CAPITAL_AMOUNT" width="110" text_horzalign="2" editable="1" data_type="0" max_length="12" pattern="ZZZ,ZZZ,ZZZ,ZZZ" link_data="dsSupFinInfo:CAPITAL_AMOUNT" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="자산"/>
+				<data style="HS_GRID_DATA_01" name="ASSET_AMOUNT" width="110" text_horzalign="2" editable="1" data_type="0" max_length="12" pattern="ZZZ,ZZZ,ZZZ,ZZZ" link_data="dsSupFinInfo:ASSET_AMOUNT" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="자기자본율"/>
+				<data style="HS_GRID_DATA_01" name="EQUITY_CAPITAL_RATIO" text_horzalign="2" editable="1" data_type="0" max_length="6" pattern="ZZZ.99" pattern_rear_symbol="%" link_data="dsSupFinInfo:EQUITY_CAPITAL_RATIO" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="세부내역첨부"/>
+				<data style="HS_GRID_DATA_02" name="ATTFILE_YN" width="60" max_length="1" link_data="dsSupFinInfo:ATTFILE_YN" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="세부내역첨부"/>
+				<data style="HS_GRID_DATA_01" name="ATTFILE_YN_POP" width="20" image="/ico_search_1.gif" excel_rw="0" bargauge_transparent="0" on_columnclick="eventfunc:grdDetail_on_columnclick(objInst, nColumn, bBtnClick, nImgIndex, strImgUrl)"/>
+			</column>
+			<column>
+				<header title="비고"/>
+				<data name="REMARK" width="310" editable="1" imemode="1" data_type="2" max_length="300" link_data="dsSupFinInfo:REMARK" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info="0,11,0,12:"/>
+		</grid>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="468" name="btnAddRow" meta_id="LABEL00541" anchor="2" x="1267" y="399" right="103" bottom="334" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnAddRow_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="469" name="btnDelRow" meta_id="LABEL00542" anchor="2" x="1347" y="399" right="23" bottom="334" width="70" height="25" text="행삭제" version="1.1" on_mouseup="eventfunc:btnDelRow_on_mouseup(objInst)"/>
+		<hangul_field control_id="479" name="fldVendorNm" autosize="0" x="145" y="120" right="1151" bottom="616" width="144" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:VENDOR_NAME" max_length="50"/>
+		<hangul_field control_id="480" name="fldVendorCode" autosize="0" x="427" y="120" right="869" bottom="616" width="144" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:VENDOR_CODE" max_length="50"/>
+		<combobox control_id="16" name="cboDealYN" autosize="0" x="991" y="120" right="305" bottom="616" width="144" height="22" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" link_data="dsSupplier:DEAL_YN" max_length="1" combobox_data="del=&apos;:&apos; pos=&apos;0&apos; style=&apos;1&apos; content=&apos;Y:Y&#x0D;&#x0A;N:N&apos;" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<combobox control_id="481" name="cboBizType" autosize="0" x="427" y="149" right="869" bottom="587" width="144" height="22" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" picklist_linkdata="dsBizType:CODE:NAME:" link_data="dsSupplier:BIZ_TYPE" max_length="30" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<combobox control_id="482" name="cboVendorType" autosize="0" x="709" y="149" right="587" bottom="587" width="144" height="22" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" picklist_linkdata="dsVendorType:CODE:NAME:" link_data="dsSupplier:VENDOR_TYPE" max_length="30" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<hangul_field control_id="483" name="fldTaxRegNum" autosize="0" x="145" y="149" right="1151" bottom="587" width="144" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:TAX_REG_NUMBER" max_length="20"/>
+		<hangul_field control_id="484" name="fldTelNo" autosize="0" x="145" y="207" right="1151" bottom="529" width="144" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:TEL_NO"/>
+		<hangul_field control_id="485" name="fldFaxNo" autosize="0" x="427" y="207" right="869" bottom="529" width="144" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:FAX_NO"/>
+		<hangul_field control_id="486" name="fldRepreNm" autosize="0" x="991" y="149" right="305" bottom="587" width="144" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:REPRE_NAME" max_length="50"/>
+		<hangul_field control_id="487" name="fldEmail" autosize="0" x="1273" y="149" right="23" bottom="587" width="144" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:EMAIL_ADDR" max_length="50"/>
+		<normal_field control_id="488" name="fldPostCode" autosize="0" x="145" y="178" right="1173" bottom="558" width="122" height="22" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsSupplier:POST_CODE" enable="0" max_length="10"/>
+		<image control_id="489" name="btnPostCodePop" autosize="0" x="268" y="178" right="1150" bottom="558" width="22" height="22" transparent="0" border="0" padding="0,0,0,0" image="/ico_search_22.gif" image_width="20" image_height="22" mouse_cursor="11" on_click="eventfunc:btnPostCodePop_on_click(objInst)"/>
+		<hangul_field control_id="490" name="fldAddr1" autosize="0" x="427" y="178" right="587" bottom="558" width="426" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:ADDR1" max_length="300"/>
+		<hangul_field control_id="491" name="fldAddr2" autosize="0" x="991" y="178" right="23" bottom="558" width="426" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:ADDR2" max_length="300" on_focusin="eventfunc:fldAddr2_on_focusin(objInst)"/>
+		<combobox control_id="493" name="cboTSYN" autosize="0" x="145" y="277" right="1151" bottom="459" width="144" height="22" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" link_data="dsSupplier:ISO_9001_YN" max_length="1" editable="0" combobox_data="del=&apos;:&apos; pos=&apos;0&apos; style=&apos;1&apos; content=&apos;Y:Y&#x0D;&#x0A;N:N&apos;" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<datepicker control_id="494" name="dtpIsoEndDate" autosize="0" x="427" y="277" right="869" bottom="459" width="144" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSupplier:ISO_9001_END_DATE" delimiter_char="-" showtodaybar="1" calendar_type="1"/>
+		<combobox control_id="497" name="cboSQBizType" autosize="0" x="709" y="277" right="587" bottom="459" width="144" height="22" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" picklist_linkdata="dsSQBizType:CODE:NAME:" link_data="dsSupplier:SQ_BIZ_TYPE" max_length="30" editable="0" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<hangul_field control_id="499" name="fldSQCertNum" autosize="0" x="1273" y="277" right="23" bottom="459" width="144" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:SQ_CERT_NUM"/>
+		<datepicker control_id="500" name="dtpSQCertDate" autosize="0" x="145" y="306" right="1151" bottom="430" width="144" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSupplier:SQ_CERT_DATE" delimiter_char="-" showtodaybar="1" calendar_type="1"/>
+		<datepicker control_id="501" name="dtpSQEndDate" autosize="0" x="427" y="306" right="869" bottom="430" width="144" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSupplier:SQ_END_DATE" delimiter_char="-" showtodaybar="1" calendar_type="1"/>
+		<combobox control_id="502" name="cboMQYN" autosize="0" x="991" y="306" right="305" bottom="430" width="144" height="22" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" link_data="dsSupplier:MQ_YN" max_length="30" editable="0" combobox_data="del=&apos;:&apos; pos=&apos;0&apos; style=&apos;1&apos; content=&apos;Y:Y&#x0D;&#x0A;N:N&apos;" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<combobox control_id="503" name="cboMSQYN" autosize="0" x="1273" y="306" right="23" bottom="430" width="144" height="22" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" link_data="dsSupplier:MSQ_YN" max_length="1" editable="0" combobox_data="del=&apos;:&apos; pos=&apos;0&apos; style=&apos;1&apos; content=&apos;Y:Y&#x0D;&#x0A;N:N&apos;" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<combobox control_id="504" name="cboIso14001YN" autosize="0" x="145" y="335" right="1151" bottom="401" width="144" height="22" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" link_data="dsSupplier:ISO_14001_YN" max_length="1" editable="0" combobox_data="del=&apos;:&apos; pos=&apos;0&apos; style=&apos;1&apos; content=&apos;Y:Y&#x0D;&#x0A;N:N&apos;" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<combobox control_id="505" name="cboIATFYN" autosize="0" x="427" y="335" right="869" bottom="401" width="144" height="22" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" link_data="dsSupplier:IATF_YN" max_length="1" editable="0" combobox_data="del=&apos;:&apos; pos=&apos;0&apos; style=&apos;1&apos; content=&apos;Y:Y&#x0D;&#x0A;N:N&apos;" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<hangul_field control_id="506" name="fldIATF16949CertNum" autosize="0" x="709" y="335" right="587" bottom="401" width="144" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:IATF16949_CERT_NUM"/>
+		<hangul_field control_id="507" name="fldIATFCertNum" autosize="0" x="991" y="335" right="305" bottom="401" width="144" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:IATF_CERT_NUM"/>
+		<datepicker control_id="508" name="dtpIATFCertDate" autosize="0" x="1273" y="335" right="23" bottom="401" width="144" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSupplier:IATF_CERT_DATE" delimiter_char="-" showtodaybar="1" calendar_type="1"/>
+		<datepicker control_id="509" name="dtpIATFEndDate" autosize="0" x="145" y="364" right="1151" bottom="372" width="144" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSupplier:IATF_END_DATE" delimiter_char="-" showtodaybar="1" calendar_type="1"/>
+		<hangul_field control_id="510" name="fldChargeNm" autosize="0" x="709" y="364" right="587" bottom="372" width="144" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:CHARGE_NAME" max_length="50"/>
+		<hangul_field control_id="511" name="fldChargeHP" autosize="0" x="991" y="364" right="305" bottom="372" width="144" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:CHARGE_PHONE_NO"/>
+		<hangul_field control_id="512" name="fldChargeEmail" autosize="0" x="1273" y="364" right="23" bottom="372" width="144" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:CHARGE_EMAIL_ADDR" max_length="50"/>
+		<combobox control_id="514" name="cboOuCode" in_index="0" autosize="0" x="102" y="52" right="1178" bottom="686" width="160" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOuCode:CODE:NAME:" link_data="dsSearch:OU_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="515" autosize="0" x="24" y="567" right="1216" bottom="175" width="200" height="16" text="담당자관리" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="516" autosize="0" x="10" y="567" right="1425" bottom="175" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<grid style="HS_GRID_BASIC_01" control_id="517" name="grdChgList" x="10" y="590" right="19" bottom="25" width="1411" width_percent="98" height="143" resize_dir="3" header_vertcount="0" header_height="32" cell_height="22" selectrow_bordercolor="0080623C" link_data="dsSupChgInfo" samplerows="6" autocolumnwidth="2" version="1.2" on_itemclick="eventfunc:grdDetail_on_itemclick(objInst, nClickRow, nClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header title="담당업무"/>
+				<data style="HS_GRID_DATA_01" name="CHG_DEPT_CODE" width="100" editable="1" input_type="2" link_data="dsSupChgInfo:CHG_DEPT_CODE" picklist_linkdata="dsChgDeptCode:CODE:NAME:" calendar_type="3" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="*성명"/>
+				<data style="HS_GRID_DATA_01" name="CHG_NAME" width="90" text_horzalign="0" editable="1" imemode="1" data_type="2" link_data="dsSupChgInfo:CHG_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="직급"/>
+				<data style="HS_GRID_DATA_01" name="CHG_JIKGUB" width="90" text_horzalign="0" editable="1" imemode="1" data_type="2" link_data="dsSupChgInfo:CHG_JIKGUB" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="*이메일"/>
+				<data style="HS_GRID_DATA_01" name="CHG_EMAIL_ADDR" width="140" text_horzalign="0" editable="1" link_data="dsSupChgInfo:CHG_EMAIL_ADDR" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="휴대폰번호"/>
+				<data style="HS_GRID_DATA_01" name="CHG_PHONE_NO" width="100" editable="1" link_data="dsSupChgInfo:CHG_PHONE_NO" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="회사전화"/>
+				<data style="HS_GRID_DATA_01" name="CHG_TEL_NO" width="100" editable="1" link_data="dsSupChgInfo:CHG_TEL_NO" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="Fax"/>
+				<data style="HS_GRID_DATA_01" name="CHG_FAX_NO" width="100" editable="1" link_data="dsSupChgInfo:CHG_FAX_NO" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="공문발송여부"/>
+				<data style="HS_GRID_DATA_01" name="OFFICIAL_DOCU_YN" width="85" editable="1" input_type="1" link_data="dsSupChgInfo:OFFICIAL_DOCU_YN" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="사용여부"/>
+				<data style="HS_GRID_DATA_01" name="CHG_USE_YN" width="85" editable="1" input_type="1" link_data="dsSupChgInfo:CHG_USE_YN" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="ID등록여부"/>
+				<data style="HS_GRID_DATA_02" name="CHG_USER_ID_YN" width="85" input_type="1" link_data="dsSupChgInfo:CHG_USER_ID_YN" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="비고"/>
+				<data name="REMARK" width="416" editable="1" imemode="1" data_type="2" max_length="300" link_data="dsSupChgInfo:REMARK" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="518" name="btnChgAddRow" meta_id="LABEL00541" anchor="2" x="1347" y="559" right="23" bottom="174" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnChgAddRow_on_mouseup(objInst)"/>
+		<combobox control_id="519" name="cboNation" autosize="0" x="709" y="120" right="587" bottom="616" width="144" height="22" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" link_data="dsSupplier:NATION_CODE" max_length="1" combobox_data="del=&apos;:&apos; pos=&apos;0&apos; style=&apos;1&apos; content=&apos;KR:한국&#x0D;&#x0A;US:미국&#x0D;&#x0A;CN:중국&apos;" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+		<hangul_field control_id="520" name="fldDealEndDate" autosize="0" x="1273" y="120" right="23" bottom="616" width="144" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:DEAL_END_DATE" max_length="10" pattern="YYYY-MM-DD" imemode="0"/>
+		<hangul_field control_id="521" name="fldErpInsDate" autosize="0" x="709" y="207" right="587" bottom="529" width="144" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:ERP_INS_DATE" max_length="10" pattern="YYYY-MM-DD" imemode="0"/>
+		<hangul_field control_id="522" name="fldHomePageAddr" autosize="0" x="991" y="207" right="23" bottom="529" width="426" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:HOMEPAGE_ADDR" max_length="100" imemode="0"/>
+		<text control_id="523" autosize="0" x="147" y="252" right="693" bottom="490" width="600" height="16" text="※ SQ업종 복수 보유업체(2개이상)는 대표 업종 기준으로 입력 바랍니다." font="맑은 고딕,10,1,0,0,0" fore_color="000E0EFF" version="1.1"/>
+		<normal_field control_id="524" name="fldSQCertAttYN" autosize="0" x="709" y="306" right="609" bottom="430" width="122" height="22" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsSupplier:SQ_ATT_YN" enable="0" max_length="10"/>
+		<image control_id="525" name="btnSQAttPop" autosize="0" x="832" y="306" right="586" bottom="430" width="22" height="22" transparent="0" border="0" padding="0,0,0,0" image="/ico_search_22.gif" image_width="20" image_height="22" mouse_cursor="11" on_click="eventfunc:btnSQAttPop_on_click(objInst)"/>
+		<normal_field control_id="526" name="fldIATFCertAttYN" autosize="0" x="427" y="364" right="891" bottom="372" width="122" height="22" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" link_data="dsSupplier:IATF_ATT_YN" enable="0" max_length="10"/>
+		<image control_id="527" name="btnIATFAttPop" autosize="0" x="550" y="364" right="868" bottom="372" width="22" height="22" transparent="0" border="0" padding="0,0,0,0" image="/ico_search_22.gif" image_width="20" image_height="22" mouse_cursor="11" on_click="eventfunc:btnIATFAttPop_on_click(objInst)"/>
+		<hangul_field control_id="528" name="fldSQGrade" autosize="0" x="991" y="277" right="305" bottom="459" width="144" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSupplier:SQ_GRADE" max_length="10"/>
+	</map>
+</map_list>

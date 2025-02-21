@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]PSO프로젝트신제품개발서류목록조회" directory="/PSO/" screenid="Pso1051" last_update_date="2025-01-21 16:59:02" width="1196" width_type="0" height="440" height_type="0" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" funclist="screen_on_load,fnDsSearchSet,fnPageSet,fnChgCodeLoad,btnSearch_on_mouseup,btnApply_on_mouseup,screen_on_destroy,btnClose_on_mouseup,screen_on_submitcomplete,grdList_on_itemdblclick,fnEnter,ReturnClosePopup,btnClean_on_mouseup,edtProjectCode_on_keydown,edtCarType_on_keydown,cboCarType_on_keydown,cboPsoTarget_on_keydown,cboPmChg_on_keydown"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;PROJECT_CODE::::;CAR_TYPE_NAME::::;CAR_TYPE_CODE::::;ITEM_NAME::::;PSO_DOCU_STATUS::::;USER_PM_DIV::::;PM_CHG_ID::::;CHARGE_EMP_NO::::"/>
+		<xlinkdataset id="dsList" desc="프로젝서류목록정보조회" columns="OU_CODE::::;PSO_DOCU_ID::::;PSO_PROJECT_ID::::;R_BOARD_ID::::;PROJECT_CODE::::;CAR_TYPE_CODE::::;CAR_TYPE_NAME::::;REGISTER_YEAR::::;OU_COUNTRY_CODE::::;_OU_COUNTRY_NAME::::;CUSTOMER_ID::::;CUSTOMER_NAME::::;NATION_CODE::::;NATION_NAME::::;CUSTOMER_AREA::::;PRODUCTION_AREA_CODE::::;PRODUCTION_AREA_NAME::::;BUSINESS_GROUP_CODE::::;BUSINESS_GROUP_NAME::::;PRODUCT_GROUP_CODE::::;PRODUCT_GROUP_NAME::::;PRODUCT_NAME_CODE::::;PRODUCT_NAME::::;PRODUCT_MODEL_CODE::::;PRODUCT_MODEL_NAME::::;PRODUCT_PKG_CODE::::;PRODUCT_PKG_NAME::::;ITEM_NAME::::;ERP_ITEM_NO::::;ACT_STATUS_CODE::::;ACT_STATUS_NAME::::;DETAIL_STATUS_CODE::::;DETAIL_STATUS_NAME::::;GRADE::::;GRADE_NAME::::;T_SCORE::::;APQP_YN::::;PSO_DOCU_STATUS::::;DOCU_STATUS_NAME::::;DESCRIPTION::::;PM_USER::::;PM_USER_NAME::::"/>
+		<xlinkdataset id="dsCarType" desc="차종코드" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsStatus" desc="등급확정여부" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsPMchg" desc="PM담당자정보" columns="PM_CHG_ID::::;PM_CHG_NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SELECT_CODE_CHG" url="" comment="PM담당자정보">
+		</xlinktranmap>
+		<tab_order order_option="1" order_info="453,433,530,532,534,536,471,35,36,51"/>
+		<text control_id="32" name="stSystemMenuTitle" meta_id="LABEL02665" autosize="0" x="31" y="7" right="855" bottom="415" width="310" height="18" text="PSO 프로젝트 신제품 개발 서류 목록 조회" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="1170" bottom="416" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnSearch" meta_id="LABEL00008" x="958" y="6" right="168" bottom="409" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnSearch_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnApply" meta_id="LABEL00295" x="1036" y="6" right="90" bottom="409" width="70" height="25" text="적용" version="1.1" on_mouseup="eventfunc:btnApply_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="51" name="btnClose" meta_id="LABEL00012" x="1114" y="6" right="12" bottom="409" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+		<roundrect control_id="134" name="rudSearch" x="10" y="38" right="12" bottom="354" width="1174" height="48" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="452" meta_id="LABEL00064" autosize="0" x="30" y="52" right="1084" bottom="368" width="82" height="20" text="프로젝트코드" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="453" name="edtProjectCode" autosize="0" x="115" y="51" right="942" bottom="367" width="139" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:PROJECT_CODE" max_length="50" on_keydown="eventfunc:edtCarType_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="467" meta_id="LABEL01587" autosize="0" x="281" y="52" right="865" bottom="368" width="50" height="20" text="차종" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<image control_id="68" autosize="0" x="10" y="96" right="1181" bottom="328" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="49" meta_id="LABEL00090" autosize="0" x="22" y="96" right="1088" bottom="328" width="86" height="16" text="목록" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="433" name="grdList" x="10" y="112" right="12" bottom="12" width="1174" height="316" header_vertcount="0" header_height="28" cell_height="22" hoverrow_forecolor="00222222" link_data="dsList" samplerows="25" version="1.2" on_itemdblclick="eventfunc:grdList_on_itemdblclick(objInst, nDblClickRow, nDblClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header meta_id="LABEL00064" title="프로젝코드"/>
+				<data style="HS_GRID_DATA_02" name="PROJECT_CODE" width="140" text_horzalign="0" link_data="dsList:PROJECT_CODE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01587" title="차종"/>
+				<data style="HS_GRID_DATA_02" name="CAR_TYPE_NAME" width="67" link_data="dsList:CAR_TYPE_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02367" title="등록년도"/>
+				<data style="HS_GRID_DATA_02" name="REGISTER_YEAR" width="56" link_data="dsList:REGISTER_YEAR" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00193" title="고객명"/>
+				<data style="HS_GRID_DATA_02" name="CUSTOMER_NAME" width="72" text_horzalign="0" link_data="dsList:CUSTOMER_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02651" title="고객국가"/>
+				<data style="HS_GRID_DATA_02" name="NATION_NAME" width="65" text_horzalign="0" link_data="dsList:NATION_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02375" title="Business Group"/>
+				<data style="HS_GRID_DATA_02" name="BUSINESS_GROUP_NAME" width="92" text_horzalign="0" link_data="dsList:BUSINESS_GROUP_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02390" title="Product Group"/>
+				<data style="HS_GRID_DATA_02" name="PRODUCT_GROUP_NAME" width="87" text_horzalign="0" link_data="dsList:PRODUCT_GROUP_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00765" title="Product Name"/>
+				<data style="HS_GRID_DATA_02" width="92" text_horzalign="0" link_data="dsList:PRODUCT_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02371" title="Product Model"/>
+				<data style="HS_GRID_DATA_02" name="PRODUCT_MODEL_NAME" width="91" text_horzalign="0" link_data="dsList:PRODUCT_MODEL_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02379" title="품명"/>
+				<data style="HS_GRID_DATA_02" name="ITEM_NAME" width="111" text_horzalign="0" link_data="dsList:ITEM_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02453" title="개발등급"/>
+				<data style="HS_GRID_DATA_02" name="GRADE_NAME" width="56" link_data="dsList:GRADE_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02457" title="APQP"/>
+				<data style="HS_GRID_DATA_02" name="APQP_YN" width="44" link_data="dsList:APQP_YN" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02108" title="총점수"/>
+				<data style="HS_GRID_DATA_02" name="T_SCORE" width="60" data_type="0" max_length="3" pattern="ZZ9" link_data="dsList:T_SCORE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01813" title="확정여부"/>
+				<data style="HS_GRID_DATA_02" name="DOCU_STATUS_NAME" width="56" text_horzalign="0" link_data="dsList:DOCU_STATUS_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02671" title="PM담당자"/>
+				<data style="HS_GRID_DATA_02" name="PM_USER_NAME" width="66" text_horzalign="0" link_data="dsList:PM_USER_NAME" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="471" name="btnClean" meta_id="LABEL02157" x="879" y="6" right="247" bottom="409" width="70" height="25" text="초기화" version="1.1" on_mouseup="eventfunc:btnClean_on_mouseup(objInst)"/>
+		<combobox control_id="530" name="cboCarType" autosize="0" x="335" y="51" right="741" bottom="367" width="120" height="22" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" picklist_linkdata="dsCarType:CODE:NAME:" link_data="dsSearch:CAR_TYPE_CODE" max_length="1" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboCarType_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="531" meta_id="LABEL02379" autosize="0" x="473" y="52" right="641" bottom="368" width="82" height="20" text="품명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="532" name="edtItem" autosize="0" x="555" y="51" right="502" bottom="367" width="139" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:ITEM_NAME" max_length="100" on_keydown="eventfunc:edtCarType_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="533" meta_id="LABEL01813" autosize="0" x="777" y="52" right="369" bottom="368" width="50" height="20" text="확정여부" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="534" name="cboPsoTarget" autosize="0" x="827" y="51" right="289" bottom="367" width="80" height="22" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" picklist_linkdata="dsStatus:CODE:NAME:" link_data="dsSearch:PSO_DOCU_STATUS" max_length="1" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboPsoTarget_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="535" meta_id="LABEL02671" autosize="0" x="966" y="52" right="150" bottom="368" width="80" height="20" text="PM담당자" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="536" name="cboPmChg" autosize="0" x="1051" y="51" right="65" bottom="367" width="80" height="22" font="맑은 고딕,9,0,0,0,0" contentbox_sizing="0" picklist_linkdata="dsPMchg:PM_CHG_ID:PM_CHG_NAME:" link_data="dsSearch:PM_CHG_ID" max_length="10" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboPmChg_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+	</map>
+</map_list>

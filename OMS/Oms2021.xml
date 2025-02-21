@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]통합버전생성" directory="/OMS/" screenid="Oms2021" last_update_date="2023-09-07 14:00:44" width="600" width_type="0" height="175" height_type="0" canvas_height="900" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" funclist="screen_on_load,fnDsSearchSet,fnPageSet,btnApply_on_mouseup,screen_on_destroy,btnClose_on_mouseup,ReturnClosePopup,fnGetEventVersion,fldYear_on_changed,screen_on_submitcomplete"/>
+		<xlinkdataset id="dsProject" desc="Project정보" columns="OU_CODE::::;BASE_YEAR::::;EVENT_VERSION::::;REMARK::::"/>
+		<xlinkdataset id="dsCarPlatfrom" desc="차종" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsProcResult" desc="" columns="RETCODE::::;RETMESG::::;NEW_EVENT_VERSION::::"/>
+		<xlinkdataset id="dsCustomerArea" desc="고객지역 코드(O006)" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsEventVersion" desc="" columns="EVENT_VERSION::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_COM_CO" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_GEN" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_EVENT_VERSION" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="1" order_info="483,488,509,36,51"/>
+		<text control_id="32" name="stSystemMenuTitle" meta_id="LABEL02677" autosize="0" x="31" y="7" right="369" bottom="150" width="200" height="18" text="통합버전생성" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="574" bottom="151" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnApply" meta_id="LABEL02743" x="432" y="6" right="78" bottom="144" width="90" height="25" text="통합버전생성" version="1.1" on_mouseup="eventfunc:btnApply_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="51" name="btnClose" meta_id="LABEL00012" x="527" y="6" right="3" bottom="144" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+		<roundrect control_id="134" name="rudSearch" x="4" y="38" right="4" bottom="13" width="592" height="124" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="537" meta_id="LABEL01802" autosize="0" x="24" y="54" right="486" bottom="101" width="90" height="20" text="*기준년도" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<datepicker control_id="483" name="fldYear" in_index="1" autosize="0" x="119" y="54" right="382" bottom="101" width="99" height="20" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsProject:BASE_YEAR" max_length="4" delimiter_char="-" date_type="2" showtodaybar="1" on_changed="eventfunc:fldYear_on_changed(objInst, prev_text, curr_text, event_type)"/>
+		<text control_id="586" meta_id="LABEL02742" autosize="0" x="42" y="84" right="486" bottom="71" width="72" height="20" text="*통합버젼" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<numericex_field control_id="488" name="fldEventVersion" in_index="2" autosize="0" x="119" y="82" right="422" bottom="69" width="59" height="24" font="맑은 고딕,9,0,0,0,0" horz_align="2" link_data="dsProject:EVENT_VERSION" tabstop="0"/>
+		<hangul_field control_id="509" name="fldRemakr" in_index="3" autosize="0" x="119" y="112" right="55" bottom="39" width="426" height="24" font="맑은 고딕,9,0,0,0,0" link_data="dsProject:REMARK" max_length="100"/>
+		<text control_id="587" meta_id="LABEL02744" autosize="0" x="42" y="114" right="486" bottom="41" width="72" height="20" text="통합버젼명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+	</map>
+</map_list>

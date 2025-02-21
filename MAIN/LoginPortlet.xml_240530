@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="로그인_포틀릿" directory="/MAIN/" screenid="LoginPortlet" screen_capture="0" last_update_date="2023-07-25 20:27:49" width="1400" width_type="0" height="745" height_type="0" canvas_width="2048" canvas_height="1300" on_load="eventfunc:screen_on_load()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" picklist="/PICKLIST/LANGUAGE" funclist="screen_on_load,fnViewServerSet,fnOuCodeSet,fnNoticeList,fnPopupNoticeList,ssoLogin,btnLogin_on_mouseup,fld_USER_ID_on_keydown,fld_USER_PASSWD_on_keydown,txLogin,fld_USER_ID_on_focusin,fld_USER_PASSWD_on_focusin,RotateCallback,grdNotice_on_itemdblclick,screen_on_submitcomplete"/>
+		<xlinkdataset id="dsUserInfo" desc="" columns="USER_ID::::;LGI_ID::::;USER_NAME::::;OU_CODE::::;OU_NAME::::;AT_OU::::;EMP_NO::::;VENDOR_CODE::::;VENDOR_NAME::::;USER_TYPE::::;E_COMMERCE_YN::::;PERSONAL_INFO_YN::::;INFO_SECURIT_YN::::;FIRST_PWD_CHANGE::::;ST_DATE::::;ED_DATE::::;EMAIL_ADDR::::;BIZ_DIV::::;REPORT_WEB_HTML::::;REPORT_MID::::;PW_OLD::::;PW_NEW::::"/>
+		<xlinkdataset id="dsPwdResult" desc="" columns="RESULT::::"/>
+		<xlinkdataset id="dsOuCode" desc="법인코드정보" columns="OU_CODE::::;OU_NAME::::"/>
+		<xlinkdataset id="dsViewServer" desc="미리보기ServerSet" columns="VIEW_SERVER_URL::::;VIEW_CONVERT_TYPE::::"/>
+		<xlinkdataset id="dsList" desc="공지사항목록" columns="BOARD_ID::::;BOARD_NO::::;LVL::::;P_BOARD_NO::::;TITLE::::;WRITER::::;INS_DATE::::;I_COUNT::::;R_COUNT::::;C_COUNT::::;ATTATCH_ID::::;CATEGORY::::;ITEM_TYPE::::;INS_USER_ID::::;ATTCH_FLAG::::"/>
+		<xlinkdataset id="dsPopList" desc="Popup공지사항목록" columns="BOARD_NO::::;TITLE::::;ATTATCH_ID::::;ATTCH_FLAG::::;CATEGORY::::;ITEM_TYPE::::;EFFECTIVE_START_DATE::::;EFFECTIVE_END_DATE::::"/>
+		<xlinktranmap id="TR_LOGIN" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_PWD" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_OU_CODE" url="" comment="법인정보 가져오기">
+		</xlinktranmap>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_NOTICE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_VIEW_SERVER" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_POPUP_NOTICE" url="" comment="">
+		</xlinktranmap>
+		<panel control_id="145" name="pnl_main" semantic_tag="0" anchor="6" x="87" y="22" right="88" bottom="23" width="1225" height="700" transparent="1" back_image="/login_new.png" back_imagesize="1" border="0" title_font="맑은 고딕,9,0,0,0,0">
+			<tab_order order_option="2" order_info="144,141,126,130,129,140,148,142,143"/>
+			<checkbox control_id="129" name="chkSaveId" x="39" y="663" right="1066" bottom="19" width="120" height="18" font="맑은 고딕,12,0,0,0,0" fore_color="00A17441" back_color_opacity="0" drawfocusrect="0" text=" 아이디 저장"/>
+			<password_field control_id="130" name="fld_USER_PASSWD" autosize="0" x="76" y="608" right="901" bottom="60" width="248" height="32" font="돋움,14,1,0,0,0" fore_color="00A17441" back_color_opacity="0" transparent="1" border="0" border_color="00D3D3D3" text_margin="10,1,1,1" apply_inputtypecolor="0" border_color_focus="00111111" max_length="20" hint_text="PassWord" on_keydown="eventfunc:fld_USER_PASSWD_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_focusin="eventfunc:fld_USER_PASSWD_on_focusin(objInst)"/>
+			<hangul_field control_id="126" name="fld_USER_ID" autosize="0" x="76" y="556" right="901" bottom="112" width="248" height="32" font="돋움,14,1,0,0,0" fore_color="00A17441" back_color_opacity="0" transparent="1" border_color="00D3D3D3" border_ex="0,0,00C8C8C8,,0,,0,0,1,0,00FFFFFF,00E1E1E1^0,1,00C8C8C8,1^0,1,00C8C8C8,1^0,1,00D4D4D4,1^0,1,00C8C8C8,1" text_margin="10,1,1,1" apply_inputtypecolor="0" mousehover_forecolor="006514A0" mousehover_backcolor="00FFFBB1" focus_style_use="1" border_color_focus="00FFFFFF" max_length="100" hint_text="User ID" on_keydown="eventfunc:fld_USER_ID_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_focusin="eventfunc:fld_USER_ID_on_focusin(objInst)"/>
+			<line control_id="136" x1="24" y1="593" x2="334" y2="593" right="891" bottom="107" line_color="00C2C4C5"/>
+			<line control_id="139" x1="24" y1="644" x2="334" y2="644" right="891" bottom="56" line_color="00C2C4C5"/>
+			<pushbutton control_id="140" name="btnLogin" x="340" y="556" right="781" bottom="55" width="104" height="89" style_class="0" text="LOG IN" font="돋움,16,1,0,0,0" fore_color="00FFFFFF" back_color="00BE6C13" border_radius="8" hover_font="맑은 고딕,9,0,0,0,0" version="1.1" on_mouseup="eventfunc:btnLogin_on_mouseup(objInst)"/>
+			<combobox control_id="141" name="cboLang" autosize="0" x="232" y="506" right="899" bottom="169" width="94" height="25" font="맑은 고딕,10,1,0,0,0" fore_color="00A3888E" contentbox_gap="5" border_color="00D3D3D3" border_radius="5" text_margin="10,0,0,0" default_value="0" picklist="/PICKLIST/LANGUAGE" picklist_font="맑은 고딕,10,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+			<pushbutton control_id="142" name="btn_img_user" x="39" y="563" right="1166" bottom="116" width="20" height="21" style_class="0" text="" font="맑은 고딕,9,0,0,0,0" transparent="1" border="4" image_normal="/icon_id.png" hover_font="맑은 고딕,9,0,0,0,0" version="1.1"/>
+			<pushbutton control_id="143" name="btn_img_password" x="39" y="614" right="1166" bottom="65" width="20" height="21" style_class="0" text="" font="맑은 고딕,9,0,0,0,0" transparent="1" border="4" image_normal="/icon_pw.png" hover_font="맑은 고딕,9,0,0,0,0" version="1.1"/>
+			<combobox control_id="144" name="cboOuCode" autosize="0" x="37" y="506" right="1012" bottom="169" width="176" height="25" font="맑은 고딕,10,1,0,0,0" fore_color="00A3888E" contentbox_gap="5" border_color="00D3D3D3" border_radius="5" text_margin="10,0,0,0" default_value="0" picklist_font="맑은 고딕,10,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1"/>
+			<text control_id="146" autosize="0" x="37" y="456" right="1088" bottom="214" width="100" height="30" text="로그인" font="맑은 고딕,18,1,0,0,0" version="1.1"/>
+			<text control_id="147" autosize="0" x="483" y="456" right="602" bottom="214" width="140" height="30" text="공지사항" font="맑은 고딕,18,1,0,0,0" version="1.1"/>
+			<grid style="HS_GRID_BASIC_01" control_id="148" name="grdNotice" x="482" y="491" right="313" bottom="9" width="430" height="200" font="맑은 고딕,10,0,0,0,0" back_color="00FFFFFF" header_horzrow_info="0:0:34;" header_vertcount="0" cell_height="22" cell_linecolor="00FFFFFF" cell_linecolor_horz="00FFFFFF" cell_linecolor_vert="00FFFFFF" cellinner_linecolor_horz="00FFFFFF" cell_line_vertstyle="0" cell_line_horzstyle="0" cellinner_line_horzstyle="0" border="0" border_color="00FFFFFF" selectrow_backcolor="00FEDCAA" vertscrollbar_style="0" horzscrollbar_style="0" link_data="dsList" version="1.2" on_itemdblclick="eventfunc:grdNotice_on_itemdblclick(objInst, nDblClickRow, nDblClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+				<column>
+					<header title="TITLE"/>
+					<data style="HS_GRID_DATA_02" name="TITLE" width="420" backcolor="00FFFFFF" text_horzalign="0" data_type="2" link_data="dsList:TITLE" bargauge_transparent="0"/>
+				</column>
+				<headermegeinfo info=""/>
+			</grid>
+			<roundrect control_id="151" x="944" y="518" right="21" bottom="42" width="260" height="140" font="맑은 고딕,9,0,0,0,0" ellipse_width="30" border_color="00D8D8D8" transparent="1"/>
+			<text control_id="152" autosize="0" x="944" y="456" right="141" bottom="214" width="140" height="30" text="담당자" font="맑은 고딕,18,1,0,0,0" version="1.1"/>
+			<line control_id="153" x1="1037" y1="528" x2="1037" y2="648" right="188" bottom="52" line_color="00D8D8D8"/>
+			<image control_id="154" autosize="0" x="956" y="551" right="197" bottom="73" width="72" height="76" transparent="0" border="0" padding="0,0,0,0" image="/charge_info.png" image_width="72" image_height="69"/>
+			<text control_id="155" autosize="0" x="1047" y="554" right="33" bottom="124" width="145" height="22" text="헬프데스크" font="맑은 고딕,14,1,0,0,0" fore_color="007F7F7F" horz_align="1" version="1.1"/>
+			<text control_id="156" autosize="0" x="1047" y="578" right="33" bottom="100" width="145" height="22" text="help_oms" font="맑은 고딕,12,1,0,0,0" fore_color="007F7F7F" horz_align="1" version="1.1"/>
+			<text control_id="157" autosize="0" x="1047" y="601" right="33" bottom="77" width="145" height="22" text="@hyoseong.co.kr" font="맑은 고딕,12,1,0,0,0" fore_color="007F7F7F" version="1.1"/>
+		</panel>
+	</map>
+</map_list>

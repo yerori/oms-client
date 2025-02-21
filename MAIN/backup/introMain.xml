@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="intro" directory="/MAIN/" screenid="introMain" last_update_date="2022-01-27 10:25:44" width="1700" width_type="2" height="910" height_type="2" canvas_width="2124" canvas_height="1010" on_load="eventfunc:screen_on_load()" funclist="_getFrameType,_I_ScreenEvent,screen_on_load,_II_ObjectEvent,imgLogo_on_click,_III_UserFunction"/>
+		<tableview control_id="0" x="0" y="0" right="0" bottom="0" width="1700" width_unit="1" height="910" height_unit="1" height_type="0" border="0" cell_line_vertcolor="00000000" cell_line_horzcolor="00000000" row_count="4" column_count="4" row_height="200:px,100:px,300:px,310:px" column_width="300:px,300:px,300:px,800:px" design_fixmode="0" mergeinfo="1,0,1,3" version="2.0">
+			<tr>
+				<td rect="0,0,300,200">
+					<imagebox control_id="1" name="imgLogo" x="0" y="0" right="0" bottom="0" width="300" width_unit="1" height="200" height_unit="1" transparent="1" border="0" back_image="/xframe_logo_first.png" back_imagehorzalign="1" back_imagevertalign="1" padding="0,0,0,0" mouse_cursor="11" on_click="eventfunc:imgLogo_on_click(objInst)"/>
+				</td>
+				<td rect="301,0,600,200">
+				</td>
+				<td rect="601,0,900,200">
+					<caption control_id="6" x="125" y="90" right="126" bottom="80" width="48" height="30" text="개인정보&#x0D;&#x0A;부점정보" font="맑은 고딕,9,0,0,0,0" transparent="1" mousehover_font="맑은 고딕,9,0,0,0,0"/>
+				</td>
+				<td rect="901,0,1700,200">
+					<caption control_id="5" x="119" y="96" right="656" bottom="92" width="24" height="12" text="달력" font="맑은 고딕,9,0,0,0,0" transparent="1" mousehover_font="맑은 고딕,9,0,0,0,0"/>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" rect="0,201,300,300">
+				</td>
+				<td hidden="1" rect="301,201,600,300">
+				</td>
+				<td hidden="1" rect="601,201,900,300">
+				</td>
+				<td hidden="1" rect="901,201,1700,300">
+				</td>
+			</tr>
+			<tr>
+				<td rect="0,301,300,600">
+				</td>
+				<td rect="301,301,600,600">
+					<caption control_id="2" x="107" y="143" right="143" bottom="144" width="49" height="12" text="to-do list" font="맑은 고딕,9,0,0,0,0" transparent="1" mousehover_font="맑은 고딕,9,0,0,0,0"/>
+				</td>
+				<td rect="601,301,900,600">
+					<caption control_id="3" x="119" y="143" right="132" bottom="144" width="48" height="12" text="즐겨찾기" font="맑은 고딕,9,0,0,0,0" transparent="1" mousehover_font="맑은 고딕,9,0,0,0,0"/>
+				</td>
+				<td rect="901,301,1700,600">
+					<caption control_id="4" x="125" y="143" right="638" bottom="144" width="36" height="12" text="휴가자" font="맑은 고딕,9,0,0,0,0" transparent="1" mousehover_font="맑은 고딕,9,0,0,0,0"/>
+				</td>
+			</tr>
+			<tr>
+				<td rect="0,601,300,910">
+				</td>
+				<td rect="301,601,600,910">
+				</td>
+				<td rect="601,601,900,910">
+				</td>
+				<td rect="901,601,1700,910">
+				</td>
+			</tr>
+		</tableview>
+	</map>
+</map_list>

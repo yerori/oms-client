@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="포틀릿에 포틀릿업무화면(Popup)" screen_type="1" directory="/FRAME/" screenid="popupPortlet" last_update_date="2021-12-23 14:22:58" canvas_width="1624" on_dropcomplete="" funclist="FRAME_popupPortlet,SYS_FRAME_popupPortlet"/>
+	</map>
+</map_list>

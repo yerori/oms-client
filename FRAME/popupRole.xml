@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]ROLE그룹조회" directory="/FRAME/" screenid="popupRole" last_update_date="2024-10-08 09:02:08" width="560" width_type="0" height="400" height_type="0" on_load="eventfunc:screen_on_load()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" funclist="screen_on_load,fnUserAuthData,fnDsSearchSet,btnApply_on_mouseup,btnClose_on_mouseup,fnEnter,ReturnClosePopup,fldOu_on_itemchange,btnSearch_on_mouseup,grdUserAuth_on_itemdblclick"/>
+		<xlinkdataset id="dsAuth" desc="Role 그룹" columns="OU_CODE::::;AUTH_CODE::::;AUTH_NAME::::"/>
+		<xlinkdataset id="dsOU" desc="법인 LIST" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_AUTH" url="" comment="조회">
+		</xlinktranmap>
+		<xlinktranmap id="TR_OU" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="1" order_info="2001,465,35,36,51"/>
+		<text control_id="32" name="rolePopupTitle" autosize="0" x="40" y="7" right="320" bottom="375" width="200" height="18" text="ROLE그룹 정보" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<image control_id="50" autosize="0" x="18" y="8" right="526" bottom="376" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnApply" meta_id="LABEL00295" x="390" y="7" right="100" bottom="368" width="70" height="25" text="적용" version="1.1" on_mouseup="eventfunc:btnApply_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="51" name="btnClose" meta_id="LABEL00012" x="470" y="7" right="20" bottom="368" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+		<combobox control_id="2001" name="fldOu" in_index="1" autosize="0" x="80" y="60" right="350" bottom="320" width="130" height="20" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" border_color_focus="00969696" picklist_linkdata="dsOU:CODE:NAME:" link_data="dsSearch:OU_CODE" enable="0" default_value_type="1" default_value_usage="1" max_length="100" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_itemchange="eventfunc:fldOu_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<text control_id="135" autosize="0" x="24" y="60" right="484" bottom="320" width="52" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<roundrect control_id="134" name="rudSearch" x="18" y="48" right="19" bottom="312" width="523" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="434" meta_id="LABEL02541" autosize="0" anchor="2" x="35" y="108" right="465" bottom="276" width="60" height="16" text="ROLE 그룹" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="465" name="grdUserAuth" in_index="7" x="18" y="132" right="19" bottom="18" width="523" height="250" resize_dir="3" custom_class="max-width: 280px;" header_vertcount="0" cell_height="22" hoverrow_forecolor="00222222" link_data="dsAuth" samplerows="25" version="1.2" on_itemdblclick="eventfunc:grdUserAuth_on_itemdblclick(objInst, nDblClickRow, nDblClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header meta_id="LABEL02541" title="ROLE 그룹"/>
+				<data style="HS_GRID_DATA_01" name="AUTH_CODE" width="200" link_data="dsAuth:AUTH_CODE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02576" title="ROLE 그룹명"/>
+				<data style="HS_GRID_DATA_01" name="AUTH_NAME" width="300" link_data="dsAuth:AUTH_NAME" picklist_viewstyle="0" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnSearch" meta_id="LABEL00008" x="310" y="7" right="180" bottom="368" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnSearch_on_mouseup(objInst)"/>
+		<image control_id="68" autosize="0" x="18" y="108" right="537" bottom="276" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+	</map>
+</map_list>

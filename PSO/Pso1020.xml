@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="개발착수등급산정표" directory="/PSO/" screenid="Pso1020" last_update_date="2023-08-17 10:45:35" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,screen_on_submitcomplete,fnSearch,fnValidForm,fnSaveData,btnCommonSearch_on_mouseup,btnCommonSave_on_mouseup,screen_on_messagebox,screen_on_size,btnCommonClose_on_mouseup,cboOuCode_on_keydown,dptStdDate_on_keydown,btnAddRow_on_mouseup"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;STD_DATE::::"/>
+		<xlinkdataset id="dsRbList" desc="등급산정표정보" columns="OU_CODE::::;RATING_ID::::;RATING_STEP::::;DISPLAY_SEQ::::;TYPE::::;SCORE::::;EFFECTIVE_START_DATE::::;EFFECTIVE_END_DATE::::;REMARK::::"/>
+		<xlinkdataset id="dsRbID" desc="등급산정표ID" columns="SEQ::::"/>
+		<xlinkdataset id="dsOuCode" desc="법인코드정보" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsRatingStep" desc="등급산정항목" columns="CODE::::;NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="조회">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_ALL" url="" comment="저장">
+		</xlinktranmap>
+		<xlinktranmap id="TR_RATING_ID" url="" comment="등급산정표ID 가져오기">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,514,483,519,462"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="0" order_info="35,36,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="1088" y="5" right="280" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" meta_id="LABEL00011" anchor="2" x="1204" y="5" right="164" bottom="5" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="1207" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1345" y="5" right="23" bottom="5" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<text control_id="135" meta_id="LABEL01898" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="676" width="1411" width_percent="98" width_unit="1" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="49" meta_id="LABEL02473" autosize="0" x="24" y="95" right="1276" bottom="647" width="140" height="16" text="개발 착수 등급 산정표" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="472" autosize="0" x="10" y="95" right="1425" bottom="647" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<grid style="HS_GRID_BASIC_01" control_id="462" name="grdList" x="9" y="116" right="20" bottom="14" width="1411" width_percent="98" height="628" resize_dir="3" header_vertcount="0" cell_height="22" selectrow_bordercolor="0080623C" multi_checkrow="1" checkrow_hd_backcolor="00FCEAD3" checkrow_backcolor="00FFFBF7" checkrowwithselect="1" checkrow_width="20" link_data="dsRbList" samplerows="7" autocolumnwidth="2" version="1.2">
+			<column>
+				<header meta_id="LABEL02474" title="*등급산정항목"/>
+				<data style="HS_GRID_DATA_01" name="RATING_STEP" width="394" text_horzalign="0" editable="1" input_type="2" link_data="dsRbList:RATING_STEP" picklist_linkdata="dsRatingStep:CODE:NAME:" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02475" title="*표시순서"/>
+				<data style="HS_GRID_DATA_01" name="DISPLAY_SEQ" width="64" editable="1" link_data="dsRbList:DISPLAY_SEQ" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL01901" title="*구분"/>
+				<data style="HS_GRID_DATA_01" name="TYPE" width="400" text_horzalign="0" editable="1" data_type="2" link_data="dsRbList:TYPE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02476" title="*배점"/>
+				<data style="HS_GRID_DATA_01" name="SCORE" width="50" text_horzalign="2" editable="1" data_type="0" max_length="3" pattern="ZZ9" default_value="0" link_data="dsRbList:SCORE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02463" title="*유효시작일"/>
+				<data style="HS_GRID_DATA_01" name="EFFECTIVE_START_DATE" width="100" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsRbList:EFFECTIVE_START_DATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02462" title="유효종료일"/>
+				<data style="HS_GRID_DATA_01" name="EFFECTIVE_END_DATE" width="100" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsRbList:EFFECTIVE_END_DATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00060" title="비고"/>
+				<data style="HS_GRID_DATA_01" name="REMARK" width="300" text_horzalign="0" editable="1" data_type="2" link_data="dsRbList:REMARK" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<combobox control_id="514" name="cboOuCode" autosize="0" x="102" y="51" right="1178" bottom="685" width="160" height="22" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOuCode:CODE:NAME:" link_data="dsSearch:OU_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="516" meta_id="LABEL01350" autosize="0" x="368" y="52" right="992" bottom="686" width="80" height="20" text="기준일자" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="519" name="btnAddRow" meta_id="LABEL00541" anchor="2" x="1345" y="86" right="25" bottom="647" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnAddRow_on_mouseup(objInst)"/>
+		<datepicker control_id="483" name="dptStdDate" autosize="0" x="452" y="51" right="888" bottom="685" width="100" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSearch:STD_DATE" delimiter_char="-" showtodaybar="1" calendar_type="1" on_keydown="eventfunc:dptStdDate_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+	</map>
+</map_list>

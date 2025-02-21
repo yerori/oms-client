@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="협력업체평가" directory="/SMT/" screenid="SmtSet1150" last_update_date="2023-03-28 14:18:06" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,screen_on_submitcomplete,fnPageSet,fnSearch,fnSearchEvalResult,fnSearchEvalAttach,fnValidForm,fnSaveData,fnEvalStausUpd,btnCommonSearch_on_mouseup,btnCommonSave_on_mouseup,screen_on_messagebox,screen_on_size,btnCommonClose_on_mouseup,cboOuCode_on_keydown,dtpEvalYear_on_keydown,edtVendorName_on_changed,fnVendorClosePopCallback,btnVendorNamePop_on_click,fnVendorPopupCall,grdEvalList_on_itemselchange,grdEvalList_on_fileload,grdAttList_on_columnclick,fnAttFilePopCallback,btnDownload_on_mouseup,btnUpload_on_mouseup,btnAddPlan_on_mouseup,fnAddPlanPopCallback,btnImpReqCom_on_mouseup,btnImpMeaCom_on_mouseup,btnValidReq_on_mouseup,btnValidCom_on_mouseup,btnComplete_on_mouseup,btnCancel_on_mouseup,fldScore_on_focusout"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;EVAL_YEAR::::;VENDOR_CODE::::;VENDOR_NAME::::"/>
+		<xlinkdataset id="dsEvalList" desc="업체평가정보" columns="OU_CODE::::;EVAL_YEAR::::;VENDOR_CODE::::;VENDOR_NAME::::;BIZ_TYPE::::;BIZ_TYPE_NAME::::;PLAN_DATE_01::::;EVAL_DATE_01::::;STATUS_01::::;STATUS_01_NM::::;STATUS_DATE_01::::;PLAN_DATE_02::::;EVAL_DATE_02::::;STATUS_02::::;STATUS_02_NM::::;STATUS_DATE_02::::;PLAN_DATE_03::::;EVAL_DATE_03::::;STATUS_03::::;STATUS_03_NM::::;STATUS_DATE_03::::;PLAN_DATE_04::::;EVAL_DATE_04::::;STATUS_04::::;STATUS_04_NM::::;STATUS_DATE_04::::;PLAN_DATE_05::::;EVAL_DATE_05::::;STATUS_05::::;STATUS_05_NM::::;STATUS_DATE_05::::;PLAN_DATE_06::::;EVAL_DATE_06::::;STATUS_06::::;STATUS_06_NM::::;STATUS_DATE_06::::;PLAN_DATE_07::::;EVAL_DATE_07::::;STATUS_07::::;STATUS_07_NM::::;STATUS_DATE_07::::;PLAN_DATE_08::::;EVAL_DATE_08::::;STATUS_08::::;STATUS_08_NM::::;STATUS_DATE_08::::;PLAN_DATE_09::::;EVAL_DATE_09::::;STATUS_09::::;STATUS_09_NM::::;STATUS_DATE_09::::;PLAN_DATE_10::::;EVAL_DATE_10::::;STATUS_10::::;STATUS_10_NM::::;STATUS_DATE_10::::;PLAN_DATE_11::::;EVAL_DATE_11::::;STATUS_11::::;_STATUS_11_NM::::;STATUS_DATE_11::::;PLAN_DATE_12::::;EVAL_DATE_12::::;STATUS_12::::;STATUS_12_NM::::;STATUS_DATE_12::::"/>
+		<xlinkdataset id="dsEvalResult" desc="업체평가결과정보" columns="OU_CODE::::;EVAL_YEAR::::;EVAL_MONTH::::;VENDOR_CODE::::;EVAL_DATE::::;SCORE::::;GRADE::::;IMPROVE_REQ::::;IMPROVE_MEASURE::::"/>
+		<xlinkdataset id="dsEvalAttach" desc="업체평가첨부파일정보" columns="OU_CODE::::;EVAL_YEAR::::;EVAL_MONTH::::;VENDOR_CODE::::;DOC_TYPE::::;DOC_TYPE_NAME::::;ATTACH_ID::::;ATTFILE_YN::::"/>
+		<xlinkdataset id="dsEvalAttSEQ" desc="업체평가첨부파일 Att_ID" columns="SEQ::::"/>
+		<xlinkdataset id="dsOuCode" desc="법인코드정보" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsEvalGrade" desc="평가등급코드" columns="ITEM_CODE::::"/>
+		<xlinkdataset id="dsReturn" desc="Package 호출 결과값" columns="X_RETCODE::::;X_RETMESG::::"/>
+		<xlinkdataset id="dsValidation" desc="업체코드 기준 중복 CHECK" columns="CNT::::"/>
+		<xlinkdataset id="dsVendor" desc="업체정보_ExcelUpload용" columns="VENDOR_CODE::::;VENDOR_NAME::::;BIZ_TYPE::::;BIZ_TYPE_NAME::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="조회">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH_RESULT" url="" comment="평가결과조회">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH_ATT" url="" comment="첨부문서조회">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_ALL" url="" comment="저장">
+		</xlinktranmap>
+		<xlinktranmap id="TR_EVAL_ATT_ID" url="" comment="첨부ID 가져오기">
+		</xlinktranmap>
+		<xlinktranmap id="TR_STATUS_UPDATE" url="" comment="진행상태Update">
+		</xlinktranmap>
+		<xlinktranmap id="TR_GRADE" url="" comment="평가등급 가져오기">
+		</xlinktranmap>
+		<xlinktranmap id="TR_VALIDATION" url="" comment="중복CHECK">
+		</xlinktranmap>
+		<xlinktranmap id="TR_VENDOR" url="" comment="업체정보조회">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,514,515,453,534,468,469,462,535,529,530,531,532,533,520,525,527,517,528"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="0" order_info="35,36,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" anchor="2" x="1088" y="5" right="280" bottom="5" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" anchor="2" x="1204" y="5" right="164" bottom="5" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="31" y="7" right="1207" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1345" y="5" right="23" bottom="5" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<text control_id="135" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="676" width="1411" width_percent="98" width_unit="1" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="452" autosize="0" x="717" y="52" right="643" bottom="686" width="80" height="20" text="업체명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="453" name="edtVendorName" in_index="2" autosize="0" x="802" y="51" right="498" bottom="685" width="140" height="22" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:VENDOR_NAME" max_length="100" on_changed="eventfunc:edtVendorName_on_changed(objInst, prev_text, curr_text, event_type)"/>
+		<image control_id="410" name="btnVendorNamePop" autosize="0" x="941" y="51" right="479" bottom="685" width="20" height="22" transparent="0" border="0" padding="0,0,0,0" image="/ico_search_22.gif" image_width="20" image_height="22" mouse_cursor="11" on_click="eventfunc:btnVendorNamePop_on_click(objInst)"/>
+		<text control_id="49" autosize="0" x="24" y="95" right="1216" bottom="647" width="200" height="16" text="정기평가계획" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="472" autosize="0" x="10" y="95" right="1425" bottom="647" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<image control_id="475" autosize="0" x="10" y="336" right="1425" bottom="406" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="478" autosize="0" x="24" y="336" right="1316" bottom="406" width="100" height="16" text="정기평가결과" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="462" name="grdEvalList" x="10" y="116" right="19" bottom="446" width="1411" width_percent="98" height="196" resize_dir="1" header_vertcount="0" header_horzcount="2" header_height="22" cell_height="22" selectrow_bordercolor="0080623C" link_data="dsEvalList" samplerows="7" autocolumnwidth="2" version="1.2" on_itemselchange="eventfunc:grdEvalList_on_itemselchange(objInst, nPrevSelectRow, nPrevSelectColumn, nCurSelectRow, nCurSelectColumn)" on_fileload="eventfunc:grdEvalList_on_fileload(objInst, nResult, strCode, strMsg, strFileName, nLoadStartTime)">
+			<column>
+				<header title="협력업체명"/>
+				<header title="협력업체명"/>
+				<data style="HS_GRID_DATA_02" name="VENDOR_NAME" width="120" text_horzalign="0" data_type="2" link_data="dsEvalList:VENDOR_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="업체코드"/>
+				<header title="업체코드"/>
+				<data style="HS_GRID_DATA_02" name="VENDOR_CODE" width="60" text_horzalign="2" link_data="dsEvalList:VENDOR_CODE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="업종"/>
+				<header title="업종"/>
+				<data style="HS_GRID_DATA_02" name="BIZ_TYPE_NAME" text_horzalign="0" data_type="2" link_data="dsEvalList:BIZ_TYPE_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="1월"/>
+				<header title="계획"/>
+				<data style="HS_GRID_DATA_01" name="PLAN_DATE_01" width="100" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsEvalList:PLAN_DATE_01" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="1월"/>
+				<header title="평가"/>
+				<data style="HS_GRID_DATA_02" name="EVAL_DATE_01" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:EVAL_DATE_01" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="1월"/>
+				<header title="상태"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_01_NM" width="90" data_type="2" link_data="dsEvalList:STATUS_01_NM" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="1월"/>
+				<header title="상태변경일"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_DATE_01" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:STATUS_DATE_01" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="2월"/>
+				<header title="계획"/>
+				<data style="HS_GRID_DATA_01" name="PLAN_DATE_02" width="100" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsEvalList:PLAN_DATE_02" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="2월"/>
+				<header title="평가"/>
+				<data style="HS_GRID_DATA_02" name="EVAL_DATE_02" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:EVAL_DATE_02" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="2월"/>
+				<header title="상태"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_02_NM" width="90" data_type="2" link_data="dsEvalList:STATUS_02_NM" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="2월"/>
+				<header title="상태변경일"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_DATE_02" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:STATUS_DATE_02" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="3월"/>
+				<header title="계획"/>
+				<data style="HS_GRID_DATA_01" name="PLAN_DATE_03" width="100" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsEvalList:PLAN_DATE_03" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="3월"/>
+				<header title="평가"/>
+				<data style="HS_GRID_DATA_02" name="EVAL_DATE_03" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:EVAL_DATE_03" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="3월"/>
+				<header title="상태"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_03_NM" width="90" data_type="2" link_data="dsEvalList:STATUS_03_NM" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="3월"/>
+				<header title="상태변경일"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_DATE_03" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:STATUS_DATE_03" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="4월"/>
+				<header title="계획"/>
+				<data style="HS_GRID_DATA_01" name="PLAN_DATE_04" width="100" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsEvalList:PLAN_DATE_04" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="4월"/>
+				<header title="평가"/>
+				<data style="HS_GRID_DATA_02" name="EVAL_DATE_04" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:EVAL_DATE_04" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="4월"/>
+				<header title="상태"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_04_NM" width="90" data_type="2" link_data="dsEvalList:STATUS_04_NM" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="4월"/>
+				<header title="상태변경일"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_DATE_04" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:STATUS_DATE_04" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="5월"/>
+				<header title="계획"/>
+				<data style="HS_GRID_DATA_01" name="PLAN_DATE_05" width="100" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsEvalList:PLAN_DATE_05" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="5월"/>
+				<header title="평가"/>
+				<data style="HS_GRID_DATA_02" name="EVAL_DATE_05" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:EVAL_DATE_05" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="5월"/>
+				<header title="상태"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_05_NM" width="90" data_type="2" link_data="dsEvalList:STATUS_05_NM" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="5월"/>
+				<header title="상태변경일"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_DATE_05" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:STATUS_DATE_05" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="6월"/>
+				<header title="계획"/>
+				<data style="HS_GRID_DATA_01" name="PLAN_DATE_06" width="100" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsEvalList:PLAN_DATE_06" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="6월"/>
+				<header title="평가"/>
+				<data style="HS_GRID_DATA_02" name="EVAL_DATE_06" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:EVAL_DATE_06" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="6월"/>
+				<header title="상태"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_06_NM" width="90" data_type="2" link_data="dsEvalList:STATUS_06_NM" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="6월"/>
+				<header title="상태변경일"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_DATE_06" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:STATUS_DATE_06" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="7월"/>
+				<header title="계획"/>
+				<data style="HS_GRID_DATA_01" name="PLAN_DATE_07" width="100" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsEvalList:PLAN_DATE_07" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="7월"/>
+				<header title="평가"/>
+				<data style="HS_GRID_DATA_02" name="EVAL_DATE_07" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:EVAL_DATE_07" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="7월"/>
+				<header title="상태"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_07_NM" width="90" data_type="2" link_data="dsEvalList:STATUS_07_NM" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="7월"/>
+				<header title="상태변경일"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_DATE_07" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:STATUS_DATE_07" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="8월"/>
+				<header title="계획"/>
+				<data style="HS_GRID_DATA_01" name="PLAN_DATE_08" width="100" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsEvalList:PLAN_DATE_08" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="8월"/>
+				<header title="평가"/>
+				<data style="HS_GRID_DATA_02" name="EVAL_DATE_08" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:EVAL_DATE_08" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="8월"/>
+				<header title="상태"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_08_NM" width="90" data_type="2" link_data="dsEvalList:STATUS_08_NM" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="8월"/>
+				<header title="상태변경일"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_DATE_08" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:STATUS_DATE_08" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="9월"/>
+				<header title="계획"/>
+				<data style="HS_GRID_DATA_01" name="PLAN_DATE_09" width="100" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsEvalList:PLAN_DATE_09" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="9월"/>
+				<header title="평가"/>
+				<data style="HS_GRID_DATA_02" name="EVAL_DATE_09" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:EVAL_DATE_09" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="9월"/>
+				<header title="상태"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_09_NM" width="90" data_type="2" link_data="dsEvalList:STATUS_09_NM" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="9월"/>
+				<header title="상태변경일"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_DATE_09" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:STATUS_DATE_09" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="10월"/>
+				<header title="계획"/>
+				<data style="HS_GRID_DATA_01" name="PLAN_DATE_10" width="100" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsEvalList:PLAN_DATE_10" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="10월"/>
+				<header title="평가"/>
+				<data style="HS_GRID_DATA_02" name="EVAL_DATE_10" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:EVAL_DATE_10" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="10월"/>
+				<header title="상태"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_10_NM" width="90" data_type="2" link_data="dsEvalList:STATUS_10_NM" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="10월"/>
+				<header title="상태변경일"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_DATE_10" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:STATUS_DATE_10" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="11월"/>
+				<header title="계획"/>
+				<data style="HS_GRID_DATA_01" name="PLAN_DATE_11" width="100" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsEvalList:PLAN_DATE_11" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="11월"/>
+				<header title="평가"/>
+				<data style="HS_GRID_DATA_02" name="EVAL_DATE_11" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:EVAL_DATE_11" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="11월"/>
+				<header title="상태"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_11_NM" width="90" data_type="2" link_data="dsEvalList:_STATUS_11_NM" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="11월"/>
+				<header title="상태변경일"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_DATE_11" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:STATUS_DATE_11" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="12월"/>
+				<header title="계획"/>
+				<data style="HS_GRID_DATA_01" name="PLAN_DATE_12" width="100" editable="1" input_type="3" pattern="YYYY-MM-DD" link_data="dsEvalList:PLAN_DATE_12" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="12월"/>
+				<header title="평가"/>
+				<data style="HS_GRID_DATA_02" name="EVAL_DATE_12" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:EVAL_DATE_12" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="12월"/>
+				<header title="상태"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_12_NM" width="90" data_type="2" link_data="dsEvalList:STATUS_12_NM" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="12월"/>
+				<header title="상태변경일"/>
+				<data style="HS_GRID_DATA_02" name="STATUS_DATE_12" width="70" pattern="YYYY-MM-DD" link_data="dsEvalList:STATUS_DATE_12" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info="0,0,1,0:0,1,1,1:0,2,1,2:0,3,0,6:0,7,0,10:0,11,0,14:0,15,0,18:0,19,0,22:0,23,0,26:0,27,0,30:0,31,0,34:0,35,0,38:0,39,0,42:0,43,0,46:0,47,0,50:"/>
+		</grid>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="468" name="btnUpload" anchor="2" x="1272" y="86" right="98" bottom="647" width="70" height="25" text="Upload" version="1.1" on_mouseup="eventfunc:btnUpload_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="469" name="btnAddPlan" anchor="2" x="1347" y="86" right="23" bottom="647" width="70" height="25" text="계획추가" version="1.1" on_mouseup="eventfunc:btnAddPlan_on_mouseup(objInst)"/>
+		<combobox control_id="514" name="cboOuCode" in_index="0" autosize="0" x="102" y="51" right="1178" bottom="685" width="160" height="22" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOuCode:CODE:NAME:" link_data="dsSearch:OU_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<datepicker control_id="515" name="dtpEvalYear" in_index="1" autosize="0" x="452" y="51" right="844" bottom="685" width="144" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSearch:EVAL_YEAR" max_length="4" date_type="2" showtodaybar="1" calendar_type="3" on_keydown="eventfunc:dtpEvalYear_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="516" autosize="0" x="368" y="52" right="992" bottom="686" width="80" height="20" text="*평가년도" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<panel control_id="517" semantic_tag="0" x="10" y="359" right="232" bottom="14" width="1198" height="385" resize_dir="2" back_color="00FFFBF7" border_color="00FFC4A3" content_display_type="2" content_flex_direction="column" resize_handle="3" title_font="맑은 고딕,9,0,0,0,0">
+			<tab_order order_option="0" order_info="518,523"/>
+			<multiline control_id="518" name="fldImpReq" x="8" y="27" right="602" bottom="7" width="586" height="349" font="맑은 고딕,9,0,0,0,0" border_color="00FFC4A3" line_gap="0" link_data="dsEvalResult:IMPROVE_REQ" max_length="4000" meta_maxlength="" escape_newline="0"/>
+			<text control_id="521" autosize="0" x="8" y="6" right="1028" bottom="361" width="160" height="16" text="[ 개선 요구사항 ]" font="맑은 고딕,10,1,0,0,0" back_color="00FFFBF7" back_color_opacity="0" version="1.1"/>
+			<text control_id="522" autosize="0" x="602" y="6" right="434" bottom="361" width="160" height="16" text="[ 개선 대책 ]" font="맑은 고딕,10,1,0,0,0" back_color="00FFFBF7" back_color_opacity="0" version="1.1"/>
+			<multiline control_id="523" name="fldImpMeasure" x="602" y="27" right="8" bottom="7" width="586" height="349" font="맑은 고딕,9,0,0,0,0" border_color="00FFC4A3" line_gap="0" link_data="dsEvalResult:IMPROVE_MEASURE" max_length="4000" meta_maxlength="" escape_newline="0"/>
+		</panel>
+		<text control_id="519" autosize="0" x="188" y="333" right="1172" bottom="405" width="80" height="20" text="*평가일" font="맑은 고딕,9,0,0,0,0" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<datepicker control_id="520" name="dtpEvalDate" autosize="0" x="272" y="332" right="1068" bottom="404" width="100" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsEvalResult:EVAL_DATE" delimiter_char="-" showtodaybar="1" calendar_type="1"/>
+		<text control_id="524" name="txtScore" autosize="0" x="420" y="333" right="940" bottom="405" width="80" height="20" text="점수 / 등급" font="맑은 고딕,9,0,0,0,0" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<numericex_field control_id="525" name="fldScore" autosize="0" x="506" y="332" right="884" bottom="404" width="50" height="22" font="맑은 고딕,9,0,0,0,0" horz_align="1" link_data="dsEvalResult:SCORE" max_length="5" pattern="ZZZ.9" on_focusout="eventfunc:fldScore_on_focusout(objInst, focusouttype)"/>
+		<text control_id="526" name="txtGrade" autosize="0" x="560" y="333" right="870" bottom="405" width="10" height="20" text="/" font="맑은 고딕,9,0,0,0,0" back_color_opacity="0" horz_align="1" version="1.1"/>
+		<hangul_field control_id="527" name="fldGrade" autosize="0" x="575" y="332" right="815" bottom="404" width="50" height="22" font="맑은 고딕,9,0,0,0,0" horz_align="2" link_data="dsEvalResult:GRADE"/>
+		<grid style="HS_GRID_BASIC_01" control_id="528" name="grdAttList" x="1218" y="359" right="20" bottom="14" width="202" width_percent="98" height="385" resize_dir="3" header_vertcount="0" header_height="32" cell_height="22" selectrow_bordercolor="0080623C" link_data="dsEvalAttach" samplerows="5" autocolumnwidth="2" version="1.2">
+			<column>
+				<header title="문서종류"/>
+				<data style="HS_GRID_DATA_02" name="DOC_TYPE_NAME" width="120" text_horzalign="0" link_data="dsEvalAttach:DOC_TYPE_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="문서첨부"/>
+				<data style="HS_GRID_DATA_02" name="ATTFILE_YN" width="60" link_data="dsEvalAttach:ATTFILE_YN" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="문서첨부"/>
+				<data style="HS_GRID_DATA_02" name="ATTACH_FILE_POP" width="20" image="/ico_search_1.gif" bargauge_transparent="0" on_columnclick="eventfunc:grdAttList_on_columnclick(objInst, nColumn, bBtnClick, nImgIndex, strImgUrl)"/>
+			</column>
+			<headermegeinfo info="0,1,0,2:"/>
+		</grid>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="529" name="btnImpReqCom" anchor="2" x="921" y="329" right="429" bottom="404" width="90" height="25" text="개선요구확정" version="1.1" on_mouseup="eventfunc:btnImpReqCom_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="530" name="btnImpMeaCom" anchor="2" x="1015" y="329" right="315" bottom="404" width="110" height="25" text="개선대책입력완료" version="1.1" on_mouseup="eventfunc:btnImpMeaCom_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="531" name="btnValidReq" anchor="2" x="1129" y="329" right="201" bottom="404" width="110" height="25" text="유효성확인요청" version="1.1" on_mouseup="eventfunc:btnValidReq_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="532" name="btnValidCom" anchor="2" x="1243" y="329" right="107" bottom="404" width="90" height="25" text="유효성확인" version="1.1" on_mouseup="eventfunc:btnValidCom_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="533" name="btnComplete" anchor="2" x="1337" y="329" right="23" bottom="404" width="80" height="25" text="완료" version="1.1" on_mouseup="eventfunc:btnComplete_on_mouseup(objInst)"/>
+		<text control_id="467" name="txtVendorCode" autosize="0" x="965" y="52" right="395" bottom="686" width="80" height="20" text="80009" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" link_data="dsSearch:VENDOR_CODE" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="534" name="btnDownload" anchor="2" x="1197" y="86" right="173" bottom="647" width="70" height="25" text="Download" version="1.1" on_mouseup="eventfunc:btnDownload_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="535" name="btnCancel" x="637" y="329" right="723" bottom="404" width="80" height="25" text="평가취소" fore_color="000E0EFF" version="1.1" on_mouseup="eventfunc:btnCancel_on_mouseup(objInst)"/>
+	</map>
+</map_list>

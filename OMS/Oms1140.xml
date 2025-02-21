@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="RFQ 담당자 정보 이력 조회" directory="/OMS/" screenid="Oms1140" last_update_date="2025-02-05 15:19:47" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,fnDsSet,fnSetInitControl,screen_on_submitcomplete,fnInvalidSearch,btnCommonSearch_on_mouseup,screen_on_size,btnCommonClose_on_mouseup,comOu_on_itemchange,fnSearch,stdDate_on_keydown,edtRfqCode_on_keydown,btnChargeUserPop_on_click,fnPopupRFQResponsePopCallback,edtChargeUserName_on_changed,edtChargeUserName_on_keydown"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;RFQ_CODE::::;CHARGE_USER_ID::::;CHARGE_USER_NAME::::;RFQ_DATE::::;CHANGE_FLAG:&quot;담당자 변경 여부&quot;:::"/>
+		<xlinkdataset id="dsOU" desc="법인 LIST" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsList" desc="목록" columns="IDX::::;RFQ_CODE::::;RFQ_DATE::::;CHARGE_USER_NAME::::;PREV_CHARGE_USER_NAME::::;UPD_TYPE_NAME::::;UPD_DETAILS::::;START_DATE::::;END_DATE::::;UPD_USER_NAME::::;UPD_DATE::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SITE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_ALL" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_AUTH" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_USER_SEARCH" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,474,455,552,570,483,571,569"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="1" order_info="35,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="1276" y="6" right="92" bottom="4" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="30" y="7" right="1208" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1348" y="6" right="20" bottom="4" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="646" width="1411" width_percent="98" width_unit="1" height="70" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="551" meta_id="LABEL01898" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="474" name="comOu" in_index="0" autosize="0" x="102" y="52" right="1178" bottom="686" width="160" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOU:CODE:NAME:" link_data="dsSearch:OU_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_itemchange="eventfunc:comOu_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<text control_id="454" meta_id="LABEL02477" autosize="0" x="408" y="52" right="952" bottom="686" width="80" height="20" text="RFQ코드" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<hangul_field control_id="455" name="edtRfqCode" in_index="1" autosize="0" x="491" y="52" right="809" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:RFQ_CODE" max_length="100" make_case="1" imemode="0" on_keydown="eventfunc:edtRfqCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<image control_id="410" name="btnChargeUserPop" autosize="0" x="960" y="52" right="461" bottom="686" width="19" height="20" transparent="0" border="0" padding="0,0,0,0" image="/ico_search.gif" image_width="19" image_height="20" mouse_cursor="11" on_click="eventfunc:btnChargeUserPop_on_click(objInst)"/>
+		<hangul_field control_id="552" name="edtChargeUserName" in_index="2" autosize="0" x="821" y="52" right="479" bottom="686" width="140" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:CHARGE_USER_NAME" max_length="100" make_case="1" imemode="0" on_keydown="eventfunc:edtChargeUserName_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_changed="eventfunc:edtChargeUserName_on_changed(objInst, prev_text, curr_text, event_type)"/>
+		<text control_id="553" meta_id="LABEL02672" autosize="0" x="738" y="52" right="622" bottom="686" width="80" height="20" text="RFQ 담당자" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<datepicker control_id="483" name="stdRfqDate" autosize="0" x="492" y="80" right="808" bottom="656" width="140" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSearch:RFQ_DATE" delimiter_char="-" showtodaybar="1" calendar_type="1" on_keydown="eventfunc:stdDate_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="522" autosize="0" x="408" y="82" right="952" bottom="656" width="80" height="20" text="기준일자" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<grid style="HS_GRID_BASIC_01" control_id="569" name="grdList" in_index="21" x="10" y="144" right="19" bottom="26" width="1411" width_percent="98" height="588" resize_dir="3" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" checkrowwithselect="1" link_data="dsList" samplerows="4" autocolumnwidth="2" version="1.2">
+			<column>
+				<header title="No."/>
+				<data style="HS_GRID_DATA_BC_01" name="IDX" width="40" text_horzalign="1" link_data="dsList:IDX" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02477" title="RFQ코드"/>
+				<data style="HS_GRID_DATA_BC_01" name="RFQ_CODE" width="150" text_horzalign="1" link_data="dsList:RFQ_CODE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="이전 담당자"/>
+				<data style="HS_GRID_DATA_BC_01" name="PREV_CHARGE_USER_NAME" width="100" text_horzalign="1" link_data="dsList:PREV_CHARGE_USER_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="담당자"/>
+				<data style="HS_GRID_DATA_BC_01" name="CHARGE_USER_NAME" width="100" text_horzalign="1" link_data="dsList:CHARGE_USER_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="변경 유형"/>
+				<data style="HS_GRID_DATA_BC_01" name="UPD_TYPE_NAME" width="120" text_horzalign="1" link_data="dsList:UPD_TYPE_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="변경 내용"/>
+				<data style="HS_GRID_DATA_BC_01" name="UPD_DETAILS" width="150" text_horzalign="1" link_data="dsList:UPD_DETAILS" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="시작일"/>
+				<data style="HS_GRID_DATA_01" name="START_DATE" width="100" backcolor="00FFFBF7" pattern="YYYY-MM-DD" link_data="dsList:START_DATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="종료일"/>
+				<data style="HS_GRID_DATA_BC_01" name="END_DATE" width="100" text_horzalign="1" pattern="YYYY-MM-DD" link_data="dsList:END_DATE" calendar_type="1" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="최종수정자"/>
+				<data style="HS_GRID_DATA_BC_01" name="UPD_USER_NAME" width="100" text_horzalign="1" link_data="dsList:UPD_USER_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header title="최종수정시각"/>
+				<data style="HS_GRID_DATA_BC_01" name="UPD_DATE" width="100" text_horzalign="1" pattern="YYYY-MM-DD" link_data="dsList:UPD_DATE" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<radiobutton control_id="571" name="rbCur" x="1008" y="80" right="372" bottom="660" width="60" height="18" font="맑은 고딕,9,0,0,0,0" back_color_opacity="0" transparent="1" link_data="dsSearch:CHANGE_FLAG" text="변경 후" input_type="1" select_value="CURR"/>
+		<radiobutton control_id="570" name="rbPrev" x="1008" y="52" right="372" bottom="688" width="60" height="18" font="맑은 고딕,9,0,0,0,0" back_color_opacity="0" transparent="1" link_data="dsSearch:CHANGE_FLAG" text="변경 전" input_type="1" select_value="PREV" unselect_value="" default_select="1"/>
+		<text control_id="572" name="txtChargeUserId" x="821" y="82" right="550" bottom="664" width="69" height="12" font="맑은 고딕,9,0,0,0,0" back_color_opacity="0" link_data="dsSearch:CHARGE_USER_ID" hidden="1" version="1.1"/>
+	</map>
+</map_list>

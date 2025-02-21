@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="환율관리" directory="/OMS/" screenid="Oms1080" last_update_date="2023-12-05 13:51:19" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,fnDsSet,fnSetInitControl,screen_on_submitcomplete,btnCommonSearch_on_mouseup,btnCommonCreate_on_mouseup,screen_on_messagebox,screen_on_size,btnCommonClose_on_mouseup,comOu_on_itemchange,btnCopy_on_mouseup,btnMAddRow_on_mouseup,btnMDelRow_on_mouseup,btnDAddRow_on_mouseup,btnDDelRow_on_mouseup,btnCommonSave_on_mouseup,fnValidForm,fnSearch,fnSearchExgLine,fnSaveData,fnCreateExRate,grdMain_on_itemclick,grdMain_on_itemselchange,grdDetail_on_itemclick,grdMain_on_itemvaluechanged"/>
+		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;STD_YEAR::::;EXG_NAME::::"/>
+		<xlinkdataset id="dsMain" desc="환율Main" columns="OU_CODE::::;EXG_ID::::;STD_YEAR::::;EXG_NAME::::;REMARK::::"/>
+		<xlinkdataset id="dsDetail" desc="환율Detail" columns="OU_CODE::::;EXG_ID::::;EXG_LINE_ID::::;STD_YEAR::::;FROM_CURR_CODE::::;TO_CURR_CODE::::;EXCHANGE_RATE::::;REMARK::::"/>
+		<xlinkdataset id="dsExgID" desc="환율ID" columns="SEQ::::"/>
+		<xlinkdataset id="dsExgLineID" desc="환율LineID" columns="SEQ::::"/>
+		<xlinkdataset id="dsValidation" desc="사업계획환율중복CHK" columns="CNT::::"/>
+		<xlinkdataset id="dsOU" desc="법인 LIST" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsCurrency" desc="통화코드 (F018)" columns="CODE::::;NAME::::"/>
+		<xlinkdataset id="dsProcResult" desc="Package 호출 결과값" columns="RETCODE::::;RETMESG::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SAVE_ALL" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_SEARCH_LINE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_EXG_ID" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_EXG_LINE_ID" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_VALIDATION" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_CREATE" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_COPY" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="26,474,515,552,518,558,557,573,574,0,570"/>
+		<tab control_id="26" name="tabTopCommon" x="0" y="4" right="2" bottom="719" width="1438" height="35" resize_dir="1" border="0" border_color="00FFFFFF" tab_color="00FFFFFF" tabitem_hidden="1" tabitem_font="굴림체,9,0,0,0,0" tabitem_selfont="굴림체,9,0,0,0,0" titlebar_font="굴림,9,1,0,0,0">
+			<tab_item panel_color="00FFFFFF">
+				<tab_order order_option="1" order_info="568,35,36,42"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="1194" y="6" right="174" bottom="4" width="70" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
+				<image control_id="50" autosize="0" x="10" y="8" right="1412" bottom="11" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+				<text control_id="32" name="stSystemMenuTitle" autosize="0" x="30" y="7" right="1208" bottom="10" width="200" height="18" text="제목이 들어갑니다." font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="42" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1348" y="6" right="20" bottom="4" width="70" height="25" image_show="0" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="36" name="btnCommonSave" meta_id="LABEL00011" anchor="2" x="1274" y="6" right="94" bottom="4" width="70" height="25" text="저장" version="1.1" on_mouseup="eventfunc:btnCommonSave_on_mouseup(objInst)"/>
+				<pushbutton style="HS_BTN_CLOSE_01" control_id="568" name="btnCommonCreate" meta_id="LABEL02674" anchor="2" x="924" y="6" right="364" bottom="4" width="150" height="25" text="사업계획환율 가져오기" version="1.1" on_mouseup="eventfunc:btnCommonCreate_on_mouseup(objInst)"/>
+			</tab_item>
+		</tab>
+		<roundrect control_id="134" name="rudSearch" x="9" y="42" right="20" bottom="676" width="1411" width_percent="98" width_unit="1" height="40" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" ellipse_width="5" border_color="00FFC4A3" transparent="0"/>
+		<text control_id="49" meta_id="LABEL02688" autosize="0" x="24" y="95" right="1352" bottom="647" width="64" height="16" text="환율버전" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<image control_id="68" autosize="0" x="10" y="95" right="1425" bottom="647" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="551" meta_id="LABEL01898" autosize="0" x="17" y="52" right="1343" bottom="686" width="80" height="20" text="*법인" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" back_color_opacity="0" horz_align="2" version="1.1"/>
+		<combobox control_id="474" name="comOu" autosize="0" x="102" y="52" right="1178" bottom="686" width="160" height="20" font="맑은 고딕,9,0,0,0,0" picklist_linkdata="dsOU:CODE:NAME:" link_data="dsSearch:OU_CODE" auto_codevalid="1" picklist_font="맑은 고딕,9,0,0,0,0" picklist_selstyle="2" picklist_viewstyle="2" version="1.1" on_keydown="eventfunc:cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_itemchange="eventfunc:comOu_on_itemchange(objInst, nprev_item, ncur_item, event_type)"/>
+		<grid style="HS_GRID_BASIC_01" control_id="0" name="grdMain" x="9" y="116" right="731" bottom="14" width="700" width_percent="98" height="628" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" use_checkrow="1" checkrowwithselect="1" link_data="dsMain" samplerows="4" autocolumnwidth="2" version="1.2" on_itemselchange="eventfunc:grdMain_on_itemselchange(objInst, nPrevSelectRow, nPrevSelectColumn, nCurSelectRow, nCurSelectColumn)" on_itemclick="eventfunc:grdMain_on_itemclick(objInst, nClickRow, nClickColumn, bBtnClick, nImgIndex, strImgUrl)" on_itemvaluechanged="eventfunc:grdMain_on_itemvaluechanged(objInst, nRow, nColumn, strPrevItemText, strItemText)">
+			<column>
+				<header meta_id="LABEL01802" title="*기준년도"/>
+				<data style="HS_GRID_DATA_02" name="STD_YEAR" pattern="YYYY" link_data="dsMain:STD_YEAR" calendar_datetype="2" calendar_type="3" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02666" title="*환율버젼"/>
+				<data style="HS_GRID_DATA_01" name="EXG_NAME" width="238" text_horzalign="0" editable="1" data_type="2" link_data="dsMain:EXG_NAME" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00060" title="비고"/>
+				<data style="HS_GRID_DATA_01" name="REMARK" width="364" text_horzalign="0" editable="1" data_type="2" link_data="dsMain:REMARK" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<hangul_field control_id="552" name="edtExgName" autosize="0" x="802" y="52" right="478" bottom="686" width="160" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:EXG_NAME" max_length="100" imemode="0"/>
+		<text control_id="553" meta_id="LABEL02688" autosize="0" x="719" y="52" right="641" bottom="686" width="80" height="20" text="환율버전" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="558" name="btnMAddRow" meta_id="LABEL00541" x="563" y="88" right="807" bottom="645" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnMAddRow_on_mouseup(objInst)"/>
+		<text control_id="452" meta_id="LABEL01802" autosize="0" x="368" y="52" right="992" bottom="686" width="80" height="20" text="*기준년도" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="557" name="btnMDelRow" meta_id="LABEL00542" x="638" y="88" right="732" bottom="645" width="70" height="25" text="행삭제" version="1.1" on_mouseup="eventfunc:btnMDelRow_on_mouseup(objInst)"/>
+		<grid style="HS_GRID_BASIC_01" control_id="570" name="grdDetail" x="720" y="116" right="20" bottom="14" width="700" width_percent="98" height="628" resize_dir="1" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" use_checkrow="1" checkrowwithselect="1" link_data="dsDetail" samplerows="4" autocolumnwidth="2" version="1.2" on_itemclick="eventfunc:grdDetail_on_itemclick(objInst, nClickRow, nClickColumn, bBtnClick, nImgIndex, strImgUrl)">
+			<column>
+				<header meta_id="LABEL01802" title="*기준년도"/>
+				<data style="HS_GRID_DATA_02" name="STD_YEAR" pattern="YYYY" link_data="dsDetail:STD_YEAR" calendar_datetype="2" calendar_type="3" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02689" title="*기준통화"/>
+				<data style="HS_GRID_DATA_01" name="FROM_CURR_CODE" width="100" editable="1" input_type="2" link_data="dsDetail:FROM_CURR_CODE" picklist_linkdata="dsCurrency:CODE:NAME:" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02690" title="*변경통화"/>
+				<data style="HS_GRID_DATA_01" name="TO_CURR_CODE" width="100" editable="1" input_type="2" link_data="dsDetail:TO_CURR_CODE" picklist_linkdata="dsCurrency:CODE:NAME:" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02691" title="*환율"/>
+				<data style="HS_GRID_DATA_01" name="EXCHANGE_RATE" width="116" text_horzalign="2" editable="1" data_type="0" max_length="16" pattern="-ZZZ,ZZZ,ZZZ.ZZZZZ" link_data="dsDetail:EXCHANGE_RATE" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00060" title="비고"/>
+				<data style="HS_GRID_DATA_01" name="REMARK" width="286" text_horzalign="0" editable="1" data_type="2" link_data="dsDetail:REMARK" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+		<image control_id="571" autosize="0" x="720" y="95" right="715" bottom="647" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="572" meta_id="LABEL02669" autosize="0" x="734" y="95" right="506" bottom="647" width="200" height="16" text="환율" font="맑은 고딕,10,0,0,0,0" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="573" name="btnDAddRow" meta_id="LABEL00541" anchor="2" x="1275" y="88" right="95" bottom="645" width="70" height="25" text="행추가" version="1.1" on_mouseup="eventfunc:btnDAddRow_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="574" name="btnDDelRow" meta_id="LABEL00542" anchor="2" x="1350" y="88" right="20" bottom="645" width="70" height="25" text="행삭제" version="1.1" on_mouseup="eventfunc:btnDDelRow_on_mouseup(objInst)"/>
+		<datepicker control_id="515" name="dtpStdYear" autosize="0" x="452" y="52" right="908" bottom="684" width="80" height="22" font="맑은 고딕,9,0,0,0,0" calendar_font="맑은 고딕,9,0,0,0,0" transparent="0" text_margin="1,1,1,1" button_size="19" button_image="/ico_carlendar.gif" link_data="dsSearch:STD_YEAR" max_length="4" date_type="2" showtodaybar="1" calendar_type="3" on_keydown="eventfunc:dtpMkYear_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<text control_id="563" meta_id="LABEL02693" autosize="0" x="102" y="95" right="968" bottom="647" width="370" height="16" text="※ 사업계획환율 입력금지 (사업계획환율 가져오기로 자동생성)" font="맑은 고딕,10,1,0,0,0" fore_color="000E0EFF" back_color_opacity="0" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="518" name="btnCopy" x="487" y="88" right="883" bottom="645" width="70" height="25" text="복사" version="1.1" on_mouseup="eventfunc:btnCopy_on_mouseup(objInst)"/>
+	</map>
+</map_list>

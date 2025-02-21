@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="프로젝트진행현황" directory="/INTRO/" screenid="sv_3" click_setfocus="1" last_update_date="2023-08-21 14:48:41" width="710" width_type="2" height="250" height_type="2" canvas_width="1900" canvas_height="600" vertscrollbar_style="0" horzscrollbar_style="0" on_load="eventfunc:screen_on_load()" funclist="screen_on_load,fnPjtStat"/>
+		<xlinkdataset id="dsPjtStat" desc="PJT진행현황" columns="ACT_STATUS_NAME::::;TARGET::::;NON_TARGET::::;TOTAL::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_PJT_STAT" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="462"/>
+		<image control_id="50" autosize="0" x="10" y="8" right="684" bottom="226" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<text control_id="32" name="stSystemMenuTitle" meta_id="LABEL02703" autosize="0" x="30" y="7" right="430" bottom="225" width="250" height="18" text="프로젝트 진행 현황" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<grid style="HS_SINGLEVIEW_GRID_01" control_id="462" name="grdList" x="7" y="32" right="8" bottom="6" width="695" height="212" header_font="맑은 고딕,9,0,0,0,0" header_vertcount="0" selectrow_bordercolor="0080623C" link_data="dsPjtStat" statistics_row="0,00000000,00E9FEFF,00000000,00D2D2D2,00000001,00000001,&quot;합  계&quot;,0,:" version="1.2">
+			<column>
+				<header meta_id="LABEL02361" title="활동단계"/>
+				<data style="HS_GRID_DATA_02" name="ACT_STATUS_NAME" width="110" data_type="2" show_tooltip="1" link_data="dsPjtStat:ACT_STATUS_NAME" combobox_defaultvalue_type="1" combobox_showbutton="0" combobox_buttonsize="0" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02704" title="Target"/>
+				<data style="HS_GRID_DATA_02" name="TARGET" width="120" data_type="0" max_length="9" pattern="ZZZ,ZZZ,ZZZ" show_tooltip="1" link_data="dsPjtStat:TARGET" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL02705" title="Non-Target"/>
+				<data style="HS_GRID_DATA_02" name="NON_TARGET" width="120" data_type="0" max_length="9" pattern="ZZZ,ZZZ,ZZZ" show_tooltip="1" link_data="dsPjtStat:NON_TARGET" bargauge_transparent="0"/>
+			</column>
+			<column>
+				<header meta_id="LABEL00717" title="소계"/>
+				<data style="HS_GRID_DATA_02" name="TOTAL" width="120" data_type="0" max_length="9" pattern="ZZZ,ZZZ,ZZZ" show_tooltip="1" link_data="dsPjtStat:TOTAL" bargauge_transparent="0"/>
+			</column>
+			<headermegeinfo info=""/>
+		</grid>
+	</map>
+</map_list>

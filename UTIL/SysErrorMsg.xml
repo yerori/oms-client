@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="에러메세지" directory="/UTIL/" screenid="SysErrorMsg" screen_capture="0" last_update_date="2021-12-23 14:16:36" width="1028" width_type="2" height="179" height_type="0" back_color="00666666" vertscrollbar_style="0" horzscrollbar_style="0" on_load="eventfunc:screen_on_load()" on_activate="eventfunc:screen_on_activate()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_popupdestroy="eventfunc:screen_on_popupdestroy(popup_screen, popup_name, result)" funclist="_getFrameType,I_GlobalVar,II_TempFunction,III_UserFunction,setTranLink,setErrorMsg,setRowNumber,setErrorMsgTitle,setErrorMsgContent,setTotalHeightSize,IV_EventFunction,screen_on_load,BtnClose_on_mouseup,screen_on_size,screen_on_activate,tiClose_on_time,screen_on_popupdestroy,sysErrorConsoleRedraw"/>
+		<tab_order order_option="0" order_info="9,38"/>
+		<panel control_id="9" semantic_tag="0" x="0" y="0" right="0" bottom="0" width="1028" height="179" resize_dir="3" back_color="00615E5C" border="0" title_font="맑은 고딕,9,0,0,0,0">
+			<tab_order order_option="0" order_info="20"/>
+			<text control_id="8" autosize="3" x="30" y="22" right="885" bottom="138" width="113" height="19" text="발생원인 및 조치" font="나눔고딕,12,600,0,0,0" fore_color="0000CCFF" back_color_opacity="0" transparent="1" mousehover_font="맑은 고딕,9,0,0,0,0" version="1.1"/>
+			<pushbutton style="btn_s_2char" control_id="20" name="BtnClose" x="972" y="17" right="10" bottom="137" width="46" height="25" text="닫기" imagesize="2" gradient_startcolor="00808080" gradient_endcolor="00333333" hover_font="맑은 고딕,9,0,0,0,0" click_setfocus="0" version="1.1" on_mouseup="eventfunc:BtnClose_on_mouseup(objInst)"/>
+		</panel>
+		<tableview control_id="38" name="tvErrorMsg" x="30" y="48" right="8" bottom="15" width="990" height="116" height_type="1" resize_dir="1" border="0" border_color="003B3B3B" cell_line_vertcolor="003B3B3B" cell_line_horzcolor="003B3B3B" cell_line_vertstyle="0" cell_line_horzstyle="0" row_count="4" column_count="2" row_height="29:px,29:px,29:px,29:px" column_width="150:px,840:px" autoresize_column="1" design_fixmode="0" version="2.0">
+			<tab_order order_option="0" order_info="39,43,40,44,41,45,42,46"/>
+			<tr>
+				<td back_color="00575452" rect="0,0,150,29">
+					<hangul_field control_id="39" name="txtErrorMsgTitle0" autosize="0" x="0" y="0" right="0" bottom="0" width="150" height="29" font="나눔고딕,11,0,0,0,0" fore_color="00FFFFFF" back_color="00474544" border_color="003B3B3B" box_shadow_effect="0" horz_align="1" text_margin="1,10,1,1" apply_inputtypecolor="0" default_value="조치담당자메시지" tabstop="0"/>
+				</td>
+				<td back_color="00575452" rect="150,0,990,29">
+					<multiline control_id="43" name="txtErrorMsg0" x="0" y="0" right="3" bottom="0" width="837" height="29" resize_dir="1" font="굴림체,10,0,0,0,0" fore_color="00FFFFFF" back_color="00575452" border_color="003B3B3B" box_shadow_effect="0" text_margin="12,1,6,6" apply_inputtypecolor="0" line_gap="0" max_length="200" meta_maxlength="" input_type="2" tabstop="0"/>
+				</td>
+			</tr>
+			<tr>
+				<td back_color="00575452" rect="0,29,150,58">
+					<hangul_field control_id="40" name="txtErrorMsgTitle1" autosize="0" x="0" y="0" right="0" bottom="0" width="150" height="29" font="나눔고딕,11,0,0,0,0" fore_color="00FFFFFF" back_color="00474544" border_color="003B3B3B" box_shadow_effect="0" horz_align="1" text_margin="1,10,1,1" apply_inputtypecolor="0" default_value="오류메시지" tabstop="0"/>
+				</td>
+				<td back_color="00575452" rect="150,29,990,58">
+					<multiline control_id="44" name="txtErrorMsg1" x="0" y="0" right="3" bottom="0" width="837" height="29" resize_dir="1" font="굴림체,10,0,0,0,0" fore_color="00FFFFFF" back_color="00575452" border_color="003B3B3B" box_shadow_effect="0" text_margin="12,1,6,6" apply_inputtypecolor="0" line_gap="0" max_length="1000" meta_maxlength="" input_type="2" tabstop="0"/>
+				</td>
+			</tr>
+			<tr>
+				<td back_color="00575452" rect="0,58,150,87">
+					<hangul_field control_id="41" name="txtErrorMsgTitle2" autosize="0" x="0" y="0" right="0" bottom="0" width="150" height="29" font="나눔고딕,11,0,0,0,0" fore_color="00FFFFFF" back_color="00474544" border_color="003B3B3B" box_shadow_effect="0" horz_align="1" text_margin="1,10,1,1" apply_inputtypecolor="0" default_value="조치메시지" tabstop="0"/>
+				</td>
+				<td back_color="00575452" rect="150,58,990,87">
+					<multiline control_id="45" name="txtErrorMsg2" x="0" y="0" right="3" bottom="0" width="837" height="29" resize_dir="1" font="굴림체,10,0,0,0,0" fore_color="00FFFFFF" back_color="00575452" border_color="003B3B3B" box_shadow_effect="0" text_margin="12,1,6,6" apply_inputtypecolor="0" line_gap="0" max_length="1000" meta_maxlength="" input_type="2" tabstop="0"/>
+				</td>
+			</tr>
+			<tr>
+				<td back_color="00575452" rect="0,87,150,116">
+					<hangul_field control_id="42" name="txtErrorMsgTitle3" autosize="0" x="0" y="0" right="0" bottom="0" width="150" height="29" font="나눔고딕,11,0,0,0,0" fore_color="00FFFFFF" back_color="00474544" border_color="003B3B3B" box_shadow_effect="0" horz_align="1" text_margin="1,10,1,1" apply_inputtypecolor="0" default_value="사용자맞춤메시지" tabstop="0"/>
+				</td>
+				<td back_color="00575452" rect="150,87,990,116">
+					<multiline control_id="46" name="txtErrorMsg3" x="0" y="0" right="3" bottom="0" width="837" height="29" resize_dir="1" font="굴림체,10,0,0,0,0" fore_color="00FFFFFF" back_color="00575452" border_color="003B3B3B" box_shadow_effect="0" text_margin="12,1,6,6" apply_inputtypecolor="0" line_gap="0" max_length="2000" meta_maxlength="" input_type="2" tabstop="0"/>
+				</td>
+			</tr>
+		</tableview>
+		<hidden_screen>
+			<timer control_id="24" name="tiClose" x="832" y="48" width="28" height="28" enable="0" interval="10000" on_time="eventfunc:tiClose_on_time(objInst)"/>
+		</hidden_screen>
+	</map>
+</map_list>

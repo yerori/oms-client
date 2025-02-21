@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="PopupMessage" directory="/UTIL/" screenid="PopupMessage" last_update_date="2021-12-23 14:36:22" width="500" width_type="0" height="300" height_type="0" on_load="eventfunc:screen_on_load()" funclist="screen_on_load,_btnMessagePopClose_on_mouseup,createButton,popbtn_on_mouseup"/>
+		<tab_order order_option="0" order_info="6,7"/>
+		<panel control_id="6" semantic_tag="0" x="0" y="0" right="0" bottom="270" width="500" width_unit="1" height="30" back_color="00C28708" border="0" gradient_effect="1" gradient_startcolor="00C28708" gradient_endcolor="00F4AA0A" title_font="맑은 고딕,9,0,0,0,0">
+			<tab_order order_option="0" order_info="5"/>
+			<caption control_id="4" name="capScreenTitle" autosize="0" x="0" y="0" right="62" bottom="0" width="438" height="30" text="" font="맑은 고딕,12,1,0,0,0" transparent="1" mousehover_font="맑은 고딕,9,0,0,0,0"/>
+			<pushbutton control_id="5" name="_btnMessagePopClose" anchor="2" x="462" y="0" right="12" bottom="0" width="26" height="30" style_class="0" text="X" font="맑은 고딕,9,0,0,0,0" back_color="007D8118" back_color_opacity="0" border="4" hover_font="맑은 고딕,9,0,0,0,0" tabstop="0" enterstop="0" click_setfocus="0" version="1.1" on_mouseup="eventfunc:_btnMessagePopClose_on_mouseup(objInst)"/>
+		</panel>
+		<panel control_id="7" semantic_tag="0" x="6" y="36" right="8" bottom="42" width="486" height="222" title_font="맑은 고딕,9,0,0,0,0"></panel>
+	</map>
+</map_list>

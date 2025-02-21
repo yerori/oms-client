@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]비밀번호 변경" directory="/FRAME/" screenid="UserPwdChg" last_update_date="2023-06-15 10:12:26" width="420" width_type="0" height="300" height_type="0" on_load="eventfunc:screen_on_load()" on_destroy="eventfunc:screen_on_destroy()" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_destroy,btnClose_on_mouseup,screen_on_load,fnSearch,screen_on_submitcomplete,btnPwdChange_on_mouseup,fnPwdReSet,screen_on_messagebox"/>
+		<xlinkdataset id="dsMyInfo" desc="" columns="USER_ID::::;LGI_ID::::;USER_NAME::::;OU_CODE::::;OU_NAME::::;AT_OU::::;EMP_NO::::;VENDOR_CODE::::;VENDOR_NAME::::;USER_TYPE::::;E_COMMERCE_YN::::;PERSONAL_INFO_YN::::;INFO_SECURIT_YN::::;FIRST_PWD_CHANGE::::;ST_DATE::::;ED_DATE::::;EMAIL_ADDR::::;BIZ_DIV::::;REPORT_WEB_HTML::::;REPORT_MID::::;PW_OLD::::;PW_NEW::::;PW_NEW_CHECK::::"/>
+		<xlinkdataset id="dsPwdResult" desc="" columns="RESULT::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<xlinktranmap id="TR_PWD" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="51,579,580,581,35"/>
+		<table style="tbl_normal" control_id="571" x="14" y="124" right="12" bottom="52" width="394" height="124">
+			<cell style="HS_table_cell_01" cell_id="1" meta_id="LABEL01276" rect="0,0,114,42" font="맑은 고딕,10,1,0,0,0" text="기존비밀번호 "/>
+			<cell style="HS_table_cell_01" cell_id="2" meta_id="LABEL01277" rect="0,41,114,83" font="맑은 고딕,10,1,0,0,0" text="신규비밀번호 "/>
+			<cell style="HS_table_cell_01" rect="113,0,394,42" font="맑은 고딕,9,0,0,0,0"/>
+			<cell cell_id="3" meta_id="LABEL01278" rect="0,82,114,124" font="맑은 고딕,10,1,0,0,0" fore_color="00333333" back_color="00FFFBF7" horz_align="2" text="신규비밀번호확인"/>
+			<cell rect="113,41,394,83" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7"/>
+			<cell rect="113,82,394,124" font="맑은 고딕,9,0,0,0,0" fore_color="00333333" back_color="00FFFBF7"/>
+		</table>
+		<image control_id="50" autosize="0" x="15" y="8" right="389" bottom="276" width="16" height="16" transparent="0" border="0" padding="0,0,0,0" image="/icon_bullet.gif" image_width="17" image_height="17"/>
+		<text control_id="32" name="stSystemMenuTitle" meta_id="LABEL01275" autosize="0" x="36" y="7" right="184" bottom="275" width="200" height="18" text="비밀번호변경" font="맑은 고딕,12,1,0,0,0" version="1.1"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="35" name="btnPwdChange" meta_id="LABEL02607" x="168" y="259" right="154" bottom="11" width="98" height="30" text="변경완료" font="맑은 고딕,10,1,0,0,0" version="1.1" on_mouseup="eventfunc:btnPwdChange_on_mouseup(objInst)"/>
+		<pushbutton style="HS_BTN_CLOSE_01" control_id="51" name="btnClose" x="335" y="6" right="15" bottom="269" width="70" height="25" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objInst)"/>
+		<image control_id="577" autosize="0" x="15" y="101" right="400" bottom="183" width="5" height="16" transparent="0" border="0" padding="0,0,0,0" image="/title_dot.png" imagesize="3" image_width="5" image_height="13"/>
+		<text control_id="578" meta_id="LABEL01275" autosize="0" x="27" y="100" right="283" bottom="184" width="110" height="16" text="비밀번호변경" font="맑은 고딕,11,0,0,0,0" version="1.1"/>
+		<password_field control_id="579" name="fldOldPwd" in_index="1" autosize="0" x="134" y="130" right="18" bottom="140" width="268" height="30" font="맑은 고딕,10,0,0,0,0" link_data="dsMyInfo:PW_OLD" max_length="512"/>
+		<password_field control_id="580" name="fldNewPwd" in_index="2" autosize="0" x="134" y="171" right="18" bottom="99" width="268" height="30" font="맑은 고딕,10,0,0,0,0" link_data="dsMyInfo:PW_NEW" max_length="512"/>
+		<password_field control_id="581" name="fldNewPwdCheck" in_index="3" autosize="0" x="134" y="212" right="18" bottom="58" width="268" height="30" font="맑은 고딕,10,0,0,0,0" link_data="dsMyInfo:PW_NEW_CHECK" max_length="512"/>
+		<text control_id="583" meta_id="LABEL02606" autosize="0" x="20" y="41" right="18" bottom="215" width="382" height="44" text="비밀번호는 주기적으로 변경하는 것이 좋습니다.&#x0D;&#x0A;안정한 이용을 위해 새 비밀번호를 입력해주세요." font="맑은 고딕,10,0,0,0,0" fore_color="00787878" line_gap="4" version="1.1"/>
+	</map>
+</map_list>

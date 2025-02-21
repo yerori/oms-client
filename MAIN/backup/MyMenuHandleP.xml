@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map_list>
+	<map>
+		<screen version="2.0" scriptcode="java" title="[팝업]마이메뉴핸들" directory="/MAIN/" screenid="MyMenuHandleP" last_update_date="2022-03-16 19:19:19" width="198" width_type="0" height="30" height_type="0" back_color="00DDDDDD" on_load="eventfunc:screen_on_load()" funclist="fnSetData,btnClose_on_mouseup,screen_on_load,btnMyNenuAdd_on_mouseup,btnMyNenuDel_on_mouseup,fnParentCallBackRun"/>
+		<xlinkdataset id="dsMultiCombo" desc="" columns="CD_LEVEL::::;CD_PATH::::;ROOT_COM_CD_ID::::;ROOT_COM_CD_ID_NM::::;CO_ID::::;COM_CD_ID::::;COM_CD_ID_NM::::;SUPI_COM_CD_ID::::;SUPI_COM_CD_ID_NM::::;COM_CD_ORDER::::;USE_YN::::;DEL_YN::::;COM_CD_NOTE::::;RESERVED_1::::;RESERVED_2::::;RESERVED_3::::;RESERVED_4::::;RESERVED_5::::;RESERVED_6::::;RESERVED_7::::;RESERVED_8::::;RESERVED_9::::;RESERVED_10::::;CRE_USER_ID::::;CRE_DTM::::;MDFY_USER_ID::::;MDFY_DTM::::"/>
+		<xlinktranmap id="TRANSACITON_COMMON" url="" comment="">
+		</xlinktranmap>
+		<tab_order order_option="0" order_info="247,245,246"/>
+		<pushbutton control_id="247" name="btnMyNenuDel" meta_id="LABEL00964" x="0" y="0" right="0" bottom="0" width="198" height="30" text="      My Menu 삭제" font="나눔고딕 ExtraBold,10,1,0,0,0" fore_color="003C3C3C" image_normal="/mousePop_nor.gif" image_focus="/mousePop_over.gif" image_disable="/mousePop_nor.gif" image_down="/mousePop_nor.gif" image_hover="/mousePop_over.gif" hover_font="맑은 고딕,9,0,0,0,0" version="1.1" on_mouseup="eventfunc:btnMyNenuDel_on_mouseup(objinst)"/>
+		<pushbutton control_id="245" name="btnMyNenuAdd" meta_id="LABEL00963" x="0" y="0" right="0" bottom="0" width="198" height="30" text="      My Menu 추가" font="나눔고딕 ExtraBold,10,1,0,0,0" fore_color="003C3C3C" image_normal="/mousePop_nor.gif" image_focus="/mousePop_over.gif" image_disable="/mousePop_nor.gif" image_down="/mousePop_nor.gif" image_hover="/mousePop_over.gif" hover_font="맑은 고딕,9,0,0,0,0" version="1.1" on_mouseup="eventfunc:btnMyNenuAdd_on_mouseup(objinst)"/>
+		<pushbutton control_id="246" name="btnCommonClose" x="172" y="4" right="4" bottom="4" width="22" height="22" text="" font="맑은 고딕,9,0,0,0,0" image_normal="/x_nor.gif" image_focus="/x_over.gif" image_disable="/x_nor.gif" image_down="/x_nor.gif" image_hover="/x_over.gif" hover_font="맑은 고딕,9,0,0,0,0" version="1.1" on_mouseup="eventfunc:btnClose_on_mouseup(objinst)"/>
+	</map>
+</map_list>
