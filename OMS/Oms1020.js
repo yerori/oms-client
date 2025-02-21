@@ -914,6 +914,7 @@ function fnPopupVersionCallback(aryHash)
 function btnProjectPop_on_click(objInst)
 {
 	var strPopupName = UT.gfnGetMetaData("LABEL02407", "프로젝트코드");
+	
 	objPopupExtraData.clear();
 	objPopupExtraData.P_DATA1 = ouCode;
 	//objPopupExtraData.P_DATA2 = this.dsProject.getdatabyname(this.dsProject.getpos(),"CUSTOMER_NAME");

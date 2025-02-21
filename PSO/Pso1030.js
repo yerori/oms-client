@@ -146,11 +146,11 @@ function screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, rec
 		} else {
 			UT.statMsg(screen , "MSG003" , "%% 건의 데이터가 조회되었습니다." , this.dsPsoList.getrowcount());	//하단메세지 처리
 			
-			console.log("gfnGetMetaData", UT.gfnGetMetaData("LABEL02627",""));
-			
 			var aryColumn = ["PSO_TARGET_YN","NO_TARGET_REASON","PSO_CREATE_YN"];
 			for(var i=0;i<this.dsPsoList.getrowcount();i++){
-				
+
+//				button text가 null일 시에만 set text 250221 by.yelee				
+//				if(!UT.isNull(UT.gfnGetMetaData("LABEL02627",""))){	
 				if(UT.isNull(UT.gfnGetMetaData("LABEL02627",""))){
 					this.grdList.setcolumnbuttontext(this.grdList.getcolumn("PSO_CREATE_YN"), UT.gfnGetMetaData("LABEL02627",""));
 				}
