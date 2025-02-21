@@ -138,23 +138,21 @@ function screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, rec
 		return;
 	}
 	
-	if(recv_userheader == "selectList")
-	{		
+	if(recv_userheader == "selectList"){		
 		if(this.dsPsoList.getrowcount() == 0){
 			UT.alert(screen , "MSG001" , "검색 결과가 없습니다.");	//경고창 처리
 			return;
 		} else {
 			UT.statMsg(screen , "MSG003" , "%% 건의 데이터가 조회되었습니다." , this.dsPsoList.getrowcount());	//하단메세지 처리
 			
-			var aryColumn = ["PSO_TARGET_YN","NO_TARGET_REASON","PSO_CREATE_YN"];
-			for(var i=0;i<this.dsPsoList.getrowcount();i++){
-
-//				button text가 null일 시에만 set text 250221 by.yelee				
-//				if(!UT.isNull(UT.gfnGetMetaData("LABEL02627",""))){	
-				if(UT.isNull(UT.gfnGetMetaData("LABEL02627",""))){
+			// 기존에 for 문 안에 있었던 아래의 조건문을 반복문 밖으로 빼냄 250221 by.yelee
+			if(!UT.isNull(UT.gfnGetMetaData("LABEL02627",""))){	
 					this.grdList.setcolumnbuttontext(this.grdList.getcolumn("PSO_CREATE_YN"), UT.gfnGetMetaData("LABEL02627",""));
-				}
+			}
 				
+			var aryColumn = ["PSO_TARGET_YN","NO_TARGET_REASON","PSO_CREATE_YN"];
+			
+			for(var i=0;i<this.dsPsoList.getrowcount();i++){	
 				//사용자 권한 Control (PM담당자만 수정,생성가능)
 				if (INI.GV_USER_BIZ_DIV == "PM") {
 					if( this.dsPsoList.getdatabyname(i,"PSO_TARGET_YN") == "S" ){
