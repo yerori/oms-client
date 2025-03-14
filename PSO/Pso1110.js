@@ -257,13 +257,8 @@ function fnTransferSearch_on_click(objInst) {
 	
 	
 	// 프로젝트 조회
-	if(btnName == "btnProjectCodePop") { 	
-		objPopupExtraData.clear();
-		objPopupExtraData.P_DATA1 = ouCode;
-		//objPopupExtraData.P_DATA2 = this.edtProjectCode.gettext();
-		objPopupExtraData.P_DATA3 = "Y";
-		objPopupExtraData.RETURN_FUNCTION_NAME = "fnProjectCodeClosePopCallback";
-		screen.loadportletpopup("ProjectCodeSelect", "/PSO/Pso1051", strPopupName, false, 0, 0, 0, 1130, 440, true, true, false, objPopupExtraData);
+	if(btnName == "btnProjectCodePop"){ 	
+		this.fnProjectCodePopupCall();
 	}
 
 	// PSO 담당자명 조회
@@ -272,11 +267,19 @@ function fnTransferSearch_on_click(objInst) {
 		objPopupExtraData.clear();
 		objPopupExtraData.P_DATA1 = ouCode;
 		objPopupExtraData.P_DATA6 = authScope;	  //권한
-		objPopupExtraData.RETURN_FUNCTION_NAME = "fnPopupUpdLoginNoResponsePopCallback";
-		screen.loadportletpopup(strPopupName, "/FRAME/popupEmpUser", strPopupName, false, 0, 0, 0, 686, 410, true, true, false, objPopupExtraData);
-		
+		objPopupExtraData.RETURN_FUNCTION_NAME = "fnPopupUpdLoginNoResponsePopCallback";screen.loadportletpopup(strPopupName, "/FRAME/popupEmpUser", strPopupName, false, 0, 0, 0, 686, 410, true, true, false, objPopupExtraData);
 	}	
-	
+}	
+
+
+function fnProjectCodePopupCall(projectCode) {
+	var strPopupName = UT.gfnGetMetaData("LABEL02665", "PSO 프로젝트 신제품 개발 서류 목록 조회"); 
+	objPopupExtraData.clear();
+	objPopupExtraData.P_DATA1 = ouCode;
+	objPopupExtraData.P_DATA2 = projectCode;
+	objPopupExtraData.P_DATA3 = "Y";
+	objPopupExtraData.RETURN_FUNCTION_NAME = "fnProjectCodeClosePopCallback";
+	screen.loadportletpopup("ProjectCodeSelect", "/PSO/Pso1051", strPopupName, false, 0, 0, 0, 1130, 440, true, true, false, objPopupExtraData);
 }
 
 
@@ -331,7 +334,7 @@ function fnPopupUpdLoginNoResponsePopCallback(aryHash)
 	
 	if(!aryHash["USER_ID"]) {
 		this.omsUserStatus.setvisible(true);
-		this.omsUserStatus.settext(aryHash["EMP_NAME"] + " 담당자는 OMS에 등록된 유저가 아닙니다. 회원가입이 필요합니다.");
+		this.omsUserStatus.settext(aryHash["EMP_NAME"] + " 담당자는 OMS에 등록된 유저가 아닙니다. <br/>계정신청을 해주시기 바랍니다. (이관 작업은 가능함.)");
 	}
 	else {
 		this.omsUserStatus.setvisible(false);
@@ -425,18 +428,6 @@ function ComProductName_on_prekeydown(objInst, keycode, bctrldown, bshiftdown, b
 	return 0;
 }
 
-
-
-/*
-* 검색바 properties keydown 이벤트
-*/
-function transferSearch_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)
-{
-	if(keycode==13){    
-		this.btnCommonSearch_on_mouseup();
-	}
-	return;
-}
 
 
 function cboCarType_on_prekeydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)
@@ -693,16 +684,11 @@ function edtChargeUserName_on_changed(objInst, prev_text, curr_text, event_type)
 	var chargeName = this.dsSearch.getdatabyname(0, "PSO_CHARGE_USER_NAME");
 	
 	if(!chargeName) {
-		UT.gfnHrEditorStyle(this.rbPrev, "D");	
-		UT.gfnHrEditorStyle(this.rbCur, "D");	
-		
 		this.dsSearch.setdatabyname(0 , "PSO_CHARGE_USER_ID" , SYSVar.NO_USER_ID);
 	}
 	// event_type == 5 : 타이핑에 의한 on change만 작동
 	else if(chargeName && event_type == 5) {
 		this.btnChargeUserPop_on_click(objInst, chargeName);
-		UT.gfnHrEditorStyle(this.rbPrev, "G");	
-		UT.gfnHrEditorStyle(this.rbCur, "G");
 	};
 }
 
@@ -746,4 +732,36 @@ function grdList_on_filtercomplete(objInst)
 		
 		this.dsList.setdatabyname(i, "FILTER_FLAG" , filterFlag);	
 	}
+}
+
+/*
+* 검색바 properties keydown 이벤트
+*/
+function transferSearch_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)
+{
+//  검색 방법 통합위해 아래 코드로 수정 250313 by.yelee
+//	if(keycode==13){    
+//		this.btnCommonSearch_on_mouseup();
+//	}
+//	return;
+	var prjCode = this.dsSearch.getdatabyname(0, "PROJECT_CODE");
+	
+	// Enter
+	if(keycode==13){   
+		if(prjCode) {
+			this.edtProjectCode_on_changed();	
+		} else {
+			this.btnCommonSearch_on_mouseup();	
+		}	
+	} 
+	return 0;
+}
+
+function edtProjectCode_on_changed(objInst, prev_text, curr_text, event_type)
+{
+	var prjCode = this.dsSearch.getdatabyname(0, "PROJECT_CODE");
+	
+	if(prjCode) {		
+		this.fnProjectCodePopupCall(prjCode);
+	} 
 }

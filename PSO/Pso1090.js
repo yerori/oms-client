@@ -251,19 +251,35 @@ function cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown,
 
 function edtProjectCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)
 {
-	this.fnEnter(keycode);
+//	this.fnEnter(keycode);
+//	return 0;
+	var prjCode = this.dsSearch.getdatabyname(0, "PROJECT_CODE");
+	
+	// Enter
+	if(keycode==13){   
+		if(prjCode) {
+			this.edtProjectCode_on_changed();	
+		} else {
+			this.btnCommonSearch_on_mouseup();	
+		}	
+	} 
 	return 0;
 }
 
 function edtProjectCode_on_changed(objInst, prev_text, curr_text, event_type)
 {
-	if( event_type == 5 ){
-		if (!curr_text) {
-			this.edtProjectCode.settext("");
-		} else {
-			this.fnProjectCodePopupCall(this.edtProjectCode.gettext());
-		}
-	}
+//	if( event_type == 5 ){
+//		if (!curr_text) {
+//			this.edtProjectCode.settext("");
+//		} else {
+//			this.fnProjectCodePopupCall(this.edtProjectCode.gettext());
+//		}
+//	}
+	var prjCode = this.dsSearch.getdatabyname(0, "PROJECT_CODE");
+	
+	if(prjCode) {		
+		this.fnProjectCodePopupCall(prjCode);
+	} 
 }
 
 /*
@@ -501,7 +517,6 @@ function fnCreateXYChart(objInst)
 //		datalist[i] = aryHash;
 //	}
 	var datalist = UT.gfnDsToAry(this.dsPsoDeptList);
-	//console.log("datalist : ", datalist);
 	yAxis.data.setAll(datalist);
 	series.data.setAll(datalist);
 	

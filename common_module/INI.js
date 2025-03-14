@@ -421,7 +421,7 @@ function gfnPageIniProcessor(objScreen){
 				}	
 			}
 
-			//console.log(objRight, buttonArray[i].btnId.getname());
+			
 			const btnObj = buttonArray[i].btnId.getdom();
 			btnObj.style.inset = "";
 			btnObj.style.position = "absolute";
@@ -879,7 +879,6 @@ function gfnIniSetMultiLanguageText(arrCompoList)
 		{
 			nControlkind = arrCompoList[nArr].getcontrolkind();
 
-		//	console.log(nArr, 'nControlkind => ' + nControlkind);
 			if (nControlkind == XFD_CTRLKIND_TABLEVIEW) continue;
 
 			nFontSize      = arrCompoList[nArr].getfontsize();
@@ -974,7 +973,6 @@ function gfnIniSetMultiLanguageText(arrCompoList)
 			}
 //			else // 그외 control
 //			{
-//				console.log("else : " + nControlkind);
 //				continue;
 //			}	 
 							

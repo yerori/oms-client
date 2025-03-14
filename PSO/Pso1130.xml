@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <map_list>
 	<map>
-		<screen version="2.0" scriptcode="java" title="PM 담당자 이관" directory="/PSO/" screenid="Pso1130" last_update_date="2025-02-14 16:02:28" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,fnDsSet,fnSetInitControl,screen_on_submitcomplete,btnCommonSearch_on_mouseup,screen_on_messagebox,screen_on_size,grdMaster_on_itemdblclick,btnCommonClose_on_mouseup,comOu_on_itemchange,fnTransferSearch_on_click,fnPopupCustClosePopCallback,fnProjectCodeClosePopCallback,fnPopupUpdLoginNoResponsePopCallback,getAllSearchData,fnSetGridCheck,fnSearch,ComProductName_on_prekeydown,transferSearch_on_keydown,cboCarType_on_prekeydown,fnValidForm,fnTransferData,btnTransfer_on_mouseup,btnReset_on_mouseup,stdTransferDate_on_changed,btnCustomerPop_on_click,edtCustomerName_on_keydown,edtCustomerName_on_changed,grdList_on_filtercomplete"/>
+		<screen version="2.0" scriptcode="java" title="PM 담당자 이관" directory="/PSO/" screenid="Pso1130" last_update_date="2025-03-13 14:58:02" width="1440" width_type="2" height="758" height_type="2" on_load="eventfunc:screen_on_load()" on_size="eventfunc:screen_on_size(window_width, window_height)" on_submitcomplete="eventfunc:screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)" on_messagebox="eventfunc:screen_on_messagebox(messagebox_id, result)" funclist="screen_on_load,fnDsSearchSet,fnDsSet,fnSetInitControl,screen_on_submitcomplete,btnCommonSearch_on_mouseup,screen_on_messagebox,screen_on_size,grdMaster_on_itemdblclick,btnCommonClose_on_mouseup,comOu_on_itemchange,fnTransferSearch_on_click,fnProjectCodePopupCall,fnPopupCustClosePopCallback,fnProjectCodeClosePopCallback,fnPopupUpdLoginNoResponsePopCallback,getAllSearchData,fnSetGridCheck,fnSearch,ComProductName_on_prekeydown,cboCarType_on_prekeydown,fnValidForm,fnTransferData,btnTransfer_on_mouseup,btnReset_on_mouseup,stdTransferDate_on_changed,btnCustomerPop_on_click,edtCustomerName_on_keydown,edtCustomerName_on_changed,grdList_on_filtercomplete,transferSearch_on_keydown,edtProjectCode_on_changed"/>
 		<xlinkdataset id="dsSearch" desc="공통조회" columns="OU_CODE::::;PROJECT_CODE::::;CUSTOMER_ID::::;CUSTOMER_NAME::::;PRODUCT_CODE::::;PRODUCT_NAME::::;PM_CHG_USER_ID::::;PM_CHG_USER_NAME::::;CAR_TYPE_CODE::::;REGISTER_FROM_YEAR::::;REGISTER_TO_YEAR::::;OU_COUNTRY_CODE::::"/>
 		<xlinkdataset id="dsUser" desc="유저 정보" columns="LOGIN_NO:&quot;로그인 아이디&quot;:::;OU_CODE:&quot;법인 코드&quot;:::;OU_NAME:&quot;법인 이름&quot;:::;EMP_NO:&quot;사번&quot;:::;USER_ID:&quot;유저 아이디&quot;:::;USER_NAME:&quot;유저 이름&quot;:::;UPD_LOGIN_NO:&quot;변경 로그인 아이디&quot;:::;UPD_OU_CODE:&quot;변경 법인 코드&quot;:::;UPD_OU_NAME:&quot;변경 법인 이름&quot;:::;UPD_EMP_NO:&quot;변경 사번&quot;:::;UPD_USER_ID:&quot;변경 유저 아이디&quot;:::;UPD_USER_NAME:&quot;변경 유저 이름&quot;:::;UPD_DETAILS:&quot;변경 내용&quot;:::;UPD_TYPE:&quot;변경 유형&quot;:::;TRANSFER_DATE:&quot;이관일&quot;:::;RFQ_CODE:&quot;RFQ코드&quot;:::;RFQ_START_DATE:&quot;RFQ 시작일&quot;:::"/>
 		<xlinkdataset id="dsOU" desc="법인 LIST" columns="CODE::::;NAME::::"/>
@@ -85,31 +85,31 @@
 		<grid style="HS_GRID_BASIC_01" control_id="0" name="grdList" in_index="20" x="516" y="177" right="24" bottom="181" width="900" height="400" resize_dir="3" header_vertcount="0" header_height="28" cell_height="22" selectrow_bordercolor="0080623C" multi_checkrow="1" checkrowwithselect="1" checkrow_width="50" multi_selectrow="1" link_data="dsList" samplerows="4" autocolumnwidth="2" version="1.2" on_filtercomplete="eventfunc:grdList_on_filtercomplete(objInst)">
 			<column>
 				<header title="선택" checkbox_show="1"/>
-				<data style="HS_GRID_DATA_BC_01" name="CHK_FLAG" width="50" text_horzalign="1" editable="1" input_type="1" cellmerge="1,&quot;PROJECT_CODE&quot;" default_value="Y" link_data="dsList:CHK_FLAG" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
+				<data style="HS_GRID_DATA_BC_01" name="CHK_FLAG" width="50" text_horzalign="1" editable="1" input_type="1" default_value="Y" link_data="dsList:CHK_FLAG" checkbox_truevalue="Y" checkbox_falsevalue="N" bargauge_transparent="0"/>
 			</column>
 			<column>
 				<header meta_id="LABEL00064" title="프로젝트 코드"/>
-				<data style="HS_GRID_DATA_BC_01" name="PROJECT_CODE" width="150" cellmerge="1,&quot;PROJECT_CODE&quot;" link_data="dsList:PROJECT_CODE" bargauge_transparent="0"/>
+				<data style="HS_GRID_DATA_BC_01" name="PROJECT_CODE" width="150" link_data="dsList:PROJECT_CODE" bargauge_transparent="0"/>
 			</column>
 			<column>
 				<header title="PM 담당자"/>
-				<data style="HS_GRID_DATA_BC_01" name="PM_CHG_USER_NAME" width="100" text_horzalign="1" cellmerge="1,&quot;PROJECT_CODE&quot;" link_data="dsList:PM_CHG_USER_NAME" calendar_type="1" bargauge_transparent="0"/>
+				<data style="HS_GRID_DATA_BC_01" name="PM_CHG_USER_NAME" width="100" text_horzalign="1" link_data="dsList:PM_CHG_USER_NAME" calendar_type="1" bargauge_transparent="0"/>
 			</column>
 			<column>
 				<header meta_id="LABEL01587" title="차종"/>
-				<data style="HS_GRID_DATA_BC_01" name="CAR_TYPE_NAME" width="120" data_type="2" cellmerge="1,&quot;PROJECT_CODE&quot;" link_data="dsList:CAR_TYPE_NAME" picklist_linkdata="dsCarType:CODE:NAME:" picklist_selstyle="2" picklist_viewstyle="2" calendar_image="/ico_carlenda_grid.gif" calendar_type="1" calendar_editable="1" bargauge_transparent="0"/>
+				<data style="HS_GRID_DATA_BC_01" name="CAR_TYPE_NAME" width="120" data_type="2" link_data="dsList:CAR_TYPE_NAME" picklist_linkdata="dsCarType:CODE:NAME:" picklist_selstyle="2" picklist_viewstyle="2" calendar_image="/ico_carlenda_grid.gif" calendar_type="1" calendar_editable="1" bargauge_transparent="0"/>
 			</column>
 			<column>
 				<header title="등록년도"/>
-				<data style="HS_GRID_DATA_BC_01" width="70" text_horzalign="1" cellmerge="1,&quot;PROJECT_CODE&quot;" link_data="dsList:REGISTER_YEAR" bargauge_transparent="0"/>
+				<data style="HS_GRID_DATA_BC_01" width="70" text_horzalign="1" link_data="dsList:REGISTER_YEAR" bargauge_transparent="0"/>
 			</column>
 			<column>
 				<header meta_id="LABEL02368" title="법인구분"/>
-				<data style="HS_GRID_DATA_02" name="OU_COUNTRY_NAME" width="100" image_horzalign="1" resizable="0" cellmerge="1,&quot;PROJECT_CODE&quot;" link_data="dsList:OU_COUNTRY_NAME" bargauge_transparent="0"/>
+				<data style="HS_GRID_DATA_02" name="OU_COUNTRY_NAME" width="100" image_horzalign="1" resizable="0" link_data="dsList:OU_COUNTRY_NAME" bargauge_transparent="0"/>
 			</column>
 			<column>
 				<header meta_id="LABEL00193" title="고객명"/>
-				<data style="HS_GRID_DATA_BC_01" name="CUSTOMER_NAME" width="120" cellmerge="1,&quot;PROJECT_CODE&quot;" link_data="dsList:CUSTOMER_NAME" calendar_type="1" bargauge_transparent="0"/>
+				<data style="HS_GRID_DATA_BC_01" name="CUSTOMER_NAME" width="120" link_data="dsList:CUSTOMER_NAME" calendar_type="1" bargauge_transparent="0"/>
 			</column>
 			<column>
 				<header meta_id="LABEL00765" title="Product Name"/>
@@ -134,11 +134,10 @@
 		<pushbutton style="HS_BTN_CLOSE_01" control_id="547" name="btnCommonSearch" meta_id="LABEL00008" anchor="2" x="1273" y="8" right="100" bottom="725" width="67" height="25" text="조회" version="1.1" on_mouseup="eventfunc:btnCommonSearch_on_mouseup(objInst)"/>
 		<pushbutton style="HS_BTN_CLOSE_01" control_id="37" name="btnCommonClose" meta_id="LABEL00012" anchor="2" x="1345" y="8" right="28" bottom="725" width="67" height="25" version="1.1" on_mouseup="eventfunc:btnCommonClose_on_mouseup(objInst)"/>
 		<text control_id="574" autosize="0" x="331" y="52" right="1029" bottom="686" width="80" height="20" text="프로젝트 코드" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
-		<hangul_field control_id="575" name="edtProjectCode" in_index="12" out_index="-2" autosize="0" x="417" y="52" right="851" bottom="686" width="172" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:PROJECT_CODE" max_length="100" on_keydown="eventfunc:transferSearch_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)"/>
+		<hangul_field control_id="575" name="edtProjectCode" in_index="12" out_index="-2" autosize="0" x="417" y="52" right="851" bottom="686" width="172" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:PROJECT_CODE" max_length="100" on_keydown="eventfunc:transferSearch_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)" on_changed="eventfunc:edtProjectCode_on_changed(objInst, prev_text, curr_text, event_type)"/>
 		<image control_id="576" name="btnProjectCodePop" autosize="0" x="586" y="52" right="835" bottom="686" width="19" height="20" transparent="0" border="0" padding="0,0,0,0" image="/ico_search.gif" image_width="19" image_height="20" mouse_cursor="11" on_click="eventfunc:fnTransferSearch_on_click(objInst)"/>
 		<text control_id="602" autosize="0" x="331" y="82" right="1029" bottom="656" width="80" height="20" text="*PM 담당자" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>
 		<hangul_field control_id="603" name="edtChargeUserName" in_index="15" out_index="-2" autosize="0" x="417" y="82" right="882" bottom="656" width="141" height="20" font="맑은 고딕,9,0,0,0,0" link_data="dsSearch:PM_CHG_USER_NAME" editable="0" max_length="100"/>
-		<text control_id="607" name="omsUserStatus" x="24" y="402" right="1333" bottom="344" width="83" width_type="1" height="12" font="맑은 고딕,10,1,0,0,0" fore_color="00FF0E0E" back_color_opacity="0" hidden="1" version="1.1"/>
 		<text control_id="608" x="648" y="158" right="525" bottom="588" width="267" height="12" text="(미래 일자로 이관한 목록은 선택할 수 없습니다. )" font="맑은 고딕,9,0,0,0,0" version="1.1"/>
 		<text control_id="613" name="txtChargeUserId" x="570" y="86" right="801" bottom="660" width="69" height="12" font="맑은 고딕,9,0,0,0,0" back_color_opacity="0" link_data="dsSearch:PM_CHG_USER_ID" hidden="1" version="1.1"/>
 		<text control_id="573" meta_id="LABEL00193" autosize="0" x="672" y="52" right="688" bottom="686" width="80" height="20" text="고객명" font="맑은 고딕,9,0,0,0,0" back_color="00FFF2EB" horz_align="2" version="1.1"/>

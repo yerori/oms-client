@@ -142,6 +142,15 @@ function screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, rec
 	}
 }
 
+// 담당자 이름 유효한지 체크
+function checkInvalidChargeUser() {
+	var chargeUserId = this.dsSearch.getdatabyname(0, "CHARGE_USER_ID");
+	
+	// USER ID가 음수라면, null을 의미
+	var isNotValidUserId = chargeUserId < 0;
+	
+	return isNotValidUserId;
+}
 
 function fnInvalidSearch() {
 	// 조회 시 반드시 한 항목 이상은 입력되어야 하는 컬럼명들
@@ -170,9 +179,15 @@ function fnInvalidSearch() {
 function btnCommonSearch_on_mouseup(objInst)
 {
 	var isInvalid = this.fnInvalidSearch();
+	var isNotValidUserId = this.checkInvalidChargeUser();
 	
 	if(isInvalid) {
 		UT.alert(this.screen , "MSG611" , "검색 항목은 한 개 이상 입력되어야 합니다.");
+		return;
+	}
+	
+	if(isNotValidUserId) {
+		UT.alert(this.screen, "MSG613" , "담당자를 다시 입력해 주세요.");
 		return;
 	}
 	
@@ -226,18 +241,6 @@ function stdDate_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, b
 	return;
 }
 
-
-/*
-* 프로젝트 코드
-*/
-function edtProjectCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)
-{
-	
-	if(keycode==13){    // 엔터키값 조회 버튼 click call
-		this.btnCommonSearch_on_mouseup();
-	}
-	return;
-}
 
 function btnChargeUserPop_on_click(objInst, searchName){
 	var strPopupName = UT.gfnGetMetaData("", "PSO 서류관리 담당자 조회");
@@ -304,7 +307,7 @@ function fnProjectCodeClosePopCallback(aryHash)
 		this.dsSearch.setdatabyname(iRow , "PROJECT_CODE" , aryHash["PROJECT_CODE"]);
 		this.dsSearch.setdatabyname(iRow , "PSO_PROJECT_ID" , aryHash["PSO_PROJECT_ID"]);
 		this.dsSearch.setdatabyname(iRow , "PSO_DOCU_ID" , aryHash["PSO_DOCU_ID"]);
-		this.btnCommonSearch_on_mouseup();
+		
 	} else {
 		this.dsSearch.setdatabyname(iRow , "PROJECT_CODE" , "");
 		this.dsSearch.setdatabyname(iRow , "PSO_PROJECT_ID" , "");
@@ -332,16 +335,54 @@ function searchPop_on_click(objInst)
 	
 	// 고객명 조회
 	if(btnName == "btnProjectCodePop") { 
-		var strPopupName = UT.gfnGetMetaData("LABEL02407", "프로젝트코드");	
-		objPopupExtraData.clear();
-		objPopupExtraData.P_DATA1 = ouCode;
-		//objPopupExtraData.P_DATA2 = this.edtProjectCode.gettext();
-		objPopupExtraData.P_DATA3 = "Y";
-		objPopupExtraData.RETURN_FUNCTION_NAME = "fnProjectCodeClosePopCallback";
-		screen.loadportletpopup("ProjectCodeSelect", "/PSO/Pso1051", strPopupName, false, 0, 0, 0, 1130, 440, true, true, false, objPopupExtraData);
+		this.fnProjectCodePopupCall();
 	}
 	
 	else if(btnName == "btnChargeUserPop") {
 		this.btnChargeUserPop_on_click(objInst);
 	}
+}
+
+function fnProjectCodePopupCall(projectCode) {
+	var strPopupName = UT.gfnGetMetaData("LABEL02665", "PSO 프로젝트 신제품 개발 서류 목록 조회"); 
+	objPopupExtraData.clear();
+	objPopupExtraData.P_DATA1 = ouCode;
+	objPopupExtraData.P_DATA2 = projectCode;
+	objPopupExtraData.P_DATA3 = "Y";
+	objPopupExtraData.RETURN_FUNCTION_NAME = "fnProjectCodeClosePopCallback";
+	screen.loadportletpopup("ProjectCodeSelect", "/PSO/Pso1051", strPopupName, false, 0, 0, 0, 1130, 440, true, true, false, objPopupExtraData);
+	
+}
+
+/*
+* 프로젝트 코드
+*/
+function edtProjectCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)
+{
+//  검색 방법 통합위해 아래 코드로 수정 250313 by.yelee
+//	if(keycode==13){    // 엔터키값 조회 버튼 click call
+//		this.btnCommonSearch_on_mouseup();
+//	}
+	var prjCode = this.dsSearch.getdatabyname(0, "PROJECT_CODE");
+	
+	// Enter
+	if(keycode==13){   
+		if(prjCode) {
+			this.edtProjectCode_on_changed();	
+		} else {
+			this.btnCommonSearch_on_mouseup();	
+		}	
+	} 
+	return 0;
+}
+
+
+
+function edtProjectCode_on_changed(objInst, prev_text, curr_text, event_type)
+{
+	var prjCode = this.dsSearch.getdatabyname(0, "PROJECT_CODE");
+	
+	if(prjCode) {		
+		this.fnProjectCodePopupCall(prjCode);
+	} 
 }

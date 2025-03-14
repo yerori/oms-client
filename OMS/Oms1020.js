@@ -88,11 +88,6 @@ function fnInitSet(){
 	UT.gfnGetCommCodes(this.dsProductPkg, "O012","N");		// Product Pkg (O012)
 	UT.gfnGetCommCodes(this.dsSalesType, "O022","N");		 // 판매유형 (O022)
 	
-
-    
-
-
-
 	//조회 조건 set
 	this.dsSearch.removeallrows();
 	var iRow = this.dsSearch.getrowcount();
@@ -135,6 +130,7 @@ function fnInitSet(){
 		UT.gfnHrEditorStyle(this.fldRegisterYear, "D");
     	UT.gfnHrEditorStyle(this.fldCustomerName, "D");
     	UT.gfnHrEditorStyle(this.fldSRFQ, "D");
+		
 	    this.fnSearch();
     }   
 	//OU변경 권한을 가진 자 만 활성
@@ -172,7 +168,6 @@ function fnInitSet(){
 function screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, recv_msg)
 {
 	UT.gfnWaitDestroy(screen);
-	
 	if(recv_code != 0){
 		UT.alert(this.screen , "" , recv_msg);
 		return;
@@ -317,7 +312,7 @@ function screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, rec
 	      	}
 	    }
 	}
-	
+		
 	if(recv_userheader == "insertAndselect")
 	{
 		//UT.alert(this.screen , "MSG010" , "저장되었습니다.");	
@@ -343,7 +338,6 @@ function screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, rec
 * DB조회
 */
 function fnSearch(){		
-	
 	//법인코드
 	var ouCode = this.dsSearch.getdatabyname(this.dsSearch.getpos(),"OU_CODE");
 	if(UT.isNull(ouCode) ){
@@ -357,19 +351,20 @@ function fnSearch(){
 	var projectCode = this.dsSearch.getdatabyname(this.dsSearch.getpos(),"PROJECT_CODE");
 	if(UT.isNull(projectCode) ){
 		var strMetaData = UT.gfnGetMetaData("LABEL00064", "프로젝코드"); 
-	    UT.alert(this.screen , "MSG007" , "프로젝코드를 먼저 선택하세요.",strMetaData);
+	    UT.alert(this.screen , "MSG007" , "프로젝트 코드를 먼저 선택하세요.",strMetaData);
 		this.edtProjectCode.setfocus();
 	    return;
 	}
 	//버젼
 	var version = this.dsSearch.getdatabyname(this.dsSearch.getpos(),"PROJECT_VERSION");
+	
 	if(UT.isNull(version) ){
 		var strMetaData = UT.gfnGetMetaData("LABEL00327", "버젼"); 
 	    UT.alert(this.screen , "MSG007" , "버젼를 먼저 선택하세요.",strMetaData);
 		this.edtProjectCode.setfocus();
 	    return;
 	}
-		
+	
 	TRN.gfnTranDataSetHandle(this.screen , this.dsSearch , "ALL" , "NONE" ,  "" , "" , "TR_SEARCH");
 	TRN.gfnTranDataSetHandle(this.screen , this.dsProject , "NONE" , "CLEAR" ,  "" , "" , "TR_SEARCH");
 	TRN.gfnTranDataSetHandle(this.screen , this.dsProjectProduct , "NONE" , "CLEAR" ,  "" , "" , "TR_SEARCH");	
@@ -400,7 +395,7 @@ function fnSearchVersion(){
 	TRN.gfnTranDataSetHandle(this.screen , this.dsVersion , "NONE" , "CLEAR" ,  "" , "" , "TR_VERSION");	
 	TRN.gfnCommonTransactionClear(this.screen, "TR_VERSION");	//트랜젝션 데이터셋 초기화 (필수)
 	TRN.gfnCommonTransactionAddSearch(this.screen , "OmsProjectMapper.SELECT_PROJECT_VERSION" ,"" , "dsVersion", params);	//조회만	
-	TRN.gfnCommonTransactionRun(this.screen , "SELECT_PROJECT_VERSION" , true , true , false , "TR_VERSION");;	// recv_userheader 값에 select 반환   , 싱크 비동기  (screen_on_submitcomplete 자동호출됨)
+	TRN.gfnCommonTransactionRun(this.screen , "SELECT_PROJECT_VERSION" , true , true , false , "TR_VERSION");
 }
 /*
 * 업체 담당자 정보 데이터 가져오기.
@@ -667,10 +662,6 @@ function cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown,
 	return 0;
 }
 
-function edtProjectCode_on_changed(objInst, prev_text, curr_text, event_type)
-{
-    this.fnSearchVersion();
-}
 
 /*
 * 업체정보 Callback
@@ -911,14 +902,15 @@ function fnPopupVersionCallback(aryHash)
 	this.fnSearch();
 }
 
-function btnProjectPop_on_click(objInst)
+function btnProjectPop_on_click(objInst, searchName)
 {
 	var strPopupName = UT.gfnGetMetaData("LABEL02407", "프로젝트코드");
 	
 	objPopupExtraData.clear();
 	objPopupExtraData.P_DATA1 = ouCode;
-	//objPopupExtraData.P_DATA2 = this.dsProject.getdatabyname(this.dsProject.getpos(),"CUSTOMER_NAME");
+	objPopupExtraData.P_DATA2 = searchName;
 	objPopupExtraData.P_DATA3 = "";
+	
 	objPopupExtraData.RETURN_FUNCTION_NAME = "fnPopupProjectPopCallback";
 	screen.loadportletpopup(strPopupName, "/FRAME/popupPrj", strPopupName, false, 0, 0, 0, 686, 410, true, true, false, objPopupExtraData);
 	
@@ -982,4 +974,29 @@ function cboVersion_on_itemchange(objInst, nprev_item, ncur_item, event_type)
 {
 	this.dsProject.removeallrows();
 	this.dsProjectProduct.removeallrows();	
+}
+
+function edtProjectCode_on_changed(objInst, prev_text, curr_text, event_type)
+{
+	var prjCode = this.dsSearch.getdatabyname(0, "PROJECT_CODE");
+	
+	if(prjCode) {		
+		this.btnProjectPop_on_click(objInst, prjCode);
+	} 
+}
+
+
+function edtProjectCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)
+{
+	var prjCode = this.dsSearch.getdatabyname(0, "PROJECT_CODE");
+	
+	// Enter
+	if(keycode==13){   
+		if(prjCode) {
+			this.edtProjectCode_on_changed(objInst);	
+		} else {
+			this.btnCommonSearch_on_mouseup();	
+		}	
+	} 
+	return 0;
 }

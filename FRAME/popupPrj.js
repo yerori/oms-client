@@ -59,6 +59,7 @@ function fnPageSet(){
 		authScope   = objExtraData.P_DATA6;
 		searchName  = objExtraData.P_DATA7;
 		searchNo    = objExtraData.P_DATA8;
+		
 	}	
 	UT.gfnGetCommCodes(this.dsCarType, "O018");		   // 차종			
 }
@@ -70,8 +71,9 @@ function btnSearch_on_mouseup(objInst){
 	TRN.gfnTranDataSetHandle(this.screen , this.dsSearch , "ALL" , "NONE");	//데이터셋 인:ALL 아웃:NONE 정의
 	TRN.gfnTranDataSetHandle(this.screen , this.dsList);	       		    //데이터셋 인:ALL 아웃:CLEAR 정의
 	TRN.gfnCommonTransactionClear(this.screen);	//트랜젝션 데이터셋 초기화 (필수)	
-	TRN.gfnCommonTransactionAddSearch(this.screen , "OmsProjectMapper.SELECT_PROJECT" ,"dsSearch" , "dsList");	//조회만	
-	// screen , "해당 로직 구분 명" , 싱크방식(true/false) , 싱크시 콜백함수 호출여부 (true/false) , 진행중보이기(true/false)
+	//TRN.gfnCommonTransactionAddSearch(this.screen , "OmsProjectMapper.SELECT_PROJECT" ,"dsSearch" , "dsList");
+	// 해당되는 리스트의 데이터만 조회하기 위해 쿼리문 변경 by.yelee 250306
+	TRN.gfnCommonTransactionAddSearch(this.screen , "OmsProjectMapper.SELECT_PROJECT_POP" ,"dsSearch" , "dsList");
 	TRN.gfnCommonTransactionRun(this.screen , "select", false, true, true, "TRANSACITON_COMMON");	// recv_userheader 값에 select 반환   , 싱크 비동기  (screen_on_submitcomplete 자동호출됨)
 }
 

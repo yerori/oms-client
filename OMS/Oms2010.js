@@ -76,7 +76,6 @@ function fnDsSearchSet(){
 * 데이터셋 
 */
 function fnDsSet(){
-
 	UT.gfnGetOuCodes(this.dsOU);	// ou code set
 		
 	UT.gfnGetCommCodes(this.dsActStatus, "O015");		
@@ -86,14 +85,14 @@ function fnDsSet(){
 	UT.gfnGetCommCodes(this.dsDetailStatus, "O016");	//Detail Status Code(O016)				
 	UT.gfnGetCommCodes(this.dsCustNa, "O005");	//D고객국가(O005)
 	var rowConnt = this.dsDetailStatus.getrowcount();
-	for(  var iRow = 0; iRow < rowConnt ; iRow++) {
+	for(var iRow = 0; iRow < rowConnt ; iRow++) {
 		var code = this.dsDetailStatus.getdatabyname(iRow,"CODE");
 	   if(code == "D10"){	
 	   	this.dsDetailStatus.removerow( iRow );
 	   }
 	}
 	this.fnSearchExchange();
-	this.fnSetTitle();		
+	this.fnSetTitle(true);		
 }
 
 /*
@@ -101,9 +100,8 @@ function fnDsSet(){
 * DB조회
 */
 function fnSearchExchange(){		
-	var pamrams = "";
-	params = "OU_CODE=" + ouCode;
-	params = params + " BASE_YEAR=" + this.dsSearch.getdatabyname(this.dsSearch.getpos(),"BASE_YEAR");
+	var params = "OU_CODE=" + ouCode;
+	params += " BASE_YEAR=" + this.dsSearch.getdatabyname(this.dsSearch.getpos(),"BASE_YEAR");
 	
 	TRN.gfnTranDataSetHandle(this.screen , this.dsExchange , "NONE" , "CLEAR" ,  "" , "" , "TR_EXCHANGE");	
 	TRN.gfnCommonTransactionClear(this.screen, "TR_EXCHANGE");	//트랜젝션 데이터셋 초기화 (필수)
@@ -114,10 +112,9 @@ function fnSearchExchange(){
 * 필드 title 정보 데이터 가져오기.
 * DB조회
 */
-function fnSetTitle(){		
-	var pamrams = "";
-	params = "OU_CODE=" + ouCode;
-	params = params + " BASE_YEAR=" + this.dsSearch.getdatabyname(this.dsSearch.getpos(),"BASE_YEAR");
+function fnSetTitle(isFistRender){		
+	var params = "OU_CODE=" + ouCode;
+	params += params + " BASE_YEAR=" + this.dsSearch.getdatabyname(this.dsSearch.getpos(),"BASE_YEAR");
 	
 	TRN.gfnTranDataSetHandle(this.screen , this.dsMonth , "NONE" , "CLEAR" ,  "" , "" , "TR_MONTH");	
 	TRN.gfnCommonTransactionClear(this.screen, "TR_MONTH");	//트랜젝션 데이터셋 초기화 (필수)
@@ -148,13 +145,22 @@ function fnSetTitle(){
 		var nAmtColumn   = this.grdList.getcolumn("Y"+i+"_AMT");
 		
 		this.grdList.setheadertext(0, nQtyColumn,   this.dsMonth.getdatabyname(this.dsMonth.getpos(),"Y"+i)+" "+qty);
-		this.grdList.setcolumnbackcolor(nQtyColumn, yBackcolor);
+		//this.grdList.setcolumnbackcolor(nQtyColumn, yBackcolor);
 		this.grdList.setheadertext(0, nPriceColumn, this.dsMonth.getdatabyname(this.dsMonth.getpos(),"Y"+i)+" "+price);
-		this.grdList.setcolumnbackcolor(nPriceColumn, yBackcolor);
+		//this.grdList.setcolumnbackcolor(nPriceColumn, yBackcolor);
 		this.grdList.setheadertext(0, nAmtExColumn, this.dsMonth.getdatabyname(this.dsMonth.getpos(),"Y"+i)+" "+amt_ex);
-		this.grdList.setcolumnbackcolor(nAmtExColumn, yBackcolor);
+		//this.grdList.setcolumnbackcolor(nAmtExColumn, yBackcolor);
 		this.grdList.setheadertext(0, nAmtColumn,   this.dsMonth.getdatabyname(this.dsMonth.getpos(),"Y"+i)+" "+amt);
-		this.grdList.setcolumnbackcolor(nAmtColumn, yBackcolor);
+		//this.grdList.setcolumnbackcolor(nAmtColumn, yBackcolor);
+		
+		// 최초 페이지 렌더링 시 -> 데이터가 조회되지 않은 상태
+		// 데이터가 존재할 시에만 배경색 설정 250307 by.yelee
+		if(!isFistRender) {
+			this.grdList.setcolumnbackcolor(nQtyColumn, yBackcolor);
+			this.grdList.setcolumnbackcolor(nPriceColumn, yBackcolor);
+			this.grdList.setcolumnbackcolor(nAmtExColumn, yBackcolor);
+			this.grdList.setcolumnbackcolor(nAmtColumn, yBackcolor);		
+		}
 	}
 
 //    this.grdList.setheadertext(0, 37, this.dsMonth.getdatabyname(this.dsMonth.getpos(),"M1")+" "+qty);
@@ -352,6 +358,9 @@ function screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, rec
 	}
 	if(recv_userheader == "SELECT_EXCHANGE") 
 	{		
+		// 환율버전 값 초기화 250307 by.yelee
+		this.dsSearch.setdatabyname(this.dsSearch.getpos(), "EXCHNAGE_CODE");
+		
 		var rowConnt = this.dsExchange.getrowcount();
 		for(  var iRow = 0; iRow < rowConnt ; iRow++) {
 			var name = this.dsExchange.getdatabyname(iRow,"NAME");
@@ -614,9 +623,14 @@ function btnDownLoad_on_mouseup(objInst)
 
 function fldDateS_on_changed(objInst, prev_text, curr_text, event_type)
 {
-    this.fnSearchExchange();
-	this.dsList.removeallrows();
-	this.fnSetTitle();		
+	// 기존 기준년도값이 있는 상태에서만 아래의 이벤트 작동
+	// 처음 렌더링 시 이미 fnDsSet 함수에서 아래 함수 실행됨
+	// 250307 by.yelee
+	if(prev_text) {
+	    this.fnSearchExchange();
+		this.dsList.removeallrows();
+		this.fnSetTitle(false);		
+	}
 }
 
 function ComCustGroup_on_prekeydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)

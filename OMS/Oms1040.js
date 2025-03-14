@@ -323,7 +323,7 @@ function screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, rec
 	{
 		UT.alert(this.screen , "MSG010" , "저장되었습니다.");	
 		UT.statMsg(this.screen , "MSG010" , "저장되었습니다.");
-		this.fnSearch();
+		this.fnSearch("recv_userheader == insertAndselect");
 	}
 
 	if(recv_userheader == "SELECT_PLAN_VERSION")
@@ -389,6 +389,7 @@ function btnCommonSearch_on_mouseup(objInst)
 		UT.alert(this.screen , "MSG146" , "프로젝트를 선택해주세요.");	
 		return;
 	}
+	
 	this.fnSearch();
 }
 
@@ -1016,6 +1017,7 @@ function fnSearchVersion( alertshow ){
 	if (UT.isNull(alertshow)){
 		alertshow = true;
 	}
+	
 	var projectProductId = this.dsSearch.getdatabyname( this.dsSearch.getpos(),"PROJECT_PRODUCT_ID") ;
 	var pamrams = "";
 	params = "OU_CODE=" + this.dsSearch.getdatabyname(this.dsSearch.getpos(),"OU_CODE");
@@ -1025,7 +1027,7 @@ function fnSearchVersion( alertshow ){
 	TRN.gfnTranDataSetHandle(this.screen , this.dsVersion , "NONE" , "CLEAR" ,  "" , "" , "TR_VERSION");	
 	TRN.gfnCommonTransactionClear(this.screen, "TR_VERSION");	//트랜젝션 데이터셋 초기화 (필수)
 	TRN.gfnCommonTransactionAddSearch(this.screen , "OmsProjectMapper.SELECT_PLAN_VERSION" ,"" , "dsVersion", params);	//조회만	
-	TRN.gfnCommonTransactionRun(this.screen , "SELECT_PLAN_VERSION" , true , alertshow , false , "TR_VERSION");;	// recv_userheader 값에 select 반환   , 싱크 비동기  (screen_on_submitcomplete 자동호출됨)
+	TRN.gfnCommonTransactionRun(this.screen , "SELECT_PLAN_VERSION" , true , alertshow , false , "TR_VERSION");	// recv_userheader 값에 select 반환   , 싱크 비동기  (screen_on_submitcomplete 자동호출됨)
 }
 
 function grdList_on_itemselchange(objInst, nPrevSelectRow, nPrevSelectColumn, nCurSelectRow, nCurSelectColumn)
@@ -1079,6 +1081,7 @@ function fnPopupVersionCallback(aryHash)
 	    this.btnAddRowAll.setenable(true);
         this.btnDelRow.setenable(true);
 	}
+
 	this.fnSearch();
 }
 
@@ -1129,9 +1132,8 @@ function cboVersion_on_itemchange(objInst, nprev_item, ncur_item, event_type)
 	    this.btnBizCopy.setenable(false);		
 	}	
 //	UT.alert(this.screen,"", copyYN +event_type);
+
    this.fnSearch();
-	
-	
 }
 
 function fldDateS_on_changed(objInst, prev_text, curr_text, event_type)
@@ -1202,6 +1204,7 @@ function fnBizCopyPopCallback(aryHash)
 		//this.dsSearch.setdatabyname(iRow , "PROJECT_CODE" , aryHash["NEW_PROJECT_CODE"]);
 		//this.dsSearch.setdatabyname(iRow , "PROJECT_VERSION" ,aryHash["NEW_PROJECT_VERSION"]);
 	}	
+	
    this.fnSearch();
 	
 }

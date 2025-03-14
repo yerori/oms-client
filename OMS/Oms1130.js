@@ -67,6 +67,7 @@ function screen_on_load()
 	this.fnDsSet();              // DATASET 세팅
     this.fnSetInitControl();     // 초기 컨트롤 속성 설정	
 	this.getExtradata();
+	this.btnCommonSearch_on_mouseup();
 }
 
 
@@ -282,12 +283,13 @@ function fnTransferSearch_on_click(objInst) {
 	
 }
 
-function btnCustomerPop_on_click(objInst,searchName){
+function btnCustomerPop_on_click(objInst, searchName){
 	var strPopupName = UT.gfnGetMetaData("LABEL02401", "고객정보"); 
 		objPopupExtraData.clear();
 		objPopupExtraData.P_DATA1 = ouCode;
+		objPopupExtraData.P_DATA2 = searchName;
 		objPopupExtraData.P_DATA3 = "";
-		objPopupExtraData.P_DATA7 = searchName;
+		
 		objPopupExtraData.RETURN_FUNCTION_NAME = "fnPopupCustClosePopCallback";
 		screen.loadportletpopup(strPopupName, "/FRAME/popupCust", strPopupName, false, 0, 0, 0, 686, 410, true, true, false, objPopupExtraData);
 }

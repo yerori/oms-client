@@ -58,12 +58,8 @@ var objPopupAttData = {
 function screen_on_load()
 {	
 	INI.init(this.screen);  	// 모든 폼 Onload 최초 공통
-	
 	this.fnDsSearchSet();   	//검색조건 세팅	
-	
-//	if(INI.GV_USER_TYPE == "V"){
-//		this.btnCommonSearch_on_mouseup();  //최초조회	
-//	}
+	this.btnCommonSearch_on_mouseup();  //최초조회
 }
 
 /*
@@ -212,19 +208,26 @@ function cboOuCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown,
 
 function edtProjectCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)
 {
-	this.fnEnter(keycode);
+	var prjCode = this.dsSearch.getdatabyname(0, "PROJECT_CODE");
+	
+	// Enter
+	if(keycode==13){   
+		if(prjCode) {
+			this.edtProjectCode_on_changed();	
+		} else {
+			this.btnCommonSearch_on_mouseup();	
+		}	
+	} 
 	return 0;
 }
 
 function edtProjectCode_on_changed(objInst, prev_text, curr_text, event_type)
 {
-	if( event_type == 5 ){
-		if (!curr_text) {
-			this.edtProjectCode.settext("");
-		} else {
-			this.fnProjectCodePopupCall(this.edtProjectCode.gettext());
-		}
-	}
+	var prjCode = this.dsSearch.getdatabyname(0, "PROJECT_CODE");
+	
+	if(prjCode) {		
+		this.fnProjectCodePopupCall(prjCode);
+	} 
 }
 
 /*
@@ -263,19 +266,33 @@ function cboPsoGrade_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdow
 
 function edtCustName_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)
 {
-	this.fnEnter(keycode);
+	// Backspace
+	if(keycode == 8) {
+		this.dsSearch.setdatabyname(0 , "CUSTOMER_ID" , SYSVar.NO_USER_ID);
+		return;
+	}
+	// Enter
+	if(keycode==13){   
+		var customerName = this.dsSearch.getdatabyname(0, "CUSTOMER_NAME");
+		
+		if(customerName) {
+			this.fnCustPopupCall(customerName);	
+		} else {
+			this.dsSearch.setdatabyname(0, "CUSTOMER_ID" , SYSVar.NO_USER_ID);
+			this.btnCommonSearch_on_mouseup();
+		}
+	}
 	return 0;
 }
 
 function edtCustName_on_changed(objInst, prev_text, curr_text, event_type)
 {
-	if( event_type == 5 ){
-		if (!curr_text) {
-			this.txtCustomerId.settext("");
-			this.edtCustName.settext("");
-		} else {
-			this.fnCustPopupCall("", this.edtCustName.gettext());
-		}
+	var customerName = this.dsSearch.getdatabyname(0, "CUSTOMER_NAME");
+	
+	if(customerName) {		
+		this.fnCustPopupCall(customerName);
+	} else {
+		this.dsSearch.setdatabyname(0 , "CUSTOMER_ID" , SYSVar.NO_USER_ID);
 	}
 }
 
@@ -296,15 +313,15 @@ function fnCustClosePopCallback(aryHash)
 
 function btnCustNamePop_on_click(objInst)
 {
-	this.fnCustPopupCall("","");
+	this.fnCustPopupCall("");
 }
 
-function fnCustPopupCall(customerID, customerName) {
+function fnCustPopupCall(customerName) {
 	var strPopupName = UT.gfnGetMetaData("LABEL02401", "고객정보"); 
 	objPopupExtraData.clear();
 	objPopupExtraData.P_DATA1 = this.dsSearch.getdatabyname(this.dsSearch.getpos(),"OU_CODE");
-	objPopupExtraData.P_DATA2 = customerID;
-	objPopupExtraData.P_DATA3 = customerName;
+	objPopupExtraData.P_DATA2 = customerName;
+	objPopupExtraData.P_DATA3 = "";
 	objPopupExtraData.P_DATA6 = fvauthScope;	  //권한
 	objPopupExtraData.RETURN_FUNCTION_NAME = "fnCustClosePopCallback";
 	screen.loadportletpopup("CustNameSelect", "/FRAME/popupCust", strPopupName, false, 0, 0, 0, 686, 410, true, true, false, objPopupExtraData);

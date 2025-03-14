@@ -62,9 +62,12 @@ function screen_on_load()
 	this.fnChgCodeLoad();       // PM담당자 정보 Load
 	this.fnDsSearchSet();   	//검색조건 세팅	
 	
-//	if(INI.GV_USER_TYPE == "V"){
-//		this.btnCommonSearch_on_mouseup();  //최초조회	
-//	}
+	// user type이 V => OMS가 아닌 E-Procument 프로그램 250313 by.yelee
+	//	if(INI.GV_USER_TYPE == "V"){
+	//		this.btnCommonSearch_on_mouseup();  //최초조회	
+	//	}
+	this.btnCommonSearch_on_mouseup();  //최초조회	
+
 }
 
 /*
@@ -435,21 +438,26 @@ function grdList_on_itemclick(objInst, nClickRow, nClickColumn, bBtnClick, nImgI
 
 function edtProjectCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)
 {
-	if(keycode==13){    // 엔터키값 조회 버튼 click call
-		this.btnCommonSearch_on_mouseup();
-	}
+	var prjCode = this.dsSearch.getdatabyname(0, "PROJECT_CODE");
+	
+	// Enter
+	if(keycode==13){   
+		if(prjCode) {
+			this.edtProjectCode_on_changed();	
+		} else {
+			this.btnCommonSearch_on_mouseup();	
+		}	
+	} 
 	return 0;
 }
 
 function edtProjectCode_on_changed(objInst, prev_text, curr_text, event_type)
 {
-	if( event_type == 5 ){
-		if (!curr_text) {
-			this.edtProjectCode.settext("");
-		} else {
-			this.fnProjectCodePopupCall(this.edtProjectCode.gettext());
-		}
-	}
+	var prjCode = this.dsSearch.getdatabyname(0, "PROJECT_CODE");
+	
+	if(prjCode) {		
+		this.fnProjectCodePopupCall(prjCode);
+	} 
 }
 
 /*

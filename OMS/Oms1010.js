@@ -170,14 +170,12 @@ function screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, rec
 */
 function btnCommonSearch_on_mouseup(objInst)
 {
-
 //	var year = this.fldYear.gettext();
 
 /*	if (! year ) {
 		UT.alert(this.screen, "MSG524", "기준년을 입력하세요"); 
 		return; 
-	}
-*/
+	}*/
 
 	TRN.gfnTranDataSetHandle(this.screen , this.dsSearch , "ALL" , "NONE" ,  "" , "" , "TR_SEARCH");
 	TRN.gfnTranDataSetHandle(this.screen , this.dsList , "NONE" , "CLEAR" ,  "" , "" , "TR_SEARCH");		
@@ -350,12 +348,12 @@ function fnCopyPopCallback(aryHash)
 	
 }
 
-function btnCustomerPop_on_click(objInst)
+function btnCustomerPop_on_click(objInst, searchName)
 {
 	var strPopupName = UT.gfnGetMetaData("LABEL02401", "고객정보"); 
 	objPopupExtraData.clear();
 	objPopupExtraData.P_DATA1 = ouCode;
-	//objPopupExtraData.P_DATA2 = this.dsProject.getdatabyname(this.dsProject.getpos(),"CUSTOMER_NAME");
+	objPopupExtraData.P_DATA2 = searchName;
 	objPopupExtraData.P_DATA3 = "";
 	objPopupExtraData.RETURN_FUNCTION_NAME = "fnPopupCustClosePopCallback";
 	screen.loadportletpopup(strPopupName, "/FRAME/popupCust", strPopupName, false, 0, 0, 0, 686, 410, true, true, false, objPopupExtraData);
@@ -373,12 +371,6 @@ function fnPopupCustClosePopCallback(aryHash)
 	}
 }
 
-function edtCustomerName_on_prekeydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)
-{
-	var iRow = this.dsSearch.getpos();
-	this.dsSearch.setdatabyname(iRow , "CUSTOMER_ID" , "");
-	return 0;
-}
 
 
 //신규
@@ -685,4 +677,36 @@ function ComActStatus_on_prekeydown(objInst, keycode, bctrldown, bshiftdown, bal
 	var iRow = this.dsSearch.getpos();
 	this.dsSearch.setdatabyname(iRow , "ACT_STATUS_CODE" , "");	
 	return 0;
+}
+
+function edtCustomerName_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)
+{
+	// Backspace
+	if(keycode == 8) {
+		this.dsSearch.setdatabyname(0 , "CUSTOMER_ID" , SYSVar.NO_USER_ID);
+		return;
+	}
+	// Enter
+	if(keycode==13){   
+		var customerName = this.dsSearch.getdatabyname(0, "CUSTOMER_NAME");
+		
+		if(customerName) {
+			this.btnCustomerPop_on_click(objInst, customerName);	
+		} else {
+			this.dsSearch.setdatabyname(0, "CUSTOMER_ID" , SYSVar.NO_USER_ID);
+			this.btnCommonSearch_on_mouseup();
+		}
+	}
+	return 0;
+}
+
+function edtCustomerName_on_changed(objInst, prev_text, curr_text, event_type)
+{
+	var customerName = this.dsSearch.getdatabyname(0, "CUSTOMER_NAME");
+	
+	if(customerName) {		
+		this.btnCustomerPop_on_click(objInst, customerName);
+	} else {
+		this.dsSearch.setdatabyname(0 , "CUSTOMER_ID" , SYSVar.NO_USER_ID);
+	}
 }

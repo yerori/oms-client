@@ -142,6 +142,15 @@ function screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, rec
 	}
 }
 
+// 담당자 이름 유효한지 체크
+function checkInvalidChargeUser() {
+	var chargeUserId = this.dsSearch.getdatabyname(0, "CHARGE_USER_ID");
+	
+	// USER ID가 음수라면, null을 의미
+	var isNotValidUserId = chargeUserId < 0;
+	
+	return isNotValidUserId;
+}
 
 function fnInvalidSearch() {
 	// 조회 시 반드시 한 항목 이상은 입력되어야 하는 컬럼명들
@@ -170,9 +179,15 @@ function fnInvalidSearch() {
 function btnCommonSearch_on_mouseup(objInst)
 {
 	var isInvalid = this.fnInvalidSearch();
+	var isNotValidUserId = this.checkInvalidChargeUser();
 	
 	if(isInvalid) {
 		UT.alert(this.screen , "MSG611" , "검색 항목은 한 개 이상 입력되어야 합니다.");
+		return;
+	}
+	
+	if(isNotValidUserId) {
+		UT.alert(this.screen, "MSG613" , "담당자를 다시 입력해 주세요.");
 		return;
 	}
 	
@@ -228,17 +243,6 @@ function stdDate_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, b
 
 
 /*
-* 프로젝트 코드
-*/
-function transferSearch_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)
-{
-	if(keycode==13){    // 엔터키값 조회 버튼 click call
-		this.btnCommonSearch_on_mouseup();
-	}
-	return;
-}
-
-/*
 * search prop 팝업 로드
 */
 function fnTransferSearch_on_click(objInst) {
@@ -246,7 +250,6 @@ function fnTransferSearch_on_click(objInst) {
 	
 	// 프로젝트 코드
 	if(btnName == "btnProjectCodePop") { 	
-		//this.fnProjectCodePopupCall(this.edtProjectCode.gettext());	
 		this.fnProjectCodePopupCall();	
 	}
 	
@@ -352,4 +355,32 @@ function edtChargeUserName_on_keydown(objInst, keycode, bctrldown, bshiftdown, b
 		return;
 	}
 	return 0;
+}
+
+/*
+* 프로젝트 코드
+*/
+function transferSearch_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)
+{
+	var prjCode = this.dsSearch.getdatabyname(0, "PROJECT_CODE");
+	
+	// Enter
+	if(keycode==13){   
+		if(prjCode) {
+			this.edtProjectCode_on_changed(objInst);	
+		} else {
+			this.btnCommonSearch_on_mouseup();	
+		}	
+	} 
+	return 0;
+}
+
+
+function edtProjectCode_on_changed(objInst, prev_text, curr_text, event_type)
+{
+	var prjCode = this.dsSearch.getdatabyname(0, "PROJECT_CODE");
+	
+	if(prjCode) {		
+		this.fnProjectCodePopupCall(prjCode);
+	} 
 }

@@ -253,7 +253,6 @@ function fnTransferSearch_on_click(objInst) {
 	
 	// 프로젝트 코드
 	if(btnName == "btnProjectCodePop") { 	
-//		this.fnProjectCodePopupCall(this.edtProjectCode.gettext());	
 		this.fnProjectCodePopupCall();
 	}
 	// 고객명 조회
@@ -428,20 +427,6 @@ function ComProductName_on_prekeydown(objInst, keycode, bctrldown, bshiftdown, b
 }
 
 
-
-/*
-* 검색바 properties keydown 이벤트
-*/
-function transferSearch_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)
-{
-	if(keycode==13){    
-		this.btnCommonSearch_on_mouseup();
-	}
-	return;
-}
-
-
-
 function cboCarType_on_prekeydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)
 {
 	var iRow = this.dsSearch.getpos();
@@ -569,8 +554,8 @@ function btnCustomerPop_on_click(objInst,searchName){
 	var strPopupName = UT.gfnGetMetaData("LABEL02401", "고객정보"); 
 		objPopupExtraData.clear();
 		objPopupExtraData.P_DATA1 = ouCode;
+		objPopupExtraData.P_DATA2 = searchName;
 		objPopupExtraData.P_DATA3 = "";
-		objPopupExtraData.P_DATA7 = searchName;
 		objPopupExtraData.RETURN_FUNCTION_NAME = "fnPopupCustClosePopCallback";
 		screen.loadportletpopup(strPopupName, "/FRAME/popupCust", strPopupName, false, 0, 0, 0, 686, 410, true, true, false, objPopupExtraData);
 }
@@ -696,4 +681,28 @@ function grdList_on_filtercomplete(objInst)
 		
 		this.dsList.setdatabyname(i, "FILTER_FLAG" , filterFlag);	
 	}
+}
+
+function edtProjectCode_on_keydown(objInst, keycode, bctrldown, bshiftdown, baltdown, bnumpadkey)
+{
+	var prjCode = this.dsSearch.getdatabyname(0, "PROJECT_CODE");
+	
+	// Enter
+	if(keycode==13){   
+		if(prjCode) {
+			this.edtProjectCode_on_changed(objInst);	
+		} else {
+			this.btnCommonSearch_on_mouseup();	
+		}	
+	} 
+	return 0;
+}
+
+function edtProjectCode_on_changed(objInst, prev_text, curr_text, event_type)
+{
+	var prjCode = this.dsSearch.getdatabyname(0, "PROJECT_CODE");
+	
+	if(prjCode) {		
+		this.fnProjectCodePopupCall(prjCode);
+	} 
 }

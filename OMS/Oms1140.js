@@ -141,10 +141,19 @@ function screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, rec
 	}
 }
 
+// 담당자 이름 유효한지 체크
+function checkInvalidChargeUser() {
+	var chargeUserId = this.dsSearch.getdatabyname(0, "CHARGE_USER_ID");
+	
+	// USER ID가 음수라면, null을 의미
+	var isNotValidUserId = chargeUserId < 0;
+	
+	return isNotValidUserId;
+}
 
 function fnInvalidSearch() {
 	// 조회 시 반드시 한 항목 이상은 입력되어야 하는 컬럼명들
-	var aryDual = [ "RFQ_CODE", "CHARGE_USER_ID", "RFQ_DATE"];
+	var aryDual = [ "RFQ_CODE", "CHARGE_USER_NAME", "RFQ_DATE"];
 	var aryCnt = aryDual.length;
 	var cnt = this.dsSearch.getcolumncount();
 	
@@ -169,9 +178,15 @@ function fnInvalidSearch() {
 function btnCommonSearch_on_mouseup(objInst)
 {
 	var isInvalid = this.fnInvalidSearch();
+	var isNotValidUserId = this.checkInvalidChargeUser();
 	
 	if(isInvalid) {
 		UT.alert(this.screen , "MSG611" , "검색 항목은 한 개 이상 입력되어야 합니다.");
+		return;
+	}
+	
+	if(isNotValidUserId) {
+		UT.alert(this.screen, "MSG613" , "담당자를 다시 입력해 주세요.");
 		return;
 	}
 	

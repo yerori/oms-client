@@ -59,10 +59,6 @@ function fnPageSet(){
 		authScope   = objExtraData.P_DATA6;
 		searchName  = objExtraData.P_DATA7;
 		searchNo    = objExtraData.P_DATA8;
-
-		if(searchName) {
-			this.dsSearch.setdatabyname(0, "CUSTOMER_NAME", searchName);	
-		}
 	}				
 }
 

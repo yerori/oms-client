@@ -501,7 +501,6 @@ function fnCreateXYChart(objInst)
 //		datalist[i] = aryHash;
 //	}
 	var datalist = UT.gfnDsToAry(this.dsPsoDeptList);
-	//console.log("datalist : ", datalist);
 	yAxis.data.setAll(datalist);
 	series.data.setAll(datalist);
 	

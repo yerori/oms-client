@@ -62,9 +62,10 @@ function screen_on_load()
 	
 	this.fnDsSearchSet();   //검색조건 세팅	
 	
-	if(fvMode == "V"){
-		this.btnCommonSearch_on_mouseup();  //최초조회	
-	}
+	// 프로젝트값이 필수이므로 최초 조회 생략 250313 by.yelee
+	//if(fvMode == "V"){
+	//	this.btnCommonSearch_on_mouseup();  //최초조회	
+	//}
 }
 
 /*
@@ -96,7 +97,7 @@ function fnDsSearchSet(){
 		this.dsSearch.setdatabyname(this.dsSearch.getpos(),"R_BOARD_ID",objExtraData.P_DATA4);
 		fvMode = objExtraData.P_DATA5;
 	} 
-	
+		
 	UT.gfnHrEditorStyle(this.fldProjectCode, "D");
 	UT.gfnHrEditorStyle(this.fldCarTypeName, "D");
 	UT.gfnHrEditorStyle(this.fldRegisterYear, "D");
@@ -225,8 +226,7 @@ function fnSearch(){
 * 필수 항목 검사
 */
 function fnValidForm()
-{
-	
+{	
 	if(UT.isNull(this.dsRBMain.getdatabyname(this.dsRBMain.getpos(),"IND_GROUP"))){
 		UT.alert(this.screen, "MSG573", "제품 산업군 구분 먼저 선택하세요");
 		return false;
@@ -294,6 +294,7 @@ function fnCreateDevDoc(){
 		this.fnSearch();
 	}
 } 
+
 
 /*
 * 공통 조회버튼 클릭시
@@ -377,6 +378,8 @@ function grdList_on_itemclick(objInst, nClickRow, nClickColumn, bBtnClick, nImgI
 	
 	if(UT.isNull(this.dsRBMain.getdatabyname(this.dsRBMain.getpos(),"IND_GROUP"))){
 		UT.alert(this.screen, "MSG573", "제품 산업군 구분 먼저 선택하세요");
+		// 제품 산업군 구분이 선택되어 있지 않을 시, MARK 선택 되지 않음 added by yelee  250304
+		this.dsRBDtl.setdatabyname(this.dsRBDtl.getpos(), "MARK", "N");
 	} else {
 		if(this.grdList.getcolumnname(nClickColumn) == "MARK"){
 			if(this.dsRBDtl.getdatabyname(nClickRow, "MARK")=="Y"){
@@ -407,8 +410,6 @@ function fnSum()
 	
 	for(var i=0;i<this.dsRBDtl.getrowcount();i++){ 
 		result = result + Number(this.dsRBDtl.getdatabyname(i, "S_SCORE"));
-		//console.log("S_Score : " + this.dsRBDtl.getdatabyname(i, "S_SCORE"));
-		//console.log("result : " + result);
 	}
 	this.grdList.setstatuserrowtext(0,4,result);
 	

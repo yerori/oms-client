@@ -61,9 +61,11 @@ function screen_on_load()
 	
 	this.fnDsSearchSet();   //검색조건 세팅	
 	
-	if(INI.GV_USER_TYPE == "V"){
-		this.btnCommonSearch_on_mouseup();  //최초조회	
-	}
+	// user type이 V => OMS가 아닌 E-Procument 프로그램 250313 by.yelee
+	//	if(INI.GV_USER_TYPE == "V"){
+	//		this.btnCommonSearch_on_mouseup();  //최초조회	
+	//	}
+	this.btnCommonSearch_on_mouseup();  //최초조회	
 }
 
 /*

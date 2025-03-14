@@ -190,7 +190,8 @@ function screen_on_submitcomplete(mapid, result, recv_userheader, recv_code, rec
 		} else {
 			UT.statMsg(screen , "MSG003" , "%% 건의 데이터가 조회되었습니다." , this.dsDocDtl.getrowcount());	//하단메세지 처리
 			
-			var aryColumn = ["PSO_DOC_STEP","PSO_DOC_CHASU","PSO_DOC_DETAIL_CHASU","PSO_CONTENTS","CHG_EMAIL_ADDR","MAKE_PLAN_DATE"];
+			//var aryColumn = ["PSO_DOC_STEP","PSO_DOC_CHASU","PSO_DOC_DETAIL_CHASU","PSO_CONTENTS","CHG_EMAIL_ADDR","MAKE_PLAN_DATE"]; -- 이메일 필수항목에서 제외 250228 by.yelee
+			var aryColumn = ["PSO_DOC_STEP","PSO_DOC_CHASU","PSO_DOC_DETAIL_CHASU","PSO_CONTENTS","MAKE_PLAN_DATE"];
 			for(var i=0;i<this.dsDocDtl.getrowcount();i++){
 				//write 권한 체크
 				if( this.dsDocMain.getdatabyname(this.dsDocMain.getpos(),"READ_WRITE") == "W" ) {
@@ -335,7 +336,8 @@ function fnValidForm(confirm)
 	
 	//확정일 경우 담당자 필수 항목검사
 	if(confirm){
-		var aryDual = ["PSO_DEPT_NAME" ,"CHG_USER_NAME" ,"CHG_EMAIL_ADDR", "MAKE_PLAN_DATE"];
+		//var aryDual = ["PSO_DEPT_NAME" ,"CHG_USER_NAME" ,"CHG_EMAIL_ADDR", "MAKE_PLAN_DATE"]; -- 이메일 필수항목에서 제외 250228 by.yelee
+		var aryDual = ["PSO_DEPT_NAME" ,"CHG_USER_NAME", "MAKE_PLAN_DATE"];
 	    if(!UT.gfnVaildataionGrd(this.screen,this.grdList, aryDual, false))
 		{
 			return false;
